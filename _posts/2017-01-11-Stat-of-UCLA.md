@@ -1,4 +1,7 @@
-# State of UCLA - Part 1: The Model
+---
+layout: post
+title: Twitter Tensorflow Sentiment Analysis
+---
 
 ## About the Project
 This is a personal project that I wanted to start working on. It's going to consist of 3/4 parts. The general idea is to train an RNN for sentiment analysis and then create a webapp to pull twitter data based on geolocation to see how different parts of the nation are feeling.

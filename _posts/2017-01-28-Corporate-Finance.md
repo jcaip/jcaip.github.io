@@ -3,6 +3,8 @@ layout: post
 title: Corporate Finance
 ---
 
+These are some notes that I took on corporate finance for ENGR111 at UCLA
+
 ### Balance Sheet
 ![Balance Sheet](https://jcaip.github.io/images/corp_fin/balance_sheet.png)
 

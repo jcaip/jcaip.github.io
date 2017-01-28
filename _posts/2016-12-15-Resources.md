@@ -1,4 +1,9 @@
-# Resources
+---
+layout: post
+title: Resources
+---
+
+A collection of resources that I found helpful.
 
 [Google](https://www.google.com/about/careers/students/guide-to-technical-development.html) has a good guide.
 
@@ -11,13 +16,7 @@ Code in any language online [here](https://repl.it/languages)
 
 ## Papers
 Use [ResearchGate](https://www.researchgate.net/home) and [this](http://www.arxiv-sanity.com/) to find papers.
-
-  + [Using Deepbase to extract informaition from dark data](https://cs.stanford.edu/people/chrismre/papers/modiv923-zhangA.pdf)
-  + [Dropout](https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf)
-  + [Descriptor Matching](http://lmb.informatik.uni-freiburg.de/Publications/2014/FDB14/1405.5769v1.pdf)
-  + [CNN Unsupervised Feature Learning](http://papers.nips.cc/paper/5548-discriminative-unsupervised-feature-learning-with-convolutional-neural-networks.pdf)
-  + [LSTM](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf)
-  + [RNN logical semantics](https://arxiv.org/pdf/1406.1827v4.pdf)
+List of papers [here](_posts/2016-12-01-Papers.md)
 
 ## Systems Programming
 + [Makefile Tutorial](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/)

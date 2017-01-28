@@ -1,5 +1,9 @@
-## The Problem
+---
+layout: post
+title: Genetic Algorithm
+---
 
+## The Problem
 So I've been meaning to create a blog to chronicle all the technical stuff I do, and I just discovered jekyll-now and I love it so far. So without much further ado, this is the first post on my blog, and it describes running a genetic algorith to create a string of numbers and operations that evaluates to 42. 
 
 For example, when I run the algorithm, one string it may return is '262-12-246'. It's important to note that the string that it does return will always be "gramatically" correct - it will be formatted correctly (for example, there wont be something like 2++34)
