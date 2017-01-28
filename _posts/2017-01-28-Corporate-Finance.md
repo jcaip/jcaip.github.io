@@ -3,8 +3,6 @@ layout: post
 title: Corporate Finance
 ---
 
-# Corporate Finance
-
 ### Balance Sheet
 ![Balance Sheet](https://jcaip.github.io/images/corp_fin/balance_sheet.png)
 
