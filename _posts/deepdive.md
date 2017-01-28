@@ -1,0 +1,23 @@
+# Deepdive
+
+Deepdive is a [factor graph](http://deepdive.stanford.edu/assets/factor_graph.pdf)
+
+Each deepdive application is broken down into 3 main things
+  + app.ddlog
+  + db.url
+  + deepdive.conf
+
+There are three folders in an app
+  + input/ -> Stores all the input data for the application either in a *.tsj or a *.tsj.sh
+  + run/ -> Stores the run with a timestamp for all log and output files
+  + udf/ -> Stores all the user defined functions refrenced in app.ddlog
+
+
+# More about the Math
+
++ Explanation of Factor Graphs + [Microsoft's TrueSkill Algorithm](http://www.moserware.com/2010/03/computing-your-skill.html)
+  + [More Math](http://www.moserware.com/assets/computing-your-skill/The%20Math%20Behind%20TrueSkill.pdf)
+  
++ Explanation of [Bayesian Statistics](https://www.youtube.com/watch?v=0F0QoMCSKJ4)
+
++ How factor graphs are used by [deepdive](http://deepdive.stanford.edu/inference#additional-resources)
