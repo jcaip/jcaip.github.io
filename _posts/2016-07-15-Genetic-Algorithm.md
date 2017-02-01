@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Genetic Algorithm
+published: true
 ---
 
 ## The Problem
@@ -10,7 +11,7 @@ For example, when I run the algorithm, one string it may return is '262-12-246'.
 
 ## The Approach
 
-The idea is to mimic biology and natrual selection acting on a _poopulation_ of
+The idea is to mimic biology and natrual selection acting on a _population_ of
 organisms. Each individual of the population has a _fitness score_, which I
 have defined in my code as the distance from the result of that expression to
 42. An individuals chance to reproduce to pass on its genetic information to
@@ -197,4 +198,3 @@ This was super fun! See the rest of the code [here](https://github.com/jcaip/gen
 ![gen_alg result](https://jcaip.github.io/images/gen_alg/example.png "Sample solution failure")
 
 ![gen_alg result](https://jcaip.github.io/images/gen_alg/example2.png "Sample solution success")
-
