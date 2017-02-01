@@ -10,6 +10,7 @@ These are some notes that I took on corporate finance for ENGR111 at UCLA
 ![Balance Sheet](https://jcaip.github.io/images/corp_fin/balance_sheet.png)
 
 The balance sheet is a representation of a company. It can be used to answer three fundamental questions about a company
+**Common-Size Balance Sheet** - divide by Total Assets to get a percentage
 
 + On the left hand side, we can see long-term assets to solve **capital budgeting** issues
 + On the upper half, we can see short-term cash flow and **net working capital**
@@ -33,7 +34,7 @@ When analyzing a balance sheet, you should be aware of liquidity, debt vs. equit
 
 ### Income Statement
 `Revenue - Expenses = Income`
-
+**Common-Size Income Statement** - Divide by Total Sales to get a percentage
 + **Generally accepted accounting principles** - revenue is recognized when an exchange of goods or services occurs. Revenues shoud be matched with expenses. Income is reported when it is earned, even though no cash flow ahs necessarily occured. E.g. - selling for credit
 + **Noncash items** - exsist against revenues but do not affect cash flow.
     + *Deprecation* - the cost of equipment used up in the production process
