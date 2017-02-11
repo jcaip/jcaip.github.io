@@ -1,5 +1,5 @@
-# ACM 2017 Reading List
 I was asked to complile a reading list for UCLA ACM, so I figuered I would share it too, check out our [Medium Blog](https://medium.com/@acmbruins)
+
 It's now the middle of February 2017. If you're stuck in the 6th week doldrums of the quarter system, why not kick back and crack open a book? 
 
 ## How to Win Friends and Influence People
