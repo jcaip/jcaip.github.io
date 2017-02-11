@@ -16,7 +16,7 @@ Code in any language online [here](https://repl.it/languages)
 
 ## Papers
 Use [ResearchGate](https://www.researchgate.net/home) and [this](http://www.arxiv-sanity.com/) to find papers.
-List of papers [here](_posts/2016-12-01-Papers.md)
+List of papers [here](/_posts/2016-12-01-Papers.md)
 
 ## Systems Programming
 + [Makefile Tutorial](http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/)

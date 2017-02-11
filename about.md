@@ -8,7 +8,7 @@ Hi! I'm Jesse Cai and I'm originally from the Bay Area, where I graduated from A
 I'm now a sophomore at UCLA pursuing a B.S. in Computer Science and Engineering. 
 I also work for JPL, where I automate tasks through machine learning. 
 This is my website, where I'll be putting up anything I find interesting, as well as some personal projects
-You can check out my resume [here](resources/Resume.pdf)
+You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf)
 
 ### More Information
 In my free time I enjoy hiking, watching basketball and playing chess.

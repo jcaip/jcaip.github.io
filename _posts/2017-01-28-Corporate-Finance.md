@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Corporate Finance
+published: true
 ---
 
 These are some notes that I took on corporate finance for ENGR111 at UCLA
@@ -9,12 +10,13 @@ These are some notes that I took on corporate finance for ENGR111 at UCLA
 ![Balance Sheet](https://jcaip.github.io/images/corp_fin/balance_sheet.png)
 
 The balance sheet is a representation of a company. It can be used to answer three fundamental questions about a company
+**Common-Size Balance Sheet** - divide by Total Assets to get a percentage
 
 + On the left hand side, we can see long-term assets to solve **capital budgeting** issues
 + On the upper half, we can see short-term cash flow and **net working capital**
 + On the right hand side, we can see the investors perception of the company and **capital structure** issues
 
-`Assets = Liabilites + Stockholders' equity`
+`Assets = Liabilites + Stockholders equity`
 When analyzing a balance sheet, you should be aware of liquidity, debt vs. equity, and value vs. cost
 
 + **Liquidity** - refers to the ease and quickness assets can be converted to cash
@@ -32,15 +34,16 @@ When analyzing a balance sheet, you should be aware of liquidity, debt vs. equit
 
 ### Income Statement
 `Revenue - Expenses = Income`
-
+**Common-Size Income Statement** - Divide by Total Sales to get a percentage
 + **Generally accepted accounting principles** - revenue is recognized when an exchange of goods or services occurs. Revenues shoud be matched with expenses. Income is reported when it is earned, even though no cash flow ahs necessarily occured. E.g. - selling for credit
 + **Noncash items** - exsist against revenues but do not affect cash flow.
     + *Deprecation* - the cost of equipment used up in the production process
     + *Deferred taxes* - arises from the difference between accounting income and true taxable income
 + **Time and Costs** - visualize short run and long run, where in the short run certain costs are fixed (bond interest, overhead, property taxes), but in the long run all costs are variable
 
-### Net Working Capitalde
+### Net Working Capital
 `Current assets - Current liabilities = Net working capital`
+
 If net working capital is positive, this means that over the next 12 months, the cash that will come in is greater than the cash thatwill be paid out. 
 The change in net working capital is using positive in a growing firm
 
@@ -56,6 +59,22 @@ The change in net working capital is using positive in a growing firm
 ![Cash Flow](https://jcaip.github.io/images/corp_fin/cash_flow.png)
 
 In general cash flows recieved earlier are better than those recieved later.
+
+### Financial Ratios
++ Short-Term Solvency or Liquidity Measures
+	+ `Current Ratio = Current Assets / Current Liabilities`
+    + `Quick Ratio = (Current Assets - Inventory) / Current Liabilities`
+    + `Cash Ratio = Cash / Current Liabilities`
++ Long-Term Solvency Measures
+	+ `Total Debt Ratio = (Total Assets - Total Equity) / Total Assets`
+    + `Debt-Equity Ratio = Total Debt / Total Equity`
+    + `Equity Multiplier = Total Assets / Total Equity`
+    + `TIE ratio = EBIT / Interest`
+    + `Cash Coverage Ratio = (EBIT + Deprecation and amortization) / Interest`
++ Asset Management or Turnover Measures
+    + `Invetory Turnover = Cost of goods sold / Inventory`
+    + `Days' sales in inventory = 365 Days / Inventory Turnover`
+    
 
 ### The Corporate Firm
 + **Sole proprietorship** - buisness owned by one person
@@ -86,4 +105,4 @@ This is usually remedies by tying managerial compensation to the financial eprfo
 
 ### Taxes
 + **average tax rate** - tax bill / taxable income
-+ **marginal tax rate** - tax percentage on the next dollar 
++ **marginal tax rate** - tax percentage on the next dollar
