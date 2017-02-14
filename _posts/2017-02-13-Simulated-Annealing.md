@@ -80,10 +80,10 @@ Now I can just run this simulation until it terminates (Temperature < 1)
 I ended up writing a python program that finds the shortest path along a random set of vertices. I've attached the results below.
 
 #### Example with 10 points
-![example_10](https://jcaip.github.io/images/sim_amm/sim_ann_10.png)
+![example_10](https://jcaip.github.io/images/sim_ann/sim_ann_10.png)
 
 #### Example with 50 points
-![example_50](https://jcaip.github.io/images/sim_amm/sim_ann_50.png)
+![example_50](https://jcaip.github.io/images/sim_ann/sim_ann_50.png)
 
 This was a quick and fun little project. Later on I'd like to experiment and see if one could use simulated annealing instead of gradient descent to optimize machine learning problems. I think it would be especially effective in cases where you are unable to train for long periods of time. I think it could also be helpful when the search space is especially large - when your model is very complex. 
     
