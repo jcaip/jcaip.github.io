@@ -12,8 +12,8 @@ The basic approach to traveling salesman problems are as follows
 
 2. Create a neighboring solution. In our case, we choose two vertices and reverse the path along these 2 vertices.
 
-3. If the neighboring solution is better than the current solution, switch. However, if the neighboring solution is worse than the current solution, you still have a chance to switch, given by the equation *exp((e - e'))/T) > rand(0,1)*.
-  In this case *e* is the distance of your current path, *e'* is the distance of your neighbor path, and *T* is the temperature.
+3. If the neighboring solution is better than the current solution, switch. However, if the neighboring solution is worse than the current solution, you still have a chance to switch, given by the equation **exp((e - e'))/T) > rand(0,1)**.
+  In this case **e** is the distance of your current path, **e'** is the distance of your neighbor path, and **T** is the temperature.
 
 
 4. Now we decay the temperature by a certain rate.
