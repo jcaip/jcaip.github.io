@@ -1,7 +1,7 @@
 This is a post about [Simulated Annealing.](https://en.wikipedia.org/wiki/Simulated_annealing)
 
 ## The Problem
-Simulated Annealing is basically an optimization technique. It is a probabilistic technique to approximate the global max/min of a function. I describe how to use Simulated Aneealing to solve the Traveling Salesman problem
+Simulated Annealing is basically an optimization technique. It is a probabilistic technique to approximate the global max/min of a function. I describe how to use Simulated Annealing to solve the Traveling Salesman problem
 
 The idea of the Traveling Salesman problem is that you have N cities and you want to find the path of least distance that allows you to visit all the cities and end up at your starting city. (You basically just want to find a cycle) You can read more about this problem if you're unfamiliar with it [here.](https://simple.wikipedia.org/wiki/Travelling_salesman_problem)
 
