@@ -7,6 +7,7 @@ The idea of the Traveling Salesman problem is that you have N cities and you wan
 
 ## Approach
 The basic approach to traveling salesman problems are as follows
+
     1. Start off with some random solution. This is just some random permutation of all the cities
     2. Create a neighboring solution. In our case, we choose two vertices and reverse the path along these 2 vertices.
     3. If the neighboring solution is better than the current solution, switch. However, if the neighboring solution is worse than the current solution, you still have a chance to switch, given by the equation *exp((e - e'))/T) > rand(0,1)*. In this case *e* is the distance of your current path, *e'* is the distance of your neighbor path, and *T* is the temperature.
@@ -18,6 +19,7 @@ We simply repeat this until the temperature reaches < 1 and then we terminate.
 You can see the full code on my github [here](https://github.com/jcaip/simulated_annealing).
 
 First off, we start by initializing the enviorment, setting the initial temperature, cooling rate, and also the starting path.
+
 ```python 
     #set up enviorment and create points
     temp, coolingRate = 1000, 0.0002
@@ -31,6 +33,7 @@ First off, we start by initializing the enviorment, setting the initial temperat
 ```
 
 Next, I wrote a function that computes the distance of a path
+
 ```python
 def computePath(locs, path):
  dist = 0 
@@ -44,6 +47,7 @@ def computePath(locs, path):
 ```
 
 I also wrote a function to compute the neighbors of a path
+
 ```python
 def getNeighbors(path_in):
     path = list(path_in)
@@ -53,6 +57,7 @@ def getNeighbors(path_in):
 ```
 
 Now I can just run this simulation until it terminates (Temperature < 1)
+
 
 ```python
     while(temp>1):
@@ -71,12 +76,14 @@ Now I can just run this simulation until it terminates (Temperature < 1)
 ```
 
 ## Result
+
 I ended up writing a python program that finds the shortest path along a random set of vertices. I've attached the results below.
+
 #### Example with 10 points
-![example_10](images/sim_amm/sim_ann_10.png)
+![example_10](https://jcaip.github.io/images/sim_amm/sim_ann_10.png)
 
 #### Example with 50 points
-![example_50](images/sim_amm/sim_ann_50.png)
+![example_50](https://jcaip.github.io/images/sim_amm/sim_ann_50.png)
 
 This was a quick and fun little project. Later on I'd like to experiment and see if one could use simulated annealing instead of gradient descent to optimize machine learning problems. I think it would be especially effective in cases where you are unable to train for long periods of time. I think it could also be helpful when the search space is especially large - when your model is very complex. 
     
