@@ -1,12 +1,12 @@
 This is a post about [Simulated Annealing.](https://en.wikipedia.org/wiki/Simulated_annealing)
 
 ## The Problem
-Simulated Annealing is basically an optimization technique. It is a probabilistic technique to approximate the global max/min of a function. I describe how to use Simulated Annealing to solve the Traveling Salesman problem
+Simulated Annealing is an optimization technique. It is a probabilistic technique to approximate the global max/min of a function. In this post, I describe how to use Simulated Annealing to solve the Traveling Salesman problem.
 
 The idea of the Traveling Salesman problem is that you have N cities and you want to find the path of least distance that allows you to visit all the cities and end up at your starting city. (You basically just want to find a cycle) You can read more about this problem if you're unfamiliar with it [here.](https://simple.wikipedia.org/wiki/Travelling_salesman_problem)
 
 ## Approach
-The basic approach to traveling salesman problems are as follows
+Simulated Annealing works as follows:
 
 1. Start off with some random solution. This is just some random permutation of all the cities
 
@@ -18,7 +18,7 @@ The basic approach to traveling salesman problems are as follows
 
 4. Now we decay the temperature by a certain rate.
 
-We simply repeat this until the temperature reaches < 1 and then we terminate.
+We simply repeat this until the temperature reaches < 1 and then we terminate. The end result we have is our "optimal" solution.
 
 ## Code
 You can see the full code on my github [here](https://github.com/jcaip/simulated_annealing).
