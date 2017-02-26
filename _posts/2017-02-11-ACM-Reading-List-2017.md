@@ -1,6 +1,5 @@
 ---
 layout: post
-title: Twitter Tensorflow Sentiment Analysis
 
 images:
 
