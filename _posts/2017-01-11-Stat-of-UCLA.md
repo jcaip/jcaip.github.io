@@ -7,7 +7,7 @@ images:
     - url: /images/sou/loss_function.png
       alt: Loss Function
       title: Loss Function
--
+---
 {% assign image = page.images[0] %}
 {% include image.html image=image %}
 
