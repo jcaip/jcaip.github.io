@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Twitter Tensorflow Sentiment Analysis
+
+images:
+
+    - url: /images/sou/loss_function.png
+      alt: Loss Function
+      title: Loss Function
 ---
 
 ## About the Project
