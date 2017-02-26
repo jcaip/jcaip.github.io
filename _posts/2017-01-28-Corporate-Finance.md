@@ -10,9 +10,6 @@ images:
       title: Loss Function
 ---
 
-{% assign image = page.images[0] %}
-{% include image.html image=image %}
-
 These are some notes that I took on corporate finance for ENGR111 at UCLA
 
 ### Balance Sheet
