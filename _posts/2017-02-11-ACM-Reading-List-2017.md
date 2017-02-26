@@ -7,7 +7,7 @@ images:
       alt: Cover
       title: Cover
 ---
-{ assign image = page.images[0] %}
+{% assign image = page.images[0] %}
 {% include image.html image=image %}
 
 I was asked to complile a reading list for UCLA ACM, so I figuered I would share it too, check out our [Medium Blog](https://medium.com/@acmbruins)

@@ -7,7 +7,7 @@ images:
       alt: Interval Scheduling
       title: Interval Scheduling
 ---
-{ assign image = page.images[0] %}
+{% assign image = page.images[0] %}
 {% include image.html image=image %}
 ### What are Greedy Algorithms?
 

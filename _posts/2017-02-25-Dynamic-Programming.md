@@ -7,7 +7,7 @@ images:
       alt: Loss Function
       title: Loss Function
 ---
-{ assign image = page.images[0] %}
+{% assign image = page.images[0] %}
 {% include image.html image=image %}
 ### What is the idea behind dynamic programming?
 Dynamic Programming breaks down problems into subproblems, then 

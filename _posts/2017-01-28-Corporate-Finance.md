@@ -9,7 +9,8 @@ images:
       alt: Loss Function
       title: Loss Function
 ---
-{ assign image = page.images[0] %}
+
+{% assign image = page.images[0] %}
 {% include image.html image=image %}
 
 These are some notes that I took on corporate finance for ENGR111 at UCLA
@@ -70,11 +71,11 @@ In general cash flows recieved earlier are better than those recieved later.
 
 ### Financial Ratios
 + Short-Term Solvency or Liquidity Measures
-	+ `Current Ratio = Current Assets / Current Liabilities`
+    + `Current Ratio = Current Assets / Current Liabilities`
     + `Quick Ratio = (Current Assets - Inventory) / Current Liabilities`
     + `Cash Ratio = Cash / Current Liabilities`
 + Long-Term Solvency Measures
-	+ `Total Debt Ratio = (Total Assets - Total Equity) / Total Assets`
+    + `Total Debt Ratio = (Total Assets - Total Equity) / Total Assets`
     + `Debt-Equity Ratio = Total Debt / Total Equity`
     + `Equity Multiplier = Total Assets / Total Equity`
     + `TIE ratio = EBIT / Interest`
@@ -82,7 +83,27 @@ In general cash flows recieved earlier are better than those recieved later.
 + Asset Management or Turnover Measures
     + `Invetory Turnover = Cost of goods sold / Inventory`
     + `Days' sales in inventory = 365 Days / Inventory Turnover`
-    
+    + `Total Asset Turnovers = Sales/Total Assets`
++ Profitability Measures
+    + `Profit Margin = Net Income / Sales`
+    + `Return on Assets = Net Income / Total Assets`
+    + `Return on Equity = Net Income / Total Equity`
++ Market Value Measures
+    + `Earnings Per Share = Net Income / Shares Outstanding`
+    + `PE Ratio = Price per share/ Earnings per share`
+    + `Market to Book Ratio = Market Value per share / Book Value per share`
+
+Compare financial raions in **Time-Trend Analysis** (over time) or **Peer Group Analysis** (compare to similar companies/within industries) 
+
+
+### The DuPont Identity
+
+`Return on Equity = Net Income / Total Equity`
+`Return on Equity = Profit Margin * Total Asset Turnover * Equitiy Multiplier`
+Each one of these represents a different part of the company
+    + Profit Margin is a measure of the firm's operating efficiency
+    + Total Asset Turnover is a measure of the firm's asset use efficiency
+    + Equity Multiplier is a measure of the firm's financial leverage
 
 ### The Corporate Firm
 + **Sole proprietorship** - buisness owned by one person

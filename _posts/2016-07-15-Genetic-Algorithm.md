@@ -8,7 +8,7 @@ images:
       alt: Gen alg
       title: Genetic Algorithm
 ---
-{ assign image = page.images[0] %}
+{% assign image = page.images[0] %}
 {% include image.html image=image %}
 
 ## The Problem

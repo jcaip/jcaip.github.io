@@ -5,7 +5,7 @@ images:
       alt: Simulated Annealing
       title: Simulated Annealing
 ---
-{ assign image = page.images[0] %}
+{% assign image = page.images[0] %}
 {% include image.html image=image %}
 
 This is a post about [Simulated Annealing.](https://en.wikipedia.org/wiki/Simulated_annealing)
