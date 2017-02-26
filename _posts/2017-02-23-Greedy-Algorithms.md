@@ -7,8 +7,7 @@ images:
       alt: Interval Scheduling
       title: Interval Scheduling
 ---
-{% assign image = page.images[0] %}
-{% include image.html image=image %}
+
 ### What are Greedy Algorithms?
 
 **Greedy Algorithms** work by building the general solution one step at a time. The forego thinking about the future and take the best possible *step* each time until they have a complete solution.

@@ -8,8 +8,6 @@ images:
       alt: Gen alg
       title: Genetic Algorithm
 ---
-{% assign image = page.images[0] %}
-{% include image.html image=image %}
 
 ## The Problem
 So I've been meaning to create a blog to chronicle all the technical stuff I do, and I just discovered jekyll-now and I love it so far. So without much further ado, this is the first post on my blog, and it describes running a genetic algorith to create a string of numbers and operations that evaluates to 42. 
