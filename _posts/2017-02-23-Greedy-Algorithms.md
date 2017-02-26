@@ -2,7 +2,6 @@
 published: True
 ---
 
-## An explanation of Greedy Algorithms, some examples, and how to prove they are correct
 
 
 ### What are Greedy Algorithms?
@@ -17,10 +16,12 @@ published: True
 
 ## Proof Techniques
 ### Exchange argument
-The exchange argument is true if for our function A and some input I the ouptut A(I),and some other output O 
+The exchange argument is true if for our function A and some input I the ouptut A(I),and some other output O,
+
 we can produce a new solution A(I)' that is 
-    + just as good as A(I) 
-    + is more similar O than A(I) is 
+
++ just as good as A(I) 
++ is more similar O than A(I) is 
 
 In combination with proof by contradiction, we cn use this to prove our function is optimal.
 
