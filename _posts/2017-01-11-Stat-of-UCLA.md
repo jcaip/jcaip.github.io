@@ -7,7 +7,9 @@ images:
     - url: /images/sou/loss_function.png
       alt: Loss Function
       title: Loss Function
----
+-
+{% assign image = page.images[0] %}
+{% include image.html image=image %}
 
 ## About the Project
 This is a personal project that I wanted to start working on. It's going to consist of 3/4 parts. The general idea is to train an RNN for sentiment analysis and then create a webapp to pull twitter data based on geolocation to see how different parts of the nation are feeling.
