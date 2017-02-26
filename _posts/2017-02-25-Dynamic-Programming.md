@@ -1,4 +1,14 @@
+---
+layout: post
 
+images:
+
+    - url: /images/algs/dp/APShortestPath.png
+      alt: Loss Function
+      title: Loss Function
+---
+{ assign image = page.images[0] %}
+{% include image.html image=image %}
 ### What is the idea behind dynamic programming?
 Dynamic Programming breaks down problems into subproblems, then 
 + solves those subproblems from smallest -> largest

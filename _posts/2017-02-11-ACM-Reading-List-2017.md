@@ -1,3 +1,16 @@
+---
+layout: post
+title: Twitter Tensorflow Sentiment Analysis
+
+images:
+
+    - url: http://images.gr-assets.com/books/1442726934l/4865.jpg
+      alt: Cover
+      title: Cover
+---
+{ assign image = page.images[0] %}
+{% include image.html image=image %}
+
 I was asked to complile a reading list for UCLA ACM, so I figuered I would share it too, check out our [Medium Blog](https://medium.com/@acmbruins)
 
 It's now the middle of February 2017. If you're stuck in the 6th week doldrums of the quarter system, why not kick back and crack open a book? 

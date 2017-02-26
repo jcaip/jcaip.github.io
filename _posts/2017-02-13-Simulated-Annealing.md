@@ -1,3 +1,13 @@
+---
+images:
+
+    - url: /images/sim_ann/sim_ann_50.png
+      alt: Simulated Annealing
+      title: Simulated Annealing
+---
+{ assign image = page.images[0] %}
+{% include image.html image=image %}
+
 This is a post about [Simulated Annealing.](https://en.wikipedia.org/wiki/Simulated_annealing)
 
 ## The Problem
