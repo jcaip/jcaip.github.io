@@ -10,7 +10,7 @@ published: True
 **Greedy Algorithms** work by building the general solution one step at a time. The forego thinking about the future and take the best possible *step* each time until they have a complete solution.
 
 ### Interval Scheduling
-![Interval](/images/algs/Greedy/IntervalScheduling.png)
+![Interval](/images/algs/Greedy/InterviewScheduling.png)
 
 ### Mininium Spanning Trees
 ![MST](/images/algs/Greedy/ComputingMST.png)

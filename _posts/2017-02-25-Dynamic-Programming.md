@@ -13,7 +13,7 @@ This is a measusre of the similarity of two strings.
 ![ces](/images/algs/dp/ComputingEditDistance.png)
 
 ### Knapsack Problem
-![ces](/images/algs/dp/KnapsackProblems.png)
+![ces](/images/algs/dp/KnapsackProblem.png)
 
 ### Weighted Interval Scheduling
 ![wis](/images/algs/dp/WeightedIntervalScheduling.png)
