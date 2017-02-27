@@ -175,6 +175,8 @@ Each one of these represents a different part of the company
 
 `Net Present Value = Total PV of future CF's + Initial Investment`
 
+`Operating Cash Flow = (revenue - costs) * (1-tax)`
+
 + **Payback Period** - number of years to recover initial costs
 + **Discounted Payback Period** - Payback period that takes the time value of money into account
 + **Internal Rate of Return** - This is the discount rate that sets NPV to zero
@@ -203,7 +205,7 @@ Each one of these represents a different part of the company
 
 `PV BE = (EAC + Fixed costs (1-tax) - tax*Depreciation) / ((Sales price - Variable costs) * (1-tax))`
 
-### Monte Carl Simulaiton
+### Monte Carlo Simulaiton
 
 You can run repeated simulations, drawing one random choice at each time, simulating thousands of scenarios.
 
