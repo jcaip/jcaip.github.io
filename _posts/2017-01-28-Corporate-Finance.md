@@ -149,41 +149,62 @@ Each one of these represents a different part of the company
 ![efn](/images/corp_fin/efn.png)
 
 **Internal Growth Rate** - `G_internal = (ROA * Retention Ratio)/ (1- ROA * Retention Ratio)`
+
 **Sustainable Growth Rate** - `G_sustain = (ROE * Retention Ratio)/ (1- ROE * Retention Ratio)`
 
 ![efn_chart](/images/corp_fin/efn_chart.png)
 
 ## Discount Cash Flow Evaluation
 
-`Net Present Value = -Cost + FV`
-`FV = Cost * (1+ (r/m))^(m*T)` 
-`FV = Cost*e^(rT)`
-`EAR = (1+ (i/p))^p -1`
++ `Net Present Value = -Cost + FV`
++ `FV = Cost * (1+ (r/m))^(m*T)` 
++ `FV = Cost*e^(rT)`
++ `EAR = (1+ (i/p))^p -1`
 
 **Perpetuity** - A constant stream of cash flow that lasts forever
-`PV = C/(r-g)`
+
++ `PV = C/(r-g)`
 
 **Annuity** - A constant stream of cash flows with a fixed maturity
-`PV = C/(r-g) * (1 - (1+g)/(1+r))^T`
-`FV = C*((1+r)^T -1)/ r`
+
++ `PV = C/(r-g) * (1 - (1+g)/(1+r))^T`
++ `FV = C*((1+r)^T -1)/ r`
 
 
 ## Making Capital Investment Decisions and Project Evaluation
 
 `Net Present Value = Total PV of future CF's + Initial Investment`
-**Payback Period** - number of years to recover initial costs
-**Discounted Payback Period** - Payback period that takes the time value of money into account
-**Internal Rate of Return** - This is the discount rate that sets NPV to zero
 
-**Profitability Index** - meaures our return on every dollar of investment value
++ **Payback Period** - number of years to recover initial costs
++ **Discounted Payback Period** - Payback period that takes the time value of money into account
++ **Internal Rate of Return** - This is the discount rate that sets NPV to zero
++ **Profitability Index** - meaures our return on every dollar of investment value
+
 ![pi](/images/corp_fin/pi.png)
 
-**Incremental Profitability Index** - Profitability index is prone to scale issues, so we take the difference between the two cash flows
++ **Incremental Profitability Index** - Profitability index is prone to scale issues, so we take the difference between the two cash flows
 
-**Sunk Costs** - costs that already occured
-**Opportunity Cost** - the best alternative use of resources
-**Salvage value** - amount remaining after a depreciated useful life
++ **Sunk Costs** - costs that already occured
++ **Opportunity Cost** - the best alternative use of resources
++ **Fixed Costs** - do not scale with the amount of goods produced
++ **Variable Costs** - scale with the amount of good produced
++ **Salvage value** - amount remaining after a depreciated useful life
+
 ![salvage](/images/corp_fin/salvage.png)
 
+### Sensitivity, Scenario, and Break-Even Analysis
 
++ **Sensitivity Analysis** - examines how sensitive a particular NPV calcuation is under best, optimistic, and pessimistic circumstances
++ **Scenario Analysis** - examines a different number of likely scenarios, where each scenario is a confluence of factors
++ **Break-even Analysis** - examine the increase of sales needed to break even. We can calculate this for **Accounting Profit**  or for **Present Value**
+    + `Accounting Profit BE = (Fixed Costs + Deprecation)/(Sales price - Variable costs)`
 
+`Equivalent Annual Cost = Initial Investment / annuity factor`
+
+`PV BE = (EAC + Fixed costs (1-tax) - tax*Depreciation) / ((Sales price - Variable costs) * (1-tax))`
+
+### Monte Carl Simulaiton
+
+You can run repeated simulations, drawing one random choice at each time, simulating thousands of scenarios.
+
+![monte_carlo](/images/corp_fin/mc.png)
