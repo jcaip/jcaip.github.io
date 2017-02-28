@@ -170,7 +170,7 @@ Here, r is the discount rate and g is the growth rate
 **Annuity** - A constant stream of cash flows with a fixed maturity
 
 + `PV = C/(r-g) * (1 - (1+g)/(1+r))^T`
-+ `FV = C*((1+r)^T -1)/ r`
++ `FV = C*((1+r)^-T -1)/ r`
 
 
 ## Making Capital Investment Decisions and Project Evaluation

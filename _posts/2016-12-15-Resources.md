@@ -8,6 +8,8 @@ images:
       alt: re
       title: re
 ---
+{% assign image = page.images[0] %}		
+{% include image.html image=image %}
 
 A collection of resources that I found helpful.
 
