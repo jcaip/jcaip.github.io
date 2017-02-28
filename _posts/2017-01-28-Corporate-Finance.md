@@ -141,7 +141,7 @@ Each one of these represents a different part of the company
 1. List all numbers as a percentage of sales
 2. Project the sales calue increas for the following year and match the rest to the projection
 3. Identify *spontaneous accounts* and list them as percentage of sales
-4. Project numbers that support growth in salesA
+4. Project numbers that support growth in sales
 5. Calculate retained earnings for the new year given projected sales
 6. Determine *External Financing Needs* that we will need to reach our sales projection by balancing the balance sheet
 7. Determine your plug variables and solve accordingly
