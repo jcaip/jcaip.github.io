@@ -161,6 +161,8 @@ Each one of these represents a different part of the company
 + `FV = Cost*e^(rT)`
 + `EAR = (1+ (i/p))^p -1`
 
+Here, r is the discount rate and g is the growth rate
+
 **Perpetuity** - A constant stream of cash flow that lasts forever
 
 + `PV = C/(r-g)`
