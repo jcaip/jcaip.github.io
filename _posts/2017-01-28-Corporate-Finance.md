@@ -175,7 +175,7 @@ Each one of these represents a different part of the company
 
 `Net Present Value = Total PV of future CF's + Initial Investment`
 
-`Operating Cash Flow = (revenue - costs) * (1-tax)`
+`Operating Cash Flow = (revenue - costs) * (1-tax) + Depreciaton * tax` 
 
 + **Payback Period** - number of years to recover initial costs
 + **Discounted Payback Period** - Payback period that takes the time value of money into account
@@ -198,7 +198,7 @@ Each one of these represents a different part of the company
 
 + **Sensitivity Analysis** - examines how sensitive a particular NPV calcuation is under best, optimistic, and pessimistic circumstances
 + **Scenario Analysis** - examines a different number of likely scenarios, where each scenario is a confluence of factors
-+ **Break-even Analysis** - examine the increase of sales needed to break even. We can calculate this for **Accounting Profit**  or for **Present Value**
++ **Break-even Analysis** - examine the increase of sales needed to break even. We can calculate this for **Accounting Profit**  or for **Present Value**. In accounting profit, we do not account for tax because there isn't any.
     + `Accounting Profit BE = (Fixed Costs + Deprecation)/(Sales price - Variable costs)`
 
 `Equivalent Annual Cost = Initial Investment / annuity factor`
