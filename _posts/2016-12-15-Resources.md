@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Resources
+
+images:
+
+    - url: /images/resources.jpg
+      alt: re
+      title: re
 ---
 
 A collection of resources that I found helpful.
