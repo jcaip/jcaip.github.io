@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Corporate Finance
-published: false
+published: False
 
 images:
 
