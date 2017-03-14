@@ -15,7 +15,7 @@ Dynamic Programming breaks down problems into subproblems, then
 
 ### All-Pairs Shortest Path
 This is a shorted path implementation that works even with negative weights
-$$
+\\[
     OPT(m,n) = \min
     \begin{cases}
     	\mathbb{1}(x_m \neq y_m) + OPT(m-1, n-1) \\
@@ -46,7 +46,8 @@ $$
   \EndProcedure
   \end{algorithmic}
   \end{algorithm}
-$$
+
+\\]
 
 ![sp](/images/algs/dp/APShortestPath.png)
 
