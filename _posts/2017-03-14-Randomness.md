@@ -13,10 +13,9 @@ images:
 
 
 ### Linearity of Expectations
-Let $x$ and $y$ be two random variables. Linearity of Expectations states that
+Let \\(x\\) and \\(y\\) be two random variables. Linearity of Expectations states that
 $$ E[x+y] = E[x] + E[y] $$
 That is, the expected value of the sum is the sum of the expectations.
-
 
 ### Randomness in Algorithms
 When you have many good choices, just pick one at random.
@@ -31,6 +30,8 @@ Randomness can be used to speed up algorithms and ensure good expected runtime.
 ### Quickselect
 
 ### Analysis
+Let \\(T(A, k)\\) be the total number of comparisons that the algorithm makes. We want to bound \\(E[T(A,k)]\\), which is the expected number of comparisons.
+
 
 ### Dictionaries and Hashing
 
