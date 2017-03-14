@@ -18,14 +18,14 @@ This is a shorted path implementation that works even with negative weights
 
 $$ X = Y $$
 
-\\[
+$$
     OPT(m,n) = \min
     \begin{cases}
     	\mathbb{1}(x_m \neq y_m) + OPT(m-1, n-1) \\
         1 + OPT(m-1, n) \\
         1 + OPT(m, n-1)
     \end{cases}
-\\]
+$$
 
 \\[
   \begin{algorithm}
