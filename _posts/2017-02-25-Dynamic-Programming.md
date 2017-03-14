@@ -25,7 +25,9 @@ $$ X = Y $$
         1 + OPT(m-1, n) \\
         1 + OPT(m, n-1)
     \end{cases}
+\\]
 
+\\[
   \begin{algorithm}
   \caption{Computing Edit Distance}
   \algorithmicrequire{Two strings $X = x_1 \ldots x_n$ and $Y = y+i \ldots y_m$. } \\
