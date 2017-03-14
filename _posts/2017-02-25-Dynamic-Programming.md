@@ -27,7 +27,7 @@ $$
     \end{cases}
 $$
 
-\\[
+$$
   \begin{algorithm}
   \caption{Computing Edit Distance}
   \algorithmicrequire{Two strings $X = x_1 \ldots x_n$ and $Y = y+i \ldots y_m$. } \\
@@ -51,8 +51,7 @@ $$
   \EndProcedure
   \end{algorithmic}
   \end{algorithm}
-
-\\]
+$$
 
 ![sp](/images/algs/dp/APShortestPath.png)
 
