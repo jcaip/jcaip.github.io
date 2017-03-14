@@ -15,6 +15,9 @@ Dynamic Programming breaks down problems into subproblems, then
 
 ### All-Pairs Shortest Path
 This is a shorted path implementation that works even with negative weights
+
+$$ X = Y $$
+
 \\[
     OPT(m,n) = \min
     \begin{cases}
