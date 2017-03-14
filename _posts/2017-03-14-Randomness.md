@@ -27,47 +27,59 @@ Randomness can be used to speed up algorithms and ensure good expected runtime.
 
 
 ### Analysis
-Let $E[T(A)]$ be the number of comparisons. We want to bound $E[T(A)]$, or the expected number of comparisons that Quicksort will call
+Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call
 
-From the recursion we, see that $T(A) = T(A^+) + T(A^-) + n-1$
-Taking the expected value of each side yields
-$$E[T(A)] = E[T(A^+) + T(A^-) + n-1]$$
-We can use linearity of expectations here to break this equation down to 
-$$E[T(A)] = E[T(A^+)] + E[T(A^-)] + n-1$$
+From the recursion we, see that $$T(A) = T(A^+) + T(A^-) + n-1$$
 
-Assume that all elements are distinct, then 
-$$Pr[\left\vert{A^-}\right\vert = i] = \frac{1}{n}$$
-This is because the pivot must be the $i+1^{th}$ element, which has probability $\frac{1}{n}$
-Now we can express the expected value of $A^-$ as
+Taking the expected value of each side yields $$E[T(A)] = E[T(A^+) + T(A^-) + n-1]$$
+
+We can use linearity of expectations here to break this equation down to $$E[T(A)] = E[T(A^+)] + E[T(A^-)] + n-1$$
+
+Assume that all elements are distinct, then $$Pr[\left\vert{A^-}\right\vert = i] = \frac{1}{n}$$
+This is because the pivot must be the $$i+1^{th}$$ element, which has probability $$\frac{1}{n}$$
+
+
+Now we can express the expected value of $$A^-$$ as
+
 $$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)}$$
+
 $$E[T(A^-)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 Similarly,
 $$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n}$$
+
 $$E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i)}$$
+
 $$E[T(A^+)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 We can plug this into our previous equation to get
+
 $$E[T(A)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}} +  \sum_{i=0}^{n-1}{\frac{W(i)}{n}} + n-1$$
 
-Remember that $W(n) = \max{E[T(A)]}$
+Remember that $$W(n) = \max{E[T(A)]}$$
+
 $$W(n) \leq \sum_{i=0}^{n-1}{\frac{W(i)}{n}} +  \sum_{i=0}^{n-1}{\frac{W(i)}{n}} + n-1$$
+
 $$W(n) \leq \sum_{i=0}^{n-1}{W(i)} \times \frac{2}{n}  + n-1$$
 
-Now we will prove that $W(n) \leq 2n \log(n)$ by induction
+Now we will prove that $$W(n) \leq 2n \log(n)$$ by induction
 
-Base Case: $W(2) = 1 \leq 2 \log(2)$
+Base Case: $$W(2) = 1 \leq 2 \log(2)$$
 
 Inductive Step:
 $$W(n) \leq \sum_{i=0}^{n-1}{W(i)} \times \frac{2}{n}  + n-1$$
+
 $$W(n) \leq \sum_{i=0}^{n-1}{2i\log(i)} \times \frac{2}{n}  + n-1$$
+
 $$W(n) \leq \sum_{i=0}^{n-1}{i\log(i)} \times \frac{4}{n}  + n-1$$
 
 Note that
 $$\sum_{i=0}^{n-1}{i\log(i)} \leq \int_1^n{i \log(i)}$$
+
 $$\sum_{i=0}^{n-1}{i\log(i)} \leq \frac{n^2 log(n)}{2} + \frac{n^2}{4}$$
 
 $$W(n) \leq (\frac{n^2 log(x)}{2} + \frac{n^2}{4}) \times \frac{4}{n}  + n-1$$
+
 $$W(n) \leq 2n \log(n)$$
 
 ### Quickselect
