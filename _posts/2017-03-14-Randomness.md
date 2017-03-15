@@ -29,11 +29,15 @@ Randomness can be used to speed up algorithms and ensure good expected runtime.
 ### Analysis
 Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call
 
-From the recursion we, see that $$T(A) = T(A^+) + T(A^-) + n-1$$
+From the recursion we see that $$T(A) = T(A^+) + T(A^-) + n-1$$
 
-Taking the expected value of each side yields $$E[T(A)] = E[T(A^+) + T(A^-) + n-1]$$
+Taking the expected value of each side yields 
 
-We can use linearity of expectations here to break this equation down to $$E[T(A)] = E[T(A^+)] + E[T(A^-)] + n-1$$
+$$E[T(A)] = E[T(A^+) + T(A^-) + n-1]$$
+
+We can use linearity of expectations here to break this equation down to 
+
+$$E[T(A)] = E[T(A^+)] + E[T(A^-)] + n-1$$
 
 Assume that all elements are distinct, then $$Pr[\left\vert{A^-}\right\vert = i] = \frac{1}{n}$$
 This is because the pivot must be the $$i+1^{th}$$ element, which has probability $$\frac{1}{n}$$
@@ -46,11 +50,10 @@ $$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)}$$
 $$E[T(A^-)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 Similarly,
-$$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n}$$
 
-$$E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i)}$$
-
-$$E[T(A^+)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
+$$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n} \\
+E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i)} \\
+E[T(A^+)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 We can plug this into our previous equation to get
 
