@@ -126,11 +126,27 @@ We will try to prove that
 $$E[\left\vert{Bucket(x)}\right\vert] \leq 1$$ if $n \geq n^{insert}$
 
 That is, if the number of inserts we make into the hash table is less than the number of buckets, our hash table will operate with our desired time bounds.
-Let $$S$$ be all the elements inserted into the dictionary $$D$$.
+Let $$S$$ be all the elements inserted into the dictionary $$D$$. The size of $$S$$ is $$n^{insert}$$
 
 We will create a random variable $$\forall s \in S$$
 
-$$ R_n = \begin{cases}
+$$ R_s = \begin{cases}
 1 if there is a collision \\
 0 otherwise
-\end{cases}
+\end{cases} $$
+
+$$E[\left\vert{Bucket(x)}\right\vert] = \sum_{s \in S}{R_s}$$ 
+
+Using linearity of expectations we get
+
+$$E[\left\vert{Bucket(x)}\right\vert] = E[\sum_{s \in S}{R_s}] = \sum_{s \in S}{E[R_s]}$$ 
+
+Since our hash function is independently random, the probability that there is a collision is $$\frac{1}{n}$$
+
+$$E[\left\vert{Bucket(x)}\right\vert] = \sum_{s \in S}{1 \times \frac{1}{n}}$$ 
+
+$$E[\left\vert{Bucket(x)}\right\vert] = \frac{n^{insert}}{n}$$ 
+
+As we know, $$n^{insert} \leq {n}$$, so 
+
+$$E[\left\vert{Bucket(x)}\right\vert] \leq 1 $$
