@@ -79,7 +79,8 @@ $$W(n) \leq (\frac{n^2 log(x)}{2} + \frac{n^2}{4}) \times \frac{4}{n}  + n-1$$
 
 $$W(n) \leq 2n \log(n)$$
 
-### Quickselect
+## Quickselect
+![quickselect](/images/algs/random/quickselect.png)
 
 ### Analysis
 Let \\(T(A, k)\\) be the total number of comparisons that the algorithm makes. We want to bound \\(E[T(A,k)]\\), which is the expected number of comparisons.
