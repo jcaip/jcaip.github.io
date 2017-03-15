@@ -23,7 +23,7 @@ That is, the expected value of the sum is the sum of the expectations.
 When you have many good choices, just pick one at random.
 Randomness can be used to speed up algorithms and ensure good expected runtime.
 
-### Quicksort
+## Quicksort
 
 
 ### Analysis
@@ -50,7 +50,7 @@ $$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)}$$
 $$E[T(A^-)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 Similarly, $$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n}$$
-$$E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i) = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
+$$E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i) = \sum_{i=0}^{n-1}{\frac{W(i)}{n}$$
 
 We can plug this into our previous equation to get
 
@@ -67,13 +67,13 @@ Base Case: $$W(2) = 1 \leq 2 \log(2)$$
 Inductive Step:
 $$W(n) \leq \sum_{i=0}^{n-1}{W(i)} \times \frac{2}{n}  + n-1$$
 
-$$W(n) \leq \sum_{i=0}^{n-1}{2i\log(i)} \times \frac{2}{n}  + n-1$$
+Plugging in the induction hypothesis yields $$W(n) \leq \sum_{i=0}^{n-1}{2i\log(i)} \times \frac{2}{n}  + n-1$$
 
-$$W(n) \leq \sum_{i=0}^{n-1}{i\log(i)} \times \frac{4}{n}  + n-1$$
+Rearranging yields $$W(n) \leq \sum_{i=0}^{n-1}{i\log(i)} \times \frac{4}{n}  + n-1$$
 
 Note that
 $$\sum_{i=0}^{n-1}{i\log(i)} \leq \int_1^n{i \log(i)}$$
-
+Thus 
 $$\sum_{i=0}^{n-1}{i\log(i)} \leq \frac{n^2 log(n)}{2} + \frac{n^2}{4}$$
 
 $$W(n) \leq (\frac{n^2 log(x)}{2} + \frac{n^2}{4}) \times \frac{4}{n}  + n-1$$
