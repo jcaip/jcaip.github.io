@@ -123,7 +123,7 @@ Let $$Bucket(x) = A[h(x)]$$. That is $$Bucket(x)$$ returns the bucket where the 
 From this, we can see that the time taken for Inserts/Finds is $$O(\left\vert{Bucket(x)}\right\vert)$$.
 We will try to prove that
 
-$$E[\left\vert{Bucket(x)}\right\vert] \leq 1$$ if $n \geq n^{insert}$
+$$E[\left\vert{Bucket(x)}\right\vert] \leq 1$$ if $$n \geq n^{insert}$$
 
 That is, if the number of inserts we make into the hash table is less than the number of buckets, our hash table will operate with our desired time bounds.
 Let $$S$$ be all the elements inserted into the dictionary $$D$$. The size of $$S$$ is $$n^{insert}$$
