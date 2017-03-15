@@ -112,5 +112,8 @@ We can compare several different data structures and see the advantages of each.
 |Binary Tree   |$$O(log(n))$$|$$O(log(n))$$|$$O(n)$$|
 |Dictionary|$$O(1)$$|$$O(1)$$|$$O(n)$$|
 
+One way to achieve the time constrainsts of a dictionary is to use **Seperate Chaining**
+In this case, we have an array of size $$n$$ and each array has a linked list. We use a random hash function $$h(x): \rightarrow \{ 1 \ldots n} \} $$ to assign each element to a linked list, or **bucket**
+
 
 ### Analysis
