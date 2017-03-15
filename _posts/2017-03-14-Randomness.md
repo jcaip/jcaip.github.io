@@ -106,6 +106,7 @@ A Dictionary is a data structure that supports three main operations. For any di
 We can compare several different data structures and see the advantages of each.
 
 | |INSERT|LOOKUP|SPACE|
+|---------------------|
 |Linked List|$$O(1)$$|$$O(n)$$|$$O(n)$$|
 |Array|$$O(n)$$|$$O(1)$$|$$O(n)$$|
 |Binary Tree   |$$O(log(n))$$|$$O(log(n))$$|$$O(n)$$|
