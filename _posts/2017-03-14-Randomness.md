@@ -131,8 +131,8 @@ Let $$S$$ be all the elements inserted into the dictionary $$D$$. The size of $$
 We will create a random variable $$\forall s \in S$$
 
 $$ R_s = \begin{cases}
-1 if there is a collision \\
-0 otherwise
+1 \text{ if there is a collision} \\
+0 \text{ otherwise }
 \end{cases} $$
 
 $$E[\left\vert{Bucket(x)}\right\vert] = \sum_{s \in S}{R_s}$$ 
