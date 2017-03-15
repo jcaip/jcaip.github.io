@@ -45,9 +45,7 @@ This is because the pivot must be the $$i+1^{th}$$ element, which has probabilit
 
 Now we can express the expected value of $$A^-$$ as
 
-$$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)}$$
-
-$$E[T(A^-)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
+$$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)} = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 Similarly, $$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n}$$
 
