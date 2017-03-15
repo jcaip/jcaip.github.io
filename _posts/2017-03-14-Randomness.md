@@ -4,9 +4,9 @@ published: True
 
 images:
 
-    - url: /images/random/quicksort.png
-      alt: Loss Function
-      title: Loss Function
+    - url: /images/algs/random/quicksort.png
+      alt: Quicksort
+      title: Quicksort
 ---
 {% assign image = page.images[0] %}		
 {% include image.html image=image %}
@@ -24,7 +24,7 @@ When you have many good choices, just pick one at random.
 Randomness can be used to speed up algorithms and ensure good expected runtime.
 
 ## Quicksort
-![quicksort](/images/random/quicksort.png)
+![quicksort](/images/algs/random/quicksort.png)
 
 ### Analysis
 Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call. We also define $$W(n)$$ to be the max expected value of any $$A$$ such that the size of $$A$$ is $$n$$.
