@@ -141,7 +141,7 @@ Using linearity of expectations we get
 
 $$E[\left\vert{Bucket(x)}\right\vert] = E[\sum_{s \in S}{R_s}] = \sum_{s \in S}{E[R_s]}$$ 
 
-Since our hash function is independently random, the probability that there is a collision is $$\frac{1}{n}$$
+Since our hash function is independently random, the probability of a collision is $$\frac{1}{n}$$
 
 $$E[\left\vert{Bucket(x)}\right\vert] = \sum_{s \in S}{1 \times \frac{1}{n}}$$ 
 
