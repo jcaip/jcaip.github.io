@@ -116,5 +116,7 @@ One way to achieve the time constrainsts of a dictionary is to use **Seperate Ch
 
 In this case, we have an array of size $$n$$ and each array has a linked list. We use a random hash function $$h(x): \rightarrow \{1 \ldots n \} $$ to assign each element to a linked list, or **bucket**
 
+![hash_table](https://www.kullabs.com/uploads/chaining1.png)
 
 ### Analysis
+
