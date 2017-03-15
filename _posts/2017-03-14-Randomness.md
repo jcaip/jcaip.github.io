@@ -8,9 +8,10 @@ images:
       alt: Quicksort
       title: Quicksort
 ---
-{% assign image = page.images[0] %}		
-{% include image.html image=image %}
 
+### Randomness in Algorithms
+When you have many good choices, just pick one at random.
+Randomness can be used to speed up algorithms and ensure good expected runtime.
 
 ### Linearity of Expectations
 Let \\(x\\) and \\(y\\) be two random variables. Linearity of Expectations states that
@@ -18,10 +19,6 @@ Let \\(x\\) and \\(y\\) be two random variables. Linearity of Expectations state
 $$ E[x+y] = E[x] + E[y] $$
 
 That is, the expected value of the sum is the sum of the expectations.
-
-### Randomness in Algorithms
-When you have many good choices, just pick one at random.
-Randomness can be used to speed up algorithms and ensure good expected runtime.
 
 ## Quicksort
 ![quicksort](/images/algs/random/quicksort.png)
