@@ -27,7 +27,7 @@ Randomness can be used to speed up algorithms and ensure good expected runtime.
 
 
 ### Analysis
-Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call
+Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call. We also define $$W(n)$$ to be the max expected value of any $$A$$ such that the size of $$A$$ is $$n$$.
 
 From the recursion we see that $$T(A) = T(A^+) + T(A^-) + n-1$$
 
