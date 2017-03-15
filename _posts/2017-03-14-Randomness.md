@@ -98,12 +98,14 @@ $$ \left\vert{B}\right\vert = \begin{cases}
 
 ### Dictionaries and Hashing
 A Dictionary is a data structure that supports three main operations. For any dictionary $$D$$, they will support three basic operations
+
     + INSERT(X) - Insert $$X$$ in $$D$$ if not present
     + DELETE(X) - Delete $$X$$ from  $$D$$ if present
     + FIND(X) - Is $$X$$ in $$D$$?
 
 We can compare several different data structures and see the advantages of each.
-||INSERT|LOOKUP|SPACE|
+
+| |INSERT|LOOKUP|SPACE|
 |Linked List|O(1)|O(n)|O(n)|
 |Array|O(n)|O(1)|O(n)|
 |Binary Tree|O(log(n))|O(log(n))|O(n)|
