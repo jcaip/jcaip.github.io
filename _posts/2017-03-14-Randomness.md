@@ -119,4 +119,18 @@ In this case, we have an array of size $$n$$ and each array has a linked list. W
 ![hash_table](https://www.kullabs.com/uploads/chaining1.png)
 
 ### Analysis
+Let $$Bucket(x) = A[h(x)]$$. That is $$Bucket(x)$$ returns the bucket where the element $$x$$ resides. 
+From this, we can see that the time taken for Inserts/Finds is $$O(\left\vert{Bucket(x)}\right\vert)$$.
+We will try to prove that
 
+$$E[\left\vert{Bucket(x)}\right\vert] \leq 1$$ if $n \geq n^{insert}$
+
+That is, if the number of inserts we make into the hash table is less than the number of buckets, our hash table will operate with our desired time bounds.
+Let $$S$$ be all the elements inserted into the dictionary $$D$$.
+
+We will create a random variable $$\forall s \in S$$
+
+$$ R_n = \begin{cases}
+1 if there is a collision \\
+0 otherwise
+\end{cases}
