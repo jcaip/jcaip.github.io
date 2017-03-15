@@ -29,7 +29,7 @@ Randomness can be used to speed up algorithms and ensure good expected runtime.
 ### Analysis
 Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call. We also define $$W(n)$$ to be the max expected value of any $$A$$ such that the size of $$A$$ is $$n$$.
 
-From the recursion we see that $$T(A) = T(A^+) + T(A^-) + n-1$$
+From the recurrence relation we see that $$T(A) = T(A^+) + T(A^-) + n-1$$
 
 Taking the expected value of each side yields 
 
@@ -49,8 +49,8 @@ $$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)}$$
 
 $$E[T(A^-)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
-Similarly, $$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n} \\
-E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i) = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
+Similarly, $$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n}$$
+$$E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i) = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 We can plug this into our previous equation to get
 
@@ -58,9 +58,7 @@ $$E[T(A)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}} +  \sum_{i=0}^{n-1}{\frac{W(i)}{n}}
 
 Remember that $$W(n) = \max{E[T(A)]}$$
 
-$$W(n) \leq \sum_{i=0}^{n-1}{\frac{W(i)}{n}} +  \sum_{i=0}^{n-1}{\frac{W(i)}{n}} + n-1$$
-
-$$W(n) \leq \sum_{i=0}^{n-1}{W(i)} \times \frac{2}{n}  + n-1$$
+$$W(n) \leq \sum_{i=0}^{n-1}{\frac{W(i)}{n}} +  \sum_{i=0}^{n-1}{\frac{W(i)}{n}} + n-1 \leq \sum_{i=0}^{n-1}{W(i)} \times \frac{2}{n}  + n-1$$
 
 Now we will prove that $$W(n) \leq 2n \log(n)$$ by induction
 
