@@ -49,11 +49,8 @@ $$E[T(A^-)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^-}\right\vert = i] \times W(i)}$$
 
 $$E[T(A^-)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
-Similarly,
-
-$$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n} \\
-E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i)} \\
-E[T(A^+)] = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
+Similarly, $$Pr[\left\vert{A^+}\right\vert = i] = \frac{1}{n} \\
+E[T(A^+)] = \sum_{i=0}^{n-1}{Pr[\left\vert{A^+}\right\vert = i] \times W(i) = \sum_{i=0}^{n-1}{\frac{W(i)}{n}}$$
 
 We can plug this into our previous equation to get
 
