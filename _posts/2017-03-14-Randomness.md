@@ -86,18 +86,28 @@ $$W(n) \leq 2n \log(n)$$
 Let \\(T(A, k)\\) be the total number of comparisons that the algorithm makes. We want to bound \\(E[T(A,k)]\\), which is the expected number of comparisons.
 
 Let \\(W(n)\\) be the max possible \\(E[T(A,k)] \forall A, k \\).
+Let \\(B\\) be the subarray that Quickselect recursively calls.
 
-
+We see from the recurrence that 
 $$ E[T(A,k)] \leq n + E[W(\left\vert{B}\right\vert)] $$
 
 $$ \left\vert{B}\right\vert = \begin{cases}
     i-1 \text{ if } i > k \\
     n-i \text{ if } i < k \\
-\end{cases}
-$$
-
-
+\end{cases} $$
 
 ### Dictionaries and Hashing
+A Dictionary is a data structure that supports three main operations. For any dictionary $$D$$, they will support three basic operations
+    + INSERT(X) - Insert $$X$$ in $$D$$ if not present
+    + DELETE(X) - Delete $$X$$ from  $$D$$ if present
+    + FIND(X) - Is $$X$$ in $$D$$?
+
+We can compare several different data structures and see the advantages of each.
+||INSERT|LOOKUP|SPACE|
+|Linked List|O(1)|O(n)|O(n)|
+|Array|O(n)|O(1)|O(n)|
+|Binary Tree|O(log(n))|O(log(n))|O(n)|
+|Dictionary|O(1)|O(1)|O(n)|
+
 
 ### Analysis
