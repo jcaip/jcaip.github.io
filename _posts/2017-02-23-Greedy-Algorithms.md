@@ -3,9 +3,9 @@ published: True
 
 images:
 
-    - url: /images/algs/Greedy/InterviewScheduling.png
-      alt: Interval Scheduling
-      title: Interval Scheduling
+    - url: /images/algs/Greedy/mst.png
+      alt: MST
+      title: MST
 ---
 
 ### What are Greedy Algorithms?
@@ -17,6 +17,7 @@ images:
 
 ### Mininium Spanning Trees
 ![MST](/images/algs/Greedy/ComputingMST.png)
+![MST](/images/algs/Greedy/mst.png)
 
 ## Proof Techniques
 ### Exchange argument
