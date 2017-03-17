@@ -4,9 +4,9 @@ published: True
 
 images:
 
-    - url: /images/algs/random/quicksort.png
-      alt: Quicksort
-      title: Quicksort
+    - url: /images/algs/reduction/reduction_visualized.png
+      alt: Reduction 
+      title: Reduction
 ---
 
 ## Reductions
