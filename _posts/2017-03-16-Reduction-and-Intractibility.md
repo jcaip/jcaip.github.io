@@ -18,9 +18,16 @@ We say that for two problems $$Y$$ and $$X$$, $$Y \leq_p X$$ if instances of $$Y
 ![reduction](/images/algs/reduction/reduction_visualized.png){: .center-image}
 
 ### 3SAT
+
 ### Clique
+We will prove that $$CLIQUE leq_p 3SAT$$.
+
+
 ### Vertex Cover
+We will prove that $$VERTEX COVER leq_p CLIQUE$$.
+
 ### Dominating Set
+We will prove that $$DOMINATING SET leq_p VERTEX COVER $$.
 
 ## Complexity Classes
 ### P 
