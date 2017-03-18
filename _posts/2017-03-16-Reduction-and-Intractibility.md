@@ -21,10 +21,7 @@ In order for reductions to work, we have to have some set of problems that are k
 Karp has a famous paper containing 21 $$NPC$$ problems you can view [here](https://en.wikipedia.org/wiki/Karp's_21_NP-complete_problems).
 
 ### 3SAT
-For $$3SAT$$, we are given a boolean formula $$\Phi$$ in CNF form ([conjunctive normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)) such that for each clause $$C_i$$, $$C_I = l_1 \lor l_2 \lor l_3$$. We return true if this boolean formula is satisfiable.
-
-Given $$3SAT$$ formula $$PHO
-
+For $$3SAT$$, we are given a boolean formula $$\Phi$$ in CNF form ([conjunctive normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)) such that for each clause $$C_r$$, $$C_r = l_1 \lor l_2 \lor l_3$$. We return true if this boolean formula is satisfiable.
 
 ### Clique
 We say that a graph $$G$$ has a clique of size $$k$$ if there is a set of vertices $$I$$ such that $$\left\vert{I}\right\vert = k$$ and $$I$$ is fully connected.
@@ -33,7 +30,8 @@ We will prove that $$CLIQUE \leq_p 3SAT$$.
 
 We can define our function $$A$$ as follows:
 
-For each $$C_r 
+For each $$C_r  = ( l_1 \lor l_2 \lor l_3)$$ for $$r =1,\ldots,k$$ , create corresponding vertices $$v_1, v_2, v_3$$ in $$V$$. Now add an edge between $$v_i^r$$ and $$v_j^s$$ if $$r \neq s$$ and the corresponding literals are consistent( You can't connect $$\neg l_1$$ to $$l_1$$).
+
 
 
 ### Vertex Cover
