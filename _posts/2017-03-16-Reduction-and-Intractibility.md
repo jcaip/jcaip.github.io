@@ -20,17 +20,17 @@ We say that for two problems $$Y$$ and $$X$$, $$Y \leq_p X$$ if instances of $$Y
 ### 3SAT
 
 ### Clique
-We will prove that $$CLIQUE leq_p 3SAT$$.
+We will prove that $$CLIQUE \leq_p 3SAT$$.
 
 
 ### Vertex Cover
-We will prove that $$VERTEX COVER leq_p CLIQUE$$.
+We will prove that $$VERTEX\ COVER \leq_p CLIQUE$$.
 
 ### Dominating Set
-We will prove that $$DOMINATING SET leq_p VERTEX COVER $$.
+We will prove that $$DOMINATING\ SET \leq_p VERTEX\ COVER $$.
 
 ## Complexity Classes
-### P 
+### Pj
 ### NP
 ### NP-Complete
 ### Co-NP
