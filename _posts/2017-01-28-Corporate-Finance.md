@@ -212,3 +212,6 @@ Here, r is the discount rate and g is the growth rate
 You can run repeated simulations, drawing one random choice at each time, simulating thousands of scenarios.
 
 ![monte_carlo](/images/corp_fin/mc.png)
+
+### Payback Period
+
