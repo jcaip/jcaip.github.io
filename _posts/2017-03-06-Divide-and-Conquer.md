@@ -3,9 +3,9 @@ published: True
 
 images:
 
-    - url: /images/algs/Greedy/InterviewScheduling.png
-      alt: Interval Scheduling
-      title: Interval Scheduling
+    - url: /images/algs/divide/recursion_tree.gif
+      alt: Divide and Conquer
+      title: Divide and Conquer
 ---
 
 ## Divide and Conquer
@@ -40,5 +40,3 @@ O(f(n))  \text{ if } f(n) = O(n^{k+\epsilon}) \text{ for some } \epsilon > 0 \\
 ### Fast Exponentiation
 
 ### Dropping Glass Jars
-
-### Median of Medians
