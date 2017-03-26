@@ -35,8 +35,10 @@ O(f(n))  \text{ if } f(n) = O(n^{k+\epsilon}) \text{ for some } \epsilon > 0 \\
 \end{cases} $$
 
 ### Mergesort
+![mergesort](/images/algs/divide/mergesort.png)
 
 
 ### Fast Exponentiation
 
-### Dropping Glass Jars
+![fast_exp](/images/algs/divide/fast_exp.png)
+
