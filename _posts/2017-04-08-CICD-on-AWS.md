@@ -1,8 +1,20 @@
+---
+layout: post
+title: CICD on AWS
+
+images:
+
+    - url: /images/cicd/cicd_cover.png
+      alt: CICD
+      title: CICD
+---
 
 ## Using Jenkins and Docker to easily deploy web applications
 
 ### Dockerized Web Application
+Dockerizing your web applications can be kind of confusing. I'm going to use a sample web application that uses Flask and React that you can find [here](https://github.com/jcaip/react_flask_dockerized).
 
+There's more documentation about this project [here]().
 
 ### Configuring AWS
 
@@ -47,6 +59,7 @@ Next access your Jenkins page by going to http://<your_server_public_DNS>:8080
 If you are unable to connect to the Jenkins page make sure that the Security Group settings are correct.
 You'll have to enter the password located at /var/lib/jenkins/secrets/initialAdminPassword and then create a user account.
 
-You should be prompted to install suggested plugins. Click on install suggested plugins.
+You should be prompted to install plugins at this point. Installing just the suggested plugins should be fine. 
 
-Now configure a build job in Jenkins.
+Now configure a build job in Jenkins. Pointing it towards your GitHub repository. 
+For your build commands. you should just be able to put make. 
