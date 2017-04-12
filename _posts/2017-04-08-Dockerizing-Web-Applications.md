@@ -38,7 +38,7 @@ services:
 The src folder contains the backend of the web application. This is a simple python backend using [Flask](http://flask.pocoo.org/) and [Gevent](http://www.gevent.org/). 
 
 #### Dockerfile
-```Dockerfile
+```
 FROM ubuntu:latest
 MAINTAINER Jesse Cai "jcjessecai@gmail.com"
 
