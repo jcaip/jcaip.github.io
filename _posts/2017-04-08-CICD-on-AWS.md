@@ -55,7 +55,7 @@ which will pull this script from my github and then run it.
 ### Configuring Jenkins
 You may have to restart the AWS instances for the user group changes to take place. 
 
-Next access your Jenkins page by going to http://<your_server_public_DNS>:8080
+Next access your Jenkins page by going to http://your_server_public_DNS:8080
 If you are unable to connect to the Jenkins page make sure that the Security Group settings are correct.
 You'll have to enter the password located at /var/lib/jenkins/secrets/initialAdminPassword and then create a user account.
 
