@@ -1,6 +1,14 @@
+---
+layout: post
+title: CS188 Literature Review
+
+images:
+    - url: /images/cs188/rcnn_structure.png
+      alt: structure
+      title: structure
+---
 
 ## Relevant Papers
-
     + [Paragraph Vectors](http://proceedings.mlr.press/v32/le14.pdf)
         + Could be useful as part of a classification pipeline
     + [Interleaved Text/Image Deep Mining](www.cs.jhu.edu/~lelu/publication/cvpr15_0371.pdf)
@@ -19,17 +27,18 @@ In general, this approach seems to work well, although the reports and captions 
 We also want to try to use the [recurrent neural cascade model](https://arxiv.org/pdf/1603.08486.pdf), which uses the weights of the already trained pair of CNN/RNN on the domain-specific image/text dataset, to infer the joint image/text contexts for composite image labeling and led to a significant performance increase
 
 ## Perplexity
-
     + probability of the test set normalized by the number of words in Shannon's game
     + Extrensic evaluation of N-gram models
     + bad approximation unless test data looks alot like training data
     + generally useful in pilot experiments
 
-The Shannon Game: How well can we predict the next word?
+**The Shannon Game**: How well can we predict the next word?
+
     A better model of text is one which assigns a higher probability to the word that actually occurs
 
 The best language model is one that best predicts an unseen test set. 
 
 Perplexity is related to the average branching factor
+
     + on average, what can occur.
     + Weighted equivalent branching factor
