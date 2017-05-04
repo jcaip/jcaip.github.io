@@ -56,9 +56,12 @@ $$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} =
 \begin{bmatrix} P_1 \\ P_2 \\ P_3 \\ 1 \end{bmatrix} $$
 
 ## Affine Transformations
-The homogenous representation also makes it easy to represent affine transformations.
+The homogenous representation also makes it easy to represent affine transformations as matrix multiplication $$Q = \textbf{M}P.
 There are four basic affine transformations, and every other affine transformation is a combination of these four transformations.
 
 #### Translation
+#### Rotation
+#### Scaling
+#### Shear
 
 ## Projection Transformations
