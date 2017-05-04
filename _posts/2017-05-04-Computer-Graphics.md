@@ -115,7 +115,7 @@ There are many different types or projections
 ![projections](\images\cg\basic_orthographic.png)
 
 $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
-\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & -N \\ 0 & 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
@@ -123,6 +123,6 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 ![projections](\images\cg\perspective.png)
 
 $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
-\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
-0 & 0 & 1 & 0 \\ 0 & 0 & -frac{1}{N} & 0 \end{bmatrix}
+\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\ 0 & 0 & -\frac{1}{N} & 0 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix}  \div \frac{-P_z}{N} $$
