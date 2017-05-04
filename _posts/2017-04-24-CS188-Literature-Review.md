@@ -34,11 +34,10 @@ We also want to try to use the [recurrent neural cascade model](https://arxiv.or
 
 **The Shannon Game**: How well can we predict the next word?
 
-    A better model of text is one which assigns a higher probability to the word that actually occurs
+A better model of text is one which assigns a higher probability to the word that actually occurs
 
 The best language model is one that best predicts an unseen test set. 
 
 Perplexity is related to the average branching factor
-
-    + on average, what can occur.
-    + Weighted equivalent branching factor
++ on average, what can occur.
++ Weighted equivalent branching factor
