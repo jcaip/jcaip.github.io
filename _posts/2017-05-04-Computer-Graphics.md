@@ -77,7 +77,7 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
 To apply an inverse 
-$$ \textbf{M}^{-1} = M^T $$
+$$ \textbf{M}^{-1} = \textbf{M}^T $$
 
 This is because, $$\textbf{M}$$ is an orthonormal matrix.
 
@@ -105,9 +105,22 @@ $$ \textbf{M}^{-1} =
 \begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
 
-To apply an inverse 
-$$ \textbf{M}^{-1} =
-\begin{bmatrix} \frac{1}{s_x} & 0 & 0 & 0 \\ 0 & \frac{1}{s_y} & 0 & 0 \\
-0 & 0 & \frac{1}{s_z} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
-
 ## Projection Transformations
+A projection is basically a mapping from $$ R^n \rightarrow R^m$$ where $$ n > m$$
+
+There are many different types or projections
+![projections](\images\cg\taxonomy_projections.png)
+
+#### Basic Orthographic Projection
+![projections](\images\cg\basic_orthographic.png)
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & -N \\ 0 & 0 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
+
+#### Perspective Projection
+![projections](\images\cg\perspective.png)
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\ 0 & 0 & -frac{1}{N} & 0 \end{bmatrix}
+\begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix}  \divide \frac{-P_z}{N} $$
