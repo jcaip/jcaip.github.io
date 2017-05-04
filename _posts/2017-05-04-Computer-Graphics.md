@@ -35,11 +35,11 @@ A coordinate system is determined by three linearly independent vectors,
 $$\textbf{a, b, c} $$ and an origin point, $$O$$.
 
 We can see the reason behind the 0 and 1 in the homogenous representation to represent vectors and points.
-$$ \textbf{v} = v_1\textbf{a} + v_2\textbf{b} + v_3\textbf{c} = 
+$$ \textbf{v} = v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} = 
 \begin{bmatix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
 \begin{bmatix} v_1 \\ v_2 \\ v_3 \\ 0 \end{bmatrix} $$
 
-$$ P = O + v_1\textbf{a} + v_2\textbf{b} + v_3\textbf{c} = 
+$$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} = 
 \begin{bmatix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
 \begin{bmatix} v_1 \\ v_2 \\ v_3 \\ 1 \end{bmatrix} $$
 
