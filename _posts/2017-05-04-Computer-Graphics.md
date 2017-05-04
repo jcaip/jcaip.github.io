@@ -34,7 +34,7 @@ There are three main forms for lines:
 
 |Explicit | Implicit | Parametric |
 |---------|----------|------------|
-|$$y = mx + B$$ | f(x,y) = (x-x_o)dy - (y-y_0)dx | $$ x(t) = x_0 + t(x_1 - x_0)\\ x(t) = y_0 + t(y_1 - y_0)|
+|$$y = mx + B$$ | $$f(x,y) = (x-x_o)dy - (y-y_0)dx$$ | $$ x(t) = x_0 + t(x_1 - x_0)\\ x(t) = y_0 + t(y_1 - y_0)$$|
 
 Explicit representation has trouble representing vertical lines, while implicit representation to check if a point is on ($$f(x,y) = 0$$ ), above ( $$f(x,y) > 0$$ ), or below ($$f(x,y) < 0 $$ ) the line.
 
