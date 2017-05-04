@@ -65,8 +65,22 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 0 \quad 0 \quad 1 \quad T_z \\ 0 \quad 0 \quad 0 \quad 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
+To apply an inverse 
+$$ \textbf{M}^{-1} =
+\begin{bmatrix} 1 \quad 0 \quad 0 \quad -T_x \\ 0 \quad 1 \quad 0 \quad -T_y \\
+0 \quad 0 \quad 1 \quad -T_z \\ 0 \quad 0 \quad 0 \quad 1 \end{bmatrix} $$
+
 #### Rotation
 #### Scaling
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+\begin{bmatrix} s_x \quad 0 \quad 0 \quad 0 \\ 0 \quad s_y \quad 0 \quad 0 \\
+0 \quad 0 \quad s_z \quad 0 \\ 0 \quad 0 \quad 0 \quad 1 \end{bmatrix}
+\begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
+
+To apply an inverse 
+$$ \textbf{M}^{-1} =
+\begin{bmatrix} \frac{1}{s_x} \quad 0 \quad 0 \quad 0 \\ 0 \quad \frac{1}{s_y} \quad 0 \quad 0 \\
+0 \quad 0 \quad \frac{1}{s_z} \quad 0 \\ 0 \quad 0 \quad 0 \quad 1 \end{bmatrix}
 #### Shear
 
 ## Projection Transformations
