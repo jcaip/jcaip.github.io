@@ -53,7 +53,7 @@ $$ \textbf{v} = v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} =
 
 $$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} = 
 \begin{bmatrix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
-\begin{bmatrix} v_1 \\ v_2 \\ v_3 \\ 1 \end{bmatrix} $$
+\begin{bmatrix} P_1 \\ P_2 \\ P_3 \\ 1 \end{bmatrix} $$
 
 ## Affine Transformations
 The homogenous representation also makes it easy to represent affine transformations.
