@@ -60,6 +60,10 @@ The homogenous representation also makes it easy to represent affine transformat
 There are four basic affine transformations, and every other affine transformation is a combination of these four transformations.
 
 #### Translation
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+\begin{bmatrix} 1 0 0 T_x \\ 0 1 0 T_y \\ 0 0 1 T_z \\ 0 0 0 1 \end{bmatrix}
+\begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
+
 #### Rotation
 #### Scaling
 #### Shear
