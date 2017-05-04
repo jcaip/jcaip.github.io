@@ -71,6 +71,17 @@ $$ \textbf{M}^{-1} =
 0 & 0 & 1 & -T_z \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
 
 #### Rotation
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+\begin{bmatrix} cos \theta & -sin \theta  & 0 & 0 \\ sin \theta & cos \theta & 0 & 0 \\
+0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
+
+To apply an inverse 
+$$ \textbf{M}^{-1} = M^T $$
+
+This is because, $$\textbf{M}$$ is an orthonormal matrix.
+
+Note that with 3D rotation, it is possible to run into gimbal lock, where we lose one degree of freedom.
 
 #### Scaling
 $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
@@ -82,8 +93,21 @@ To apply an inverse
 $$ \textbf{M}^{-1} =
 \begin{bmatrix} \frac{1}{s_x} & 0 & 0 & 0 \\ 0 & \frac{1}{s_y} & 0 & 0 \\
 0 & 0 & \frac{1}{s_z} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
-#### Shear
 
-Note that with 3D rotation, it is possible to run into gimbal lock, where we lose one degree of freedom.
+#### Shear
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
+
+To apply an inverse 
+$$ \textbf{M}^{-1} =
+\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
+
+To apply an inverse 
+$$ \textbf{M}^{-1} =
+\begin{bmatrix} \frac{1}{s_x} & 0 & 0 & 0 \\ 0 & \frac{1}{s_y} & 0 & 0 \\
+0 & 0 & \frac{1}{s_z} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
 
 ## Projection Transformations
