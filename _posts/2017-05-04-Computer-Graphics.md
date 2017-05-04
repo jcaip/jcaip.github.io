@@ -31,11 +31,14 @@ $$P - Q = \textbf{v} = \begin{bmatrix} P_1 - Q_1 \\ P_2-Q_2 \\ P_3-Q_3 \\ 0 \end
 
 #### Lines
 There are three main forms for lines:
+
 |Explicit | Implicit | Parametric |
 |---------|----------|------------|
 |$$y = mx + B$$ | f(x,y) = (x-x_o)dy - (y-y_0)dx | $$ x(t) = x_0 + t(x_1 - x_0)\\ x(t) = y_0 + t(y_1 - y_0)|
 
 Explicit representation has trouble representing vertical lines, while implicit representation to check if a point is on ($$f(x,y) = 0$$ ), above ( $$f(x,y) > 0$$ ), or below ($$f(x,y) < 0 $$ ) the line.
+
+Parametric makes it easy to draw the line with regards to another paramater, $$t$$
 
 ## Coordinate Systems
 With the homogenous representaiton, we can define coordinate systems.
@@ -43,6 +46,7 @@ A coordinate system is determined by three linearly independent vectors,
 $$\textbf{a, b, c} $$ and an origin point, $$O$$.
 
 We can see the reason behind the 0 and 1 in the homogenous representation to represent vectors and points.
+
 $$ \textbf{v} = v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} = 
 \begin{bmatrix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
 \begin{bmatrix} v_1 \\ v_2 \\ v_3 \\ 0 \end{bmatrix} $$
