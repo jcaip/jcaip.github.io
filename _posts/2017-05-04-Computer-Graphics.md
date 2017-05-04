@@ -102,7 +102,7 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 
 To apply an inverse 
 $$ \textbf{M}^{-1} =
-\begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+\begin{bmatrix} 1 & -a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
 
 ## Projection Transformations
