@@ -56,5 +56,9 @@ $$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} =
 \begin{bmatrix} v_1 \\ v_2 \\ v_3 \\ 1 \end{bmatrix} $$
 
 ## Affine Transformations
+The homogenous representation also makes it easy to represent affine transformations.
+There are four basic affine transformations, and every other affine transformation is a combination of these four transformations.
+
+#### Translation
 
 ## Projection Transformations
