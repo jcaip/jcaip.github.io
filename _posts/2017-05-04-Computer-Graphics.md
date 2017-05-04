@@ -32,16 +32,16 @@ $$P - Q = \textbf{v} = \begin{bmatrix} P_1 - Q_1 \\ P_2-Q_2 \\ P_3-Q_3 \\ 0 \end
 ## Coordinate Systems
 With the homogenous representaiton, we can define coordinate systems.
 A coordinate system is determined by three linearly independent vectors, 
-$$textbf{a, b, c} $$ and an origin point, $$O$$.
+$$\textbf{a, b, c} $$ and an origin point, $$O$$.
 
 We can see the reason behind the 0 and 1 in the homogenous representation to represent vectors and points.
 $$ \textbf{v} = v_1\textbf{a} + v_2\textbf{b} + v_3\textbf{c} = 
 \begin{bmatix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
-\begin{bmatix} v_1 \\ v_2 \\ v_3 \\ 0 \end{bmatrix}$$
+\begin{bmatix} v_1 \\ v_2 \\ v_3 \\ 0 \end{bmatrix} $$
 
 $$ P = O + v_1\textbf{a} + v_2\textbf{b} + v_3\textbf{c} = 
 \begin{bmatix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
-\begin{bmatix} v_1 \\ v_2 \\ v_3 \\ 1 \end{bmatrix}$$
+\begin{bmatix} v_1 \\ v_2 \\ v_3 \\ 1 \end{bmatrix} $$
 
 ## Affine Transformations
 
