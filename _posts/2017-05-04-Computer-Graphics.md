@@ -61,7 +61,8 @@ There are four basic affine transformations, and every other affine transformati
 
 #### Translation
 $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
-begin{bmatrix} 1 & 0 & 0 & T_x \\ 0\!1\!0\!T_y \\ 0\!0\!1\!T_z \\ 0\!0\!0\!1 \end{bmatrix}
+begin{bmatrix} 1 \quad 0 \quad 0 \quad T_x \\ 0 \quad 1 \quad 0 \quad T_y \\
+0 \quad 0 \quad 1 \quad T_z \\ 0 \quad 0 \quad 0 \quad 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
 #### Rotation
