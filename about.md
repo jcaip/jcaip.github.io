@@ -5,19 +5,27 @@ permalink: /about/
 ---
 
 Hi! I'm Jesse Cai and I'm originally from the Bay Area, where I graduated from Amador Valley in 2015. 
-I'm now a sophomore at UCLA pursuing a B.S. in Computer Science and Engineering. 
-I also work for JPL, where I automate tasks through machine learning. 
-This is my website, where I'll be putting up anything I find interesting, as well as some personal projects.
-You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf)
+
+This is my website, where I'll be putting up class notes, personal projects, and pretty much anything else that I find interesting.
+I'm now a sophomore at UCLA pursuing a B.S. in Computer Science and Engineering.
+I'm primarily interested in the fields of natrual language processing, artificial intelligence, and the scalability of software systems, but I find pretty much any bit of computer science fascinating. 
 
 ### More Information
-In my free time I enjoy hiking, watching basketball and playing chess.
 
-I'm the President of ACM AI at UCLA, where I try to teach people more about Machine Learning and AI.
+I've spent the last year working for JPL, where I created web backends and automated tasks through machine learning.
+It was a wonderful learning experience, but I've decided to intern at (Blend)[https://blend.com/] this summer! I'm excited for what the future brings!
+
+I'm also the former President of ACM AI at UCLA, where I taught people more about Machine Learning and AI.
 If you're interested in AI/ML at all and in the LA area you should definetly [check](https://www.facebook.com/groups/uclaacmai/) us out!
 
+You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
+
+In my free time I enjoy hiking, watching basketball and playing chess.
 
 ### Contact me
+I'm always interested in meeting new people, if you have any questions please feel free to contact me!
+
 510-298-2102
+
 [jcjessecai@gmail.com](mailto:jcjessecai@gmail.com)
 
