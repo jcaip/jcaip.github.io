@@ -12,7 +12,7 @@ I'm primarily interested in the fields of natrual language processing, artificia
 
 ### More Information
 
-I've spent the last year working for JPL, where I created web backends and automated tasks through machine learning.
+I've spent the last year working for [JPL](https://www.jpl.nasa.gov/), where I created web backends and automated tasks through machine learning.
 It was a wonderful learning experience, but I've decided to intern at [Blend](https://blend.com/) this summer! I'm excited for what the future brings!
 
 I'm also the former President of ACM AI at UCLA, where I taught people more about Machine Learning and AI.
