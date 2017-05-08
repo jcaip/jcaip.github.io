@@ -16,6 +16,7 @@ I've spent the last year working for [JPL](https://www.jpl.nasa.gov/), where I c
 It was a wonderful learning experience, but I've decided to intern at [Blend](https://blend.com/) this summer! I'm excited for what the future brings!
 
 I'm also the former President of ACM AI at UCLA, where I taught people more about Machine Learning and AI.
+ACM AI is now in the very capable hands of [Rohan Varma](http://rohanvarma.me/) and [Adit Deshpande](https://adeshpande3.github.io/).
 If you're interested in AI/ML at all and in the LA area you should definetly [check](https://www.facebook.com/groups/uclaacmai/) us out!
 
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
