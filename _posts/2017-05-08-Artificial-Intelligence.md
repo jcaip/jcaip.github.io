@@ -108,7 +108,7 @@ Since $$b > 1$$, at most it is a 2x more work. We can see that even for relative
 |Optimal | Y        |  N       |   Y      |
 |Complete| Y        |  Y       |   Y      |
 
-## Solving Search Problems with Cost
+### Solving Search Problems with Cost
 
 #### Uniform Cost Search
 Nodes are expanded in increasing order of cost. Therefore, whatever we expand will have a larger cost.
@@ -135,21 +135,23 @@ $$h(n)$$ = the predicted, heurestic cost to get to the final solution
 
 A\* Search is optimal if our heurestic is both **consistent** and **admissable**.
 
-## Local Search Strategies
+### Local Search Strategies
 + Gradient Descent  
 + [Simulated Annealing](https://jcaip.github.io/Simulated-Annealing/)
 + [Genetic Algorithms](https://jcaip.github.io/Genetic-Algorithm/)
 
 ## Constraint Satisfaction
-
 Constraint Graph
+
 #### Types of Constraints
 + Unary Constraint - Constraints involving just one variable ($$A > 0$$).
 + Binary Constraint - Constraints involving two variables ( $$A \neq B$$).
 + Global Constraint - Constraints involving two or more variables ( $$A \neq B \neq C$$)
 
-#### Solving Contraint Satisfaction Problems
+### Solving Contraint Satisfaction Problems
 One property we seek to exploit when 
+
+#### Backtracking Search
 
 ## Games
 
