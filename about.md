@@ -26,7 +26,5 @@ In my free time I enjoy hiking, watching basketball and playing chess.
 ### Contact me
 I'm always interested in meeting new people, if you have any questions please feel free to contact me!
 
-510-298-2102
-
 [jcjessecai@gmail.com](mailto:jcjessecai@gmail.com)
 
