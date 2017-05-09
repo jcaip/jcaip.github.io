@@ -104,7 +104,7 @@ Since $$b > 1$$, at most it is a 2x more work. We can see that even for relative
 |        |BFS       |DFS       |ID        |
 |--------|----------|----------|----------|
 |Time    |$$O(b^d)$$|$$O(b^d)$$|$$O(b^d)$$|
-|Space   |$$O(b^d)$$|$$O(b*d)$$|$$O(b*d)$$|
+|Space   |$$O(b^d)$$|$$O(bd)$$|$$O(bd)$$|
 |Optimal | Y        |  N       |   Y      |
 |Complete| Y        |  Y       |   Y      |
 
@@ -118,6 +118,12 @@ An estimate of the cost at the current state is needed $$h(x)$$, or a heurestic 
 We can then use a greedy search - try to take the biggest bite at the current distance.
 However, while this search strategy is complete it is not optimal.
 
+#### Determining a Heurestic
+Our heurestic is **consistent**
+Admissability
+
+How to generate heurestics
+
 #### A\* Search
 We can improve upon best first search by taking into account the cost used to get to a node as well as the predicted cost. We can model this with the function
 
@@ -128,12 +134,6 @@ $$g(n)$$ = the cost to get to the current node
 $$h(n)$$ = the predicted, heurestic cost to get to the final solution
 
 A\* Search is optimal if our heurestic is both **consistent** and **admissable**.
-
-##### Determining a Heurestic
-Our heuresticConsistency  
-Admissability
-
-How to generate heurestics
 
 ## Local Search Strategies
 + Gradient Descent  
