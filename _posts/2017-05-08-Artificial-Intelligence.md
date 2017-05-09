@@ -137,7 +137,11 @@ $$h(n)$$ = the predicted, heurestic cost to get to the final solution
 Note that if $$h(n) = 0$$, then A\* is just Uniform Cost Search
 
 A\* Search is optimal if our heurestic is both **consistent** and **admissable**.
-For
+
+For any node $$n$$, along the path from the initial state $$I$$ to a goal state $$G$$ with actual cost $$c^*$$, we know that $$f(n) = g(n) + h(n) \leq c*$$, since our heurestic is both consistent and admissable.
+
+Suppose there is some other goal state, $$G'$$, that has less cost than $$c*$$.
+$$f(G') = g(G') + h(G') = g(G') \leq c*$$. However, in this case, we would expand $$G'$$ before $$n$$, so we would reach the optimal solution.
 
 ### Local Search Strategies
 + Gradient Descent  
