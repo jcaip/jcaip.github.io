@@ -97,7 +97,7 @@ Now we can see that $$\sum_{i = 1}^{d}{b^i}$$ is the exact same equation we had 
 $$N'(b, d) = (\frac{b}{b-1})^2b^d$$
 
 $$\frac{b}{b-1}$$ is the difference between running DFS and ID.
-Since $$b > 1$$, at most it is a 2x more work. We can see that even for relatively small $$b$$ ($$b=10$$) that it is just 1.1x more work.
+Since $$b > 1$$, at most it is a 2x more work. We can see that even for relatively small $$b$$ ($$b=10$$) that it is just 1.1x more work._
 
 #### Comparison
 
@@ -108,19 +108,35 @@ Since $$b > 1$$, at most it is a 2x more work. We can see that even for relative
 |Optimal | Y        |  N       |   Y      |
 |Complete| Y        |  Y       |   Y      |
 
-### Solving Search Problems with Cost
-Uniform Cost Search
-Best First Search
-A\* Search
+## Solving Search Problems with Cost
 
-#### Determining a Heurestic
-Consistency
+#### Uniform Cost Search
+Nodes are expanded in increasing order of cost. Therefore, whatever we expand will have a larger cost.
+
+#### Best First Search
+An estimate of the cost at the current state is needed $$h(x)$$, or a heurestic function.
+We can then use a greedy search - try to take the biggest bite at the current distance.
+However, while this search strategy is complete it is not optimal.
+
+#### A\* Search
+We can improve upon best first search by taking into account the cost used to get to a node as well as the predicted cost. We can model this with the function
+
+$$f(n) = g(n) + h(n)$$
+
+$$g(n)$$ = the cost to get to the current node
+
+$$h(n)$$ = the predicted, heurestic cost to get to the final solution
+
+A\* Search is optimal if our heurestic is both **consistent** and **admissable**.
+
+##### Determining a Heurestic
+Our heuresticConsistency  
 Admissability
 
 How to generate heurestics
 
 ## Local Search Strategies
-+ Gradient Descent
++ Gradient Descent  
 + [Simulated Annealing](https://jcaip.github.io/Simulated-Annealing/)
 + [Genetic Algorithms](https://jcaip.github.io/Genetic-Algorithm/)
 
