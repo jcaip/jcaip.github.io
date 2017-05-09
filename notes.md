@@ -6,16 +6,16 @@ permalink: /notes/
 
 Here's a list of all the notes I've written.
 
-### [CS 161](/Artificial-Intelligence)
-### [CS 174A](/Computer-Graphics)
+### [CS 161](/Artificial-Intelligence) Artificial Intellignece
+### [CS 174A](/Computer-Graphics) Computer Graphics
 
-### CS 180
+### CS 180 Algorithms and Complexity
 + [Divide and Conquer](/Divide-and-Conquer)
 + [Greedy Algorithms](/Greedy-Algorithms)
 + [Dynamic Programming](/Dynamic-Programming)
 + [Randomness](/Randomness)
 + [Reduction and Intractibility](/Reduction-and-Intractibility)
 
-### [ENGR 111](/Corporate-Finance)
+### [ENGR 111](/Corporate-Finance) Finance for Engineers
 
-### [Deepdive](/Deepdive)
+### [Deepdive](/Deepdive) Stanford Deepdive Notes
