@@ -97,7 +97,7 @@ Now we can see that $$\sum_{i = 1}^{d}{b^i}$$ is the exact same equation we had 
 $$N'(b, d) = (\frac{b}{b-1})^2b^d$$
 
 $$\frac{b}{b-1}$$ is the difference between running DFS and ID.
-Since $$b > 1$$, at most it is a 2x more work. We can see that even for relatively small $$b$$ ($$b=10$$) that it is just 1.1x more work._
+Since $$b > 1$$, at most it is a 2x more work. We can see that even for relatively small $$b$$ ($$b=10$$) that it is just 1.1x more work.
 
 #### Comparison
 
@@ -106,7 +106,7 @@ Since $$b > 1$$, at most it is a 2x more work. We can see that even for relative
 |Time    |$$O(b^d)$$|$$O(b^d)$$|$$O(b^d)$$|
 |Space   |$$O(b^d)$$|$$O(bd)$$|$$O(bd)$$|
 |Optimal | Y        |  N       |   Y      |
-|Complete| Y        |  Y       |   Y      |
+|Complete | Y        |  Y       |   Y      |
 
 ### Solving Search Problems with Cost
 
@@ -119,8 +119,9 @@ We can then use a greedy search - try to take the biggest bite at the current di
 However, while this search strategy is complete it is not optimal.
 
 #### Determining a Heurestic
-Our heurestic is **consistent**
-Our heurestic is **admissable** if it never overpredicts the distance from 
+Our heurestic is **consistent** if $$h(n) \leq c(n, a, n') + h(n')$$ where $$h(n)$$ is the cost for a node $$n$$, $$c(n, a, n')$$ is the cost to the goal state $$a$$ through $$n'$$. This means that the estimate is always less than or equal to the estimated distance from any neighboring vertex to the goal, plus the cost of reaching that neighbor.
+
+Our heurestic is **admissable** if it never overpredicts the distance to the goal state. This means that $$h(n) \leq h^*(n)$$, where $$h^*(n)$$ is the actual cost to reach the goal state.
 
 One easy way to generate heurestics is to relax the constraints of a problem. 
 
@@ -133,7 +134,10 @@ $$g(n)$$ = the cost to get to the current node
 
 $$h(n)$$ = the predicted, heurestic cost to get to the final solution
 
+Note that if $$h(n) = 0$$, then A\* is just Uniform Cost Search
+
 A\* Search is optimal if our heurestic is both **consistent** and **admissable**.
+For
 
 ### Local Search Strategies
 + Gradient Descent  
