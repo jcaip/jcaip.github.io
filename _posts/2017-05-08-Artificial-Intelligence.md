@@ -101,6 +101,7 @@ $$\frac{b}{b-1}$$ is the difference between running DFS and ID.
 Since $$b > 1$$, at most it is a 2x more work. We can see that even for relatively small $$b$$ ($$b=10$$) that it is just 1.1x more work.
 
 #### Comparison
+
 |        |BFS       |DFS       |ID        |
 |--------|----------|----------|----------|
 |Time    |$$O(b^d)$$|$$O(b^d)$$|$$O(b^d)$$|
@@ -113,7 +114,6 @@ Uniform Cost Search
 Best First Search
 A\* Search
 
-Seperation Property
 #### Determining a Heurestic
 Consistency
 Admissability
