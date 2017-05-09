@@ -23,7 +23,7 @@ E.g. The city councilmen refused the demonstrators a permit because they [feared
 ## Search
 Many problems, such as 8-puzzles, n-queens, or solving a rubic's cube can be formulated as search problems.
 
-#### Formulating Search Problems
+### Formulating Search Problems
 All search problems should have these parts:
 + **initial state** - This is the initial state that is given to the search problem
 + **goal state** - There may be more than one goal state. It is the state at which the search problem is solved.
@@ -32,7 +32,7 @@ All search problems should have these parts:
 
 The goal is to find a sequence of actions to move from the initial state to the goal state and minimize the cost of your actions
 
-#### Solving Search Problems
+### Solving Search Problems
 The idea behind solving all search problems is the same.
 ```
 frontier = {I}
@@ -45,10 +45,28 @@ loop:
     generate the node's children
     add the node's children to the frontier and "explored set"
 ```
+A search strategy is said to be complete if it finds a solution if one exsists.
+A search strategy is said to be optimal if the solution it finds is the one with the least cost.
+
+#### Branching Factor
+The branching factor describes how many actions you can take in a given state. If this number is not constant, the average branching factor or the max branching factor is usually used.
+
 Heurestic/Informed Search
 
-BFS
-DFS
+#### Breath First Search
+The idea of BFS is to search the closest nodes first. To implement it, we use a queue (FIFO) to represent the frontier. 
+However the problem with BFS is that it is exponential in time and space. Exponential time is not as large of a problem as exponential space, as we quickly run out of memory.
+We can see that in order to expand all the nodes down to our solution depth, $$d$$, we would have to expand $$b^d$$ nodes, where $$b$$ is the branching factor. 
+
+Let $$N(b, d)$$ be the number of nodes generated for a problem with branching factor $$b$$ and solution at depth $$d$$.
+$$N(b, d) = b^d + b^{d-1} + \ldots + 1$$
+$$b \times  N(b, d) = b^{d+1} + b^{d- + \ldots + b$$
+$$b \times  N(b, d)  - N(b,d)= b^{d+1} - 1$$
+$$N(b, d) = \frac{b^{d+1} + 1}{b-1} \approx \frac{b^{d+1}}{b-1} \approx b^d \times \frac{b}{b-1}$$
+
+#### DFS
+
+
 Iterative Deepening Search
 Depth Limited Serach
 Tree Search
