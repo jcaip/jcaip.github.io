@@ -200,6 +200,11 @@ If $$Utility(MAX) = -Utility(MIN)$$ the game is said to be a **zero-sum game**.
 
 ### Solving Games
 #### Minimax
+Minimax builds a search tree, with min and max nodes. A **min** node is the mininum of all its children, while a **max** node is the max of all its children. With this game tree, we are able to determine the optimal move by simply running DFS with backtracking to compute the min/max.
+
+However, in practice, this tree is too large to build practically. Instead, we limit the depth of the tree and create a **Evaluation function**, which is an approximation of the current game state. 
+
+We can use iterative deeepening to avoid keeping the whole tree in memory.
 
 #### $$\alpha-\beta$$ Pruning
-#### Expectiminimax
+However, we can avoid looking at certain nodes with pruning. If we keep track of two values, $$\alpha$$, and $$\beta$$, we can prune roughly 1/2 of the nodes and avoid looking at them.
