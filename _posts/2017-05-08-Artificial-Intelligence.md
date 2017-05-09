@@ -3,7 +3,7 @@ layout: post
 title: Artificial Intelligence 
 
 images:
-    - url: /images/ai/cover.png
+    - url: /images/ai/cover.jpg
       alt: Artificial Intelligence
       title: ida*
 ---
