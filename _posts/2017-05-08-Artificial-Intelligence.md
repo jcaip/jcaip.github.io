@@ -187,7 +187,7 @@ Games can be broken down into different categories.
 ||**Deterministic**| **Chance**|
 |--|--|--|
 |**Perfect**|chess|backgammon|
-|**Imperfect**|battleship|poker|
+|**Imperfect**  |battleship|poker|
 
 ### Formulating Games
 In each game, there is said to be a min and max player, who take turns playing. A move by a min/max player is called a **ply**, while a **move** is when every player gets a ply.
