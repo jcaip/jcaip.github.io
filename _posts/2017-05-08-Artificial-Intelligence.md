@@ -49,10 +49,9 @@ A search strategy is said to be **complete** if it finds a solution if one exsis
 
 A search strategy is said to be **optimal** if the solution it finds is the one with the least cost.
 
-#### Branching Factor
-The branching factor describes how many actions you can take in a given state. If this number is not constant, the average branching factor or the max branching factor is usually used.
+The **seperation property** states that if the frontier seperates all explored states from all non-explored states that the search strategy is **optimal**
 
-Heurestic/Informed Search
+The **branching factor** describes how many actions you can take in a given state. If this number is not constant, the average branching factor or the max branching factor is usually used.
 
 #### Breath First Search
 The idea of BFS is to search the closest nodes first. To implement it, we use a queue (FIFO) to represent the frontier. 
