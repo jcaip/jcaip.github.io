@@ -3,8 +3,8 @@ layout: post
 title: Artificial Intelligence 
 
 images:
-    - url: /images/cg/camera_model.png
-      alt: ida*
+    - url: /images/ai/cover.png
+      alt: Artificial Intelligence
       title: ida*
 ---
 
@@ -47,8 +47,8 @@ How to generate heurestics
 
 ## Local Search Strategies
 + Gradient Descent
-+ Simulated Annealing
-+ Genetic Algorithms
++ [Simulated Annealing](https://jcaip.github.io/Simulated-Annealing/)
++ [Genetic Algorithms](https://jcaip.github.io/Genetic-Algorithm/)
 
 ## Constraint Satisfaction
 
