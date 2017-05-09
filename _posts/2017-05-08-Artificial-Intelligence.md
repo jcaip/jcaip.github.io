@@ -59,8 +59,9 @@ However the problem with BFS is that it is exponential in time and space. Expone
 We can see that in order to expand all the nodes down to our solution depth, $$d$$, we would have to expand $$b^d$$ nodes, where $$b$$ is the branching factor. 
 
 Let $$N(b, d)$$ be the number of nodes generated for a problem with branching factor $$b$$ and solution at depth $$d$$.
+
 $$N(b, d) = b^d + b^{d-1} + \ldots + 1$$
-$$b \times  N(b, d) = b^{d+1} + b^{d- + \ldots + b$$
+$$b \times  N(b, d) = b^{d+1} + b^{d-1} + \ldots + b$$
 $$b \times  N(b, d)  - N(b,d)= b^{d+1} - 1$$
 $$N(b, d) = \frac{b^{d+1} + 1}{b-1} \approx \frac{b^{d+1}}{b-1} \approx b^d \times \frac{b}{b-1}$$
 
@@ -69,7 +70,8 @@ $$N(b, d) = \frac{b^{d+1} + 1}{b-1} \approx \frac{b^{d+1}}{b-1} \approx b^d \tim
 
 Iterative Deepening Search
 Depth Limited Serach
-Tree Search
+
+### Solving Search Problems with Cost
 Uniform Cost Search
 Best First Search
 A\* Search
