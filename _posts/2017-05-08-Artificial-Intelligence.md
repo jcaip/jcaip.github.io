@@ -120,9 +120,9 @@ However, while this search strategy is complete it is not optimal.
 
 #### Determining a Heurestic
 Our heurestic is **consistent**
-Admissability
+Our heurestic is **admissable** if it never overpredicts the distance from 
 
-How to generate heurestics
+One easy way to generate heurestics is to relax the constraints of a problem. 
 
 #### A\* Search
 We can improve upon best first search by taking into account the cost used to get to a node as well as the predicted cost. We can model this with the function
@@ -144,10 +144,15 @@ A\* Search is optimal if our heurestic is both **consistent** and **admissable**
 
 Constraint Graph
 #### Types of Constraints
-+ Unary Constraint
-+ Binary Constraint
-+ Global Constraint
++ Unary Constraint - Constraints involving just one variable ($$A > 0$$).
++ Binary Constraint - Constraints involving two variables ( $$A \neq B$$).
++ Global Constraint - Constraints involving two or more variables ( $$A \neq B \neq C$$)
 
 #### Solving Contraint Satisfaction Problems
+One property we seek to exploit when 
 
 ## Games
+
+#### Minimax
+#### $$\alpha-\beta$$ Pruning
+#### Expectiminimax
