@@ -3,7 +3,7 @@ layout: post
 title: Artificial Intelligence 
 
 images:
-    - url: /images/ai/cover.jpg
+    - url: /https://www.deepcoredata.com/wp-content/uploads/2016/06/small_1420.png
       alt: Artificial Intelligence
       title: ida*
 ---
