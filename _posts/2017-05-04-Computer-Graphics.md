@@ -232,6 +232,7 @@ Culling in the VCS
 
 #### Visibility Algorithms
 **Image-space Algorithms** - operate on pixels/scan-lines e.g. Z-buffer
+
 **Object-space Algorithms** - BSP, variations on the Painter's Algorithm. $$O(n^2)$$ time
 
 Z-Buffer Algorithm
@@ -255,8 +256,25 @@ for all polygons P
     }
 }
 ```
+One drawback with Z-buffer is that there is only one visible surface per pixel, which makes it hard to do transparency.
 
+We can use A-buffer instead, which contains assigns the average value of a linked-list of surfaces .
 
+Binary Space Partition Trees
+```c
+BSPtree *BSPmaketree(polygon_list) {
+    choose a polygon as the tree root
+    for all other polygons
+        if polygon is in front, add to front list
+        if polygon is behind, add to behind list
+        else split polygon and add one part to each list
+
+BSPtree = BSPcombinetree(
+    BSPmaketree(front_list),
+    root,
+    BSPmaketree(behind_list) )
+}
+```
 
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
