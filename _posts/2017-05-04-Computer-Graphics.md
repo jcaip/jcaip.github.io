@@ -156,21 +156,25 @@ $$ F(x, y) = x dy - y dx + c$$
 ```c
 void drawLine(int x1, int y1, int x2, int y2)
 {
-    int x, y;
+    int x, y, dx, dy, d, dE, dNE;
+    dx = x2-x1;
+    dy = y2-y1;
+    d = 2*dy-dx; //start point
+    dE = 2*dy; //if we move one pixel east, the distance from the line is increased by dy
+    dNE = 2*(dy-dx) //if we move one pixel northeast, the distance from the line is  increased by dy - dx
     y = y1;
     for (x=x1; x<=x2; x++)
     {
         SetPixel(x,y);
-        if (F(x+1, y+0.5) > 0) //if >0, then M is below line, so pick the NE pixel
-            y = y+1;
-        //otherwise, M is on/above line so just choose the E pixel
+        if (d > 0) // next closest pixel is the NE pixel
+            d = d + dNE;
+            y = y + 1;
+        else //next pixel is the E pixel
+            d = d + dE
     }
 }
+
 ```
-
-
-
-
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
 
