@@ -8,7 +8,7 @@ images:
       title: camera
 ---
 ## Points, Lines, Vectors, Planes
-A **linear combination** of $$m$$ vectors is given by 
+A **linear combination** of $$m$$ vectors is given by
 $$ \textbf{w} = a_1\textbf{v}_1 + \ldots + a_m\textbf{v}_1 $$
 
 An **affine combination** is a linear combination such that
@@ -42,16 +42,16 @@ Parametric makes it easy to draw the line with regards to another paramater, $$t
 
 ## Coordinate Systems
 With the homogenous representaiton, we can define coordinate systems.
-A coordinate system is determined by three linearly independent vectors, 
+A coordinate system is determined by three linearly independent vectors,
 $$\textbf{a, b, c} $$ and an origin point, $$O$$.
 
 We can see the reason behind the 0 and 1 in the homogenous representation to represent vectors and points.
 
-$$ \textbf{v} = v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} = 
+$$ \textbf{v} = v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} =
 \begin{bmatrix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
 \begin{bmatrix} v_1 \\ v_2 \\ v_3 \\ 0 \end{bmatrix} $$
 
-$$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} = 
+$$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} =
 \begin{bmatrix} \textbf{a } \textbf{b } \textbf{c } O \end{bmatrix}
 \begin{bmatrix} P_1 \\ P_2 \\ P_3 \\ 1 \end{bmatrix} $$
 
@@ -60,23 +60,23 @@ The homogenous representation also makes it easy to represent affine transformat
 There are four basic affine transformations, and every other affine transformation is a combination of these four transformations.
 
 #### Translation
-$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} 1 & 0 & 0 & T_x \\ 0 & 1 & 0 & T_y \\
 0 & 0 & 1 & T_z \\ 0 & 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
-To apply an inverse 
+To apply an inverse
 $$ \textbf{M}^{-1} =
 \begin{bmatrix} 1 & 0 & 0 & -T_x \\ 0 & 1 & 0 & -T_y \\
 0 & 0 & 1 & -T_z \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
 
 #### Rotation
-$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} cos \theta & -sin \theta  & 0 & 0 \\ sin \theta & cos \theta & 0 & 0 \\
 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
-To apply an inverse 
+To apply an inverse
 $$ \textbf{M}^{-1} = \textbf{M}^T $$
 
 This is because, $$\textbf{M}$$ is an orthonormal matrix.
@@ -84,23 +84,23 @@ This is because, $$\textbf{M}$$ is an orthonormal matrix.
 Note that with 3D rotation, it is possible to run into gimbal lock, where we lose one degree of freedom.
 
 #### Scaling
-$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} s_x & 0 & 0 & 0 \\ 0 & s_y & 0 & 0 \\
 0 & 0 & s_z & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
-To apply an inverse 
+To apply an inverse
 $$ \textbf{M}^{-1} =
 \begin{bmatrix} \frac{1}{s_x} & 0 & 0 & 0 \\ 0 & \frac{1}{s_y} & 0 & 0 \\
 0 & 0 & \frac{1}{s_z} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
 
 #### Shear
-$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} 1 & a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
-To apply an inverse 
+To apply an inverse
 $$ \textbf{M}^{-1} =
 \begin{bmatrix} 1 & -a & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} $$
@@ -114,7 +114,7 @@ There are many different types or projections
 #### Basic Orthographic Projection
 ![projections](\images\cg\basic_orthographic.png)
 
-$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & -N \\ 0 & 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
@@ -122,7 +122,46 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 #### Perspective Projection
 ![projections](\images\cg\perspective.png)
 
-$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  = 
+$$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 \\ 0 & 0 & -\frac{1}{N} & 0 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix}  \div \frac{-P_z}{N} $$
+
+## Ray Tracing
+The light that point $$P_A$$ emits comes from
+
++ light sources
++ reflection from other objects
++ refraction from other objects
+
+Diffuse objects only receive light from light sources
+
+#### Ray Tracking Algorithm
+It is easiest to trace rays backwards from eye to scene.
+```
+  For each pixel on screen:
+  	determine ray from eye through pixel
+  	find closest intersection of ray with an object
+  	cast shadow rays to light sources
+  	recursively cast reflected and refracted ray
+    return color
+```
+
+1. Setting the camera and the image plane
+Use parametric form $$P(t)  = P_0 + \textbf{v}t$$
+
+World coordinate system: $$P(r, c) = eye - N\textbf{n} + u_c\textbf{u} + v_r\textbf{v}$$
+
+$$ray(t) = S + t\textbf{c}$$
+
+$$Sphere(P) = \left\vert{P}\right\vert - 1 = 0$$
+
+$$\left\vert{\textbf{c}}\right\vert^2t^2 + 2(S \cdot \textbf{c}) + \left\vert{S}\right\vert^2 -1 = 0$$
+
+How to deal with transformed primitives?
+$$P = MP'$$
+
+$$F(P') = F(T^{-1}(P))$$
+
+##### Shadow Rays
+For each light source,intersect shadow ray with all objects. If no intersection is found, apply local illumination. If in shadow, no contribution from that light ray/
