@@ -136,7 +136,7 @@ The light that point $$P_A$$ emits comes from
 
 Diffuse objects only receive light from light sources
 
-#### Ray Tracking Algorithm
+#### Ray Tracing Algorithm
 It is easiest to trace rays backwards from eye to scene.
 ```
   For each pixel on screen:

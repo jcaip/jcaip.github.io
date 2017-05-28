@@ -63,3 +63,12 @@ $$- \int{\mu(x,y,z;\varepsilon) dz}$$ is the attenuation at location $$(x,y)$$ f
 Using **forward projection** at different angles gives us different profiles of the image, which we use to construct the image using **backprojection**.
 
 We can filter each attenuation profile to get back a cleaner image using fourier transforms.
+
+**CT Angiogram** - combines CT scan with an injection of contrast media to see blood vessels.
+
+**Digital Subtraction Angiogram** - compares the difference of two images of a region of the body.
+
+## MRI
+composed of a magnet, RF coil, and gradient coil
+
+Uses Nuclear Magnetic Resonance to generate images. Protons have their own particle spin, which creates a small magnetic field. 

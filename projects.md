@@ -14,6 +14,8 @@ Here's some cool side project's I've worked on broken down by subject.
 ## Machine Learning
 #### [Twitter Tensorflow Model](\Twitter-Tensorflow-Model) Determining the sentiment of tweets using a RNN
 #### [CS188 Literature Review](\CS188-Literature-Review) Literature Review for CS188 class project
+#### [ML Server](\ML-Server) Setting up a server for machine learning
+
 
 ## Web Development
 #### [Dockerizing Web Applicaitons](\Dockerizing-Web-Applications) Explanation of Dockerfiles
