@@ -28,7 +28,8 @@ Putting in the work early also attracts the best and brightest to apply to becom
 Leading a club means you spend a lot of time booking rooms, ordering food, and running all sorts of errands. These tasks aren't mentally challenging, but they are suprisingly sapping, and very time consuming. One thing that I ended up doing was to create an ACM AI event checklist to help streamline the process.
 Trying to streamline the process is key to avoiding burning out.
 
-What's even worse is that communication is a limiting factor. You may have a week to plan an event, but if 
+What's even worse is that communication is a limiting factor. A week seems like plenty of time to plan an event, but when you have to book a room 5 days in advance, and you only meet in person once a week, time flies.
+
 ## Consistency is key
 All in all though, it's not hard to book a room for an event, or to put together a presentation. We've had plenty of workshops with over 100+ attendees. The hardest part of leading a club is the consistency. Events need to happen weekly, whether there are midterms, finals, or other previous engagements.
 While you should focus on your most important events, you need to ensure a baseline for your events. No matter who's leading workshops or reading groups, make sure they are prepared and able to answer basic questions. 
@@ -36,4 +37,6 @@ While you should focus on your most important events, you need to ensure a basel
 ## Building a community is hard
 All in all, it takes a lot to create a community. 
 
+No matter how hard you work, or how seamlessly your events run, it'll still take a large amount of time and effort to be able to create a space where people feel welcomed and encouraged. 
 
+Ultimately, the most important thing is to continue working. 
