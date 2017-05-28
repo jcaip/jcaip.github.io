@@ -3,7 +3,7 @@ layout: post
 title: Computational Medical Imaging
 
 images:
-    - url: https://en.wikipedia.org/wiki/Medical_image_computing#/media/File:MeningiomaMRISegmentation.png
+    - url: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/MeningiomaMRISegmentation.png/1024px-MeningiomaMRISegmentation.png
       alt: MRI segmentation
       title: medical imaging
 ---
