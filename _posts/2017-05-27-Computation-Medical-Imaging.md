@@ -35,9 +35,13 @@ We use an antiscatter grid to block most of the off-axis scatter radiation.
 
 There are two main medical uses for X-rays.
 
-Projection Radiography - project Xray onto film and see results.
+**Projection Radiography** - project Xray onto film and see results.
 
-Computed Tomography - Generate volumetric information from a large serires of 2D Xrays around a single axis of rotation.
+**Computed Tomography** - Generate volumetric information from a large serires of 2D Xrays around a single axis of rotation.
 
 The attenuation of X-rays is given by **Beer-Lambert Law**
 $$ N = N_0e^{-\micro t}$$, where $$N$$ is the number of photons, $$t$$ is the thickness of the object, and $$\micro$$ is the linear attenuation coefficient - which represents the probability the xray-photon will be attenuated.
+
+The linear attenuation coefficient is afunction of all the interaction probabilities of all different interaction types.
+
+$$ I_d(x,y) = \int_0^{\epsilon_max}{\nu (\epsilon) I_0{\epsilon} exp(- \int{\micro(x,y,z;\epsilon) dz}) d\epsilon} $$
