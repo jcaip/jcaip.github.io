@@ -127,6 +127,27 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 0 & 0 & 1 & 0 \\ 0 & 0 & -\frac{1}{N} & 0 \end{bmatrix}
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix}  \div \frac{-P_z}{N} $$
 
+## View Volumes
+Viewports undo the distortion of the projection transformation and map pixel coordinates on screen. 
+
+### Wireframe Displays
+``` 
+Compute $$M_mod$$
+Compute $$M^{-1}_cam$$
+Compute $$M_{modelview} = M^{-1}_{cam} M_{mod}$$
+Compute $$M_O$$
+Compute $$M_P$$
+Compute $$M_{proj} = M_OM_P$$
+Compute $$M_{vp} = M_OM_P$$
+Compute $$M = M_{vp}M_{proj}M_{modelview}$$
+
+for each line segment $$i$$ between $$P_i$$ and $$Q_i$$ do
+    $$P = MP, Q=MQ$$
+    drawline($$P,Q$$)
+```
+
+
+
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
 
@@ -164,4 +185,4 @@ $$P = MP'$$
 $$F(P') = F(T^{-1}(P))$$
 
 ##### Shadow Rays
-For each light source,intersect shadow ray with all objects. If no intersection is found, apply local illumination. If in shadow, no contribution from that light ray/
+For each light source,intersect shadow ray with all objects. If no intersection is found, apply local illumination. If in shadow, no contribution from that light ray.
