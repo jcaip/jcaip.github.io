@@ -45,3 +45,11 @@ $$ N = N_0e^{-\mu t}$$, where $$N$$ is the number of photons, $$t$$ is the thick
 The linear attenuation coefficient is afunction of all the interaction probabilities of all different interaction types.
 
 $$ I_d(x,y) = \int_0^{\varepsilon_{max}}{\nu (\varepsilon) I_0(\varepsilon) exp(- \int{\mu(x,y,z;\varepsilon) dz}) d\varepsilon} $$
+
+$$I_d(x,y)$$ is the projection image at location $$(x,y)$$
+
+$$\nu (\varepsilon)$$ is the quatum efficency at energy $$\varepsilon$$
+
+$$I_0(\varepsilon)$$ is the incident X-ray spectrum
+
+$$- \int{\mu(x,y,z;\varepsilon) dz}$$ is the attenuation at location $$(x,y)$$ for energy level $$\varepsilon$$
