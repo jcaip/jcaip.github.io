@@ -146,6 +146,29 @@ for each line segment $$i$$ between $$P_i$$ and $$Q_i$$ do
     drawline($$P,Q$$)
 ```
 
+## Line Rasterization
+We want to convert everything into pixels, including lines.
+
+**Bresenham Midpoint Algorithm** - maps line to pixels using the implicit form of the line and provides a fast way of choosing the next pixel.
+
+$$ F(x, y) = x dy - y dx + c$$
+
+```c
+void drawLine(int x1, int y1, int x2, int y2)
+{
+    int x, y;
+    y = y1;
+    for (x=x1; x<=x2; x++)
+    {
+        SetPixel(x,y);
+        if (F(x+1, y+0.5) > 0) //if >0, then M is below line, so pick the NE pixel
+            y = y+1;
+        //otherwise, M is on/above line so just choose the E pixel
+    }
+}
+```
+
+
 
 
 ## Ray Tracing
