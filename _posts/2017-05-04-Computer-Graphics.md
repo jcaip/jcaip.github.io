@@ -173,8 +173,27 @@ void drawLine(int x1, int y1, int x2, int y2)
             d = d + dE
     }
 }
-
 ```
+
+To fill simple polygons, use the recursive **Flood-Fill** Algorithm.
+
+```c
+public void floodFill(int x, int y, int fill, int boundary)
+{
+    if (x<0 || x>=width)) return;
+    if (y<0 || y>=height)) return;
+
+    if (getPixel(x,y) != fill && getPixel(x,y) != boundary)
+    {
+        setPixel(x,y,fill);
+        floodFill(x+1,y,fill,boundary);
+        floodFill(x-1,y,fill,boundary);
+        floodFill(x,y+1,fill,boundary);
+        floodFill(x,y-1,fill,boundary);
+    }
+}
+```
+
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
 
