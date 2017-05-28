@@ -1,16 +1,16 @@
 ---
 layout: post
 title: ACM AI in Review
-published: False
 
 images:
-
-    - url: /images/corp_fin/balance_sheet.png
+    - url: https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/11133877_10206506244038509_5936230620920385283_n.jpg?oh=ae0a334428e19487e97ce6c68a927ab8&oe=59A92AAA
+      title: acm ai
+      alt: acm ai
 ---
 
 For the past year, I have been the president of AI at UCLA, or ACM AI.
 Leading ACM AI has been a wonderful experience for me, and I would do it again in a heartbeat if need be. 
-Luckily, ACM AI is in the capable hands of the new team of [Rohan Varma]() and [Adit Deshpande]().
+Luckily, ACM AI is now in the very capable hands of [Rohan Varma](http://rohanvarma.me/) and [Adit Deshpande](https://adeshpande3.github.io/).
 
 Leading a club is hard, and I wanted to share some of the things I learned over the past year.
 
@@ -35,8 +35,9 @@ All in all though, it's not hard to book a room for an event, or to put together
 While you should focus on your most important events, you need to ensure a baseline for your events. No matter who's leading workshops or reading groups, make sure they are prepared and able to answer basic questions. 
 
 ## Building a community is hard
-All in all, it takes a lot to create a community. 
-
 No matter how hard you work, or how seamlessly your events run, it'll still take a large amount of time and effort to be able to create a space where people feel welcomed and encouraged. 
 
-Ultimately, the most important thing is to continue working. 
+It's important to keep this in mind and not freak out too much if attendance goes down. Just continue to focus on quality over quantity and eventually the tides will change.
+
+## Conclusion
+Leading ACM AI was a wonderful experience that I enjoyed immensly. Although there were many areas where we could improve, I'm ultimately extremely proud of the work my team and I put in.
