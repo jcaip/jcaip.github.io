@@ -231,6 +231,30 @@ Culling in the VCS
 + if $$P(eye) < 0$$ that means that the eye is below the plane - back facing 
 
 #### Visibility Algorithms
+**Image-space Algorithms** - operate on pixels/scan-lines e.g. Z-buffer
+**Object-space Algorithms** - BSP, variations on the Painter's Algorithm. $$O(n^2)$$ time
+
+Z-Buffer Algorithm
+we generate z values along a scan line from either the plane equation or bilinear interpolation
+
+```c
+for all i,j
+{
+    Depth[i,j] = MAX_DEPTH
+    Image[i,j] = BACKGROUND_COLOR
+}
+for all polygons P 
+{
+    for all pixels in P 
+    {
+        if (Z_pixel < Depth[i,j]) 
+        {
+            Image[i,j] = Color_pixel
+            Depth[i,j] = Z_pixel
+        }
+    }
+}
+```
 
 
 
