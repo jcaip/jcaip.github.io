@@ -72,3 +72,20 @@ We can filter each attenuation profile to get back a cleaner image using fourier
 composed of a magnet, RF coil, and gradient coil
 
 Uses Nuclear Magnetic Resonance to generate images. Protons have their own particle spin, which creates a small magnetic field. 
+
+When exponsed to a stong magnetic field, all the protone moments line upand start precessing ah the **Larmor frequencey** $$\omega = \gamma B_0$$
+
+Exposing protons to a frequency equal to the Larmor frequency absorbs their energy and deflects the axis of rotation to the imaging plane and all rotate in phase.
+
+After turning off the initial RF pulse, the protons gradually relax bax, creating AC current at the Larmor frequency in the RF coil.
+
+#### T1-Relaxtion: Recovery
+The proton recovers it's prior longitudinal orientation.
+#### T2-Relaxtion: Dephasing
+Loss of transverse magnetization, and occurs much faster than T1
+
+These relaxtions are different depending on the surrounding materials, which we can then measure.
+![mri](/images/medimg/mri.png)
+
+The gradient coils are used to encode spatial location by gradually shifting the magnetic field and therefore changing the Larmor frequency.
+
