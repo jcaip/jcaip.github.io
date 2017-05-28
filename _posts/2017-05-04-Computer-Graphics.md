@@ -194,6 +194,46 @@ public void floodFill(int x, int y, int fill, int boundary)
 }
 ```
 
+## Texture Mapping
+$$(S_x, S_y) = T_{ws}(T_{tw}(s,t))$$
+
+Textures are always images paramaterized by $$(s,t)$$ 
+
+A better approach is to go from the screen to texture to avoid calculating pixel coverage.
+$$(s,t) = T_{wt}(T_{sw}(S_x,S_y))$$
+
+![texture](/images/cg/texturemapping.png)
+
+This approach only works for vertices, so we can calculate texture coordinates by interpolation along interior points.
+
+However, when coupled with a prespective projection, this causes distortion, since the steps are not all equal.
+
+To make it work properly, we must do the perspective division after the interpolation across the polygon.
+
+## Visibility
+In order to improver performance, we don't want to draw polygons we can't see. An object is not visible if
++ Outside the view volume
++ Self-occlusion
++ Object-object occlusion
+
+#### Clipping and Culling
+Clipping is done in the CCS, we clip anything not in the 4D projection volume by finding the intersection between lines and planes and using that to restrict the paramtaterization paramter $$t$$.
+
+Culling occurs when an entire polygon is outside of the view volume.
+
+#### Backface Culling
+Any backfacing polygons won't be seen by the camera.
+We can efficiently do this by using the z-coordinate of the normal vector if it is an orthographic projection.
+
+Culling in the VCS
++ Calculate the normal $$\textbf{n} = [a,b,c]^T$$ and the plane equation $$P$$
++ if $$P(eye) >0$$ that means that the eye is above the plane - front facing 
++ if $$P(eye) < 0$$ that means that the eye is below the plane - back facing 
+
+#### Visibility Algorithms
+
+
+
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
 
