@@ -40,8 +40,8 @@ There are two main medical uses for X-rays.
 **Computed Tomography** - Generate volumetric information from a large serires of 2D Xrays around a single axis of rotation.
 
 The attenuation of X-rays is given by **Beer-Lambert Law**
-$$ N = N_0e^{-\micro t}$$, where $$N$$ is the number of photons, $$t$$ is the thickness of the object, and $$\micro$$ is the linear attenuation coefficient - which represents the probability the xray-photon will be attenuated.
+$$ N = N_0e^{-\mu t}$$, where $$N$$ is the number of photons, $$t$$ is the thickness of the object, and $$\mu$$ is the linear attenuation coefficient - which represents the probability the xray-photon will be attenuated.
 
 The linear attenuation coefficient is afunction of all the interaction probabilities of all different interaction types.
 
-$$ I_d(x,y) = \int_0^{\epsilon_max}{\nu (\epsilon) I_0{\epsilon} exp(- \int{\micro(x,y,z;\epsilon) dz}) d\epsilon} $$
+$$ I_d(x,y) = \int_0^{\Epsilon_{max}}{\nu (\Epsilon) I_0(\Epsilon) exp(- \int{\mu(x,y,z;\Epsilon) dz}) d\Epsilon} $$
