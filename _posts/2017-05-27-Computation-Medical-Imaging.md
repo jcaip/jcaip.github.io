@@ -77,7 +77,7 @@ When exponsed to a stong magnetic field, all the protone moments line upand star
 
 Exposing protons to a frequency equal to the Larmor frequency absorbs their energy and deflects the axis of rotation to the imaging plane and all rotate in phase.
 
-After turning off the initial RF pulse, the protons gradually relax bax, creating AC current at the Larmor frequency in the RF coil.
+After turning off the initial RF pulse, the protons gradually relax back, creating AC current at the Larmor frequency in the RF coil.
 
 #### T1-Relaxtion: Recovery
 The proton recovers it's prior longitudinal orientation.
@@ -88,4 +88,6 @@ These relaxtions are different depending on the surrounding materials, which we 
 ![mri](/images/medimg/mri.png)
 
 The gradient coils are used to encode spatial location by gradually shifting the magnetic field and therefore changing the Larmor frequency.
+
+
 
