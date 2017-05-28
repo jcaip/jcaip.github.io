@@ -44,4 +44,4 @@ $$ N = N_0e^{-\mu t}$$, where $$N$$ is the number of photons, $$t$$ is the thick
 
 The linear attenuation coefficient is afunction of all the interaction probabilities of all different interaction types.
 
-$$ I_d(x,y) = \int_0^{\Epsilon_{max}}{\nu (\Epsilon) I_0(\Epsilon) exp(- \int{\mu(x,y,z;\Epsilon) dz}) d\Epsilon} $$
+$$ I_d(x,y) = \int_0^{\varepsilon_{max}}{\nu (\varepsilon) I_0(\varepsilon) exp(- \int{\mu(x,y,z;\varepsilon) dz}) d\varepsilon} $$
