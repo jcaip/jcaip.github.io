@@ -42,7 +42,9 @@ There are two main medical uses for X-rays.
 The attenuation of X-rays is given by **Beer-Lambert Law**
 $$ N = N_0e^{-\mu t}$$, where $$N$$ is the number of photons, $$t$$ is the thickness of the object, and $$\mu$$ is the linear attenuation coefficient - which represents the probability the xray-photon will be attenuated.
 
-The linear attenuation coefficient is afunction of all the interaction probabilities of all different interaction types.
+The linear attenuation coefficient is a function of all the interaction probabilities of all different interaction types. High attenuation shows up lighter, while low attenuation shows up darker.
+
+### Basic imaging equation
 
 $$ I_d(x,y) = \int_0^{\varepsilon_{max}}{\nu (\varepsilon) I_0(\varepsilon) exp(- \int{\mu(x,y,z;\varepsilon) dz}) d\varepsilon} $$
 
@@ -53,3 +55,11 @@ $$\nu (\varepsilon)$$ is the quatum efficency at energy $$\varepsilon$$
 $$I_0(\varepsilon)$$ is the incident X-ray spectrum
 
 $$- \int{\mu(x,y,z;\varepsilon) dz}$$ is the attenuation at location $$(x,y)$$ for energy level $$\varepsilon$$
+
+**Degeneracy** occurs when two different objeccts produce the same effective attenuation
+
+**Hounsfield unit** is a measure of attenuation based on distilled water
+
+Using **forward projection** at different angles gives us different profiles of the image, which we use to construct the image using **backprojection**.
+
+We can filter each attenuation profile to get back a cleaner image using fourier transforms.
