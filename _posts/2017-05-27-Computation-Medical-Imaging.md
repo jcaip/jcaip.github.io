@@ -130,4 +130,15 @@ Can either be applied in the frequency domain via a Foruier transform or in the 
 
 We can modify the pixels in the image either point-wise, locally, or globally.
 
+![outputsize](/images/medimg/outputsize.png)
 
+We can handle borders by either clipping, wrapping around, propogating the edge, or reflecting across an edge.
+
+#### Filtering by Convolution
+$$I'(x,y) = \sum_{i=-1}^{1}\sum_{j=-1}^{1}{I(x+i, y+j) \times filter(i,j)}$$
+
+Convolutional filters are commutative, associative, and distributive.
+
+![Types of low pass filters](/images/medimg/lowpass.png)
+
+By subtracting the low-pass filter from the source image, we get a high-pass filter.
