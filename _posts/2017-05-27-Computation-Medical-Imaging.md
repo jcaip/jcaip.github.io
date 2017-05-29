@@ -96,3 +96,28 @@ We can pick which slice of the patient we want to image by changing the RF reque
 There are many different types of MRI techniques, including FLIAR, GRE, and DWI.
 
 **Perfusion MRI** - A contrast agent is injected that shortens the relaxation times within body tissues.
+
+![cctc](/images/medimg/cctc.png)
+Where the concetration is given by $$C(t) = -\frac{k}{TE}ln(\frac{S(t)}{S_0})$$
+
+**CBF** - tissue supply of blood 
+
+**CBV** - volume of blood in tissue
+
+**MTT** - Mean transit time = CBF/CBV
+
+**Central volumen principle** - Volume = Flow x MTTAIF
+
+**Perfusion Angiogram** - use a DSA run to show time to peak for different tissues, can be used to measure bloodflow.
+
+## Linear Image Transformations
+[Computer Graphics Notes](/Computer-Graphics) have information about types of transformations and homogenous coordinates.
+
+#### Image Interpolation
+Direct interpolation lead to black spots, so instead we use indirect interpolation.
+
+![types of interpolation](/images/megimg/interpolation.png)
+
+For Bilinear interpolation $$I_{x,y} = \omega_4I_{u,v} + \omega_3I_{u+1,v} + \omega_2I_{u,v+1} + \omega_1I_{u+1,v+1} $$ 
+
+Cubic interpolation retains grey values but requires 10x more computation than NN and 2x more computation than bilinear interpolation.
