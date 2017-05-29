@@ -159,3 +159,46 @@ Filtering images via convolutions also lets us apply **deconvolutions** to image
 However, the convolution matrix is not square so to inverse it we use the **Moore-Penrose Pseudoinverse** $$(A^TA)^{-1}A^T$$
 
 ## Feature Detection
+We can use blob detection to find regions of interest. 
+
+Ideally, we want **scale invariance** so that the scale of key features do not matter.
+
+To do this, we can use edge detection using the Laplacian, or 2nd derivative. When the second derivative crosses 0, we know there is an edge. 
+
+However, the max response occurse when the zeros of the laplacian line up with the circle, $$\sigma = r/\sqrt{2} $$. If the scale is too large we may not detect images, while if it is too small we may have too much noise.
+
+To get around this, we can convolve the image with the Laplacian at several scales and take the max of the response to find blobs of all sizes.
+
+#### Affine Covariance
+Not all blobs are circular, must deal with affine transformations.
+
+To deal with rotation, we can instead take a histogram of pixel values.
+
+Alternatively, we can compute the average/max of the gradients for each portion of the image, and use this to align the images.
+
+![gradient_align](/images/medimg/gradient_align.png)
+
+#### SIFT
+SIFT is a histogram of the gradients of the image across small patches.
+
+![sift](/images/medimg/sift.png)
+
+
+#### Corners and Interest Points
+Humans naturally use corners and other points of interest to aligh ourselves. These points are usually represented by a large change in color, intensity, or texture.
+
+Can be used for image registration, stereo matching, or panorama stitching.
+
+Ideally, we should be able to use the gradient to detect corners.
+!![corner](/images/medimg/corner.png)
+
+**Harris Corner Detector** - $$A_W = \sum_{x \exists W, y \exists W}{w(x,y) \begin{bmatrix} f_x^2 & f_xf_y \\ f_xf_y & f_y^2 \end{bmatrix}}$$
+
+where $$w(x,y)$$ is some smoothing function.
+
+![harris](/images/medimg/harris.png)
+
+This detection is rotation invariant, but sensitive to changes in scale, viewpoint, and contrast.
+
+We need some way to find the **characteristic scale** of features. The best mthod to do so is the Laplacian of the Gaussian function, or 
+$$\left\vert{\sigma^2(L_{xx}(\x, \sigma) +L_{yy}(\x, \sigma ))}\right\vert$$
