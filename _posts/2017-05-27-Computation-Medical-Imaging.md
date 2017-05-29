@@ -121,3 +121,13 @@ Direct interpolation lead to black spots, so instead we use indirect interpolati
 For Bilinear interpolation $$I_{x,y} = \omega_4I_{u,v} + \omega_3I_{u+1,v} + \omega_2I_{u,v+1} + \omega_1I_{u+1,v+1} $$ 
 
 Cubic interpolation retains grey values but requires 10x more computation than NN and 2x more computation than bilinear interpolation.
+
+## Image Filtering
+
+There are two main types of filers - **high-pass** filters that detect change and **low-pass** filters that remove noise.
+
+Can either be applied in the frequency domain via a Foruier transform or in the spatial domain via a convolution.
+
+We can modify the pixels in the image either point-wise, locally, or globally.
+
+
