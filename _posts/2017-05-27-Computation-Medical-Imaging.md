@@ -116,7 +116,7 @@ Where the concetration is given by $$C(t) = -\frac{k}{TE}ln(\frac{S(t)}{S_0})$$
 #### Image Interpolation
 Direct interpolation lead to black spots, so instead we use indirect interpolation.
 
-![types of interpolation](/images/megimg/interpolation.png)
+![types of interpolation](/images/medimg/interpolation.png)
 
 For Bilinear interpolation $$I_{x,y} = \omega_4I_{u,v} + \omega_3I_{u+1,v} + \omega_2I_{u,v+1} + \omega_1I_{u+1,v+1} $$ 
 
