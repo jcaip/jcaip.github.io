@@ -142,3 +142,20 @@ Convolutional filters are commutative, associative, and distributive.
 ![Types of low pass filters](/images/medimg/lowpass.png)
 
 By subtracting the low-pass filter from the source image, we get a high-pass filter.
+
+
+#### Using Graidents and Laplacians
+To improve edge detection, we can take the derivative/2nd derivative of the signal via a convolution using the numerical approximation of the derivative.
+
+![filters](/images/medimg/gradfilters.png)
+
+Some filters are **seperable**, which means they can be expressed as the product of two vectors.
+Since convolutions are associative, this means we can run in $$O(M)$$ instead of $$O(M^2)$$
+
+We can sharpend images by applying a high pass filter and then adding this detail back into the image.
+
+Filtering images via convolutions also lets us apply **deconvolutions** to images, which allow us to extract original images. 
+
+However, the convolution matrix is not square so to inverse it we use the **Moore-Penrose Pseudoinverse** $$(A^TA)^{-1}A^T$$
+
+## Feature Detection
