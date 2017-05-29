@@ -276,6 +276,24 @@ BSPtree = BSPcombinetree(
 }
 ```
 
+Depth Sorting Algorithms
++ sort polygons by z
++ resolve ambiguities where z-extents overlap
++ scan-convert polygons in back-to-front order
+
+Ambiguities are resolved by exchanging the order of surfaces or by creating new polygons that split up ambiguities.
+
+Scanline Algorithms
+```c
+for each scanline (row) in image
+    for each pixel in scanline
+        determine closest object
+        calculate pixel color, draw pixel
+    end
+end 
+```
+Less memory intensive and can handle multiple polygons.
+
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
 

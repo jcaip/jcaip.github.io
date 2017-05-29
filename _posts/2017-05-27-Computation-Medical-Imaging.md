@@ -89,5 +89,10 @@ These relaxtions are different depending on the surrounding materials, which we 
 
 The gradient coils are used to encode spatial location by gradually shifting the magnetic field and therefore changing the Larmor frequency.
 
+We can pick which slice of the patient we want to image by changing the RF requency.
 
+**k-space** is the Fourier Transformation of the MRI image. The center of k-space is he basic image contrast, while the periphery of k-space contain edges and details of the image.
 
+There are many different types of MRI techniques, including FLIAR, GRE, and DWI.
+
+**Perfusion MRI** - A contrast agent is injected that shortens the relaxation times within body tissues.
