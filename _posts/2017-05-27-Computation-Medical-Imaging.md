@@ -217,6 +217,9 @@ There are different types of machine learning
 + **unsupervised learning**, where no labels are provided.
 + **semi-supervised learning**, where some labels are provided.
 
+
+**Discrimiative learning** - tries to learn a deciscion boundry by minimizing $$\textbf{w}$$ in $$R(\textbf{w}) + C\sum_{i=1}^N{L(y_i, \textbf{w}T\textbf{x}_i)}$$
+
 #### Cross-Validation
 ![kfold](/images/medimg/kfoldcv.png)
 
@@ -232,7 +235,7 @@ Macine learning can be used for feature detection, segmentation, denoising, supe
 It is possible to **overfit** the trainig set and lose to ability to generalize to the test set.
 ![overfitting](/images/medimg/overfitting.png)
 
-#### k-means
+#### K-means
 ![kmeans](/images/medimg/kmean.png)
 ```
 create k centroids randomly
@@ -243,5 +246,18 @@ run until convergence
     update centroid to be the mean of all associated data points
 ```
 
-#### k-nearest-neighbors
+#### K-nearest-neighbors
+The idea is to look at the k nearest neighbors to determine the label of the current datapoint.
 
+![knn](/images/medimg/knn.png)
+
+#### Linear Classifiers
+$$y = f(\sum_j{w_jx_j})$$ 
+
+However, some datat is not linearlly seperable. In this case, we can use the **kernel trick**, which is to project data into a higher dimensionality space where the data is linearly seperable.
+
+One common kernel to use is the **Radial Basis Function** kernel $$K(x_i, x_j) = exp(-\frac{\norm{x_i-x_j}^2}{2\sigma^2})$$.
+
+![kplc](/images/medimg/kplc.png)
+
+#### Support Vector Machine
