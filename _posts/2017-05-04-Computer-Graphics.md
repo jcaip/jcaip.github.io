@@ -298,6 +298,31 @@ Less memory intensive and can handle multiple polygons.
 There are blocked, wireframe, and shaded rendering styles.
 
 Light is usually emitted from light sources and reflects off of surfaces.
+Some light is absorved, some reflected, and some refractable
+
+Light is characterized as RGB triples, and we operate on each channel independently.
+
+There are two types of reflection: **Diffuse** and **Specular** reflection.
+
+#### Diffuse Reflection
+Models dull, matte surfaces like chalk.
+
+Calculatd via Lambert's Law.
+$$I =  I_L k_d cos\theta = I_L k_d(\textbf(n) \cdot \textbf{L})$$
+Where $$I_L$$ is the initial light source intensity and $$k_d$$ is the diffuse coefficient.
+
+#### Specular Reflection
+Models shiny surfaces, most surfaces are imperfect specular reflectors (a combination of diffuse and specular reflection).
+
+#### The Phong Model
+Purely empirical model.
+$$I =  I_L k_d cos\theta + I_L k_s {cos}^n \phi = I_L k_d(\textbf(n) \cdot \textbf{L}) + I_L k_s (\textbf{r} \cdot \textbf{v})^n$$
+
+Where $$n$$ is the "shininess factor", $$k_s$$ is the specular coefficient, and $$\phi$$ is the angle between viewing and reflection.
+
+$$\textbf{r} = 2\texbf{n}(\textbf{n}\cdot\textbf{L})- textbf{L}$$
+
+#### Blinn-Torrance Specular Model
 
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
@@ -308,7 +333,7 @@ The light that point $$P_A$$ emits comes from
 
 Diffuse objects only receive light from light sources
 
-#### Ray Tracing Algorithm
+#### Ray Tracing 
 It is easiest to trace rays backwards from eye to scene.
 ```
   For each pixel on screen:
@@ -319,7 +344,8 @@ It is easiest to trace rays backwards from eye to scene.
     return color
 ```
 
-1. Setting the camera and the image plane
+Setting the camera and the image plane:
+
 Use parametric form $$P(t)  = P_0 + \textbf{v}t$$
 
 World coordinate system: $$P(r, c) = eye - N\textbf{n} + u_c\textbf{u} + v_r\textbf{v}$$
@@ -331,6 +357,7 @@ $$Sphere(P) = \left\vert{P}\right\vert - 1 = 0$$
 $$\left\vert{\textbf{c}}\right\vert^2t^2 + 2(S \cdot \textbf{c}) + \left\vert{S}\right\vert^2 -1 = 0$$
 
 How to deal with transformed primitives?
+
 $$P = MP'$$
 
 $$F(P') = F(T^{-1}(P))$$
