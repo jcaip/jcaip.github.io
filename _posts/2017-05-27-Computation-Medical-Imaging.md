@@ -183,14 +183,13 @@ SIFT is a histogram of the gradients of the image across small patches.
 
 ![sift](/images/medimg/sift.png)
 
-
 #### Corners and Interest Points
 Humans naturally use corners and other points of interest to aligh ourselves. These points are usually represented by a large change in color, intensity, or texture.
 
 Can be used for image registration, stereo matching, or panorama stitching.
 
 Ideally, we should be able to use the gradient to detect corners.
-!![corner](/images/medimg/corner.png)
+![corner](/images/medimg/corner.png)
 
 **Harris Corner Detector** - $$A_W = \sum_{x \exists W, y \exists W}{w(x,y) \begin{bmatrix} f_x^2 & f_xf_y \\ f_xf_y & f_y^2 \end{bmatrix}}$$
 
@@ -201,4 +200,46 @@ where $$w(x,y)$$ is some smoothing function.
 This detection is rotation invariant, but sensitive to changes in scale, viewpoint, and contrast.
 
 We need some way to find the **characteristic scale** of features. The best mthod to do so is the Laplacian of the Gaussian function, or 
-$$\left\vert{\sigma^2(L_{xx}(\x, \sigma) +L_{yy}(\x, \sigma ))}\right\vert$$
+$$\left\vert{\sigma^2(L_{xx}(x, \sigma) +L_{yy}(x, \sigma ))}\right\vert$$
+
+## Machine Learning Applications
+
+**Machine learning** is the science of getting computers to learn to perform a task without being explicitly programmed.
+
+A Dataset can be represented by a matex $$X$$, where each column is a feature and each row is a sample. $$Y$$ is a vector of labels/outputs.
+
+Machine learning can either be used for Classification or Regression. 
+
+The goal of machine learning is to lear a function, $$F(X) = \^{y}$$ to minimize the error, $$\^{y}-y$$
+
+There are different types of machine learning
++ **supervised* learning**, where each example has a $$y$$ value
++ **unsupervised* learning**, where no labels are provided.
++ **semi-supervised* learning**, where some labels are provided.
+
+#### Cross-Validation
+![kfold](/images/medimg/kfoldcv.png)
+
+#### Bag of Words Classification
+The idea is that each object can be represented by a bag of features, so we don't care about the relative order of the features but rather the exsistance and number of features.
+
+
+Macine learning can be used for feature detection, segmentation, denoising, super-resolution, labeling/captioning, prediction and registration.
+
+## Machine Learning
+
+#### Overfitting
+It is possible to **overfit** the trainig set and lose to ability to generalize to the test set.
+![overfitting](/images/medimg/overfitting.png)
+
+#### k-means
+![kmeans](/images/medimg/kmean.png)
+```
+create k centroids randomly
+
+run until convergence
+    for each data sample
+        assign it to the nearest centroid
+    update centroid to be the mean of all associated data points
+```
+
