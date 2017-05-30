@@ -213,9 +213,9 @@ Machine learning can either be used for Classification or Regression.
 The goal of machine learning is to learn a function, $$F(X) = \hat{y}$$ to minimize the error, $$\hat{y}-y$$
 
 There are different types of machine learning
-+ **supervised* learning**, where each example has a $$y$$ value
-+ **unsupervised* learning**, where no labels are provided.
-+ **semi-supervised* learning**, where some labels are provided.
++ **supervised learning**, where each example has a $$y$$ value
++ **unsupervised learning**, where no labels are provided.
++ **semi-supervised learning**, where some labels are provided.
 
 #### Cross-Validation
 ![kfold](/images/medimg/kfoldcv.png)
@@ -242,4 +242,6 @@ run until convergence
         assign it to the nearest centroid
     update centroid to be the mean of all associated data points
 ```
+
+#### k-nearest-neighbors
 
