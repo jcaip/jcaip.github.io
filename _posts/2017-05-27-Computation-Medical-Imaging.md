@@ -210,7 +210,7 @@ A Dataset can be represented by a matex $$X$$, where each column is a feature an
 
 Machine learning can either be used for Classification or Regression. 
 
-The goal of machine learning is to lear a function, $$F(X) = \^{y}$$ to minimize the error, $$\^{y}-y$$
+The goal of machine learning is to learn a function, $$F(X) = \hat{y}$$ to minimize the error, $$\hat{y}-y$$
 
 There are different types of machine learning
 + **supervised* learning**, where each example has a $$y$$ value
