@@ -235,7 +235,7 @@ Culling in the VCS
 
 **Object-space Algorithms** - BSP, variations on the Painter's Algorithm. $$O(n^2)$$ time
 
-Z-Buffer Algorithm
+#### Z-Buffer Algorithm
 we generate z values along a scan line from either the plane equation or bilinear interpolation
 
 ```c
@@ -260,7 +260,7 @@ One drawback with Z-buffer is that there is only one visible surface per pixel, 
 
 We can use A-buffer instead, which contains assigns the average value of a linked-list of surfaces .
 
-Binary Space Partition Trees
+#### Binary Space Partition Trees
 ```c
 BSPtree *BSPmaketree(polygon_list) {
     choose a polygon as the tree root
@@ -276,14 +276,14 @@ BSPtree = BSPcombinetree(
 }
 ```
 
-Depth Sorting Algorithms
+#### Depth Sorting Algorithms
 + sort polygons by z
 + resolve ambiguities where z-extents overlap
 + scan-convert polygons in back-to-front order
 
 Ambiguities are resolved by exchanging the order of surfaces or by creating new polygons that split up ambiguities.
 
-Scanline Algorithms
+#### Scanline Algorithms
 ```c
 for each scanline (row) in image
     for each pixel in scanline
@@ -307,8 +307,8 @@ There are two types of reflection: **Diffuse** and **Specular** reflection.
 #### Diffuse Reflection
 Models dull, matte surfaces like chalk.
 
-Calculatd via Lambert's Law.
-$$I =  I_L k_d cos\theta = I_L k_d(\textbf(n) \cdot \textbf{L})$$
+Calculated via **Lambert's Law**.
+$$I =  I_L k_d cos\theta = I_L k_d(\textbf{n} \cdot \textbf{L})$$
 Where $$I_L$$ is the initial light source intensity and $$k_d$$ is the diffuse coefficient.
 
 #### Specular Reflection
@@ -316,11 +316,11 @@ Models shiny surfaces, most surfaces are imperfect specular reflectors (a combin
 
 #### The Phong Model
 Purely empirical model.
-$$I =  I_L k_d cos\theta + I_L k_s {cos}^n \phi = I_L k_d(\textbf(n) \cdot \textbf{L}) + I_L k_s (\textbf{r} \cdot \textbf{v})^n$$
+$$I =  I_L k_d cos\theta + I_L k_s {cos}^n \phi = I_L k_d(\textbf{n} \cdot \textbf{L}) + I_L k_s (\textbf{r} \cdot \textbf{v})^n$$
 
 Where $$n$$ is the "shininess factor", $$k_s$$ is the specular coefficient, and $$\phi$$ is the angle between viewing and reflection.
 
-$$\textbf{r} = 2\texbf{n}(\textbf{n}\cdot\textbf{L})- textbf{L}$$
+$$\textbf{r} = 2\textbf{n}(\textbf{n}\cdot\textbf{L})- textbf{L}$$
 
 #### Blinn-Torrance Specular Model
 
