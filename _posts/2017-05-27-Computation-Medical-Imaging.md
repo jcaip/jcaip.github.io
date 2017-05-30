@@ -263,7 +263,7 @@ One common kernel to use is the **Radial Basis Function** kernel $$K(x_i, x_j) =
 #### Support Vector Machines
 Finds the max-margin hyperplane between two different classes. We use hinge loss for data that is not linearly seperable
 
-**Hinge-loss** - $$\frac{1}{n}\sum_{i=1}^{n}{max(0, 1 - y_i(w\dot x_i - b))} + \lambda{\|w\|}^2$$
+**Hinge-loss** - $$\frac{1}{n}\sum_{i=1}^{n}{max(0, 1 - y_i(w\cdot x_i - b))} + \lambda{\|w\|}^2$$
 
 ![svm](/images/medimg/svm.png)
 

@@ -56,7 +56,7 @@ $$ P = O + v_1 \textbf{a} + v_2 \textbf{b} + v_3 \textbf{c} =
 \begin{bmatrix} P_1 \\ P_2 \\ P_3 \\ 1 \end{bmatrix} $$
 
 ## Affine Transformations
-The homogenous representation also makes it easy to represent affine transformations as matrix multiplication $$Q = \textbf{M}P.
+The homogenous representation also makes it easy to represent affine transformations as matrix multiplication $$Q = \textbf{M}P$$.
 There are four basic affine transformations, and every other affine transformation is a combination of these four transformations.
 
 #### Translation
@@ -293,6 +293,11 @@ for each scanline (row) in image
 end 
 ```
 Less memory intensive and can handle multiple polygons.
+
+## Shading
+There are blocked, wireframe, and shaded rendering styles.
+
+Light is usually emitted from light sources and reflects off of surfaces.
 
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
