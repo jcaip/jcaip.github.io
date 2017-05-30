@@ -256,8 +256,8 @@ $$y = f(\sum_j{w_jx_j})$$
 
 However, some datat is not linearlly seperable. In this case, we can use the **kernel trick**, which is to project data into a higher dimensionality space where the data is linearly seperable.
 
-One common kernel to use is the **Radial Basis Function** kernel $$K(x_i, x_j) = exp(-\frac{\norm{x_i-x_j}^2}{2\sigma^2})$$.
+One common kernel to use is the **Radial Basis Function** kernel $$K(x_i, x_j) = exp(-\frac{\| x_i-x_j \|^2}{2\sigma^2})$$.
 
 ![kplc](/images/medimg/kplc.png)
 
-#### Support Vector Machine
+#### Support Vector Machines
