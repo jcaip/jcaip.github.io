@@ -261,3 +261,21 @@ One common kernel to use is the **Radial Basis Function** kernel $$K(x_i, x_j) =
 ![kplc](/images/medimg/kplc.png)
 
 #### Support Vector Machines
+Finds the max-margin hyperplane between two different classes. We use hinge loss for data that is not linearly seperable
+
+**Hinge-loss** - $$\frac{1}{n}\sum_{i=1}^{n}{max(0, 1 - y_i(w\dot x_i - b))} + \lambda{\|w\|}^2$$
+
+![svm](/images/medimg/svm.png)
+
+#### Decision Trees 
+![dtree](/images/medimg/dtree.png)
+
+#### Extremely Randomized Trees
+![dtreeensemble](/images/medimg/dtreeensemble.png)
+
+Take either the majority vote or prediction average
+
+#### AdaBoost
+Train many weak classifiers and combine them to get a final classifier - $$H(x) = sign(\alpha_1h_1(x) + \alpha_2h_2(x) + \alpha_3h_3(x))$$
+
+![adaboost](/images/medimg/adaboost.png)
