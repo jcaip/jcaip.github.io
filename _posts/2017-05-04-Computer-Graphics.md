@@ -323,6 +323,41 @@ Where $$n$$ is the "shininess factor", $$k_s$$ is the specular coefficient, and 
 $$\textbf{r} = 2\textbf{n}(\textbf{n}\cdot\textbf{L})- textbf{L}$$
 
 #### Blinn-Torrance Specular Model
+This agress better with experimental results.
+
+$$I_S = I_Lk_s(H \cdot V)^n$$ where $$H$$ is the halfway vector, or $$\frac{L+V}{\|L+V\|}$$
+
+However, areas that are not directly illuminated appear black, which is not natrual. 
+
+We can add a **ambient glow** term to our equation 
+$$I =  I_L k_d cos\theta + I_L k_s {cos}^n \phi + I_ak_a$$ where $$I_a$$ is the ambient light intensity and $$k_a$$, which is a reflectance coefficient.
+
+![lighting](/images/cg/lighting.png)
+
+#### Types of Shading
+Illumination equations are evaluated at surface locations, so we can evaluate at once at each polygon, which is called **flat shading**.
+
+We can also evaluage it at every vertex and interpolate over the polygon, which is **Gouraud Shading**.
+
+**Phong shading** takes this one step further by interpolating normals over each polygon and evaluating the illumination at each pixel.
+
+We can deal with perspective distortion by using byperbolic interpertation. Furthermore, if we don't have smooth normals, colors may change if the polygon order changes.
+
+This model also fails to account local phenomena, like shadows, attenuation, and transparent objects. Furthermore, global illumination is just approximated but not represented in our code.
+
+#### Global Illumination
+To approximate global illumination, we can use **Radiosity**. 
+
+First we break the scene down into small patches, and assume unifrom reflection and emission per patch.
+Since *Light Leaving = Emitted Light + Reflected Light*
+
+$$B_iA_i = E_iA_i + R_i \sum_j{B_jF_{j,i}A_j}$$ where $$B_i$$ is the flux density.
+
+We can then compute form factors $$F_{i,j} for 1 \leq i, j \leq n$$ and then solve a system of linear equations.
+
+![radiosity_equation](/images/cg/radiosity.png)
+
+![radiosity](/images/cg/radiosity_ex.png)
 
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
@@ -331,7 +366,7 @@ The light that point $$P_A$$ emits comes from
 + reflection from other objects
 + refraction from other objects
 
-Diffuse objects only receive light from light sources
+Diffuse objects only receive light from light sources.
 
 #### Ray Tracing 
 It is easiest to trace rays backwards from eye to scene.
