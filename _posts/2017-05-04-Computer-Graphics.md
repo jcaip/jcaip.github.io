@@ -320,7 +320,7 @@ $$I =  I_L k_d cos\theta + I_L k_s {cos}^n \phi = I_L k_d(\textbf{n} \cdot \text
 
 Where $$n$$ is the "shininess factor", $$k_s$$ is the specular coefficient, and $$\phi$$ is the angle between viewing and reflection.
 
-$$\textbf{r} = 2\textbf{n}(\textbf{n}\cdot\textbf{L})- textbf{L}$$
+$$\textbf{r} = 2\textbf{n}(\textbf{n}\cdot\textbf{L})- \textbf{L}$$
 
 #### Blinn-Torrance Specular Model
 This agress better with experimental results.
@@ -369,15 +369,20 @@ The light that point $$P_A$$ emits comes from
 Diffuse objects only receive light from light sources.
 
 #### Ray Tracing 
-It is easiest to trace rays backwards from eye to scene.
+Best for specular and transparent objects. 
+
+It is easiest to trace rays backwards from eye to scene (eye-based), but it is possible to trace from source to eye (light-based).
 ```
   For each pixel on screen:
   	determine ray from eye through pixel
   	find closest intersection of ray with an object
   	cast shadow rays to light sources
   	recursively cast reflected and refracted ray
-    return color
+        calculate pixel color
+        paint pixel
 ```
+
+![rt](/images/cg/rt.png)
 
 Setting the camera and the image plane:
 
