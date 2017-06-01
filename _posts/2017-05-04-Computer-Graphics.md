@@ -381,7 +381,6 @@ It is easiest to trace rays backwards from eye to scene (eye-based), but it is p
         paint pixel
 ```
 
-
 #### Setting the camera and the image plane
 A pixel in the near plane $$P(r,c) = (u_c, v_r)$$ where
 $$u_c = -W + W \frac{2c}{N_c-1}$$ and $$v_r = -H + H\frac{2c}{N_r-1}$$
@@ -396,19 +395,39 @@ hence $$P(r,c) = eye + t(-N\textbf{n} +u_c\textbf{u}+v_r\textbf{v})$$
 
 #### Finding Ray-Object Intersections
 $$ray(t) = S + t\textbf{c}$$
+
 $$Sphere(P) = \left\vert{P}\right\vert - 1 = 0$$
 
 $$Sphere(ray(t)) = 0$$
 
 $$\left\vert{\textbf{c}}\right\vert^2t^2 + 2(S \cdot t\textbf{c}) + \left\vert{S}\right\vert^2 -1 = 0$$
 
-We can solve this for the two solutions (if two exsits) and take the one with the smaller $$t$$ value to get the first intersection.
+We can solve this for the two solutions (if two exist) and take the one with the smaller $$t$$ value to get the first intersection.
 
 #### Transformed Primitives
 
-$$P = MP'$$
+$$P = MP' \implies P' = M^{-1} P$$
 
 $$F(P') = F(T^{-1}(P))$$
 
-##### Shadow Rays
-For each light source,intersect shadow ray with all objects. If no intersection is found, apply local illumination. If in shadow, no contribution from that light ray.
+Intersect the inverse-transformed ray with the untransformed primitive.
+
+#### Shadow Rays
+Intersect each shadow ray with all objects, apply illumination if not intersection.
+
+![shdow_ray](/images/cg/refractedray.png)
+
+#### Reflected Rays
+$$Ray_{reflected} = P + t\textbf{v}$$ where $$\textbf{v} = -2(\textbf{n} \cdot \testbf{c})\textbf{n} + \textbf{c}$$
+
+![reflected](/images/cg/reflectedray.png)
+
+#### Refracted Rays
+Calculate this using Snell's Law.
+
+![refracted](/images/cg/refractedray.png)
+
+Can be improved upon with participating media, translucency, sub-surface scattering, aperture effects, depth of field, or photon mapping.
+
+## Sampling and Reconstruction
+
