@@ -366,10 +366,9 @@ The light that point $$P_A$$ emits comes from
 + reflection from other objects
 + refraction from other objects
 
-Diffuse objects only receive light from light sources.
+![rt](/images/cg/rt.png)
 
-#### Ray Tracing 
-Best for specular and transparent objects. 
+Diffuse objects only receive light from light sources. Ray tracking works best for specular and transparent objects. 
 
 It is easiest to trace rays backwards from eye to scene (eye-based), but it is possible to trace from source to eye (light-based).
 ```
@@ -382,21 +381,30 @@ It is easiest to trace rays backwards from eye to scene (eye-based), but it is p
         paint pixel
 ```
 
-![rt](/images/cg/rt.png)
 
-Setting the camera and the image plane:
+#### Setting the camera and the image plane
+A pixel in the near plane $$P(r,c) = (u_c, v_r)$$ where
+$$u_c = -W + W \frac{2c}{N_c-1}$$ and $$v_r = -H + H\frac{2c}{N_r-1}$$
 
-Use parametric form $$P(t)  = P_0 + \textbf{v}t$$
+To find the ray through a pixel, use the parametric form of a line.
+$$ray(r,c,t) = eye + t(P(r,c) - eye)$$
 
-World coordinate system: $$P(r, c) = eye - N\textbf{n} + u_c\textbf{u} + v_r\textbf{v}$$
+We know that in the world coordinate system: 
+$$P(r, c) = eye - N\textbf{n} + u_c\textbf{u} + v_r\textbf{v}$$
 
+hence $$P(r,c) = eye + t(-N\textbf{n} +u_c\textbf{u}+v_r\textbf{v})$$
+
+#### Finding Ray-Object Intersections
 $$ray(t) = S + t\textbf{c}$$
-
 $$Sphere(P) = \left\vert{P}\right\vert - 1 = 0$$
 
-$$\left\vert{\textbf{c}}\right\vert^2t^2 + 2(S \cdot \textbf{c}) + \left\vert{S}\right\vert^2 -1 = 0$$
+$$Sphere(ray(t)) = 0$$
 
-How to deal with transformed primitives?
+$$\left\vert{\textbf{c}}\right\vert^2t^2 + 2(S \cdot t\textbf{c}) + \left\vert{S}\right\vert^2 -1 = 0$$
+
+We can solve this for the two solutions (if two exsits) and take the one with the smaller $$t$$ value to get the first intersection.
+
+#### Transformed Primitives
 
 $$P = MP'$$
 
