@@ -483,7 +483,7 @@ Aren't able to produce all wavelengths of light, so we try to match the distriut
 
 However, we cannot create all of the color scope with RGB. We are limited to the RGB **Color gamut**.
 
-![gamut](/images/cg/gamut.png)
+![gamut](/images/cg/color_gamut.png)
 
 #### Additive and Subtractive Color
 ![rgbcmy](/images/cg/rgbcmy.png)
