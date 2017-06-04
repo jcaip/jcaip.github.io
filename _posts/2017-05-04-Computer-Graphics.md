@@ -479,7 +479,7 @@ If we intersect this cube with the $$r+g+b=1$$ plane, we get the saturated color
 #### Color Matching
 Aren't able to produce all wavelengths of light, so we try to match the distriution as best as possible. However we cannot keep negative coefficients, so we restrict this to an affine combination of (r,g,b)
 
-![chromacity](/images/cg/cie.png)
+![chromacity](/images/cg/CIE.png)
 
 However, we cannot create all of the color scope with RGB. We are limited to the RGB **Color gamut**.
 
