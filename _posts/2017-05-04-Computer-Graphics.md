@@ -418,7 +418,7 @@ Intersect each shadow ray with all objects, apply illumination if not intersecti
 ![shdow_ray](/images/cg/refractedray.png)
 
 #### Reflected Rays
-$$Ray_{reflected} = P + t\textbf{v}$$ where $$\textbf{v} = -2(\textbf{n} \cdot \testbf{c})\textbf{n} + \textbf{c}$$
+$$Ray_{reflected} = P + t\textbf{v}$$ where $$\textbf{v} = -2(\textbf{n} \cdot \textbf{c})\textbf{n} + \textbf{c}$$
 
 ![reflected](/images/cg/reflectedray.png)
 
@@ -473,6 +473,7 @@ We see color via cones in our eye. There are three types of cones (SML) that cor
 Represent colors a vector of three weights, $$w_r, w_b, w_g$$ that are all from 0 to 1.
 
 ![rgb](/images/cg/rgb_cube.png)
+![hsv](/images/cg/HSV.png)
 
 If we intersect this cube with the $$r+g+b=1$$ plane, we get the saturated color curve.
 
@@ -499,12 +500,43 @@ $$\begin{bmatrix}R' \\ G'\\B'\end{bmatrix} =
 
  $$C_2 = M_2^{-1}M_1C_1$$
 
-#### HSV Color Model
-Hue, Saturation, and Value
-
-![hsv](/images/cg/HSV.png)
-
 ## Geometric Modeling
 
+#### Supercircle
+**Implicit form**: $$\frac{x}{a}^n + \frac {y}[b]^n = 1$$
+**Parametric form**: $$x(t) = a cos(t)\left\vert{cos(t)^{frac{2}{n-1}}}\right\vert$$
+$$y(t) = a sin(t)\left\vert{sin(t)^{frac{2}{n-1}}}\right\vert$$
 
+![supercircle](/images/cg/supercircle.png)
+
+#### Drawing Parametric Curves
+We can compute some points $$p_i = p(t_i) = (x(t_i), y(t_i))$$ and then draw a line between each line to approximate the curve.
+
+We use parametric polynomials and constrain them to create desired curves by splining togethere piecewise parametric curves.
+
+#### Bezier Curves
+Use the **De Casteljau** Algorithm to generate curves.
+
+![bezier](/images/cg/bezier.png)
+
+$$A(t) = (1-t)P_0 + tP_1$$
+$$B(t) = (1-t)P_1 + tP_2$$
+$$P(t) = (1-t)A(t) + tB(t)$$
+
+These curves are invariant under affine transformations, and also uphold the Convex Hull property and the Variation dimininishing property - which states that no straight line cuts the curve more than it cuts the control polygon.
+
+#### Cubic Bernstein Polynomials.
+Cubic version of general Bernstein polynomials, which is an expansion of $$[(1-t) + t]^L$$ where $$L$$ is the degree of the polynomial.
+
+These polynomials are always positive and are zero onlyt at $$t=0,1$$.
+
+$$P(t) = (1-t)^3P_0 + 3(1-t)^2P_1+ 3(1-t)(t)^2P_2+ t^3P_3$$
+
+This is an **affine combination of points**.
+
+Cubic curves give us a good mixture of flexibility and computational simplicity. We can create more complex curves by stiching these curves together piecewise.
+
+![piecewise](/images/cg/piecewise.png)
+
+#### Continuity of Curves Continuity of Curves
 
