@@ -279,3 +279,13 @@ Take either the majority vote or prediction average
 Train many weak classifiers and combine them to get a final classifier - $$H(x) = sign(\alpha_1h_1(x) + \alpha_2h_2(x) + \alpha_3h_3(x))$$
 
 ![adaboost](/images/medimg/adaboost.png)
+
+#### Spectral Methods
+
+![l_spec](/images/medimg/laplacian_spectral.png)
+
+![spectral](/images/medimg/spectral.png)
+
+$$aff(x,y) = e^{\frac {-\|x-y\|^2_2}{\sigma^2}$$
+
+#### RANSAC

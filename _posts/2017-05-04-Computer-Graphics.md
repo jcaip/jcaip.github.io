@@ -431,3 +431,80 @@ Can be improved upon with participating media, translucency, sub-surface scatter
 
 ## Sampling and Reconstruction
 
+#### Aliasing in Graphics
+One way to handle aliasing is to blur the image. 
+Either prefiltering (before sampling) or postfiltering (after sampling)
+
+**Prefiltering** - use average intensity of square pixel area.
+
+**Bresenham's Algorithm** helps improve pixel coverage.
+
+#### Filtering
+Filter the step function using a convolutional kernel $$g$$.
+
+$$F(x) = \int_{-s}^s{f(x+u)g(u)du}$$
+
+We can use a **box filter**, but the problem is that area coverage is independent of position.
+
+Instead, we can use a **Barlett Window**.
+
+#### Supersampling
+Take a lot of samples, and then combine them
+
+We can do this **stochastically** 
+![stochastic](/images/cg/stochastic.png)
+
+We can also weight each sample to give them relative importance.
+![importance](/images/cg/importance.png)
+
+## Color
+We see color via cones in our eye. There are three types of cones (SML) that correspond to RGB respectively.
+
+![color](/images/cg/color.png)
+
+**hue** is determined by the dominant wavelength.
+
+**luminance** determined by total power of the light.
+
+**saturation** is the percentage of luminance in the dominant wavelength.
+
+#### RGB color model.
+
+Represent colors a vector of three weights, $$w_r, w_b, w_g$$ that are all from 0 to 1.
+
+![rgb](/images/cg/rgb_cube.png)
+
+If we intersect this cube with the $$r+g+b=1$$ plane, we get the saturated color curve.
+
+#### Color Matching
+Aren't able to produce all wavelengths of light, so we try to match the distriution as best as possible. However we cannot keep negative coefficients, so we restrict this to an affine combination of (r,g,b)
+
+![chromacity](/images/cg/cie.png)
+
+However, we cannot create all of the color scope with RGB. We are limited to the RGB **Color gamut**.
+
+![gamut](/images/cg/gamut.png)
+
+#### Additive and Subtractive Color
+![rgbcmy](/images/cg/rgbcmy.png)
+
+CRTs and other computer displays are an additive model, while printer ink (CMY) is a subtractive model.
+
+#### Color conversion
+We can use the CIE conversion to convert colors between two screens.
+
+$$\begin{bmatrix}R' \\ G'\\B'\end{bmatrix} = 
+\begin{bmatrix} X_R & X_G & X_B \\ Y_R & Y_G & Y_B \\ Z_R & Z_G & Z_B \end{bmatrix}
+\begin{bmatrix} R \\ G \\ B \end{bmatrix}$$ 
+
+ $$C_2 = M_2^{-1}M_1C_1$$
+
+#### HSV Color Model
+Hue, Saturation, and Value
+
+![hsv](/images/cg/HSV.png)
+
+## Geometric Modeling
+
+
+
