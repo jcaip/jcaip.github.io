@@ -525,6 +525,13 @@ $$P(t) = (1-t)A(t) + tB(t)$$
 
 These curves are invariant under affine transformations, and also uphold the Convex Hull property and the Variation dimininishing property - which states that no straight line cuts the curve more than it cuts the control polygon.
 
+In 3D, Bezier curves can be written as follows:
+
+$$\textbf{p}(u) = \textbf{GMu} =
+\begin{bmatrix}p_0 & p_3 & r_0 & r_3 \end{bmatrix}
+\begin{bmatix}1 & -3 & 3 & -1 \\0 & 3 & -6 & 3 \\ 0 &0 & 3& -3\\0 & 0& 0&1\end{bmatrix}
+\begin{bmatrix}u_0 \\ u_1 \\u_2 \\u_3 \end{bmatrix} $$
+
 #### Cubic Bernstein Polynomials.
 Cubic version of general Bernstein polynomials, which is an expansion of $$[(1-t) + t]^L$$ where $$L$$ is the degree of the polynomial.
 
@@ -538,5 +545,43 @@ Cubic curves give us a good mixture of flexibility and computational simplicity.
 
 ![piecewise](/images/cg/piecewise.png)
 
-#### Continuity of Curves Continuity of Curves
+#### Continuity of Curves
+**Parametric continuity** - $$C^k$$ means that each piecewise function is differentiable $$k$$ times. 
 
+**Geometric continutity** - $$G^k$$ means that the curve itself is differentiable $$k$$ times - that means that two segments meet at the same point/have same tangent depending on $$k$$.
+
+In 3D, we can write a curve as follows
+
+$$\textbf{p}(u) = \bmatrix{begin}x(u) \\ y(u)\\z(u)\end{bmatrix} = 
+\sum_{i=0}^{3}{\bmatirx{begin} a_i\\ b_i \\c_i \end{bmatrix} u_i} = \textbf{Au}$$
+
+#### Hermite Curves
+Specify endpoints and tangent vectors and endpoints. Easy to paste together and gaurentees $$G^1$$ continuity.
+
+$$\textbf{p}(u) = \textbf{GMu} =
+\begin{bmatrix}p_0 & p_3 & r_0 & r_3 \end{bmatrix}
+\begin{bmatix}1 & 0 & -3 & 2 \\0 & 0 & 3 & -2 \\ 0 &1 & -2& 1\\0 & 0& -1&1\end{bmatrix}
+\begin{bmatrix}u_0 \\ u_1 \\u_2 \\u_3 \end{bmatrix} $$
+
+We can convert Bexier curves to Hermite curves by making sure the tangents are the same, that is
+
+$$\textbf{p'}(0) = 3(\textbf{p_1} - \textbf{p_0})$$
+
+$$\textbf{p'}(1) = 3(\textbf{p_3} - \textbf{p_2})$$
+
+#### Advanced Splines
+**Catmull-Rom Splines** interpolate the points and proved $$C^1$$ continuity.
+
+Usually used with some tension parameter $$s$$.
+![crspline](/images/cg/crspline.png)
+
+**B-Splines** curves no longer interpolate control points. Is $$C^2$$ continuous with no invariance under prespective projection.
+
+**Nonuniform Raional B-Splines** can be used to provide invariance under perspective projection and can create exact conic sections.
+
+Ideally, blending functions
++ have sufficient smoothness
++ eacy to compute and stable
++ should sum to unity over [a,b]
++ should have support over a portion of [a,b]
++ should be able to interpolate certain control points
