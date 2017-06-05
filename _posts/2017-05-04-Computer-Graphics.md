@@ -552,7 +552,7 @@ Cubic curves give us a good mixture of flexibility and computational simplicity.
 
 In 3D, we can write a curve as follows
 
-$$\textbf{p}(u) = \begin{bmarix}x(u) \\ y(u)\\z(u)\end{bmatrix} = 
+$$\textbf{p}(u) = \begin{bmatrix}x(u) \\ y(u)\\z(u)\end{bmatrix} = 
 \sum_{i=0}^{3}{\begin{bmatrix} a_i\\ b_i \\c_i \end{bmatrix} u_i} = \textbf{Au}$$
 
 #### Hermite Curves
@@ -585,3 +585,93 @@ Ideally, blending functions
 + should sum to unity over [a,b]
 + should have support over a portion of [a,b]
 + should be able to interpolate certain control points
+
+## Modeling Surfaces
+
+Surfaces are usually modeled parametrically
+$$\textbf{p}(u,v) =
+\begin{bmatrix} x(u,v)\\y(u,v)\\z(u,v)\end{bmatrix} $$
+
+We can compute two tangent vectors, $$\textbf{p_u} \textbf{p_v}$$ and then take the cross product to get the normal vector.
+
+$$n(u,v) = \frac{\textbf{p_u} \times \textbf{p_v}}{\|\textbf{p_u} \times \textbf{p_v}\|}$$
+
+#### Height Fields
+$$z = f(x,y)$$
+
+Some examples include the Gaussian function and the Sinc function
+
+#### Ruled Surfaces
+Convex combination of two curves. There is some line that entirely on the surface that passes through every point.
+
+$$P(v) = (1-v)P_0 + v(P_1)$$
+
+**Generalized Cone** - $$P(u,v) = (1-v)P_0 + vP_1(u)$$, where $$P_0(u) = P_0$$.
+
+**Generalized Cylinder** - $$P(u,v) = (1-v)P_0 + v(P_0+d) = P_0(u) + vd$$ where $$P_1 = P_0 + d$$.
+
+**Bilinear Path** - $$(1-v)(1-u)P_{00} + (1-v)uP_{01} + v(1-u)P_{10} + vuP_{11}$$ where $$P_1, P_0$$ are both lines.
+
+#### Surfaces of Revolution
+Sweep a profile curve around an axis.
+
+$$C(v) = \begin{bmatrix}x(v)& z(v)\end{bmatrix}$$
+
+$$P(u,v) = \begin{bmatrix}x(v)cos(u) & x(v)sin(u) & z(v)\end{bmatrix}$$ 
+
+#### Tensor Product Patches
+Generalized form of our spline patches.
+
+**Spline Curve** $$\textbf{p}(u) = \sum_{i=0}^{n}{\textbf{p_i}B_i^n(u)}$$
+
+**Spline Patch** $$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p_{ij}}B_{ij}^{mn}(u, v)}$$
+
+We can write each basis function as a function of two 1-D basis functions, so
+
+$$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p_{ij}}B_{i}^{m}(u)B_j^n(v)}$$
+
+Again, we can use the **de Casteljau Algorithm** to generate **Bezier Patches**.
+![beziertensor](/images/cg/beziertensor.png)
+
+These surfaces are affine invariant, and uphold the convex hull, planer percision, and variation diminishining limitations seen before.
+
+We can also stich cubic Bezier surfaces together piecewise to get a more complicated surface.
+
+Similarily, we also have **Hermite Surfaces** but these now take in the position, tangent and twist of the endpoints.
+
+#### Modeling Objects with Patches
+Ideally, we want to paste together multiple patches to cover an entire object. 
+
+To do this, we should transform complicated surfaces into simple primitives - triangles, quadrilaterals, etc.
+
+We can vary the paramter $$u$$ from 0 to 1 and connect corresponding points by plugging them into a position function. However, this does not gaurentee uniform spacing in the position space.
+Furthermore, control over the length is very important to tune.
+
+#### Modeling via Subdivision.
+```
+Start with control polynomial
+Recursively subdivide until smooth
+Draw individual line segments
+```
+
+![subdivision](/images/cg/subdivision.png)
+
+
+We need two fundamental operations:
+**linear subdivision** - introducing new vertices by splitting each edge at its midpoint.
+
+**linear smoothing** - modify positions of vertices by smoothing via a weighted average of neighbors.
+$$v_i = \begin{bmatrix}v_{i-1} & v_i & v_{i+1}\end{bmatrix}
+\begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \ alpha_3 \end{bmatrix}$$
+
+The final shape of the curve is determined by the weights of the matrix.
+
+We can see that this is a linear operation, as each point is a linear combination of the points before. $$P_k = P_{k-1}S_{k-1}$$
+
+To apply this to surfaces, we can split face into four quadrilaterals and then compute the barycenter around each vertex.
+
+![subdivision_s](/images/cg/subdivision_s.png)
+
+**extraordinary points** exists when points have more than 4 edges/faces connected to them.
+
+All in all, subdivision lets us represent surfaces well, and are easy to scale to the ideal resolution.
