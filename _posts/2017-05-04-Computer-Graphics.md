@@ -622,13 +622,13 @@ $$P(u,v) = \begin{bmatrix}x(v)cos(u) & x(v)sin(u) & z(v)\end{bmatrix}$$
 #### Tensor Product Patches
 Generalized form of our spline patches.
 
-**Spline Curve** $$\textbf{p}(u) = \sum_{i=0}^{n}{\textbf{p_i}B_i^n(u)}$$
+**Spline Curve** - $$\textbf{p}(u) = \sum_{i=0}^{n}{\textbf{p}_iB_i^n(u)}$$
 
-**Spline Patch** $$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p_{ij}}B_{ij}^{mn}(u, v)}$$
+**Spline Patch** - $$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p}_{ij}B_{ij}^{mn}(u, v)}$$
 
 We can write each basis function as a function of two 1-D basis functions, so
 
-$$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p_{ij}}B_{i}^{m}(u)B_j^n(v)}$$
+$$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p}_{ij}B_{i}^{m}(u)B_j^n(v)}$$
 
 Again, we can use the **de Casteljau Algorithm** to generate **Bezier Patches**.
 ![beziertensor](/images/cg/beziertensor.png)
@@ -662,7 +662,7 @@ We need two fundamental operations:
 
 **linear smoothing** - modify positions of vertices by smoothing via a weighted average of neighbors.
 $$v_i = \begin{bmatrix}v_{i-1} & v_i & v_{i+1}\end{bmatrix}
-\begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \ alpha_3 \end{bmatrix}$$
+\begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}$$
 
 The final shape of the curve is determined by the weights of the matrix.
 
