@@ -529,7 +529,7 @@ In 3D, Bezier curves can be written as follows:
 
 $$\textbf{p}(u) = \textbf{GMu} =
 \begin{bmatrix}p_0 & p_3 & r_0 & r_3 \end{bmatrix}
-\begin{bmatix}1 & -3 & 3 & -1 \\0 & 3 & -6 & 3 \\ 0 &0 & 3& -3\\0 & 0& 0&1\end{bmatrix}
+\begin{bmatrix}1 & -3 & 3 & -1 \\0 & 3 & -6 & 3 \\ 0 &0 & 3& -3\\0 & 0& 0&1\end{bmatrix}
 \begin{bmatrix}u_0 \\ u_1 \\u_2 \\u_3 \end{bmatrix} $$
 
 #### Cubic Bernstein Polynomials.
@@ -552,15 +552,15 @@ Cubic curves give us a good mixture of flexibility and computational simplicity.
 
 In 3D, we can write a curve as follows
 
-$$\textbf{p}(u) = \bmatrix{begin}x(u) \\ y(u)\\z(u)\end{bmatrix} = 
-\sum_{i=0}^{3}{\bmatirx{begin} a_i\\ b_i \\c_i \end{bmatrix} u_i} = \textbf{Au}$$
+$$\textbf{p}(u) = \begin{bmarix}x(u) \\ y(u)\\z(u)\end{bmatrix} = 
+\sum_{i=0}^{3}{\begin{bmatrix} a_i\\ b_i \\c_i \end{bmatrix} u_i} = \textbf{Au}$$
 
 #### Hermite Curves
 Specify endpoints and tangent vectors and endpoints. Easy to paste together and gaurentees $$G^1$$ continuity.
 
 $$\textbf{p}(u) = \textbf{GMu} =
 \begin{bmatrix}p_0 & p_3 & r_0 & r_3 \end{bmatrix}
-\begin{bmatix}1 & 0 & -3 & 2 \\0 & 0 & 3 & -2 \\ 0 &1 & -2& 1\\0 & 0& -1&1\end{bmatrix}
+\begin{bmatrix}1 & 0 & -3 & 2 \\0 & 0 & 3 & -2 \\ 0 &1 & -2& 1\\0 & 0& -1&1\end{bmatrix}
 \begin{bmatrix}u_0 \\ u_1 \\u_2 \\u_3 \end{bmatrix} $$
 
 We can convert Bexier curves to Hermite curves by making sure the tangents are the same, that is
