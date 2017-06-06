@@ -356,7 +356,5 @@ It's important to note that graph seperation implies conditional independence.
 A node may only send a message to a neighbor when it has recieved incoming messages from all of its other neighbors. These messages can either be discrete or continuous (belief propogation)
 
 This can be used to detect the relative postion between features.
-![stuff](/images/medimg/example_toy.png)
-
-#### Directed Graphical Models
+![stuff](/images/medimg/examples_toy.png)
 
