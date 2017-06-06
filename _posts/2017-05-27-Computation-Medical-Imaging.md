@@ -286,7 +286,7 @@ Train many weak classifiers and combine them to get a final classifier - $$H(x) 
 
 ![spectral](/images/medimg/spectral.png)
 
-$$aff(x,y) = e^{\frac {-\|x-y\|^2_2}{\sigma^2}$$
+$$aff(x,y) = e^{\frac{-\|x-y\|^2_2}{\sigma^2}$$
 
 ## Model Fitting 
 
