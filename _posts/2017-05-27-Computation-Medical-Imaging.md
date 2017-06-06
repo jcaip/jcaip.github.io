@@ -288,4 +288,75 @@ Train many weak classifiers and combine them to get a final classifier - $$H(x) 
 
 $$aff(x,y) = e^{\frac {-\|x-y\|^2_2}{\sigma^2}$$
 
+## Model Fitting 
+
+#### Least-Squares Line fitting
+Want to minimize error given by $$E = \|Y-XB\|^2$$.
+
+We can solve this by inverting a matrix:
+$$B = (X^TX)^{-1}X^TY$$
+
+However, this approach is not rotation invariant and unable to represent horizontal/vertical lines. It is also sensitive to noise when the slope is very high.
+
+One solution is to use **total least square line fitting** which takes the perpendicular distance instead of the vertical distance. 
+
+This is the same thing as minimizing $$\sum_{i=1}^n{\frac{(ax_i + by_i+c)^2}{a^2 + b^2}}$$, which is the same thing of findiding the eigenvector $$A^TA$$ of the least eigenvalue.
+
+However this still leaves the model prone to fitting outliers and sensitive to noise.
+![outlier](/images/medimg/outlier.png)
+
 #### RANSAC
+```
+repeat N times:
+    randomly choose a small subset of points s
+    fit model to points in subset s
+    find all remaining points close to model (inliers) and reject all others as outliers
+    compute the error of the model
+choose the best model
+```
+![RANSAC](/images/medimg/RANSAC.png)
+
+#### Hough Transform
+This is a method of voting for parameter estimation. Firstly, you need to convert the points from image space to parameter space.
+
+Each point $$(x_0, y_0)$$ maps to a line $$b = -x_0a +y_0$$ in Hough space.
+We can represent this in polar form to make things easier.
+
+```
+For each edge point (x,y)
+    For t=0 to 180
+        r = x cos(t) + y sin(t)
+        H(t, r) = H(t,r)+1
+Find local maxima in H(t,r)
+```
+![Hough Transform](/images/medimg/hough.png)
+
+## Graphical Models
+A method of representing uncertatainty and reasoning. To do this generate a graph, and set probabilities for each node in the graph.
+
+![graphical](/images/medimg/graphical_model.png)
+
+In all cases, nodes are random variables and the graph species a coarse structure of a joint distribution. These graphs have properties of conditional independence from the nodes above their parents.
+
+#### Markov Chains
+Conditioned on the present, the past and future are independent.
+![markov](/images/medimg/markov.png)
+
+It's important to note that graph seperation implies conditional independence.
+#### Naive-Bayes
+![nbayes](/images/medimg/nbayes.png)
+
+**inference** takes in a model with known paramaters and estimates the hidden variables
+
+**learning** takes in multiple data instances and estimates the paramaters for a probabilistic model.
+
+#### Sum-Product Belief Propogation
+![sp](/images/medimg/sp.png)
+
+A node may only send a message to a neighbor when it has recieved incoming messages from all of its other neighbors. These messages can either be discrete or continuous (belief propogation)
+
+This can be used to detect the relative postion between features.
+![stuff](/images/medimg/example_toy.png)
+
+#### Directed Graphical Models
+
