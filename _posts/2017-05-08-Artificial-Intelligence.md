@@ -214,6 +214,9 @@ We can use logic, along with a **Knowledge Base**, which consistents a set of se
 
 Logical reasoning is gaurenteed to be correct if the available information is correct.
 
+**Duality of Logic** states that given any true statement/tautalogy we are able to derive another tautalogy by interchanging OR and AND and True and False.
+
+
 To define logic, we have a set of variables, sentences and operations. And we try to capture the semantics of the real world through a logical representation in our logical syntax. 
 
 If a sentence $$\alpha$$ is true in model world $$m$$, we say $$m$$ satisfies $$\alpha$$. $$M(\alpha)$$ is the set of models of $$\alpha$$
@@ -323,15 +326,15 @@ We can also use local search to find a satisfiable equation. In general some SAT
 4. Distribute $$\lor$$ over $$\land$$ whenever possible.
 
 ## First-order Logic
-First order logic exhibits **compositionality**, which means that the meaning of a sentnec is a function of the meaning of its parts.
+First order logic exhibits **compositionality**, which means that the meaning of a sentnec is a function of the meaning of its parts.Predicate, or first order logic contains a predicate $$p(x)$$ that evaluates to T/F.
 
-**Duality of Logic** states that given any true statement/tautalogy we are able to derive another tautalogy by interchanging OR and AND and True and False.
+Models for first-order logic have objects in them. The **domain** of a model is the set of objects it contains. Objects may be related (represented by a set of tuples). Consists of **constant symbols**, **predicate symbols**, **function symbols**.
 
-Predicate, or first order logic contains a predicate $$p(x)$$ that evaluates to T/F.
+A **term** is a logical expression that refers to an object.
 
-**Existential qualifier** - $$\exists x [p(x)]$$ there exists an $$x$$ such that $$p(x)$$ is true.
+**Existential qualifier** - $$\exists x [p(x)]$$ there exists an $$x$$ such that $$p(x)$$ is true. Use $$\implies$$.
 
-**Universal qualifier** - $$\forall x [p(x)]$$ $$p(x)$$ is true for all $$x$$.
+**Universal qualifier** - $$\forall x [p(x)]$$ $$p(x)$$ is true for all $$x$$. Use $$\land$$.
 
 Quantifiers are related to each other in the following way: $$\neg(\forall x [p(x)]) = \exists x [\neg p(x)]$$
 
@@ -339,11 +342,92 @@ $$\neg(\exists x [p(x)]) = \forall x [\neg p(x)]$$
 
 We either use a quantifier or instantiate the predicate to turn it to T/F.
 
+If we make the **unique-names assumption** (every object has a distinct name), the **closed-world assumption** (atomic scentence not known to be true are false), and **domain closure** (each model contains no more domain element than those named by constant symbols) we recieve a database language. 
 
-#### Set Theory
+### First-Order Reasoning
 
-## Probability
+#### Inference Rules
+**Universal Instantiation** - subsitute a **ground term** for the variable.
+
+**Existential Instantiation** - subsitute a **Skolem constant** for the variable.
+
+This technique of **propositionalization** can be made completely general, since any sentence sentence entailed by the original knowledge base can be proved with a finite subset of the knowledge base. In general, the question of entailment for first order logic is **semidecidable**.
+
+**Generalized Modus Ponens** - for atomix sentences $$p_i, p_i', q$$ where this a subsitution $$SUB(\theta, p_i') = SUB(\theta, p_i)$$ for all $$i$$.
+
+$$frac{p_i', (p_i \implies q)}{SUB(\theta, q)}$$
+
+
+Lifted infernce rules require finding subsitutions, called **unifications** to make different logical expressions look identitical. 
+
+$$Unify(p, q) = \theta$$ where $$SUB(\theta, p) = SUB(\theta, q)$$ 
+
+In this case, we need to standardize apart the two sentences being unified, which means renaming variables. In general, there is a single **most general unifier** that is unique up to renaming and subistuting variables. To check unifiers, we **occur check**,which ensures that no variable itself occurs inside the term. $$S(x)$$ can't unify with $$S(S(x))$$.
+
+#### Resolution
+1. Eliminate implications
+2. Move $$\neg$$ inwards
+3. Standardize variables - change variables so that the same variable is not used twice
+4. Skolemize - remove any existential quantifiers via Skolemization constants/function
+5. Drop universal quantifiers
+6. Distribute $$\lor$$ over $$\land$$
+
+Resolution inference is simply a lifted version of normal resolution. Two clauses can be resolved if one unifies with the negation of the other. This is **binary resolution**. We also need **factoring**, the removal of redundant ordering to get a complete solution.
+
+However, resolution can give us **nonconstructive proofs**. We can combat this to add a special **answer literal** to the negated goal. 
+
+Resolution in general is **refutation complete*** - that is if a a set is sentences is unsatisfiable, then resolution will be able to derive a contradiction. It cannot be used to generate all logical consequences of a set of sentences, but it can be used to establish a given sentence is entailed. 
+
+1. If $$S$$ is unsatisfiable, then there exists a particular set of ground instances such that this set is also unsatisfiable
+2. Propositional resolution is complete for ground instances
+3. Any propositionl resolution proof for fround sentences can be formulated into a first order resolution proof.
+
+Finite number of literals anyways, so finite runtime. **Godels Incompletness Theorem** states that there are true statements that we are unable to prove.
+
+## Reasoning under Uncertainty
+We handled uncertainty before via **belief states**. However, when interperting partial sensor information, belief states create a huge number of states. This leads to the **qualification** problem. 
+
+In general, **laziness**, **theoretical ignorance** and **practical ignorance** keep us from deducing with pure logic. To deal with **degrees of belief** we will use **probability theory**. 
+
+We use a combination of probability theory and utility theory to form deciscions, seeking to maximize the **max expected utility**. 
+
+### Probability
+The set of all possible worlds is called the **sample space**. $$P(w)$$ specifies the probability of each possible worlds. 
+
+We use probabilities to create **propositions**. For any proposition $$\phi, P(\phi) = \sum_{\omega \in \phi}P(\omega)$$
+
+Probabilities such as P(same number) are **unconditional** or **prior** probabilities. Usually however, we have some **evidence** and want to find the **conditional** or **posterior** probability of rolling doubles given the first die is a 5.
+
+$$P(A\land B) =  P(A | B) P(B)$$
+
+Variables in probability theory are refered to as **random variables** with a set domain. We use a **probability density function** to express the belief of continuous variables. 
+
+For distributions on multiple variables, we use a **joint probability distribution**.  A full joint probability distribution is a probability model that is completely dependent on all of the random variables. 
+
+**inclusion-exclusion principle** - $$P(a \lor b) = P(a) + P(b) - P(a \land B)$$
+
+**de Finetti** - If an agent expresses a set of beliefs that violate probability theory, there is a combination of bets that gaurentees that that agent will lose money every time.
+
+Probability has different schools of thought - frequentist, objectivist, subjectivist, subjective Bayesian view.
+
+The **marginal** probability can be found by summing out, or **marginalization**. $$P(Y) = \sum_{z \in Z} P(Y,z)$$. If we subsitute in conditional probabilities using the product rule, this is called conditioning.
+
+We can avoid a costly division by simply writing $$P(X|e) = \alpha P(X, e)$$
+
+**marginal independence** occurs when $$P(X|Y) = P(X)$$. If the complete set of variables can be divided into independent subsets, then the full joint distribution can be factored into seprate join distributions.
+
+**Bayes rule** - $$P(b|a) = \frac{P(a|b)P(b)}{P(a)}$$ We can use this when we see evidence of the effect of some unknown cause. Diagnostic knowledge is often more fragile than causal knowledge. 
+
+If we assume **conditional independence**, then we can rerite $$P(A \land B | C) =  P(A|C) P(B|C)$$. This grows in size $$O(n)$$ instead of $$O(n^2)$$. It also introduces the concept of **seperation**.
+
+We can then write the full joint probability distribution as
+
+$$P(Cause, Effect_1 \ldots Effect_n) = P(Cause) \prod_i{P(Effect_i | Cause)}$$
+
+This is the **naive-Bayes** model, which can be used as a **Bayesian classifier**.
 
 ## Bayesian Networks
+We can use a **Bayesian network** to represent dependencies among variables. Each node corresponds to a random variable, which may be discrete or continuous. Each node $$X_i$$ has the probability distribution $$P(X_i | Parents(X_i))$$
 
+Each node has a **conditional probability table**, with each row containing a **conditioning case**, which is just a possible combination of parent variables. 
 ## Machine Learning
