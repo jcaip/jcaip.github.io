@@ -224,7 +224,7 @@ We can check if a knowledge base entails something via **model checking**, simpl
 
 We can use this property for logical inference. An inference algorithm that derives only entailed sentences is **sound**, or **truth perserving**. It is **complete** if the algorithm can derive derive any sentence that is entailed. Finally we must consider **grounding** or converting our logical syntax into real world semantics.
 
-#### Propositional Logic
+### Propositional Logic
 Propositional logic can be expressed as a set of operators, $$\neg, \land, \lor, \implies, \iff$$.
 
 We say that two sentences are **logically equivalent** if they are true in the same set of models.
@@ -323,6 +323,8 @@ We can also use local search to find a satisfiable equation. In general some SAT
 4. Distribute $$\lor$$ over $$\land$$ whenever possible.
 
 ## First-order Logic
+First order logic exhibits **compositionality**, which means that the meaning of a sentnec is a function of the meaning of its parts.
+
 **Duality of Logic** states that given any true statement/tautalogy we are able to derive another tautalogy by interchanging OR and AND and True and False.
 
 Predicate, or first order logic contains a predicate $$p(x)$$ that evaluates to T/F.
