@@ -225,7 +225,7 @@ We can check if a knowledge base entails something via **model checking**, simpl
 We can use this property for logical inference. An inference algorithm that derives only entailed sentences is **sound**, or **truth perserving**. It is **complete** if the algorithm can derive derive any sentence that is entailed. Finally we must consider **grounding** or converting our logical syntax into real world semantics.
 
 #### Propositional Logic
-Propositional logic can be expressed as a set of operators, $$\not, \land, \lor, \implies, \iff$$.
+Propositional logic can be expressed as a set of operators, $$\neg, \land, \lor, \implies, \iff$$.
 
 We say that two sentences are **logically equivalent** if they are true in the same set of models.
 
@@ -233,7 +233,7 @@ $$\alpha$$ is **valid** if it is true in every possible world.
 
 $$\alpha$$ is **inconsistent** if it is not true in every possible world. If a model is not inconsistent, it is **satisfiable**. 
 
-$$\alpha \models \beta$$ if and only if $$\alpha \land \not \beta $$ is unsatisfiable.
+$$\alpha \models \beta$$ if and only if $$\alpha \land \neg \beta $$ is unsatisfiable.
 
 $$\alpha$$ and $$\beta$$ are **mutually exclusive** if there are no worlds where both $$\alpha$$ and $$\beta$$ are true. 
 
@@ -258,10 +258,12 @@ PL-Resolution(KB, a):
 Resolution is complete. To see this, we note define **resolution closure** to be the set of all clauses that our algorithm can derive. This set is finite, because there is a limited number of symbols to arrange. Hence our algorithm always terminates.
 
 **ground resolution theorem** - If a set of clauses is unsatisfiable, then the resolution closure of those clauses contains the empty clause.
+
+
 #### Converting to CNF 
 1. Eliminate $$\iff$$ by replacing $$\alpha \iff \beta$$ with $$(\alpha \implies \beta) \land (\beta \implies \alpha)$$
-2. Eliminate $$\implies$$ by replacing $$\alpha \implies \beta$$ with $$\not \alpha \lor \beta$$
-3. Remove $$\not$$ outside of liters via double-negation elimination and DeMorgan's Law.
+2. Eliminate $$\implies$$ by replacing $$\alpha \implies \beta$$ with $$\neg \alpha \lor \beta$$
+3. Remove $$\neg$$ outside of liters via double-negation elimination and DeMorgan's Law.
 4. Distribute $$\lor$$ over $$\land$$ whenever possible.
 
 ## First-order Logic
@@ -273,9 +275,9 @@ Predicate, or first order logic contains a predicate $$p(x)$$ that evaluates to 
 
 **Universal qualifier** - $$\forall x [p(x)]$$ $$p(x)$$ is true for all $$x$$.
 
-Quantifiers are related to each other in the following way: $$\not(\forall x [p(x)]) = \exists x [\not p(x)]$$
+Quantifiers are related to each other in the following way: $$\neg(\forall x [p(x)]) = \exists x [\neg p(x)]$$
 
-$$\not(\exists x [p(x)]) = \forall x [\not p(x)]$$
+$$\neg(\exists x [p(x)]) = \forall x [\neg p(x)]$$
 
 We either use a quantifier or instantiate the predicate to turn it to T/F.
 
