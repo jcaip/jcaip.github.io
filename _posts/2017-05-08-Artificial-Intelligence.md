@@ -259,6 +259,62 @@ Resolution is complete. To see this, we note define **resolution closure** to be
 
 **ground resolution theorem** - If a set of clauses is unsatisfiable, then the resolution closure of those clauses contains the empty clause.
 
+**defininte clauses** are a disjunction of literals where only one is positive. **Horn clauses** are a disjunction of literals where at most one is positive. Resolution on horn clauses returns another horn clause. HornClauseForm  = DefiniteClauseForm | GoalClauseForm
+
+**Forward chaining** determines if a single proposition symbol, $$q$$ is entailed by the knowledge base. Tries to reason from a knowledge base to a query.
+```
+function forward_chaining(KB, q)
+count where count[c] is the number of symbols in c's premise
+inferred where inferred[s] is initially false for all symbols
+agenda =  queue of known true symbols in the KB
+
+while agenda is not empty
+    p = agenda.pop()
+    if p = q then return true
+    if inferred[p] = false
+        inferred[p] = true
+        for each clause c in KB where p is in c.premise
+            decrement count[s]
+            if count[c] = 0 then add c.conclusion to agenda.
+return false
+```
+
+**Backwards chaining** tries to reason backwards from $$q$$. 
+If q is known, no work is needed. Otherwise, find all implications in the KB whose conclusio is q. If all the premises are true (proved via backward chaining) then q is true. This is an example of **goal-directed reasoning**.
+
+#### Davis-Putnam-Logemann-Loveland
+Algorithm for complete backtracking inference. Takes in a sentence in CNF form. 
+
+**Early Termination** - algorithm detects whether a sentence must be true or false even with a partially completed model.
+
+**Pure Symbol Heurestic** - a symbol is pure if it always appears with the same sign in all clauses, makes it easier to assign.
+
+**Unit Caluse Heurestic** - a clause with just one literal or a clause in which all literals except one are assigned false. Cascades via **unit propogation**.
+
+```python
+DPLL-Satisfiable(s)
+    clauses = set of clauses in the CNF representation of s
+    symbols = set of propositional symbols in s
+    return DPLL(clause, symbol, {})
+
+DPLL(clauses, symbols, model)
+    if every clause in clauses is true in model return True
+    if some clause in clauses is false in model return False
+
+    P, value = FindPureSymbol(symbols, clauses, model)
+    if P return DPLL(clauses,symbols - P, model | P=value)
+
+    P, value = FindUnitClause(clause, model)
+    if P return DPLL(clauses,symbols - P, model | P=value)
+
+    P = head(symbols), rest = rest(symbols)
+    return DPLL(clauses, rest, model | P=true) or 
+           DPLL(clauses, rest, model | P=false)
+```
+
+This can be used in conjunction with numerous tricks to speed up performance, namely **component analysis**, **variable and value ordering**, and **intelligent backtracking**, **random restarts**, and **clever indexing**.
+
+We can also use local search to find a satisfiable equation. In general some SAT problems are **underconstrained**, that is they are likely to have a nearby solution. Emperically, we see that there is a threshold of clause/symbol at around 3. Beyond this number dramatically reduces the chance of a solution.
 
 #### Converting to CNF 
 1. Eliminate $$\iff$$ by replacing $$\alpha \iff \beta$$ with $$(\alpha \implies \beta) \land (\beta \implies \alpha)$$
@@ -281,8 +337,8 @@ $$\neg(\exists x [p(x)]) = \forall x [\neg p(x)]$$
 
 We either use a quantifier or instantiate the predicate to turn it to T/F.
 
-#### Set Theory
 
+#### Set Theory
 
 ## Probability
 
