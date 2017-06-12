@@ -244,8 +244,25 @@ $$\alpha$$ and $$\beta$$ are **mutually exclusive** if there are no worlds where
 
 **montonicity** states that if $$KB \models \alpha$$, then $$KB \land \beta \models \alpha$$.
 
-Resolution is refutation complete
+```
+PL-Resolution(KB, a):
+    clauses = KB $ !a
+    for each pair of clauses, 
+        resolvents = PL
+        if resolvents contains the empty clause return true
+        new =  new | resolvents
+    if new is a subset of clauses return false
+    clauses = clauses | new
+```
 
+Resolution is complete. To see this, we note define **resolution closure** to be the set of all clauses that our algorithm can derive. This set is finite, because there is a limited number of symbols to arrange. Hence our algorithm always terminates.
+
+**ground resolution theorem** - If a set of clauses is unsatisfiable, then the resolution closure of those clauses contains the empty clause.
+#### Converting to CNF 
+1. Eliminate $$\iff$$ by replacing $$\alpha \iff \beta$$ with $$(\alpha \implies \beta) \land (\beta \implies \alpha)$$
+2. Eliminate $$\implies$$ by replacing $$\alpha \implies \beta$$ with $$\not \alpha \lor \beta$$
+3. Remove $$\not$$ outside of liters via double-negation elimination and DeMorgan's Law.
+4. Distribute $$\lor$$ over $$\land$$ whenever possible.
 
 ## First-order Logic
 **Duality of Logic** states that given any true statement/tautalogy we are able to derive another tautalogy by interchanging OR and AND and True and False.
@@ -264,7 +281,6 @@ We either use a quantifier or instantiate the predicate to turn it to T/F.
 
 #### Set Theory
 
-#### Converting First Order Logic to CNF 
 
 ## Probability
 
