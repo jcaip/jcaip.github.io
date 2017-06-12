@@ -430,4 +430,31 @@ This is the **naive-Bayes** model, which can be used as a **Bayesian classifier*
 We can use a **Bayesian network** to represent dependencies among variables. Each node corresponds to a random variable, which may be discrete or continuous. Each node $$X_i$$ has the probability distribution $$P(X_i | Parents(X_i))$$
 
 Each node has a **conditional probability table**, with each row containing a **conditioning case**, which is just a possible combination of parent variables. 
+
+We see that for each node, $$P(x_1 \ldots x_n) = \prod_{i=1}^n P(x_i | parents(X_i))$$
+
+When we rewrite $$P(x_1 \ldots x_n)$$ into conditional probabilities, we see a **chain rule**. This means that our bayesian network is the correc representation if each node is conditionally independent from its predecessors given the parents.
+
+Bayesian networks are a form of **locally-structured**, or **sparse** systems, where each subcomponent only interacts with a limited number of other nodes. If we choose the node ordering well, we are able to maintain a compact Bayesian network. if we try to build diagnostic models with links from symptoms to causes, we often have to specify additional dependencies vetween otherwise independent causes. 
+
+Each variable is conditionally independent of its non-descendants given its parents. A node is conditional independent of all other nodes in the network given its children, parents, and children's parents, or its **Markov blanked**.
+
+### Inference in Bayesian Networks
+The basic task of probabilistic inference is to compute the posterior probaiblity for a set of **query variables**. That is we want $$P(X|e)$$ where $$e$$ is some particular observed event, and $$X = Hidden \cup  Evidence \cup Query$$.
+
+We can conduct inference by enumeration by computing sums of products of conditional probabilities from the network.
+    $$P(b|j,m) = \alpha \sum_e \sum_a P(b)P(e)P(a|b, e)P(j|a)P(m|a)$$
+
+However, this can be set up via **variable elimination**. This works by evaluating expressions in right-to-left order and storing intermediate results. We split eahc part of the expression into corresponding **factors**.
+
+This process will create new factors that eventually lead to our solution.
+
+$$f(X_1 \ldots X_j, Y_1 \ldots Y_k, Z_1 \ldots Z_l) = f_1(X_1 \ldots X_j, Y_1 \ldots Y_k) f_5(Z_1 \ldots Z_l)$$
+
+We can sum out factors $$f(B,C) = \sum_a f_3(A,B,C) = f_3(a, B,C) + f_3(\neg a, B,C)$$. Any factor that does not depend on the variable to be summed out can be moved outside the summation.
+
+We need to be able to establish an ordering for the variables. Intractable to find optimal factor, but one good heurestic is to eliminate whichever variable minimizes the size of the next factor to be considered. 
+
+It's important to note that every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query.
+
 ## Machine Learning
