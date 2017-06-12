@@ -225,7 +225,7 @@ We can check if a knowledge base entails something via **model checking**, simpl
 We can use this property for logical inference. An inference algorithm that derives only entailed sentences is **sound**, or **truth perserving**. It is **complete** if the algorithm can derive derive any sentence that is entailed. Finally we must consider **grounding** or converting our logical syntax into real world semantics.
 
 #### Propositional Logic
-Propositional logic can be expressed as a set of operators, $$\not, \land, \lor, \implies, \equals$$.
+Propositional logic can be expressed as a set of operators, $$\not, \land, \lor, \implies, \iff$$.
 
 $$\alpha$$ is **valid** if it is true in every possible world.
 
