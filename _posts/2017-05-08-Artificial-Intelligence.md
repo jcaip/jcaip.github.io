@@ -227,12 +227,25 @@ We can use this property for logical inference. An inference algorithm that deri
 #### Propositional Logic
 Propositional logic can be expressed as a set of operators, $$\not, \land, \lor, \implies, \iff$$.
 
+We say that two sentences are **logically equivalent** if they are true in the same set of models.
+
 $$\alpha$$ is **valid** if it is true in every possible world.
 
-$$\alpha$$ is **inconsistent** if it is not true in every possible world.
+$$\alpha$$ is **inconsistent** if it is not true in every possible world. If a model is not inconsistent, it is **satisfiable**. 
 
+$$\alpha \models \beta$$ if and only if $$\alpha \land \not \beta $$ is unsatisfiable.
 
-$$\alpha$$ and $$\beta$$ are **mutually exclusive** if there are no worlds where both $$\alpha$$ and $$\beta$$ are true. That is $$\alpha \models \beta$$ if and only if $$M(a) \subset M(\beta)$$
+$$\alpha$$ and $$\beta$$ are **mutually exclusive** if there are no worlds where both $$\alpha$$ and $$\beta$$ are true. 
+
+#### Inference Rules and Resolution
+**Modus Ponus** - $$\alpha \implies \beta, \alpha$$ infers $$\beta$$
+
+**And-Elimination** - $$\alpha \land \beta$$ infers $$\beta$$ and $$\alpha$$
+
+**montonicity** states that if $$KB \models \alpha$$, then $$KB \land \beta \models \alpha$$.
+
+Resolution is refutation complete
+
 
 ## First-order Logic
 **Duality of Logic** states that given any true statement/tautalogy we are able to derive another tautalogy by interchanging OR and AND and True and False.
@@ -250,9 +263,6 @@ $$\not(\exists x [p(x)]) = \forall x [\not p(x)]$$
 We either use a quantifier or instantiate the predicate to turn it to T/F.
 
 #### Set Theory
-
-#### Resolution Refutation
-Resolution is refutation complete
 
 #### Converting First Order Logic to CNF 
 
