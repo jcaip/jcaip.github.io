@@ -208,3 +208,56 @@ We can use iterative deeepening to avoid keeping the whole tree in memory.
 
 #### $$\alpha-\beta$$ Pruning
 However, we can avoid looking at certain nodes with pruning. If we keep track of two values, $$\alpha$$, and $$\beta$$, we can prune roughly 1/2 of the nodes and avoid looking at them.
+
+## Logic
+We can use logic, along with a **Knowledge Base**, which consistents a set of sentences, in order to reason and draw conclusions. 
+
+Logical reasoning is gaurenteed to be correct if the available information is correct.
+
+To define logic, we have a set of variables, sentences and operations. And we try to capture the semantics of the real world through a logical representation in our logical syntax. 
+
+If a sentence $$\alpha$$ is true in model world $$m$$, we say $$m$$ satisfies $$\alpha$$. $$M(\alpha)$$ is the set of models of $$\alpha$$
+
+$$\alpha$$ **entails** $$\beta$$ if whenever $$\alpha$$ holds, $$\beta$$ holds as well. This is the same thing as saying $$M(\alpha) \subset M(\beta)$$.
+
+We can check if a knowledge base entails something via **model checking**, simply enumerating all possible models to ensure $$M(KB) \subset M(\alpha)$$.
+
+We can use this property for logical inference. An inference algorithm that derives only entailed sentences is **sound**, or **truth perserving**. It is **complete** if the algorithm can derive derive any sentence that is entailed. Finally we must consider **grounding** or converting our logical syntax into real world semantics.
+
+#### Propositional Logic
+Propositional logic can be expressed as a set of operators, $$\not, \land, \lor, \implies, \equals$$.
+
+$$\alpha$$ is **valid** if it is true in every possible world.
+
+$$\alpha$$ is **inconsistent** if it is not true in every possible world.
+
+
+$$\alpha$$ and $$\beta$$ are **mutually exclusive** if there are no worlds where both $$\alpha$$ and $$\beta$$ are true. That is $$\alpha \models \beta$$ if and only if $$M(a) \subset M(\beta)$$
+
+## First-order Logic
+**Duality of Logic** states that given any true statement/tautalogy we are able to derive another tautalogy by interchanging OR and AND and True and False.
+
+Predicate, or first order logic contains a predicate $$p(x)$$ that evaluates to T/F.
+
+**Existential qualifier** - $$\exists x [p(x)]$$ there exists an $$x$$ such that $$p(x)$$ is true.
+
+**Universal qualifier** - $$\forall x [p(x)]$$ $$p(x)$$ is true for all $$x$$.
+
+Quantifiers are related to each other in the following way: $$\not(\forall x [p(x)]) = \exists x [\not p(x)]$$
+
+$$\not(\exists x [p(x)]) = \forall x [\not p(x)]$$
+
+We either use a quantifier or instantiate the predicate to turn it to T/F.
+
+#### Set Theory
+
+#### Resolution Refutation
+Resolution is refutation complete
+
+#### Converting First Order Logic to CNF 
+
+## Probability
+
+## Bayesian Networks
+
+## Machine Learning
