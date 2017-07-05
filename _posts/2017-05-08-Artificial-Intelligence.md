@@ -503,4 +503,3 @@ $$H(V) =  - \sum_kP(k) lg(P_k)$$
 The information gain is the expected reduction in entropy.
 
 Decision trees may overfit the data, so we may have to prune the tree. We can determine irrelevant nodes via a significance test. We can also use **early-stopping** to find the optimal stopping point.
-
