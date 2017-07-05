@@ -412,7 +412,7 @@ Probability has different schools of thought - frequentist, objectivist, subject
 
 The **marginal** probability can be found by summing out, or **marginalization**. $$P(Y) = \sum_{z \in Z} P(Y,z)$$. If we subsitute in conditional probabilities using the product rule, this is called conditioning.
 
-We can avoid a costly division by simply writing $$P(X | e) = \alpha P(X, e)$$
+We can avoid a costly division by simply writing $$ P(X | e) = \alpha P(X, e) $$
 
 **marginal independence** occurs when $$P(X | Y) = P(X)$$. If the complete set of variables can be divided into independent subsets, then the full joint distribution can be factored into seprate joint distributions.
 
