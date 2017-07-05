@@ -355,10 +355,10 @@ This technique of **propositionalization** can be made completely general, since
 
 **Generalized Modus Ponens** - for atomix sentences $$p_i, p_i', q$$ where this a subsitution $$SUB(\theta, p_i') = SUB(\theta, p_i)$$ for all $$i$$.
 
-$$frac{p_i', (p_i \implies q)}{SUB(\theta, q)}$$
+$$\frac{p_i', (p_i \implies q)}{SUB(\theta, q)}$$
 
 
-Lifted infernce rules require finding subsitutions, called **unifications** to make different logical expressions look identitical. 
+Lifted inference rules require finding subsitutions, called **unifications** to make different logical expressions look identitical. 
 
 $$Unify(p, q) = \theta$$ where $$SUB(\theta, p) = SUB(\theta, q)$$ 
 
