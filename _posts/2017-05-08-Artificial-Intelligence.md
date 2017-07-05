@@ -416,9 +416,9 @@ We can avoid a costly division by simply writing $$P(X | e) = \alpha P(X, e)$$
 
 **marginal independence** occurs when $$P(X | Y) = P(X)$$. If the complete set of variables can be divided into independent subsets, then the full joint distribution can be factored into seprate joint distributions.
 
-**Bayes rule** - $$P(b|a) = \frac{P(a | b)P(b)}{P(a)}$$ We can use this when we see evidence of the effect of some unknown cause. Diagnostic knowledge is often more fragile than causal knowledge. 
+**Bayes rule** - $$P(b | a) = \frac{P(a | b)P(b)}{P(a)}$$ We can use this when we see evidence of the effect of some unknown cause. Diagnostic knowledge is often more fragile than causal knowledge. 
 
-If we assume **conditional independence**, then we can rerite $$P(A \land B | C) =  P(A|C) P(B|C)$$. This grows in size $$O(n)$$ instead of $$O(n^2)$$. It also introduces the concept of **seperation**.
+If we assume **conditional independence**, then we can rerite $$P(A \land B | C) =  P(A | C) P(B | C)$$. This grows in size $$O(n)$$ instead of $$O(n^2)$$. It also introduces the concept of **seperation**.
 
 We can then write the full joint probability distribution as
 
