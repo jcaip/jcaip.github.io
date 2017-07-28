@@ -8,7 +8,7 @@ Hi! I'm Jesse Cai and I'm originally from the Bay Area, where I graduated from A
 
 This is my website, where I'll be putting up class notes, personal projects, and pretty much anything else that I find interesting.
 I'm now a sophomore at UCLA pursuing a B.S. in Computer Science.
-I'm primarily interested in the fields of deep learning, natrual language processing, artificial intelligence, and the scalability web systems, but I find pretty much any bit of computer science fascinating. 
+I'm primarily interested in the fields of deep learning, natrual language processing, artificial intelligence, algorithms, and scalable web systems, but I find pretty much any bit of computer science fascinating. 
 
 ### More Information
 
