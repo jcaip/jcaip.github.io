@@ -34,7 +34,7 @@ The goal is to find a sequence of actions to move from the initial state to the 
 
 ### Solving Search Problems
 The idea behind solving all search problems is the same.
-```
+``` python
 frontier = {I}
 loop:
     if frontier is empty:
@@ -247,7 +247,7 @@ $$\alpha$$ and $$\beta$$ are **mutually exclusive** if there are no worlds where
 
 **montonicity** states that if $$KB \models \alpha$$, then $$KB \land \beta \models \alpha$$.
 
-```
+``` python
 PL-Resolution(KB, a):
     clauses = KB $ !a
     for each pair of clauses, 
@@ -265,7 +265,7 @@ Resolution is complete. To see this, we note define **resolution closure** to be
 **defininte clauses** are a disjunction of literals where only one is positive. **Horn clauses** are a disjunction of literals where at most one is positive. Resolution on horn clauses returns another horn clause. HornClauseForm  = DefiniteClauseForm | GoalClauseForm
 
 **Forward chaining** determines if a single proposition symbol, $$q$$ is entailed by the knowledge base. Tries to reason from a knowledge base to a query.
-```
+``` python
 function forward_chaining(KB, q)
 count where count[c] is the number of symbols in c's premise
 inferred where inferred[s] is initially false for all symbols
