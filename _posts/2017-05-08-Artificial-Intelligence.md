@@ -431,7 +431,7 @@ We can use a **Bayesian network** to represent dependencies among variables. Eac
 
 Each node has a **conditional probability table**, with each row containing a **conditioning case**, which is just a possible combination of parent variables. 
 
-We see that for each node, $$P(x_1 \ldots x_n) = \prod_{i=1}^n P(x_i | parents(X_i))$$
+We see that for each node, $$P(x_1 \ldots x_n) = \prod_{i=1}^n P(x_i \vert parents(X_i))$$
 
 When we rewrite $$P(x_1 \ldots x_n)$$ into conditional probabilities, we see a **chain rule**. This means that our bayesian network is the correc representation if each node is conditionally independent from its predecessors given the parents.
 
