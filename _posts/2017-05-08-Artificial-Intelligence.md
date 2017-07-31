@@ -437,7 +437,7 @@ When we rewrite $$P(x_1 \ldots x_n)$$ into conditional probabilities, we see a *
 
 Bayesian networks are a form of **locally-structured**, or **sparse** systems, where each subcomponent only interacts with a limited number of other nodes. If we choose the node ordering well, we are able to maintain a compact Bayesian network. if we try to build diagnostic models with links from symptoms to causes, we often have to specify additional dependencies vetween otherwise independent causes. 
 
-Each variable is conditionally independent of its non-descendants given its parents. A node is conditional independent of all other nodes in the network given its children, parents, and children's parents, or its **Markov blanked**.
+Each variable is conditionally independent of its non-descendants given its parents. A node is conditional independent of all other nodes in the network given its children, parents, and children's parents, or its **Markov blanket**.
 
 ### Inference in Bayesian Networks
 The basic task of probabilistic inference is to compute the posterior probaiblity for a set of **query variables**. That is we want $$P(X|e)$$ where $$e$$ is some particular observed event, and $$X = Hidden \cup  Evidence \cup Query$$.
