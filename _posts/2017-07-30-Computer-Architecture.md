@@ -13,7 +13,7 @@ images:
 
 The instruction count of a program is determined by the ISA/compiler/program.
 
-$$ \textbf{CPI} = \sum_i=1^n CPI_i \frac{Instuction Count_i}{Instruction Count} $$
+$$ \textbf{CPI} = \sum_{i=1}^n CPI_i \frac{Instuction Count_i}{Instruction Count} $$
 
 ## Instruction Set Architecture
 Different computers have different instruction sets. 
