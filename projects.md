@@ -7,7 +7,7 @@ permalink: /projects/
 Here's some cool side project's I've worked on broken down by subject.
 
 ## Artificial Intelligence 
-#### [Genetic Algorithms](\Genetic-Algorithms) Finding an expression that evaluates to a string
+#### [Genetic Algorithms](\Genetic-Algorithm) Finding an expression that evaluates to a number
 #### [Simulated Annealing](\Simulated-Annealing) Solving the traveling salesman problem
 
 
