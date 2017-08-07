@@ -412,13 +412,13 @@ Probability has different schools of thought - frequentist, objectivist, subject
 
 The **marginal** probability can be found by summing out, or **marginalization**. $$P(Y) = \sum_{z \in Z} P(Y,z)$$. If we subsitute in conditional probabilities using the product rule, this is called conditioning.
 
-We can avoid a costly division by simply writing $$ P(X | e) = \alpha P(X, e) $$
+We can avoid a costly division by simply writing $$ P(X \vert e) = \alpha P(X, e) $$
 
-**marginal independence** occurs when $$P(X | Y) = P(X)$$. If the complete set of variables can be divided into independent subsets, then the full joint distribution can be factored into seprate joint distributions.
+**marginal independence** occurs when $$P(X \vert Y) = P(X)$$. If the complete set of variables can be divided into independent subsets, then the full joint distribution can be factored into seprate joint distributions.
 
-**Bayes rule** - $$P(b | a) = \frac{P(a | b)P(b)}{P(a)}$$ We can use this when we see evidence of the effect of some unknown cause. Diagnostic knowledge is often more fragile than causal knowledge. 
+**Bayes rule** - $$P(b \vert a) = \frac{P(a \vert b) P(b)}{P(a)}$$ We can use this when we see evidence of the effect of some unknown cause. Diagnostic knowledge is often more fragile than causal knowledge. 
 
-If we assume **conditional independence**, then we can rerite $$P(A \land B | C) =  P(A | C) P(B | C)$$. This grows in size $$O(n)$$ instead of $$O(n^2)$$. It also introduces the concept of **seperation**.
+If we assume **conditional independence**, then we can rerite $$P(A \land B \vert C) =  P(A \vert C) P(B \vert C)$$. This grows in size $$O(n)$$ instead of $$O(n^2)$$. It also introduces the concept of **seperation**.
 
 We can then write the full joint probability distribution as
 
