@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-Here's some cool side project's I've worked on broken down by subject.
+Here's some cool side projects I've worked on broken down by subject.
 
 ## Artificial Intelligence 
 #### [Genetic Algorithms](\Genetic-Algorithm) Finding an expression that evaluates to a number
