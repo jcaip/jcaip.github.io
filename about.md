@@ -21,6 +21,7 @@ If you're interested in AI/ML at all and in the LA area you should definetly [ch
 
 I'm spending this summer interning at [Blend](https://blend.com/), an amazing company that I'm very grateful to work for. I'm on the data team at Blend, where my job is twofold - firstly to develop and maintain the infrastructure that creates Blend's data and secondly to analyze and apply that data to improve the home mortgage experience.
 
+
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
 
 In my free time I enjoy hiking, watching basketball and playing chess.
