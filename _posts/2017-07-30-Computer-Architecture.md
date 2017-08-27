@@ -28,27 +28,30 @@ Improving one aspect of a pipeline will not asymptotically increase performance 
 
 **Amdahl's Law** - $$T_{imp} = \frac {T_{affected} }{\text{improvment factor}} + T_{unaffected} $$
 ![amdhals law](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/AmdahlsLaw.svg/400px-AmdahlsLaw.svg.png)
+
 We cannot make this curve flat, which implies that linear improvement through parallelization is hard to achieve, since there are inherently parts that cannot be serialized.
 
 #### What affects different performance metrics
 
 |          | IC | CPI | T_c |
+|----------|----|-----|-----|
 |Algorithm | Y  | Y   | N   |
 |Language  | Y  | Y   | N   | 
 |Compiler  | Y  | Y   | N   |
 |ISA       | Y  | Y   | Y   |
 
 ## MIPS
+In order to fully understand computer architecture, we must first understand MIPS.
 MIPS is an instruction set with simple instructions, which enables pipelining and parallelism. It is a RISC architecture.
 
 Each instruction in MIPS is 4 bytes (32 bits), or a **WORD** of memory. They are encoded in binary, with a small number of formats. Most instructions are highly regular. 
 
 The processor cycle can be descripbed as a continuous loop between 5 stages:
-  Instruction Fetch (IF)
-  Instruction Decode (ID)
-  Execute (EX)
-  Acces Memory (MEM)
-  Store Result (WB)
++ Instruction Fetch (IF)
++ Instruction Decode (ID)
++ Execute (EX)
++ Acces Memory (MEM)
++ Store Result (WB)
 
 #### R-format Instuctions
 Used for airthmetic/logical operands
