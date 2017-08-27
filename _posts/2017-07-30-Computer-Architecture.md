@@ -20,16 +20,18 @@ $$ \textbf{CPI} = \sum_{i=1}^n CPI_i \frac{ \text{Instuction Count}_i}{\text{Ins
 We can use how long a program will run as a measure of performance.
 $$ T_{CPU} = IC \times CPI \times T_c $$
 
-Relative Performance = $$\frac{1}{E_t}$$ where $$E_t$$ is the **execution time**. If programs run in less time, then the machine performs better
 
-We've already hit the [power wall](TODO: wiki), so we need to exploit parallelism to increase performance further.
+**Relative Performance** = $$\frac{1}{E_t}$$ where $$E_t$$ is the **execution time**. If programs run in less time, then the machine performs better
+
+We've already hit the [power wall](https://www.technologyreview.com/s/421186/why-cpus-arent-getting-any-faster/), so we need to exploit parallelism to increase performance further.
 Improving one aspect of a pipeline will not asymptotically increase performance for the entire pipeline.
 
 **Amdahl's Law** - $$T_{imp} = \frac {T_{affected} }{\text{improvment factor}} + T_{unaffected} $$
-![amdhals law](TODO: amdhal law graph)
+![amdhals law](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/AmdahlsLaw.svg/400px-AmdahlsLaw.svg.png)
 We cannot make this curve flat, which implies that linear improvement through parallelization is hard to achieve, since there are inherently parts that cannot be serialized.
 
 #### What affects different performance metrics
+
 |          | IC | CPI | T_c |
 |Algorithm | Y  | Y   | N   |
 |Language  | Y  | Y   | N   | 
@@ -63,14 +65,14 @@ provides an immediate/constant, also used for load/store instructions
 ```
 
 **Immediate Operations** - These operate on a register as well as data incoded in the instruction itself.
-```assembly
+```asm
 addi $s0, $s0, 4  //example addition, takes the value of $s0 and adds 4
 addi $s0, $s9, -1 //for subtraction, just add a negative constant
 ```
 This has the advantage of making common operations fast. The constant can only be 16 bits long - an appropriate trade off because small constants are the most common. 
 
 **Logical Operations** - These are logical operations
-```assembly
+```asm
 sll //shift left logical (fills with 0)
 srl //shift right logical (fills with 0)
 and, andi // logical and, andi is for anding with an immediate
@@ -79,14 +81,14 @@ nor //logical not
 ```
 
 **Conditional Operations** - These are used to alter the PC
-```assembly
+```asm
 beq $rs $rt L1 // if rs==rt branch to L1
 bne $rs $rt L1 // if rs!=rt bramch to L1
 j L1   // jump to L1 unconditionally
 ```
 
 **Arithmetic Operations** - These are used for airthmetic, usually in the format a gets b + c
-```assembly
+```asm
 addi
 add
 sub
