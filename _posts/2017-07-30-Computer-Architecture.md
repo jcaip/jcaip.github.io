@@ -27,11 +27,13 @@ We've already hit the [power wall](https://www.technologyreview.com/s/421186/why
 Improving one aspect of a pipeline will not asymptotically increase performance for the entire pipeline.
 
 **Amdahl's Law** - $$T_{imp} = \frac {T_{affected} }{\text{improvment factor}} + T_{unaffected} $$
+Linear improvement through parallelization is impossible to achieve, since there are inherently parts that cannot be parallelized. 
+
 ![amdhals law](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/AmdahlsLaw.svg/400px-AmdahlsLaw.svg.png)
 
-We cannot make this curve flat, which implies that linear improvement through parallelization is hard to achieve, since there are inherently parts that cannot be serialized.
+This can be seen in this graph - as you add more processors, the speedup factor stops improving.
 
-#### What affects different performance metrics
+### What affects different performance metrics
 
 |          | IC | CPI | T_c |
 |----------|----|-----|-----|
@@ -53,20 +55,26 @@ The processor cycle can be descripbed as a continuous loop between 5 stages:
 + Acces Memory (MEM)
 + Store Result (WB)
 
-#### R-format Instuctions
-Used for airthmetic/logical operands
+### MIPS Instriction Formats
+**R-Format Instructions** - Used for airthmetic/logical operands
 ```
 | op   | rs  | rt  | rd  |shift| funct|
   6       5     5     5     5     6    
 ```
 
-#### I-format Instructions
-provides an immediate/constant, also used for load/store instructions
+**I-Format Instructions** - provides an immediate/constant, also used for load/store instructions
 ```
 | op   | rs  | rt  |  constant/address |
   6       5     5          16
 ```
 
+**J-Foramt Instructions** - provides a larger constant, used for jump instructions
+```
+| op   |              constant/address |
+  6               26
+```
+
+### MIPS Operations
 **Immediate Operations** - These operate on a register as well as data incoded in the instruction itself.
 ```asm
 addi $s0, $s0, 4  //example addition, takes the value of $s0 and adds 4
@@ -82,7 +90,6 @@ and, andi // logical and, andi is for anding with an immediate
 or, ori // logical or
 nor //logical not
 ```
-
 **Conditional Operations** - These are used to alter the PC
 ```asm
 beq $rs $rt L1 // if rs==rt branch to L1
@@ -98,33 +105,31 @@ sub $rs $rt $rd //sub with register operands
 subi $rs $rd 0x32 //immediate subtract
 ```
 
-#### Register Operations
-Arithmetic uses register operands (at least for MIPS) - you can't add two values stored in memory.
+**Register Operations** - In MIPS arithmetic uses register operands as you can't add two values stored in memory.
 In MIPS, we use a 32x32bit register file. That is we have 32 registers, each of which is 32 bits on. This is directly from our R/I-format, each register is encoded by 5 bits, so in total 32 registers are able to be encoded.
 
 Smaller register files tend to be faster, so increasing the register file size creates a tradeoff.
 
-#### Memory Operations
+**Memory Operations** - We need explicit instructions for memory mamagement because this is a RISC architecture.
 ```asm
 lw $t0, 32($s3) // loads a value into memory
 sw
 ```
-We need explicit instructions for memory mamagement because this is a RISC architecture.
 We assume that memory is a giant array of byte-addressable words and words are aligned in memory.
+
+**Branch Instructions** - Used to alter the PC to control execution flow.
+One thing to note is that less than is slower than equivalence
+Create combinations of branches/subtractions as a compromise
+
 ```asm
-blt
+blt 
 bge
 slt, slti
 slta, sltai
 ```
 
-Sometimes we want to set the result to 1 if a condition is true
-
-#### Branch Instructions
-One thing to note is that less than is slower than equivalence
-Create combinations of branches/subtractions as a compromise
-
-#### Procedure Calls
+### Other
+**Procedure Calls** - How procedure calls are handled in MIPS.
 1. Place parameters in registers
 2. Transfer control to procedure (Change the PC)
 3. Acquire storage for the procedure
@@ -139,8 +144,7 @@ jr $ra //jumps the PC back to where it would have been
 
 We can see by altering `$ra` we alter the location of the PC, which lets us do calculated jumps as you would see in a case/switch statement.
 
-#### Large Constants
-Since the immediate values must fit within 16 bits, when we deal with large constants we have to store them into a register.
+**Large Constants** - Since the immediate values must fit within 16 bits, when we deal with large constants we have to store them into a register.
 
 ```asm
 lui $s0 61 //load the upper 16 bits of the register
@@ -158,25 +162,24 @@ Since memory is byte-addressable, we can omit the last 2 bits when storing an ad
 
 
 ## Arithmetic and the ALU
-
-#### The ALU as a black box
-
 Input: ALU op, a, b
 Output: Zero, Result, Overflow, Carry Out
 
-## One Bit Full Adder
+### ALU Operations
+## Multiplication, and Booth's algorithm. 
+
+### ALU Design
+**One Bit Full Adder** - the layout of a full adder for 1-bit operands.
 ![1-bit adder](/images/comp_arch/1ba.png)
 
-## Ripple Carry Adder
+**Ripple Carry Adder** - To get a 32 bit adder, we can chain together 32 one-bit adders, connecting the output of one adder to the carry in of the one below it.
 ![ripple carry adder](/images/comp_arch/rca.png)
-Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 2 gates per carry out.
-A single NOR gate provides us with the zero output.
-Overflow is detected by xoring c_31 and c_32.
+A single NOR gate over the results provides us with the zero output.
+Overflow is detected by xoring $$C_{31}$$ and $$C_{32}$$. When the two carry bits are different, an overflow has occured.
+Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 2 gates per carry out. (1 OR and 1 AND as seen from the 1-bit full adder aboce) 
 
-## Carry Lookahead Adder
-In order to reduce the gate delay, we can use a carry lookahead adder.
+**Carry Lookahead Adder** - In order to reduce the gate delay, we can use a carry lookahead adder.
 ![carry lookahead adder](/images/comp_arch/cla.png)
-
 | A | B | Carry Out | signal  |
 |---|---|-----------|---------|
 | 0 | 0 |0          | kill    |
@@ -187,12 +190,12 @@ In order to reduce the gate delay, we can use a carry lookahead adder.
 We can compute the carries as a function propogates and generates
 
 $$C_1 = G_0 + C_0P_0$$
-
 $$C_2 = G_1 + G_0P_1 + C_0P_0P_1$$
+$$C_3 = G_1 + G_0P_1 + C_0P_0P_1$$
+$$C_4 = G_1 + G_0P_1 + C_0P_0P_1$$
 
 This creates a larger but faster adder.
 
-Multiplication, and Booth's algorithm. 
 
 ## Single Cycle Processor
 CPU Overview
