@@ -165,7 +165,7 @@ From a problem, we can create a **constraint graph**, which is a visualization o
 #### Backtracking Search
 Naively, we can try to formulate a search problem, randomly assigning a variable a value from it's domain at each stage in the search tree. However, this means that the total # of states generated is $$n!d^n$$, where $$d$$ is the number of elements in th edomain and $$n$$ is the number of variables. 
 
-We can exploit the fact that variable assignment is communatitive to speedup our serach. At each level, we assign only to a single variable that is determined. Using this, we get a runtime of $$O(b^d)$$, a significant improvement.
+We can exploit the fact that variable assignment is communatitive to speedup our serach. At each level, we assign only to a single variable that is determined. Using this, we get a runtime of $$O(d^n)$$, a significant improvement.
 
 #### Heurestics
 + **Least Remaining Values** - when choosing a variable to assign, pick the variable that has the fewest states. 
