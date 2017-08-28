@@ -20,10 +20,6 @@ We can use a constraint solver to solve a graph coloring problem. The graph colo
 ## Approach
 We are using **Backtracking Search** in order to try and find a suitable set of values for the graph.
 
-1. Assign a vertex a value
-2. See if that breaks any constraints
-3. If yes, backtrack otherwise repeat
-
 In order to speed up our search, we use several heurestics:
 + **Least Remaining Values** - when choosing a variable to assign, pick the variable that has the fewest states. 
 + **Degree Heurestic** - when choosing a variable to assign, pick the variable with the highest degree. The idea behind these two heurestics is to detect failure early, to avoid unnecessary expansion.
@@ -37,7 +33,11 @@ The runtime to our algorithm is $$O(d^n)$$ where $$d$$ is the number of elements
 ## Code
 You can see the full code on my github [here](https://github.com/jcaip/constraint_solver).
 
-**Backtracking Search** - This is the core of our algorithm. It essentially
+**Backtracking Search** - This is the core of our algorithm.
+
+1. Assigns a vertex a value
+2. See if that breaks any constraints
+3. If yes, backtrack otherwise repeat
 
 ```python
 #csp is a graph
@@ -65,7 +65,7 @@ def backtracking_search(cls, csp, assignment={}):
     return False
 ```
 
-#### Choosing a vertex
+**Choosing a vertex** - We use a combination of the mininum remaining values heurestic and the degree heurestic to pick a variable to assign.
 ```python
 #use the mininum remaining values heurestic
 #use the degree heurestic
@@ -86,6 +86,7 @@ def select_unassigned_var(assignment, csp):
     return current_best
 ```
 
+**Choosing a value** - sets what value gets assigned to a specific variable.
 ```python
 @classmethod
 def order_domain_values(cls, var, assignment, csp):
@@ -101,6 +102,8 @@ def order_domain_values(cls, var, assignment, csp):
     return [x[0] for x in value_range]
 ```
 
+
+**Inference** - rules out future possible domain values that would otherwise break the constraint graph via forward checking.
 ```python
 #inference using foward checking
 @classmethod
