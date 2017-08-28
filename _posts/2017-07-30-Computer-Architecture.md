@@ -164,16 +164,35 @@ Since memory is byte-addressable, we can omit the last 2 bits when storing an ad
 Input: ALU op, a, b
 Output: Zero, Result, Overflow, Carry Out
 
-Multiplication, and Booth's algorithm. 
-
 ## One Bit Full Adder
 ![1-bit adder](/images/comp_arch/1ba.png)
 
 ## Ripple Carry Adder
 ![ripple carry adder](/images/comp_arch/rca.png)
+Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 2 gates per carry out.
+A single NOR gate provides us with the zero output.
+Overflow is detected by xoring c_31 and c_32.
 
 ## Carry Lookahead Adder
+In order to reduce the gate delay, we can use a carry lookahead adder.
 ![carry lookahead adder](/images/comp_arch/cla.png)
+
+| A | B | Carry Out | signal  |
+|---|---|-----------|---------|
+| 0 | 0 |0          | kill    |
+| 0 | 1 |Carry In   |propagate|
+| 1 | 0 |Carry In   |propagate|
+| 1 | 1 |1          |generate |
+
+We can compute the carries as a function propogates and generates
+
+$$C_1 = G_0 + C_0P_0$$
+
+$$C_2 = G_1 + G_0P_1 + C_0P_0P_1$$
+
+This creates a larger but faster adder.
+
+Multiplication, and Booth's algorithm. 
 
 ## Single Cycle Processor
 CPU Overview
