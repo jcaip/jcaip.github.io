@@ -12,7 +12,7 @@ Here's some cool side projects I've worked on broken down by subject.
 + [Constraint Satisfaction](\Constraint-Satisfaction-Solver) Solver for constriaint satisfaction problems.
 
 ### Machine Learning
-* [Twitter Tensorflow Model](\Twitter-Tensorflow-Model) Determining the sentiment of tweets using a RNN
+* [Twitter Tensorflow Model](\State-of-UCLA) Determining the sentiment of tweets using a RNN
 * [CS188 Literature Review](\CS188-Literature-Review) Literature Review for CS188 class project
 * [ML Server](\ML-Server) Setting up a server for machine learning
 * [CS188 Project](\CS188-Project) Using document vectors to predict medical phrases
