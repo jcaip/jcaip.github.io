@@ -6,7 +6,7 @@ permalink: /notes/
 
 Here's a list of all the notes I've written.
 
-### [CS M151B](/Computer-Systems-Architecture) Computer Architecture
+### [CS M151B](/Computer-Architecture) Computer Architecture
 
 ### [CS 188](/Computation-Medical-Imaging) Computational Methods for Medical Imaging
 ### [CS 161](/Artificial-Intelligence) Artificial Intellignece
