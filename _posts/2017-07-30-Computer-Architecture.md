@@ -92,29 +92,88 @@ j L1   // jump to L1 unconditionally
 
 **Arithmetic Operations** - These are used for airthmetic, usually in the format a gets b + c
 ```asm
-addi
-add
-sub
-subi
+add $rs $rt $rd //add with register operands
+addi $rs $rd 0x32 //immediate add
+sub $rs $rt $rd //sub with register operands
+subi $rs $rd 0x32 //immediate subtract
 ```
 
 #### Register Operations
 Arithmetic uses register operands (at least for MIPS) - you can't add two values stored in memory.
 In MIPS, we use a 32x32bit register file. That is we have 32 registers, each of which is 32 bits on. This is directly from our R/I-format, each register is encoded by 5 bits, so in total 32 registers are able to be encoded.
 
+Smaller register files tend to be faster, so increasing the register file size creates a tradeoff.
+
 #### Memory Operations
-```
+```asm
+lw $t0, 32($s3) // loads a value into memory
+sw
 ```
 We need explicit instructions for memory mamagement because this is a RISC architecture.
-We assume that 
+We assume that memory is a giant array of byte-addressable words and words are aligned in memory.
+```asm
+blt
+bge
+slt, slti
+slta, sltai
+```
+
+Sometimes we want to set the result to 1 if a condition is true
+
+#### Branch Instructions
+One thing to note is that less than is slower than equivalence
+Create combinations of branches/subtractions as a compromise
+
+#### Procedure Calls
+1. Place parameters in registers
+2. Transfer control to procedure (Change the PC)
+3. Acquire storage for the procedure
+4. Run Procedure
+5. Place result into a register
+6. Return to place of call and continue execution
+
+```asm
+jal LabelFuncStart //this changes the PC, saves the previous PC in $ra
+jr $ra //jumps the PC back to where it would have been
+```
+
+We can see by altering `$ra` we alter the location of the PC, which lets us do calculated jumps as you would see in a case/switch statement.
+
+#### Large Constants
+Since the immediate values must fit within 16 bits, when we deal with large constants we have to store them into a register.
+
+```asm
+lui $s0 61 //load the upper 16 bits of the register
+ori $s0 $s0 2304 //load the lower 16 bits
+```
+
+### Addressing
+Since memory is byte-addressable, we can omit the last 2 bits when storing an address (It'll always be 00).
+
+**Immediate** - 
+**Register** - Store address inside a register file and access it that way
+**PC-relative** - PC + offsetx4, where the x4 comes from efficient storing of bits
+**Base** - 
+**Pseudo-direct** - used for J-type instructions. Takes the upper 4 bits from the current PC and concatenates the next 28 bits 
+
 
 ## Arithmetic and the ALU
-One-bit ALU, Full/Half Adder, Dealing with overflow
 
-Operations: Add, subtract, SLT, 
-Carry Lookahead adder / ripple-carry adder, generates and propogates
+#### The ALU as a black box
+
+Input: ALU op, a, b
+Output: Zero, Result, Overflow, Carry Out
 
 Multiplication, and Booth's algorithm. 
+
+## One Bit Full Adder
+![1-bit adder](/images/comp_arch/1ba.png)
+
+## Ripple Carry Adder
+![ripple carry adder](/images/comp_arch/rca.png)
+
+## Carry Lookahead Adder
+![carry lookahead adder](/images/comp_arch/cla.png)
 
 ## Single Cycle Processor
 CPU Overview
