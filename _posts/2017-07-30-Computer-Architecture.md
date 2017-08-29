@@ -48,13 +48,6 @@ MIPS is an instruction set with simple instructions, which enables pipelining an
 
 Each instruction in MIPS is 4 bytes (32 bits), or a **WORD** of memory. They are encoded in binary, with a small number of formats. Most instructions are highly regular. 
 
-The processor cycle can be descripbed as a continuous loop between 5 stages:
-+ Instruction Fetch (IF)
-+ Instruction Decode (ID)
-+ Execute (EX)
-+ Acces Memory (MEM)
-+ Store Result (WB)
-
 ### MIPS Instriction Formats
 **R-Format Instructions** - Used for airthmetic/logical operands
 ```
@@ -64,13 +57,13 @@ The processor cycle can be descripbed as a continuous loop between 5 stages:
 
 **I-Format Instructions** - provides an immediate/constant, also used for load/store instructions
 ```
-| op   | rs  | rt  |  constant/address |
+| op   | rs  | rt  |  constant/address|
   6       5     5          16
 ```
 
 **J-Foramt Instructions** - provides a larger constant, used for jump instructions
 ```
-| op   |              constant/address |
+| op   |         constant/address     |
   6               26
 ```
 
@@ -82,6 +75,11 @@ addi $s0, $s9, -1 //for subtraction, just add a negative constant
 ```
 This has the advantage of making common operations fast. The constant can only be 16 bits long - an appropriate trade off because small constants are the most common. 
 
+**Register Operations** - In MIPS arithmetic uses register operands as you can't add two values stored in memory.
+In MIPS, we use a 32x32bit register file. That is we have 32 registers, each of which is 32 bits on. This is directly from our R/I-format, each register is encoded by 5 bits, so in total 32 registers are able to be encoded.
+
+Smaller register files tend to be faster, so increasing the register file size creates a tradeoff.
+
 **Logical Operations** - These are logical operations
 ```asm
 sll //shift left logical (fills with 0)
@@ -89,12 +87,6 @@ srl //shift right logical (fills with 0)
 and, andi // logical and, andi is for anding with an immediate
 or, ori // logical or
 nor //logical not
-```
-**Conditional Operations** - These are used to alter the PC
-```asm
-beq $rs $rt L1 // if rs==rt branch to L1
-bne $rs $rt L1 // if rs!=rt bramch to L1
-j L1   // jump to L1 unconditionally
 ```
 
 **Arithmetic Operations** - These are used for airthmetic, usually in the format a gets b + c
@@ -105,10 +97,12 @@ sub $rs $rt $rd //sub with register operands
 subi $rs $rd 0x32 //immediate subtract
 ```
 
-**Register Operations** - In MIPS arithmetic uses register operands as you can't add two values stored in memory.
-In MIPS, we use a 32x32bit register file. That is we have 32 registers, each of which is 32 bits on. This is directly from our R/I-format, each register is encoded by 5 bits, so in total 32 registers are able to be encoded.
-
-Smaller register files tend to be faster, so increasing the register file size creates a tradeoff.
+**Conditional Operations** - These are used to alter the PC
+```asm
+beq $rs $rt L1 // if rs==rt branch to L1
+bne $rs $rt L1 // if rs!=rt bramch to L1
+j L1   // jump to L1 unconditionally
+```
 
 **Memory Operations** - We need explicit instructions for memory mamagement because this is a RISC architecture.
 ```asm
@@ -117,7 +111,7 @@ sw
 ```
 We assume that memory is a giant array of byte-addressable words and words are aligned in memory.
 
-**Branch Instructions** - Used to alter the PC to control execution flow.
+**Branch Operations** - Used to alter the PC to control execution flow.
 One thing to note is that less than is slower than equivalence
 Create combinations of branches/subtractions as a compromise
 
@@ -128,8 +122,7 @@ slt, slti
 slta, sltai
 ```
 
-### Other
-**Procedure Calls** - How procedure calls are handled in MIPS.
+We can use branch operations to handle **procedure calls**.
 1. Place parameters in registers
 2. Transfer control to procedure (Change the PC)
 3. Acquire storage for the procedure
@@ -162,24 +155,35 @@ Since memory is byte-addressable, we can omit the last 2 bits when storing an ad
 
 
 ## Arithmetic and the ALU
-Input: ALU op, a, b
-Output: Zero, Result, Overflow, Carry Out
-
-### ALU Operations
-## Multiplication, and Booth's algorithm. 
-
-### ALU Design
 **One Bit Full Adder** - the layout of a full adder for 1-bit operands.
 ![1-bit adder](/images/comp_arch/1ba.png)
 
+Input: ALU op, a, b, less
+Output: Zero, Result, Overflow, Carry Out
+
+### ALU Operations
+**Addition** - this can be handled by setting the mux to be the output of the full adder. The output we get out is sum of the two operands.
+
+**Subtraction** - To do subtraction, we can simply negate the second operand $$b$$ and add. Since we use 2's complement encoding, this correspondings to $$-(b+1)$$. To get rid of this extra $$-1$$ constant we can set the initial $$C_0$$ to be 1.
+
+**SLT** - This is a bit tricky. We can't do this with our existing diagram, but we can if we add a $$\textbf{less}$$ input that just feeds directly through the mux. If we do this, we can do a subtraction and then link $$Result_{31}$$ to $$\textbf{less}_0$$, while keeping all other $$\textbf{less}$$ inputs to 0 to get the desired output.
+
+**Overflow** - Overflow is detected by xoring $$C_{31}$$ and $$C_{32}$$. When the two carry bits are different, an overflow has occured.
+
+**Zero** - A single NOR gate over the results provides us with the zero output.
+
+## Multiplication, and Booth's algorithm. 
+
+### ALU Design
 **Ripple Carry Adder** - To get a 32 bit adder, we can chain together 32 one-bit adders, connecting the output of one adder to the carry in of the one below it.
 ![ripple carry adder](/images/comp_arch/rca.png)
-A single NOR gate over the results provides us with the zero output.
-Overflow is detected by xoring $$C_{31}$$ and $$C_{32}$$. When the two carry bits are different, an overflow has occured.
 Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 2 gates per carry out. (1 OR and 1 AND as seen from the 1-bit full adder aboce) 
 
 **Carry Lookahead Adder** - In order to reduce the gate delay, we can use a carry lookahead adder.
 ![carry lookahead adder](/images/comp_arch/cla.png)
+
+The idea here is that instead of one giant 32-bit ALU, we use multipe smaller ALUs, In this case, we don't have to chain together the carries, we can instead compute them as a function of **propogates** and **generates**.
+
 | A | B | Carry Out | signal  |
 |---|---|-----------|---------|
 | 0 | 0 |0          | kill    |
@@ -187,19 +191,32 @@ Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 
 | 1 | 0 |Carry In   |propagate|
 | 1 | 1 |1          |generate |
 
-We can compute the carries as a function propogates and generates
+As seen from the truth table, **propogates** can be represented by an OR gate, while **generates** can be represented as an AND gate.
 
 $$C_1 = G_0 + C_0P_0$$
 $$C_2 = G_1 + G_0P_1 + C_0P_0P_1$$
-$$C_3 = G_1 + G_0P_1 + C_0P_0P_1$$
-$$C_4 = G_1 + G_0P_1 + C_0P_0P_1$$
+$$C_3 = G_2 + G_1P_2 + G_0P_1P_2 + C_0P_0P_1P_2$$
+$$C_4 = G_3 + G_2P_3 + G_1P_2P_3 + G_0P_1P_2P_3 + C_0P_0P_1P_2P_3$$
 
 This creates a larger but faster adder.
 
+**Carry Select Adder** - This is simply two adders, one for a potential carry of 1 and one for a 0 carry, We run the computation on both adders and use a mux to select the results. This gives us much better performance but at the expense of a much larger adder.
 
 ## Single Cycle Processor
-CPU Overview
-Parts: Instruction Fetch, Instruction Decode, Register, AlU, Data Memory
+We start by considering a simple subset of operations - 
+```asm
+lw, sw, add, sub, and, or, slt, beq, j
+```
+
+The processor cycle can be descripbed as a continuous loop between 5 stages:
++ Instruction Fetch (IF)
++ Instruction Decode (ID)
++ Execute (EX)
++ Acces Memory (MEM)
++ Store Result (WB)
+
+**Instruction Execution** - we grab the instruction at the location in program memory via the PC
+
 
 ## Pipelining
 In order to improve performance, we can overlap execution of instructions to reach a **steady state**, where CPI reaches it's asymptotic mininum.
@@ -214,12 +231,35 @@ In order to pipeline properly, we must uphold several principles.
 - All intermediate values must be latched
 - We cannot use the same functional block twice in a single cycle
 
-Pipelining also introduces **hazards** into the pipeline.
-Data Hazards, structural hazards, and other hazard, data forwarding, load-use hazard
+Pipelining also introduces **hazards** into the pipeline, where the pipeline must stall and performance drops.
+
+### Hazards
+**Data Hazards** - need to wait for previous instruction to complete to get the correct data.
+```asm
+add $3, $10, $11
+lw $8, 50($3)
+sub $11, $8, $7
+```
+Either insert independent instruction/no-ops as a software fix or stall the pipeline/employ **data-forwarding** as a hardware fix. One thing to note is that the software fix ruins the portability of the application.
+
+We can try to miniimze stalls by restructuring the instruction layout via some sort of **topological sort**.
+
+**Structural Hazards** - Occur when two instructions want to use the same resource. 
+For example consider a LW and a SW, they would both try to use the IF instruction stage at the same time. 
+Hence pipelined datapaths require seprate instruction/data memory.
+
+**Control Hazards** - Deciding on control action depends on a previous instruction.
 
 Branch prediction, dynamic branch prediction, 
 
 ## Instruction Level Parallelism
+In order to run faster, we need to exploit more **parallelism**. Ideally, we could execute multiple instructions in parallel. One way we can do this is via **multiple issue**.
+
+### Multiple Issue
+Multiple issue can be broken down to **static multiple issue (VLIW)** where the compiler groups independent instructions together into **issue slots** and **dynamic multiple issue** where the CPU examines the instruction stream and resolves hazards at runtime.
+
+**static multiple issue** has the advantage of being much simpler, at the expense of portability. Generally, there is a slot for Branch/ALU instructions and a slot for Load/Store instructions.
+
 VLIW, Multiple issue, dynamic multiple issue, loop unrolling
 
 ## Memory and Caching
