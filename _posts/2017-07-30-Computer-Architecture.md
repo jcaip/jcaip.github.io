@@ -146,12 +146,11 @@ ori $s0 $s0 2304 //load the lower 16 bits
 
 ### Addressing
 Since memory is byte-addressable, we can omit the last 2 bits when storing an address (It'll always be 00).
-
-**Immediate** - 
-**Register** - Store address inside a register file and access it that way
-**PC-relative** - PC + offsetx4, where the x4 comes from efficient storing of bits
-**Base** - 
-**Pseudo-direct** - used for J-type instructions. Takes the upper 4 bits from the current PC and concatenates the next 28 bits 
++ **Immediate** - 
++ **Register** - Store address inside a register file and access it that way
++ **PC-relative** - PC + offsetx4, where the x4 comes from efficient storing of bits
++ **Base** - 
++ **Pseudo-direct** - used for J-type instructions. Takes the upper 4 bits from the current PC and concatenates the next 28 bits 
 
 
 ## Arithmetic and the ALU
@@ -194,8 +193,11 @@ The idea here is that instead of one giant 32-bit ALU, we use multipe smaller AL
 As seen from the truth table, **propogates** can be represented by an OR gate, while **generates** can be represented as an AND gate.
 
 $$C_1 = G_0 + C_0P_0$$
+
 $$C_2 = G_1 + G_0P_1 + C_0P_0P_1$$
+
 $$C_3 = G_2 + G_1P_2 + G_0P_1P_2 + C_0P_0P_1P_2$$
+
 $$C_4 = G_3 + G_2P_3 + G_1P_2P_3 + G_0P_1P_2P_3 + C_0P_0P_1P_2P_3$$
 
 This creates a larger but faster adder.
@@ -250,7 +252,7 @@ Hence pipelined datapaths require seprate instruction/data memory.
 
 **Control Hazards** - Deciding on control action depends on a previous instruction.
 
-Branch prediction, dynamic branch prediction, 
+There are two main types of control hazards - 
 
 ## Instruction Level Parallelism
 In order to run faster, we need to exploit more **parallelism**. Ideally, we could execute multiple instructions in parallel. One way we can do this is via **multiple issue**.
@@ -260,10 +262,38 @@ Multiple issue can be broken down to **static multiple issue (VLIW)** where the 
 
 **static multiple issue** has the advantage of being much simpler, at the expense of portability. Generally, there is a slot for Branch/ALU instructions and a slot for Load/Store instructions.
 
-VLIW, Multiple issue, dynamic multiple issue, loop unrolling
+Dependencies within packets are not allowed but between packes its fine. However there are several changes that we have to make before multiple issue will work.
+
+Firstly, we need to expand the register file to output more than 2 registers, then add another ALU/adder.
+
+Next we need to modify the PC to shift 8 bytes instead of 4.
+
+We will of course run into hazards - nalmely we can't use the ALU result in the same packet and there is no forwarding between two instructions in a packet. The Load-Use data hazard also effectivley doubles, as stalling once represents missing out of the execution of two instructions. As a result, we try to use more aggressive compilers and schedulers when we use multiple issue.
+
+One example of this is **loop unrolling**, where we can unroll a loop so that it can be executed faster.
+
+In **dynamic multiple issue** the CPU will execute instructions out of order but then commit results in order. For this to work we need register renaming.
 
 ## Memory and Caching
-Memory Heirarchy, AMAT, Associative caches, Cache misses - write back, write-through, write-allocate. 
+As a result, we must exploit locality. There are two types of locality, **spatial locality** and **temporal locality**
+
+**spatial locality** is the tendency of 
+AMAT
+
+### Associative Caches
+Caches have different levels of **associativity**. A fully associative cache is one where any element can go to any slot of the cache. This is sort of like a hash table with a fixed number of buckets.
+
+Increasing the block size makes a cache more able to exploit spatial locality but will increase the number of misses.
+
+On cache misses we must stall the pipeline until the result is returned. However there are different ways in which we can deal with cache misses.
++ **write-through** - On a cache miss, we first write our changes to the cache, and then write our changes to memory.
++ **write-back** - On a cache miss, we write our changes to the cache, and then set a dirty bit. When that cache block is removed, we check if the dirty bit is set - if it is we write all changes to memory.
++ **write-allocate** - On a cache miss we bring that block of memory into the cache.
++ **write-arround** - On a cache miss we don't bring that block of memory into the cache, but rather just write our changes directly into memory.
+
+We can categorize cache misses into three types
++ **compulsary** - These are cahce misses that occur because the cache is not 
+
 Multi-level cahces, Virtual memory and page faults (TLB)
 
 Different types of misses, VIPT vs VIVT vs PIPT
