@@ -35,12 +35,12 @@ This can be seen in this graph - as you add more processors, the speedup factor 
 
 ### What affects different performance metrics
 
-|          | IC | CPI | T_c |
-|----------|----|-----|-----|
-|Algorithm | Y  | Y   | N   |
-|Language  | Y  | Y   | N   | 
-|Compiler  | Y  | Y   | N   |
-|ISA       | Y  | Y   | Y   |
+|           | IC | CPI | T_c |
+|-----------|----|-----|-----|
+| Algorithm | Y  | Y   | N   |
+| Language  | Y  | Y   | N   | 
+| Compiler  | Y  | Y   | N   |
+| ISA       | Y  | Y   | Y   |
 
 ## MIPS
 In order to fully understand computer architecture, we must first understand MIPS.
@@ -161,17 +161,28 @@ Input: ALU op, a, b, less
 Output: Zero, Result, Overflow, Carry Out
 
 ### ALU Operations
+**Overflow** - Overflow is detected by xoring $$C_{31}$$ and $$C_{32}$$. When the two carry bits are different, an overflow has occured.
+
+**Zero** - A single NOR gate over the results provides us with the zero output.
+
 **Addition** - this can be handled by setting the mux to be the output of the full adder. The output we get out is sum of the two operands.
 
 **Subtraction** - To do subtraction, we can simply negate the second operand $$b$$ and add. Since we use 2's complement encoding, this correspondings to $$-(b+1)$$. To get rid of this extra $$-1$$ constant we can set the initial $$C_0$$ to be 1.
 
 **SLT** - This is a bit tricky. We can't do this with our existing diagram, but we can if we add a $$\textbf{less}$$ input that just feeds directly through the mux. If we do this, we can do a subtraction and then link $$Result_{31}$$ to $$\textbf{less}_0$$, while keeping all other $$\textbf{less}$$ inputs to 0 to get the desired output.
 
-**Overflow** - Overflow is detected by xoring $$C_{31}$$ and $$C_{32}$$. When the two carry bits are different, an overflow has occured.
+**Multiplication** - We can do long-multiplication in binary.
+```
+for i in range(0, 32):
+  Take LSB of Multiplier
+  if 1:
+    Add multiplicand to product and put into the product register
+  shift multiplicand left
+  shift multiplier right
+```
+With this approach, if we want to multiply negative numbers. we must first invert them and then invert back accordingly.
 
-**Zero** - A single NOR gate over the results provides us with the zero output.
-
-## Multiplication, and Booth's algorithm. 
+We can also use **Booth's Algorithm**, which also offers some potential speedup as well by replacing a sequence of additions with a single addition and them subtraction.
 
 ### ALU Design
 **Ripple Carry Adder** - To get a 32 bit adder, we can chain together 32 one-bit adders, connecting the output of one adder to the carry in of the one below it.
@@ -183,12 +194,12 @@ Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 
 
 The idea here is that instead of one giant 32-bit ALU, we use multipe smaller ALUs, In this case, we don't have to chain together the carries, we can instead compute them as a function of **propogates** and **generates**.
 
-| A | B | Carry Out | signal  |
-|---|---|-----------|---------|
-| 0 | 0 |0          | kill    |
-| 0 | 1 |Carry In   |propagate|
-| 1 | 0 |Carry In   |propagate|
-| 1 | 1 |1          |generate |
+| A | B |  Carry Out |  signal   |
+|---|---|------------|-----------|
+| 0 | 0 | 0          |  kill     |
+| 0 | 1 | Carry In   | propagate |
+| 1 | 0 | Carry In   | propagate |
+| 1 | 1 | 1          | generate  |
 
 As seen from the truth table, **propogates** can be represented by an OR gate, while **generates** can be represented as an AND gate.
 
