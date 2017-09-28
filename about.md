@@ -19,8 +19,9 @@ I'm also the former President of ACM AI at UCLA, where I taught people more abou
 ACM AI is now in the very capable hands of [Rohan Varma](http://rohanvarma.me/) and [Adit Deshpande](https://adeshpande3.github.io/).
 If you're interested in AI/ML at all and in the LA area you should definetly [check](https://www.facebook.com/groups/uclaacmai/) us out!
 
-I'm spending this summer interning at [Blend](https://blend.com/), an amazing company that I'm very grateful to work for. I'm on the data team at Blend, where my job is twofold - firstly to develop and maintain the infrastructure that creates Blend's data and secondly to analyze and apply that data to improve the home mortgage experience.
+I spent this summer interning at [Blend](https://blend.com/), an amazing company that I'm very grateful to work for. I'm on the data team at Blend, where my job is twofold - firstly to develop and maintain the infrastructure that creates Blend's data and secondly to analyze and apply that data to improve the home mortgage experience.
 
+Blend was such an amazing experience that I decided to take a gap year from UCLA. I'm currently a Machine Learning engineer on the data team, working towards creating the first intelligent and data-driven products at Blend.
 
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
 
