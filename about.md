@@ -21,7 +21,9 @@ If you're interested in AI/ML at all and in the LA area you should definetly [ch
 
 I spent this summer interning at [Blend](https://blend.com/), an amazing company that I'm very grateful to work for. I'm on the data team at Blend, where my job is twofold - firstly to develop and maintain the infrastructure that creates Blend's data and secondly to analyze and apply that data to improve the home mortgage experience.
 
-Blend was such an amazing experience that I decided to take a gap year from UCLA. I'm currently a machine learning engineer on the data team, working towards creating the first intelligent and data-driven products at Blend.
+Blend was such an amazing experience that I decided to take a gap year from UCLA. I'm currently a machine learning engineer on the data team, working towards creating the first intelligent and data-driven products at Blend. I'm excited for the opportunities that Blend will face and to grow with the company!
+
+You can read a bit more about Blend [here](https://techcrunch.com/2017/08/24/blend-100-million/) and [here](https://news.greylock.com/our-investment-in-blend-4dd6a6106442).
 
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
 
