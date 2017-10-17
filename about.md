@@ -7,7 +7,7 @@ permalink: /about/
 Hi! I'm Jesse Cai!
 
 This is my website, where I'll be putting up class notes, personal projects, and pretty much anything else that I find interesting.
-I'm primarily interested in the fields of deep learning, natrual language processing, artificial intelligence, algorithms, and scalable web systems, but I find pretty much any bit of computer science fascinating. 
+I'm primarily interested in the fields of deep learning, natural language processing, artificial intelligence, algorithms, and scalable web systems, but I find pretty much any bit of computer science fascinating. 
 
 ### More Information
 
@@ -27,7 +27,7 @@ You can read a bit more about Blend [here](https://techcrunch.com/2017/08/24/ble
 
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
 
-In my free time I enjoy hiking, watching basketball and playing chess.
+In my free time I enjoy hiking, watching basketball and playing chess. 
 
 ### Contact me
 I'm always interested in meeting new people, if you have any questions please feel free to contact me!
