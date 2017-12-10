@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Index 
-permalink: /index/
+permalink: /categories/
 ---
 
 Here's some cool side projects I've worked on broken down by subject.
@@ -21,3 +21,22 @@ Here's some cool side projects I've worked on broken down by subject.
 ### Web Development
 * [Dockerizing Web Applicaitons](\Dockerizing-Web-Applications) Explanation of Dockerfiles
 * [CICD on AWS](\CICD-on-AWS) Setting up Jenkins and Docker on AWS
+*
+Here's a list of all the notes I've written.
+
+### [CS M151B](/Computer-Architecture) Computer Architecture
+
+### [CS 188](/Computation-Medical-Imaging) Computational Methods for Medical Imaging
+### [CS 161](/Artificial-Intelligence) Artificial Intellignece
+### [CS 174A](/Computer-Graphics) Computer Graphics
+
+### CS 180 Algorithms and Complexity
++ [Divide and Conquer](/Divide-and-Conquer)
++ [Greedy Algorithms](/Greedy-Algorithms)
++ [Dynamic Programming](/Dynamic-Programming)
++ [Randomness](/Randomness)
++ [Reduction and Intractibility](/Reduction-and-Intractibility)
+
+### [ENGR 111](/Corporate-Finance) Finance for Engineers
+
+### [Deepdive](/Deepdive) Stanford Deepdive Notes
