@@ -52,7 +52,7 @@ The balance sheet is a representation of a company. It can be used to answer thr
 + On the upper half, we can see short-term cash flow and **net working capital**
 + On the right hand side, we can see the investors perception of the company and **capital structure** issues
 
-$$Assets = Liabilites + Stockholders \: equity$$
+$$Assets = Liabilites + Stockholders \: Equity$$
 
 When analyzing a balance sheet, you should be aware of liquidity, debt vs. equity, and value vs. cost
 
@@ -71,6 +71,7 @@ When analyzing a balance sheet, you should be aware of liquidity, debt vs. equit
 
 ### Income Statement
 $$Revenue - Expenses = Income$$
+
 **Common-Size Income Statement** - Divide by Total Sales to get a percentage
 + **Generally accepted accounting principles** - revenue is recognized when an exchange of goods or services occurs. Revenues shoud be matched with expenses. Income is reported when it is earned, even though no cash flow ahs necessarily occured. E.g. - selling for credit
 + **Noncash items** - exsist against revenues but do not affect cash flow.
@@ -79,7 +80,7 @@ $$Revenue - Expenses = Income$$
 + **Time and Costs** - visualize short run and long run, where in the short run certain costs are fixed (bond interest, overhead, property taxes), but in the long run all costs are variable
 
 ### Net Working Capital
-$$Current assets - Current liabilities = Net working capital$$
+$$Current \: Assets - Current \: Liabilities = NWC$$
 
 If net working capital is positive, this means that over the next 12 months, the cash that will come in is greater than the cash thatwill be paid out. 
 The change in net working capital is using positive in a growing firm
