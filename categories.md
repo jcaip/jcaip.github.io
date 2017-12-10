@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Index 
-permalink: /categories/
+permalink: /categories
 ---
 
 Here's some cool side projects I've worked on broken down by subject.
