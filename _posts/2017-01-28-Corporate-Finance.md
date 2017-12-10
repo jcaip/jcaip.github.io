@@ -152,7 +152,7 @@ $$ EFN = \frac{Assets}{Sales} \times \Delta Sales - \frac{Liabilities_{spont}}{S
 
 **Internal Growth Rate** - $$G_{internal} = \frac{ROA \times Retention \: Ratio}{1- ROA \times Retention \: Ratio}$$
 
-**Sustainable Growth Rate** - $$G_sustain = \frac{ROE \times Retention \: Ratio}{1- ROE \times Retention \: Ratio}$$
+**Sustainable Growth Rate** - $$G_{sustain} = \frac{ROE \times Retention \: Ratio}{1- ROE \times Retention \: Ratio}$$
 
 
 ![efn_chart](/images/corp_fin/efn_chart.png)
@@ -160,7 +160,7 @@ $$ EFN = \frac{Assets}{Sales} \times \Delta Sales - \frac{Liabilities_{spont}}{S
 ## Discount Cash Flow Evaluation
 
 + $$Net \: Present \: Value = -Cost + FV$$
-+ $$FV = Cost \times (1 + \frac{r}{m}))^{mT}$$
++ $$FV = Cost \times (1 + \frac{r}{m})^{mT}$$
 + $$FV = Cost \times e^{rT}$$
 + $$EAR = (1+ \frac{i}{p})^p -1$$
 
@@ -168,26 +168,25 @@ Here, $$r$$ is the discount rate and $$g$$ is the growth rate
 
 **Perpetuity** - A constant stream of cash flow that lasts forever
 
-+ `PV = C/(r-g)`
++ $$PV = \frac{C}{r-g}$$
 
 **Annuity** - A constant stream of cash flows with a fixed maturity
 
-+ `PV = C/(r-g) * (1 - (1+g)/(1+r))^T`
-+ `FV = C*((1+r)^-T -1)/ r`
-
++ $$PV = \frac{C}{r-g} \times (1 - \frac{1+g}{1+r})^T$$
++ $$FV = C \times \frac{(1+r)^{-T} -1}{r}$$
 
 ## Making Capital Investment Decisions and Project Evaluation
 
-`Net Present Value = Total PV of future CF's + Initial Investment`
+$$Net \: Present \: Value = Total \: PV \: of \: future \: CFs + Initial \: Investment$$
 
-`Operating Cash Flow = (revenue - costs) * (1-tax) + Depreciaton * tax` 
+$$CF_{operating} = (revenue - costs) \times (1-tax) + Depreciaton \times tax$$ 
 
 + **Payback Period** - number of years to recover initial costs
 + **Discounted Payback Period** - Payback period that takes the time value of money into account
 + **Internal Rate of Return** - This is the discount rate that sets NPV to zero
 + **Profitability Index** - meaures our return on every dollar of investment value
 
-![pi](/images/corp_fin/pi.png)
+$$ \textbf{PI} = \frac{\sum{NPV(C_i)}}{C_0} $$
 
 + **Incremental Profitability Index** - Profitability index is prone to scale issues, so we take the difference between the two cash flows
 
@@ -197,18 +196,18 @@ Here, $$r$$ is the discount rate and $$g$$ is the growth rate
 + **Variable Costs** - scale with the amount of good produced
 + **Salvage value** - amount remaining after a depreciated useful life
 
-![salvage](/images/corp_fin/salvage.png)
+$$ Salvage = Marked \: Value - (Market \: Value - Book \: Value) \time t$$
 
 ### Sensitivity, Scenario, and Break-Even Analysis
 
 + **Sensitivity Analysis** - examines how sensitive a particular NPV calcuation is under best, optimistic, and pessimistic circumstances
 + **Scenario Analysis** - examines a different number of likely scenarios, where each scenario is a confluence of factors
 + **Break-even Analysis** - examine the increase of sales needed to break even. We can calculate this for **Accounting Profit**  or for **Present Value**. In accounting profit, we do not account for tax because there isn't any.
-    + `Accounting Profit BE = (Fixed Costs + Deprecation)/(Sales price - Variable costs)`
+    + $$Accounting \: Profit \: BE = \frac{Fixed \: Costs + Deprecation}{Sales \: price - Variable \: costs}`
 
-`Equivalent Annual Cost = Initial Investment / annuity factor`
+$$Equivalent \: Annual \: Cost = \frac{Initial \: Investment}{annuity \: factor}$$
 
-`PV BE = (EAC + Fixed costs (1-tax) - tax*Depreciation) / ((Sales price - Variable costs) * (1-tax))`
+$$PV \: BE = \frac{EAC + Fixed \: costs (1-tax) - tax*Depreciation}{(Sales \: price - Variable \:costs) (1-tax)}$$
 
 ### Monte Carlo Simulaiton
 
