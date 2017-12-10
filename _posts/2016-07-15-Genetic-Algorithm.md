@@ -16,11 +16,9 @@ For example, when I run the algorithm, one string it may return is $$262-12-246$
 
 ## The Approach
 
-The idea is to mimic biological natrual selection acting on a _population_ of
-organisms. Each individual of the population has a _fitness score_, which I
-have defined in my code as the distance from the result of that expression to
-42. An individuals chance to reproduce to pass on its genetic information to
-    the next generation is directly tied to this fitness score. (More on this
+The idea is to mimic biological natrual selection acting on a _population_ of organisms. Each individual of the population has a _fitness score_, which I
+have defined in my code as the distance from the result of that expression to 42. 
+An individuals chance to reproduce to pass on its genetic information to the next generation is directly tied to this fitness score. (More on this
 later) The process of reproduction has two opportunities for change -
 _recombination_ and _mutation_. _Recombination_ is when two organisms share
 their genes when they mate and the offspring recieves half the genes from one
@@ -34,19 +32,20 @@ result we want, or the entire population dies out.
 
 _Recombination Visualized_
 
+```
 Parent 1: 00000000000000000
-
 Parent 2: 11111111111111111
 
 Offspring: 0000001111111111
+```
 
 _Mutation Visualized_
-
+```
 Parent 1: 00000000000000000
-
 Parent 2: 00000000000000000
 
 Offspring: 0000000000010000
+```
 
 _How we select the next generation_
 
@@ -92,7 +91,7 @@ for i in range(0,popSize):
     s = bin(random.randint(0, math.pow(2, 4*expLength)))[2:].zfill(4*expLength);
 ```
 
-Basically it creates a random number from $$0$$ to $$2^36$$, and then calls `bin()` on the output, which returns something like `0b01001010010`, from which we just grab the binary bits and then right fill with 0's to ensure all outputs are the same length.
+Basically it creates a random number from $$0$$ to $$2^{36}$$, and then calls `bin()` on the output, which returns something like `0b01001010010`, from which we just grab the binary bits and then right fill with 0's to ensure all outputs are the same length.
 
 ### Determining the fitness of an individual.
 
