@@ -21,19 +21,19 @@ images:
 
 ## Proof Techniques
 ### Exchange argument
-The exchange argument is true if for our function A and some input I the ouptut A(I),and some other output O,
+The exchange argument is true if for our function $$A$$ and some input $$I$$ the ouptut $$A(I)$$,and some other output $$O$$,
 
-we can produce a new solution A(I)' that is 
+we can produce a new solution $$A(I)'$$ that is 
 
-+ just as good as A(I) 
-+ is more similar O than A(I) is 
++ just as good as $$A(I)$$
++ is more similar $$O$$ than $$A(I)$$ is 
 
-In combination with proof by contradiction, we cn use this to prove our function is optimal.
+In combination with proof by contradiction, we can use this to prove our function is optimal.
 
-Assume, our algorithm A is not correct.
-There is some solution A(I) that is the closest possible solution to the optimal solution O. 
+Assume our algorithm $$A$$ is not correct.
+There is some solution $$A(I)$$ that is the closest possible solution to the optimal solution $$O$$. 
 
 However, if we know the exchange argument was true, 
-one could always modify A(I) to create A(I)', which is just as optimal, but more like O than A(I) is
+one could always modify $$A(I)$$ to create $$A(I)'$$, which is just as optimal, but more like $$O$$ than $$A(I)$$ is
 
-Which is a contradiction because  we stated A(I) is the closest.
+Which is a contradiction because  we stated $$A(I)$$ is the closest.
