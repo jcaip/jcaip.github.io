@@ -12,7 +12,7 @@ images:
 ## The Problem
 So I've been meaning to create a blog to chronicle all the technical stuff I do, and I just discovered jekyll-now and I love it so far. So without much further ado, this is the first post on my blog, and it describes running a genetic algorithm to create a string of numbers and operations that evaluates to 42. 
 
-For example, when I run the algorithm, one string it may return is '262-12-246'. It's important to note that the string that it does return will always be "gramatically" correct - it will always be formatted properly (for example, there wont be something like 2++34)
+For example, when I run the algorithm, one string it may return is $$262-12-246$$. It's important to note that the string that it does return will always be "gramatically" correct - it will always be formatted properly (for example, there wont be something like $$2++34$$)
 
 ## The Approach
 
@@ -92,14 +92,14 @@ for i in range(0,popSize):
     s = bin(random.randint(0, math.pow(2, 4*expLength)))[2:].zfill(4*expLength);
 ```
 
-Basically it creates a random number from 0 to 2^36, and then calls bin() on the output, which returns something like 0b01001010010, from which we just grab the binary bits and then right fill with 0's to ensure all outputs are the same length.
+Basically it creates a random number from $$0$$ to $$2^36$$, and then calls `bin()` on the output, which returns something like `0b01001010010`, from which we just grab the binary bits and then right fill with 0's to ensure all outputs are the same length.
 
 ### Determining the fitness of an individual.
 
 I first checked if the string evaluated to a valid expression - otherwise the fitness score was 0. 
 If the string was a valid expression, then the function evaluates the expression and then uses this function to determine the fitness
 
-$$Fitness = \frac{1}{evalutation - target$$
+$$Fitness = \frac{1}{evalutation - target}$$
 
 ```python
 def evaluateChromosome(bitstring):
