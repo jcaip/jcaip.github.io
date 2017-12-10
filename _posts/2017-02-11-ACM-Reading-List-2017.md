@@ -12,6 +12,8 @@ I was asked to compile a reading list for UCLA ACM, so I figuered I would share 
 
 It's now the middle of February 2017. If you're stuck in the 6th week doldrums of the quarter system, why not kick back and crack open a book? 
 
+Here's a collection of several books that we found interesting and informative!
+
 ## How to Win Friends and Influence People
 
 #### Dale Carnegie, [PDF](http://images.kw.com/docs/2/1/2/212345/1285134779158_htwfaip.pdf) 
