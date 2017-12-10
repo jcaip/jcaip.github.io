@@ -11,7 +11,7 @@ This is a post about [Simulated Annealing.](https://en.wikipedia.org/wiki/Simula
 ## The Problem
 Simulated Annealing is an optimization technique. It is a probabilistic technique to approximate the global max/min of a function. In this post, I describe how to use Simulated Annealing to solve the Traveling Salesman problem.
 
-The idea of the Traveling Salesman problem is that you have N cities and you want to find the path of least distance that allows you to visit all the cities and end up at your starting city. (You basically just want to find a cycle) You can read more about this problem if you're unfamiliar with it [here.](https://simple.wikipedia.org/wiki/Travelling_salesman_problem)
+The idea of the Traveling Salesman problem is that you have $$N$$ cities and you want to find the path of least distance that allows you to visit all the cities and end up at your starting city. (You basically just want to find a cycle) You can read more about this problem if you're unfamiliar with it [here.](https://simple.wikipedia.org/wiki/Travelling_salesman_problem)
 
 ## Approach
 Simulated Annealing works as follows:
@@ -20,7 +20,10 @@ Simulated Annealing works as follows:
 
 2. Create a neighboring solution. In our case, we choose two vertices and reverse the path along these 2 vertices.
 
-3. If the neighboring solution is better than the current solution, switch. However, if the neighboring solution is worse than the current solution, you still have a chance to switch, given by the equation $$exp( (e - e'))/T) > rand(0,1)$$.
+3. If the neighboring solution is better than the current solution, switch. However, if the neighboring solution is worse than the current solution, you still have a chance to switch, given by the equation:
+
+$$\frac{exp(e - e')}{T} > rand(0,1)$$
+
   In this case $$e$$ is the distance of your current path, $$e'$$ is the distance of your neighbor path, and $$T$$ is the temperature.
 
 
