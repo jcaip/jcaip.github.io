@@ -1,8 +1,6 @@
 ---
 layout: post
 
-excerpt: I was asked to compile a reading list for UCLA ACM, so I figuered I would share it too, check out our [Medium Blog](https://medium.com/@acmbruins).
-
 images:
 
     - url: http://images.gr-assets.com/books/1442726934l/4865.jpg
