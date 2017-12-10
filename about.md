@@ -13,7 +13,7 @@ This is my website, where I put class notes, personal projects, and anything els
 I'm primarily interested in deep learning, algorithms, distributed systems, and optimization methods.
 
 ## Articles
-Occassionally I do things that cannot be found on this blog. They are linked below.
+Occassionally I write things that cannot be found on this blog. They are linked below.
 + [Predicting User Submission with a Recurrent Neural Network](https://blend.com/predicting-submission/)
 
 ### More Information
