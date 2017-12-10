@@ -9,21 +9,19 @@ images:
       title: Loss Function
 ---
 
-## About the Project
-This is a personal project that I wanted to start working on. It's going to consist of 3/4 parts. The general idea is to train an RNN for sentiment analysis and then create a webapp to pull twitter data based on geolocation to see how different parts of the nation are feeling.
+This is a personal project that I wanted to start working on. The general idea is to train an RNN for sentiment analysis and then create a webapp to pull twitter data based on geolocation to see how different parts of the nation are feeling.
 
 The different parts are as follows:
 
   + Creating a Machine Learning Model
   + Connecting the model to a small Flask API
   + Creating a frontend to display the data
-  + (Might not do this) Wire up an Edison/RPi to a traffic light so it looks cool
   
 ### Sentiment Analysis Model
-I also wanted to use this as an opportunity to learn Tensorflow, so that is the framework that I'm using to write the model. 
-Everything will be in python, and I'll go over most of the code that I wrote. You can see the github repo [here]
+I also wanted to use this as an opportunity to learn [Tensorflow](https://www.tensorflow.org/), so that is the framework that I'm using to write the model. 
+Everything will be in python, and I'll go over most of the code that I wrote. You can see the github repo [here](https://github.com/jcaip/twitter_sentiment_analysis).
 
-First off, we create an object
+First off, we create an object that represents our RNN.
 
 ```python
 class TextRNN(object):
@@ -37,7 +35,7 @@ Now we can create placeholders for our input X, output y, and also our dropoput 
     self.y = tf.placeholder(tf.float32, [None, output_layer_size], name='y')
     self.droput_keep_prob = tf.placeholder(tf.float32, name="droput_keep_prob")
 ```
-This lets us feed these values in later when we train the model as part of tensorflow
+This lets us feed these values in later when we train the model as part of tensorflow.
 
 I used word vectors to capture some of the semantic/syntatic relationship of the words in the tweet. You can read more about the power of word vectors [here](http://cs224d.stanford.edu/syllabus.html)
 
@@ -75,7 +73,10 @@ Next theres a softmax layer to classify the tweet as either negative or positive
         self.scores= tf.matmul(last, W) + b
         self.prediction = tf.argmax(self.scores, 1)
 ```
-Next we have to create a loss function to optimize. We can use the build in softmax_cross_entropy_with_logits function to do so.
+Next we have to create a loss function to optimize. We can use the built in `softmax_cross_entropy_with_logits` function to do so.
+
+$$P(y=j, \textbf{x}) = \frac{e^{x^Tw_j}}{\sum_{k=1}^K{e^{x^Tw_k}}} $$
+
 It's worthwhile to note that we feed in the unnormalized scores into this function, as it is optimized to take these in. Feeding in the result of a softmax function into this function will cause it to not perform properly
 
 I also added a way to check the error of the model by simply seeing how many misclassifications that it makes
@@ -96,7 +97,7 @@ I ended up finding [Sentiment140](http://help.sentiment140.com/for-students), wh
 The training data was split into Positive, Negative, and Neutral Tweets. I only used the positive and negative examples.
 
 ### Training script
-After loading all the data, I created an instance of our RNN class and also a tensorflow minimizer
+After loading all the data, I created an instance of our RNN class and also an Adam optimizer.
 
 ```python
     rnn = TextRNN(x_train.shape[1], y_train.shape[1], 75, len(vocab_processor.vocabulary_), 200, l2_reg=0.0)
@@ -122,7 +123,7 @@ With my session initialized, I can train my model simply by running
                 rnn.droput_keep_prob: 0.5
             })
 ```
-I ended up trainig on a batch size of 1000 for ~200 epochs, which mean that in the end my code ended up looking something more like this
+I ended up trainig on a batch size of 1000 for ~200 epochs, which mean that in the end my code ended up looking something more like this:
 
 ```python
 #run for all epochs
@@ -159,10 +160,10 @@ I was pretty impatient so I only ended training on 10000 training examples with 
 I ended with a 68-69% test accuracy. I've included some graphs of the loss function and test error over time. Please excuse the unlabeled graphs
 
 #### Loss Function vs. Iterations
-![loss_function](https://jcaip.github.io/images/sou/loss_function.png)
+![loss_function](/images/sou/loss_function.png)
 
 #### Test Error vs. Epochs
-![error](https://jcaip.github.io/images/sou/error.png)
+![error](/images/sou/error.png)
 
 ### Takeaway
 I eneded up being very pleased with the end result. This took about a week to do, and I think if I had access to a GPU or even a more powerful computer (I'm runnning on a dual core laptop) I could get a much better test error with just a bit more tweaking. 
