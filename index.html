@@ -12,6 +12,7 @@ published: true
       <div class="entry">
         {% assign image = post.images[0] %}
         {% include image.html image=image %}
+        {{ post.excerpt }}
       </div>
 
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
