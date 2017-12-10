@@ -16,17 +16,13 @@ For example, when I run the algorithm, one string it may return is $$262-12-246$
 
 ## The Approach
 
-The idea is to mimic biological natrual selection acting on a _population_ of organisms. Each individual of the population has a _fitness score_, which I
-have defined in my code as the distance from the result of that expression to 42. 
-An individuals chance to reproduce to pass on its genetic information to the next generation is directly tied to this fitness score. (More on this
-later) The process of reproduction has two opportunities for change -
-_recombination_ and _mutation_. _Recombination_ is when two organisms share
-their genes when they mate and the offspring recieves half the genes from one
-parent and half the genes from another. This is analogous to [chromosomal crossover](https://en.wikipedia.org/wiki/Chromosomal_crossover) _Mutation_ is the altering of a gene when it is copied and is much less common. 
+The idea is to mimic biological natrual selection acting on a _population_ of organisms. Each individual of the population has a _fitness score_, which I have defined in my code as the distance from the result of that expression to 42. 
+An individuals chance to reproduce to pass on its genetic information to the next generation is directly tied to this fitness score. The process of reproduction has two opportunities for change - _recombination_ and _mutation_.
+  + _Recombination_ is when two organisms share their genes when they mate and the offspring recieves half the genes from one
+parent and half the genes from another. This is analogous to [chromosomal crossover](https://en.wikipedia.org/wiki/Chromosomal_crossover)
+  + _Mutation_ is the altering of a gene when it is copied and is much less common.
 
-Basically, we simulate a population and make it reproduce until we get the
-result we want, or the entire population dies out.
-
+Basically, we simulate a population and make it reproduce until we get the result we want, or the entire population dies out.
 
 ## More Theory
 
