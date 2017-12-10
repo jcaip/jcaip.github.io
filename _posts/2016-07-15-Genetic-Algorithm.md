@@ -10,13 +10,13 @@ images:
 ---
 
 ## The Problem
-So I've been meaning to create a blog to chronicle all the technical stuff I do, and I just discovered jekyll-now and I love it so far. So without much further ado, this is the first post on my blog, and it describes running a genetic algorith to create a string of numbers and operations that evaluates to 42. 
+So I've been meaning to create a blog to chronicle all the technical stuff I do, and I just discovered jekyll-now and I love it so far. So without much further ado, this is the first post on my blog, and it describes running a genetic algorithm to create a string of numbers and operations that evaluates to 42. 
 
-For example, when I run the algorithm, one string it may return is '262-12-246'. It's important to note that the string that it does return will always be "gramatically" correct - it will be formatted correctly (for example, there wont be something like 2++34)
+For example, when I run the algorithm, one string it may return is '262-12-246'. It's important to note that the string that it does return will always be "gramatically" correct - it will always be formatted properly (for example, there wont be something like 2++34)
 
 ## The Approach
 
-The idea is to mimic biology and natrual selection acting on a _population_ of
+The idea is to mimic biological natrual selection acting on a _population_ of
 organisms. Each individual of the population has a _fitness score_, which I
 have defined in my code as the distance from the result of that expression to
 42. An individuals chance to reproduce to pass on its genetic information to
@@ -24,11 +24,10 @@ have defined in my code as the distance from the result of that expression to
 later) The process of reproduction has two opportunities for change -
 _recombination_ and _mutation_. _Recombination_ is when two organisms share
 their genes when they mate and the offspring recieves half the genes from one
-parent and half the genes from another. _Mutation_ is the altering of a gene
-when it is copied and is much less common. 
+parent and half the genes from another. This is analogous to [chromosomal crossover](https://en.wikipedia.org/wiki/Chromosomal_crossover) _Mutation_ is the altering of a gene when it is copied and is much less common. 
 
 Basically, we simulate a population and make it reproduce until we get the
-result we want, - or the entire population dies out.
+result we want, or the entire population dies out.
 
 
 ## More Theory
@@ -49,23 +48,21 @@ Parent 2: 00000000000000000
 
 Offspring: 0000000000010000
 
-_How do we select the next generation_
+_How we select the next generation_
 
-Basically, we use somehting called the roulette wheel method, where an individuals chance of getting selected is equal to 
+Basically, we use something called the roulette wheel method, where an individuals chance of getting selected is equal to 
 
-*Their fitness score*/*Fitness score of the whole population*
+$$\frac{Fitness_{individual}}{Fitness_{population}}$$
 
 This will probably be more about the code that runs, rather than the theory
-behind it all. I encourage you to check out [this
-site](http://www.ai-junkie.com/ga/intro/gat2.html) for more information, its
-what I used to get started. 
+behind it all. I encourage you to check out [this site](http://www.ai-junkie.com/ga/intro/gat2.html) for more information.
 
 ## The Code
 
 ### Creating the population and enviorment
 
 We need to first develop a way for us to store genetic information. For that,
-we use a bitstring that is 36 bits long and also create an encoding.
+we use a bitstring that is 36 bits long. We also create an encoding for our information.
 
 ```python
 encoding = {
@@ -87,21 +84,22 @@ encoding = {
         '1111' : '2',
 }
 ```
-This is the encoding that I used. As you can see, there were some extra encodings that I just made go to 1, 2
-The next thing to do is to randomly create the sample population. To do this, I used this line of code
+
+The next thing to do is to randomly create chromsomes for our population. To do this, I used this line of code
 
 ```python
 for i in range(0,popSize):
     s = bin(random.randint(0, math.pow(2, 4*expLength)))[2:].zfill(4*expLength);
 ```
 
-Basically it creates a random number from 0 to 2^36, and then calls bin() on the output, which returns something like 0b01001010010, from which we just grab the binary bit and then right fill with 0's to ensure they are all the same length
+Basically it creates a random number from 0 to 2^36, and then calls bin() on the output, which returns something like 0b01001010010, from which we just grab the binary bits and then right fill with 0's to ensure all outputs are the same length.
 
 ### Determining the fitness of an individual.
 
-Basically, I checked if the string evaluated to a valid expression - if otherwise the fitness score was 0. 
+I first checked if the string evaluated to a valid expression - otherwise the fitness score was 0. 
 If the string was a valid expression, then the function evaluates the expression and then uses this function to determine the fitness
-*Fitness: 1/(currentEvaluation-target)*
+
+$$Fitness = \frac{1}{evalutation - target$$
 
 ```python
 def evaluateChromosome(bitstring):
@@ -198,8 +196,8 @@ def iterateGeneration(i):
 It works!!! I think this is super cool for a little work. I wrote a simple mpl function to display the result:
 This was super fun! See the rest of the code [here](https://github.com/jcaip/gen_alg)
 
-![gen_alg result](https://jcaip.github.io/images/gen_alg/example1.png "Sample solution success")
+![gen_alg result](/images/gen_alg/example1.png "Sample solution success")
 
-![gen_alg result](https://jcaip.github.io/images/gen_alg/example.png "Sample solution failure")
+![gen_alg result](/images/gen_alg/example.png "Sample solution failure")
 
-![gen_alg result](https://jcaip.github.io/images/gen_alg/example2.png "Sample solution success")
+![gen_alg result](/images/gen_alg/example2.png "Sample solution success")
