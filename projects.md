@@ -16,6 +16,7 @@ Here's some cool side projects I've worked on broken down by subject.
 * [CS188 Literature Review](\CS188-Literature-Review) Literature Review for CS188 class project
 * [ML Server](\ML-Server) Setting up a server for machine learning
 * [CS188 Project](\CS188-Project) Using document vectors to predict medical phrases
++ [Predicting User Submission with a Recurrent Neural Network](https://blend.com/predicting-submission/) Some of the work I do at Blend
 
 ### Web Development
 * [Dockerizing Web Applicaitons](\Dockerizing-Web-Applications) Explanation of Dockerfiles

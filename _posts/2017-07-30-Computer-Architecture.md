@@ -286,9 +286,9 @@ One example of this is **loop unrolling**, where we can unroll a loop so that it
 In **dynamic multiple issue** the CPU will execute instructions out of order but then commit results in order. For this to work we need register renaming.
 
 ## Memory and Caching
-As a result, we must exploit locality. There are two types of locality, **spatial locality** and **temporal locality**
+We treat memory as a large quickly-accessible byte-addressable array, but in reality no memory has these characteristics. As a result, we must exploit locality. There are two types of locality, **spatial locality** and **temporal locality**
 
-**spatial locality** is the tendency of 
+**spatial locality** is the tendency of instructions 
 AMAT
 
 ### Associative Caches
@@ -309,4 +309,3 @@ Multi-level cahces, Virtual memory and page faults (TLB)
 
 Different types of misses, VIPT vs VIVT vs PIPT
 Cache coherence, snooping and snarfing, 
-

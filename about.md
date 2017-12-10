@@ -11,9 +11,6 @@ I'm currently a machine learning engineer on the data team, working towards crea
 
 This is my website, where I put class notes, personal projects, and anything else I find interesting. I find just about any aspect of computer science fascinating, but I'm primarily interested in deep learning, algorithms, distributed systems, and optimization methods.
 
-## Other Articles
-Occassionally I write things that cannot be found on this blog. They are linked below.
-+ [Predicting User Submission with a Recurrent Neural Network](https://blend.com/predicting-submission/)
 
 ### More Information
 I'm originally from the Bay Area where I graduated from Amador Valley in 2015. After that I moved down south to study computer science at UCLA. 
