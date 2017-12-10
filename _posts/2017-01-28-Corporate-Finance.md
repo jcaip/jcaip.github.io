@@ -203,7 +203,7 @@ $$ Salvage = Marked \: Value - (Market \: Value - Book \: Value) \times t$$
 + **Sensitivity Analysis** - examines how sensitive a particular NPV calcuation is under best, optimistic, and pessimistic circumstances
 + **Scenario Analysis** - examines a different number of likely scenarios, where each scenario is a confluence of factors
 + **Break-even Analysis** - examine the increase of sales needed to break even. We can calculate this for **Accounting Profit**  or for **Present Value**. In accounting profit, we do not account for tax because there isn't any.
-    + $$Accounting \: Profit \: BE = \frac{Fixed \: Costs + Deprecation}{Sales \: price - Variable \: costs}`
+    + $$Accounting \: Profit \: BE = \frac{Fixed \: Costs + Deprecation}{Sales \: price - Variable \: costs}$$
 
 $$Equivalent \: Annual \: Cost = \frac{Initial \: Investment}{annuity \: factor}$$
 
