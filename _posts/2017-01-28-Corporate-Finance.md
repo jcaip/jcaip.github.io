@@ -52,7 +52,8 @@ The balance sheet is a representation of a company. It can be used to answer thr
 + On the upper half, we can see short-term cash flow and **net working capital**
 + On the right hand side, we can see the investors perception of the company and **capital structure** issues
 
-$$Assets = Liabilites + Stockholders equity$$
+$$Assets = Liabilites + Stockholders \quad equity$$
+
 When analyzing a balance sheet, you should be aware of liquidity, debt vs. equity, and value vs. cost
 
 + **Liquidity** - refers to the ease and quickness assets can be converted to cash
