@@ -196,7 +196,7 @@ $$ \textbf{PI} = \frac{\sum{NPV(C_i)}}{C_0} $$
 + **Variable Costs** - scale with the amount of good produced
 + **Salvage value** - amount remaining after a depreciated useful life
 
-$$ Salvage = Marked \: Value - (Market \: Value - Book \: Value) \time t$$
+$$ Salvage = Marked \: Value - (Market \: Value - Book \: Value) \times t$$
 
 ### Sensitivity, Scenario, and Break-Even Analysis
 
