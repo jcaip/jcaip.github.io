@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Projects
-permalink: /projects/
+title: Index 
+permalink: /index/
 ---
 
 Here's some cool side projects I've worked on broken down by subject.
