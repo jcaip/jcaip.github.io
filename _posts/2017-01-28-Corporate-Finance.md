@@ -102,7 +102,7 @@ $$CF_{Assets} = CF_{Creditors} + CF_{Investors}$$
 + Short-Term Solvency or Liquidity Measures
     + $$Current \: Ratio = \frac{Current \: Assets}{Current \: Liabilities} $$
     + $$Quick \: Ratio = \frac{Current \: Assets - Inventory}{Current Liabilities} $$
-    + $$Cash Ratio = \frac{Cash}{Current \: Liabilities}$$
+    + $$Cash \: Ratio = \frac{Cash}{Current \: Liabilities}$$
 + Long-Term Solvency Measures
     + $$Total \: Debt \: Ratio = \frac{Total \: Assets - Total \: Equity}{Total \: Assets}$$
     + $$DE \: Ratio = \frac{Total \:Debt}{Total\:Equity}$$
@@ -129,11 +129,12 @@ Compare financial raions in **Time-Trend Analysis** (over time) or **Peer Group 
 
 $$Return \: on \: Equity = \frac{Net \:Income}{Total \: Equity}$$
 
-`Return on Equity = Profit Margin * Total Asset Turnover * Equitiy Multiplier`
+$$Return \: on \: Equity = Profit \: Margin \times  Total \: Asset \: Turnover \times Equitiy \: Multiplier$$
+
 Each one of these represents a different part of the company
-+ Profit Margin is a measure of the firm's operating efficiency
-+ Total Asset Turnover is a measure of the firm's asset use efficiency
-+ Equity Multiplier is a measure of the firm's financial leverage
++ **Profit Margin** is a measure of the firm's operating efficiency
++ **Total Asset Turnover** is a measure of the firm's asset use efficiency
++ **Equity Multiplier** is a measure of the firm's financial leverage
 
 ### Financial Models
 
@@ -147,22 +148,23 @@ Each one of these represents a different part of the company
 6. Determine *External Financing Needs* that we will need to reach our sales projection by balancing the balance sheet
 7. Determine your plug variables and solve accordingly
 
-![efn](/images/corp_fin/efn.png)
+$$ EFN = \frac{Assets}{Sales} \times \Delta Sales - \frac{Liabilities_{spont}}{Sales} - PM \times Sales_{proj} \times (1-d) $$
 
-**Internal Growth Rate** - `G_internal = (ROA * Retention Ratio)/ (1- ROA * Retention Ratio)`
+**Internal Growth Rate** - $$G_{internal} = \frac{ROA \times Retention \: Ratio}{1- ROA \times Retention \: Ratio}$$
 
-**Sustainable Growth Rate** - `G_sustain = (ROE * Retention Ratio)/ (1- ROE * Retention Ratio)`
+**Sustainable Growth Rate** - $$G_sustain = \frac{ROE \times Retention \: Ratio}{1- ROE \times Retention \: Ratio}$$
+
 
 ![efn_chart](/images/corp_fin/efn_chart.png)
 
 ## Discount Cash Flow Evaluation
 
-+ `Net Present Value = -Cost + FV`
-+ `FV = Cost * (1+ (r/m))^(m*T)` 
-+ `FV = Cost*e^(rT)`
-+ `EAR = (1+ (i/p))^p -1`
++ $$Net \: Present \: Value = -Cost + FV$$
++ $$FV = Cost \times (1 + \frac{r}{m}))^{mT}$$
++ $$FV = Cost \times e^{rT}$$
++ $$EAR = (1+ \frac{i}{p})^p -1$$
 
-Here, r is the discount rate and g is the growth rate
+Here, $$r$$ is the discount rate and $$g$$ is the growth rate
 
 **Perpetuity** - A constant stream of cash flow that lasts forever
 
