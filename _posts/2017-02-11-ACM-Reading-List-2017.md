@@ -1,6 +1,8 @@
 ---
 layout: post
 
+excerpt: I was asked to compile a reading list for UCLA ACM, so I figuered I would share it too, check out our [Medium Blog](https://medium.com/@acmbruins).
+
 images:
 
     - url: http://images.gr-assets.com/books/1442726934l/4865.jpg
@@ -13,8 +15,6 @@ I was asked to compile a reading list for UCLA ACM, so I figuered I would share 
 It's now the middle of February 2017. If you're stuck in the 6th week doldrums of the quarter system, why not kick back and crack open a book? 
 
 Here's a collection of several books that we found interesting and informative!
-
-
 
 ## How to Win Friends and Influence People
 
