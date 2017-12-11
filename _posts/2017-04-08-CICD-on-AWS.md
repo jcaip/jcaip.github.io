@@ -62,5 +62,6 @@ You'll have to enter the password located at **/var/lib/jenkins/secrets/initialA
 
 You should be prompted to install plugins at this point. Installing just the suggested plugins should be fine. 
 
-Now configure a build job in Jenkins. Pointing it towards your GitHub repository. 
-For your build commands. you should just be able to put make. 
+Now you can create a Jenkins job that points to your GitHub repository. By enabling hooks, you can trigger a build if you push to a certain branch, like master. 
+
+The nice thing about docker is that it makes deploying your application very easy. The commands that you need to run the application can simply be a `make` command.

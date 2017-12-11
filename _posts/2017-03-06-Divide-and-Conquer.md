@@ -8,7 +8,6 @@ images:
       title: Divide and Conquer
 ---
 
-## Divide and Conquer
 There are usually three steps to a divide and conquer algorithm
 
 + Divide the problem into subproblems
