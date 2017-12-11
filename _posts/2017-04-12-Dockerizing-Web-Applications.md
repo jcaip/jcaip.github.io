@@ -76,29 +76,29 @@ if __name__ == '__main__':
     http_server = WSGIServer(('', 5000), app)
     http_server.serve_forever()
 ```
-server.py exposes two endpoints, / and /two that simply return a string. Gevent is used here to get around the global interperter lock in python.
+`server.py` exposes two endpoints, `/` and `/two` that simply return a string. Gevent is used here to get around the global interperter lock in python and enable us to have multiple threads running at the same time.
 
 ## static
-The static folder contains the frontend of the project, and it's a bit more complicated than the backend. For this project, we're using [React](https://facebook.github.io/react/) and [Nginx](https://www.nginx.com/resources/wiki/). The core of the project was written by Kevin Wang and you can check out the not dockerized version [here](https://github.com/xorkevin/reactant). I'm not too familar with React, so I'm just going to go over how I dockerized the application.
+The static folder contains the frontend of the project, and it's a bit more complicated than the backend. For this project, we're using [React](https://facebook.github.io/react/) and [Nginx](https://www.nginx.com/resources/wiki/). The core of the project was written by [Kevin Wang](https://xorkevin.github.io/) and you can check out the not dockerized version [here](https://github.com/xorkevin/reactant). I'm not too familar with React, so I'm just going to go over how I dockerized the application.
 
 #### Dockerfile
 This docker container essentially builds the React application, and then lets Nginx serve it. 
 
 We start out by pulling the node image from docker.
 ```Dockerfile
-F0ROM node:latest
+FROM node:latest
 MAINTAINER Jesse Cai <jcjessecai@gmail.com>
 ```
 
 Next we install nginx so we can serve our files and also copy over our configuration file
-```
+```Dockerfile
 RUN apt-get update -y && apt-get install -y nginx
 
 COPY ./nginx/default.conf /etc/nginx/nginx.conf
 ```
 
 Here we cache the npm install and then install all the necessary node dependencies.
-```
+```Dockerfile
 # Prepare app directory
 RUN mkdir -p /static
 
@@ -110,7 +110,7 @@ ADD . /static
 ```
 
 Now we use node to build our page. and then copy it over to the folder that nginx watches.
-```
+```Dockerfile
 #build the paage
 WORKDIR /static
 RUN npm run build
@@ -121,7 +121,7 @@ RUN cp -r pages/* public && cp lib/build/main.css public/build && cp lib/build/m
 ```
 
 Now we expose port 80 so that Nginx can listen to traffic, and also start it with the daemon off. It's important to add daemon off because the Docker container will exit when it's initial process end. If you run without daemon off - the Nginx process will spin up some child processes and then exit, causing the container to end as well.
-```
+``` Dockerfile
 WORKDIR /static/public
 # Expose the app port
 EXPOSE 80
