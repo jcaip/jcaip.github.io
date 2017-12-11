@@ -1,7 +1,7 @@
 ---
 layout: post
 published: True
-
+tags: [algorithms, theory]
 images:
 
     - url: /images/algs/reduction/reduction_visualized.png

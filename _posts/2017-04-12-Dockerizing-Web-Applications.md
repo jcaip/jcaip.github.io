@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [web-dev, infrastructure]
 
 images:
 

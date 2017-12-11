@@ -1,5 +1,6 @@
 ---
 published: True
+tags: [algorithms]
 
 images:
 

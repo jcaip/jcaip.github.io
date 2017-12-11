@@ -1,6 +1,6 @@
 ---
 published: True
-
+tags: [algorithms]
 images:
 
     - url: /images/algs/Greedy/mst.png

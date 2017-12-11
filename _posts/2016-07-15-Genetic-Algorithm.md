@@ -2,6 +2,7 @@
 layout: post
 title: Genetic Algorithm
 published: true
+tags: [artificial-intelligence, biology, optimization]
 images:
 
     - url: /images/gen_alg/example.png

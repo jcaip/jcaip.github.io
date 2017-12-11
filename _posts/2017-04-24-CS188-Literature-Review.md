@@ -1,6 +1,7 @@
 ---
 layout: post
 title: CS188 Literature Review
+tags: [machine-learning, nlp]
 
 images:
     - url: /images/cs188/rcnn_structure.png

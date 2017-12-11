@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Twitter Tensorflow Sentiment Analysis
+tags: [machine-learning, rnn, nlp]
 
 images:
 

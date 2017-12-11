@@ -1,4 +1,5 @@
 ---
+tags: [optimization]
 images:
 
     - url: /images/sim_ann/sim_ann_50.png

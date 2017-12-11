@@ -1,6 +1,6 @@
 ---
 layout: post
-
+tags: [algorithms]
 images:
 
     - url: /images/algs/dp/APShortestPath.png
