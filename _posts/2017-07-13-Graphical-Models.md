@@ -1,3 +1,4 @@
+---
 layout: post
 title: Image Processing
 tags: [bayesian-networks, machine-learning, probability]
