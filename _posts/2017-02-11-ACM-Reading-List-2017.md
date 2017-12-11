@@ -1,6 +1,8 @@
 ---
 layout: post
 
+excerpt: Here's a collection of several books that we found interesting and informative!
+
 images:
 
     - url: http://images.gr-assets.com/books/1442726934l/4865.jpg
