@@ -1,7 +1,7 @@
 ---
 layout: post
-
 tags: [ACM, non-technical]
+
 excerpt: Here's a collection of several books that we found interesting and informative!
 
 images:
