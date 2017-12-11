@@ -3,7 +3,7 @@ layout: post
 
 images:
 
-    - url: /images/web_app.png
+    - url: /images/post_covers/web_app.png
       alt: CICD
       title: CICD
 ---
