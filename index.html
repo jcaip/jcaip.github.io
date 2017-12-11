@@ -15,7 +15,7 @@ published: true
         {{ post.excerpt }}
       </div>
 
-      <small class="post-date">{{ post.date | date_to_string }}</small>
+      <small class="date">{{ post.date | date_to_string }}</small>
 
       {% if post.tags %} | 
       {% for tag in post.tags %}
