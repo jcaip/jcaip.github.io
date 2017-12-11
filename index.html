@@ -15,7 +15,7 @@ published: true
         {{ post.excerpt }}
       </div>
 
-      <span class="post-date">{{ post.date | date_to_string }}</span>
+      <small class="post-date">{{ post.date | date_to_string }}</small>
       {% if post.tags %} | 
       {% for tag in post.tags %}
         <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
