@@ -7,7 +7,7 @@ permalink: /about/
 Hi there, I'm Jesse Cai!
 
 I'm a UCLA CS student currently taking a gap year to work at [Blend](https://blend.com), a startup focused on improving the consumer lending experience.
-I'm currently a machine learning engineer on the data team, working towards creating the first intelligent and data-driven products at Blend. 
+I'm currently a machine learning engineer on the data team, working towards creating the first intelligent and data-driven products at Blend. You can check out some of the work I do [here](https://blend.com/predicting-submission/)
 
 This is my website, where I put class notes, personal projects, and anything else I find interesting. I find just about any aspect of computer science fascinating, but I'm primarily interested in deep learning, algorithms, distributed systems, and optimization methods.
 
