@@ -2,7 +2,6 @@
 layout: post
 tags: [bayesian-networks, probability, artificial-intelligence]
 ---
-## Reasoning under Uncertainty
 We handled uncertainty before via **belief states**. However, when interperting partial sensor information, belief states create a huge number of states. This leads to the **qualification** problem. 
 
 In general, **laziness**, **theoretical ignorance** and **practical ignorance** keep us from deducing with pure logic. To deal with **degrees of belief** we will use **probability theory**. 

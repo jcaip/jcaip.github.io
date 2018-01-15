@@ -5,8 +5,6 @@ title: Artificial Intelligence
 tags: [artificial-intelligence]
 ---
 
-## Determining Intelligence
-
 #### Turing Test
 The Turing Test is a test devised by Alan Turning. The test calls for a computer and a human to be put in two seprate rooms, and another human to converse with both the human and the computer. If the human observer thinks he/she is talking to another human, the computer is said to have passed the Turing test. 
 

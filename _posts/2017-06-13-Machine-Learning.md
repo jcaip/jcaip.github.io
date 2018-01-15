@@ -7,7 +7,6 @@ images:
   alt: nn
   title: nn
 ---
-## Machine Learning Applications
 
 **Machine learning** is the science of getting computers to learn to perform a task without being explicitly programmed.
 
