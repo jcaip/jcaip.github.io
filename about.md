@@ -11,7 +11,6 @@ I'm currently a machine learning engineer on the data team, working towards crea
 
 This is my website, where I put class notes, personal projects, and anything else I find interesting. I find just about any aspect of computer science fascinating, but I'm primarily interested in deep learning, algorithms, distributed systems, and optimization methods.
 
-
 ### More Information
 I'm originally from the Bay Area where I graduated from Amador Valley in 2015. After that I moved down south to study computer science at UCLA. 
 
@@ -22,7 +21,7 @@ ACM AI is now in the very capable hands of [Rohan Varma](http://rohanvarma.me/) 
 If you're interested in AI/ML at all and in the LA area you should definetly [check](https://www.facebook.com/groups/uclaacmai/) us out!
 
 Before I joined full-time, I was a summer intern at Blend. You can read a bit more about us [here](https://techcrunch.com/2017/08/24/blend-100-million/) and [here](https://news.greylock.com/our-investment-in-blend-4dd6a6106442) if you're curious about what we do.
-Also we're hiring - so feel free to reach out (email perferred) or apply online [here](https://blend.com/careers/)!
+Also we're hiring - so apply online [here](https://blend.com/careers/)!
 
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
 
