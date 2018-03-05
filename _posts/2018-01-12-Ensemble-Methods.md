@@ -2,6 +2,11 @@
 layout: post
 tags: [machine-learning, theory]
 published: True
+
+images:
+  - url: https://infinitescript.com/wordpress/wp-content/uploads/2016/09/AdaBoost.jpg
+  - alt: adaboox
+  - title adaboost
 ---
 
 An explanation of how some popular ensemble methods work for machine learning. 
