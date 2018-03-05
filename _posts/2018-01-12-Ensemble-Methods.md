@@ -1,9 +1,9 @@
 ---
 layout: post
 tags: [machine-learning, theory]
-published: false
-
+published: True
 ---
+
 An explanation of how some popular ensemble methods work for machine learning. 
 
 Let's say we have some simple classifier. This classifier will either make bias or variance related errors. 
@@ -54,20 +54,3 @@ requires gradient and hessian of the loss function -
 
 Watchlist - you can overfitting at any round of the boosting process.
 Easy cut-off at any round when classifying - to recover from overfitting
-
-Linear monotonic transformations - do not 
-correlated features, such as countvectorizer are not important
-
-early stopping
-full learning history as well. 
-
-plotting a learning curve
-
-max_depth of the tree
-learning_rate of the tree
-max_delta_step, additional cap on learning rate, working with highly-imbalanced classes
-n_estimators - number of boosting rounds
-booster, usuall tree
-base_score - boosting starts with predictiong 0.5 for all observations, change it all here
-seed/random_state
-objective - if you want to play with maths, just give the callable that maps y_true, y_pred into gradient and hessian matrix. 
