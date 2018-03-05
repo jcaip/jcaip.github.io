@@ -28,7 +28,7 @@ Adaptive boost (Adaboost)
 
 Gradient Boosting
   Take a regression problem, feed simple classifier, and then learn the residual or the error on each step. 
-  Residualts are the gradient of the RMS loss, hence the gradient 
+  Residuals ($$y(x) - f(x)$$) are the gradient of the RMS loss, hence the gradient
 
   Instead of training on residuals, you can train on ciduals, of the loss for  classification problems
   correspods to running gradient descent on the loss function
@@ -49,3 +49,25 @@ Random Forests
   - random forests are invariant to linear monotonic change
   - resilient to correlated features
   - resilient to randomness as well
+
+requires gradient and hessian of the loss function - 
+
+Watchlist - you can overfitting at any round of the boosting process.
+Easy cut-off at any round when classifying - to recover from overfitting
+
+Linear monotonic transformations - do not 
+correlated features, such as countvectorizer are not important
+
+early stopping
+full learning history as well. 
+
+plotting a learning curve
+
+max_depth of the tree
+learning_rate of the tree
+max_delta_step, additional cap on learning rate, working with highly-imbalanced classes
+n_estimators - number of boosting rounds
+booster, usuall tree
+base_score - boosting starts with predictiong 0.5 for all observations, change it all here
+seed/random_state
+objective - if you want to play with maths, just give the callable that maps y_true, y_pred into gradient and hessian matrix. 
