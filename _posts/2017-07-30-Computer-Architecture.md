@@ -288,8 +288,11 @@ In **dynamic multiple issue** the CPU will execute instructions out of order but
 ## Memory and Caching
 We treat memory as a large quickly-accessible byte-addressable array, but in reality no memory has these characteristics. As a result, we must exploit locality. There are two types of locality, **spatial locality** and **temporal locality**
 
-**spatial locality** is the tendency of instructions 
-AMAT
+**spatial locality** refers to the tendency of us to visit the locations adjacent to our target.
+
+**temporal locality** refers to the tendency of us to visit a location we previously already visited. 
+
+By using caches to exploiting temporal and spatial locality we can make memory look like a large, quickly-accessible byte-addressed array, when in fact it is not. 
 
 ### Associative Caches
 Caches have different levels of **associativity**. A fully associative cache is one where any element can go to any slot of the cache. This is sort of like a hash table with a fixed number of buckets.
@@ -303,9 +306,11 @@ On cache misses we must stall the pipeline until the result is returned. However
 + **write-arround** - On a cache miss we don't bring that block of memory into the cache, but rather just write our changes directly into memory.
 
 We can categorize cache misses into three types
-+ **compulsary** - These are cahce misses that occur because the cache is not 
++ **compulsary** - These are cache misses that occur because the cache is not yet filled.
++ **capacity** - Occurs when all the slots in the cache are filled.
++ **conflict** - Occurs when there is room in the cache, but the cache block that we specifically want to fill is occupied
 
 Multi-level cahces, Virtual memory and page faults (TLB)
 
-Different types of misses, VIPT vs VIVT vs PIPT
+VIPT vs VIVT vs PIPT
 Cache coherence, snooping and snarfing, 
