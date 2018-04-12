@@ -12,19 +12,20 @@ Explcit density estimation - explicitly define and solve for $$p_{model}(x)$$
 Implicit density estimation - learn a model to produce models from $$p_{model}(x)$$ without explicityl defining it. 
 
 ## PixelRNN/CNN
-tractable explicit model. Type of fully visible belief network
+This is a tractable explicit model. Type of fully visible belief network.
 
 $$ p(x) = \prod_{i=1}^n p(x_i| x_1 \ldots x_{i-1}) $$
 
-then maxamize the likelihood of the training data. Use neural netowrk to express the distribution.
+We train this using MLE, maxamizing the likelihood of the training data. Use neural netowrk to express the distribution.
 
-Will need to define the ordering of pixels - starting from the corner. Each dependency is modeled via a LSTM RNN. However, the sequential generation is really slow. 
+Will need to define the ordering of pixels - starting from the corner. Each dependency is modeled via a LSTM RNN.
+However, this sequential generation is really slow. 
 
 PixelCNN - uses the same approach as PixelRNN, but the dependency is now codified by a CNN over a specified context region. 
 
 Train using MLE - output is a softmax loss at each pixel. 
 
-Training is faster than PixelRNN, we can also parallelize convolutions. However, generation is still sequential
+Training is faster than PixelRNN, we can also parallelize convolutions. However, generation is still sequential.
 
 Chain rule basically defines a tractable density that is easy to work with. Gives a good evaluation metric of our data via the training likelihood. Unfortunately, it's stil sequential generation.
 
