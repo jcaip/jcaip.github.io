@@ -1,7 +1,7 @@
 ---
 layout: post
 tags: [machine-learning, theory]
-published: False
+published: True
 ---
 Generatives models can be used for super-resolution, colorization, simulation and planning.
 
