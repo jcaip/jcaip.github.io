@@ -23,16 +23,16 @@ However, this sequential generation is really slow.
 
 PixelCNN - uses the same approach as PixelRNN, but the dependency is now codified by a CNN over a specified context region. 
 
-Train using MLE - output is a softmax loss at each pixel. 
+Train using MLE - output is a softmax loss at each pixel. Max the likelihood that our training data is generated.
 
-Training is faster than PixelRNN, we can also parallelize convolutions. However, generation is still sequential.
+Training is faster than PixelRNN, we can also parallelize convolutions. However, generation is still slow, as it is sequential.
 
 Chain rule basically defines a tractable density that is easy to work with. Gives a good evaluation metric of our data via the training likelihood. Unfortunately, it's stil sequential generation.
 
 ## Variational Autoencoders
 
 Unlike PixelCNN/RNN, we define an intractible density function
-$$p_\theta(x) = \int p_\theta(z) p_theta(x \vert z) dz$$
+$$p_\theta(x) = \int p_\theta(z) p_\theta(x \vert z) dz$$
 
 $$z$$ is a **latent variable** from which our trainig data is generated from.
 We can't optimize this directly, so instead we derive and optimize a lower bound on the likelihood instead.
