@@ -3,6 +3,9 @@ layout: post
 tags: [machine-learning, theory]
 published: True
 ---
+
+I'm going to be doing a series of blog posts about generative models, and how one can use them to tackle semi-supervised learning problems. In this post I'm going to give a general overview of several different generative models.
+
 Generatives models can be used for super-resolution, colorization, simulation and planning.
 
 They can be thought of a form of **unusupervised learning** or density estimation. 
