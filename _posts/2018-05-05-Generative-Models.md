@@ -6,16 +6,18 @@ published: True
 
 I'm going to be doing a series of blog posts about generative models, and how one can use them to tackle semi-supervised learning problems. In this post I'm going to give a general overview of several different generative models.
 
-Generatives models can be used for super-resolution, colorization, simulation and planning.
 
-They can be thought of a form of **unusupervised learning** or density estimation. 
-We want to learn the underlying distribution fo the data. 
+Generative models can be thought of a form of **unusupervised learning** or density estimation. 
+We are trying to model the underlying distribution from the data. 
+
+They can be used for super-resolution, colorization, and simulation.
 
 Explcit density estimation - explicitly define and solve for $$p_{model}(x)$$
+
 Implicit density estimation - learn a model to produce models from $$p_{model}(x)$$ without explicityl defining it. 
 
 ## PixelRNN/CNN
-This is a tractable explicit model. Type of fully visible belief network.
+This is a tractable explicit model that is a type of fully visible belief network.
 
 $$ p(x) = \prod_{i=1}^n p(x_i| x_1 \ldots x_{i-1}) $$
 
