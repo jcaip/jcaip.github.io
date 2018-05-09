@@ -99,6 +99,8 @@ Next we can multiply by a constant to get
 
 $$ = E_z \big[ \log \frac{ p_\theta (x \vert z) p_\theta(z) }{ p_\theta(z | x)}  \frac{q_\phi(z \vert x)}{q_\phi(z \vert x)}\big]$$
 
-Using some logarithmic properties, we can simplify this to get 
+Using logarithmic properties, we can rewrite this as 
 
 $$ = E_z \big[ \log p_\theta(x \vert z) \big] - E_z \big[ \log \frac{ q_\phi(z \vert x) } { p_\theta(z)}\big] + E_z \big[ \log \frac{ q_\phi(z \vert x) } { p_\theta(z \vert x )}\big] $$
+
+
