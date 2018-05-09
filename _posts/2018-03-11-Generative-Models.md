@@ -32,28 +32,37 @@ Chain rule basically defines a tractable density that is easy to work with. Give
 ## Variational Autoencoders
 
 Unlike PixelCNN/RNN, we define an intractible density function
+
 $$p_\theta(x) = \int p_\theta(z) p_\theta(x \vert z) dz$$
 
 $$z$$ is a **latent variable** from which our trainig data is generated from.
 We can't optimize this directly, so instead we derive and optimize a lower bound on the likelihood instead.
 
 ### Autoencoders
-Unsupervised approach to learning a lower-dimensional feature representation. Encoder network to map some feature vector $$z$$. Decoder maps $$z$$ back to the original input. 
+Unsupervised approach to learning a lower-dimensional feature representation.
+- Encoder network to map some feature vector $$z$$.
+- Decoder maps $$z$$ back to the original input. 
 
-Encoder can be used to initialize a supevised model.
+We can train by minimizing L2 loss between the input and the output.
 
-Sample from a prior over z, and then sample from our conditional distribution. 
+Encoder can be used to initialize a supevised model as a feature map. 
+
+The decoder 
+
+Sample from a prior over $$z$$, and then sample from our conditional distribution.
 We want to estimate the true parameters of our model. Chose our prior to be simple - just a gaussian. 
 
 p(x|z) is complex, so we can model this with a neural network.
 We can try to train using MLE, but this is intractible.
+
 $$p_\theta(z)$$ is a simple gaussian, which is fine. 
 $$p_\theta(x \vert z)$$ is a simple gaussian, which is fine. 
+
 Impossible to compute $$p(x \vert z)$$ for every z. 
 
 Posterior density is also intractable, as we cannot calculate $$p_\theta(x)$$
 
-The solution is to add a encoder network, $$q_phi(z|x)$$ which allows us to derive a lower bound.
+The solution is to add a encoder network, $$q_\phi(z|x)$$ which allows us to derive a lower bound.
 
 Because we are modeling probablistic generation, we generate a vector of **means** and **covariance**.
 
