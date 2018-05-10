@@ -70,7 +70,7 @@ Our conditional distribution can be represented this with a neural network - thi
 We can try to train using MLE, but $$p_\theta(x) = \int p_\theta(z) p_\theta(x \vert z) dz$$ is intractible. 
 
 $$p_\theta(z)$$ is a simple gaussian, which is fine. 
-$$p_\theta(x \vert z)$$ is a simple gaussian, which is fine. This is just the output of our neural network.
+$$p_\theta(x \vert z)$$ is just the output of our neural network.
 
 However, the integral makes this expression intractable - it's impossible to compute $$p(x \vert z)$$ for every z. 
 
