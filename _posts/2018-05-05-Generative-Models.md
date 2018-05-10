@@ -70,7 +70,7 @@ Our conditional distribution can be represented this with a neural network - thi
 We can try to train using MLE, but $$p_\theta(x) = \int p_\theta(z) p_\theta(x \vert z) dz$$ is intractible. 
 
 $$p_\theta(z)$$ is a simple gaussian, which is fine. 
-$$p_\theta(x \vert z)$$ is just the output of our neural network.
+$$p_\theta(x \vert z)$$ is just the output of our neural network and is tractable as well.
 
 However, the integral makes this expression intractable - it's impossible to compute $$p(x \vert z)$$ for every z. 
 
@@ -102,9 +102,7 @@ $$ = E_z \big[ \log \frac{ p_\theta (x \vert z) p_\theta(z) }{ p_\theta(z \vert 
 
 Using logarithmic properties, we can rewrite this as 
 
-
 $$ = E_z \big[ \log p_\theta(x \vert z) \big] - E_z \big[ \log \frac{ q_\phi(z \vert x) } { p_\theta(z)}\big] + E_z \big[ \log \frac{ q_\phi(z \vert x) } { p_\theta(z \vert x )}\big] $$
-
 
 We can rewrite the last two terms as KL divergences
 
@@ -115,7 +113,6 @@ $$E_z \big[ \log p_\theta(x \vert z) \big]$$ can be computed through sampling. T
 $$D_{KL}(q_\phi(z \vert x ) \| p_\theta(z))$$ has a closed form solution (it's the KL divergence between two Gaussians). This term encourages our posterior distribution to be as close as possible to our prior - a unit Gaussian.
 
 The only problem here is $$p_\theta(z \vert x)$$ in $$D_{KL}(q_\phi(z \vert x ) \| p_\theta(z \vert x))$$. But we know since this is a KL divergence, it is strictly >= 0 - so the two terms before this :
-
 
 $$E_z \big[ \log p_\theta(x \vert z) \big] - D_{KL}(q_\phi(z \vert x ) \| p_\theta(z))$$
 
