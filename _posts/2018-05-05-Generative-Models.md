@@ -110,9 +110,11 @@ We can rewrite the last two terms as KL divergences
 
 $$ = E_z \big[ \log p_\theta(x \vert z) \big] - D_{KL}(q_\phi(z \vert x ) \| p_\theta(z)) + D_{KL}(q_\phi(z \vert x ) \| p_\theta(z \vert x))$$
 
-$$E_z \big[ \log p_\theta(x \vert z) \big]$$ can be computed through sampling. This can be thought of a measure of how well we reconstruct the data given our latent variable $$z$$. $$D_{KL}(q_\phi(z \vert x ) \| p_\theta(z))$$ has a closed form solution (it's the KL divergence between two Gaussians). This term encourages our posterior distribution to be as close as possible to our prior - a unit Gaussian.
+$$E_z \big[ \log p_\theta(x \vert z) \big]$$ can be computed through sampling. This can be thought of a measure of how well we reconstruct the data given our latent variable $$z$$.
 
-The only problem here is $$p_\theta(z \vert x)$$ in $$D_{KL}(q_\phi(z \vert x ) \| p_\theta(z \vert x))$$. But we know since this is a KL divergence, it is strictly >= 0 - so the two terms before this 
+$$D_{KL}(q_\phi(z \vert x ) \| p_\theta(z))$$ has a closed form solution (it's the KL divergence between two Gaussians). This term encourages our posterior distribution to be as close as possible to our prior - a unit Gaussian.
+
+The only problem here is $$p_\theta(z \vert x)$$ in $$D_{KL}(q_\phi(z \vert x ) \| p_\theta(z \vert x))$$. But we know since this is a KL divergence, it is strictly >= 0 - so the two terms before this :
 
 
 $$E_z \big[ \log p_\theta(x \vert z) \big] - D_{KL}(q_\phi(z \vert x ) \| p_\theta(z))$$
