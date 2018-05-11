@@ -1,6 +1,7 @@
 ---
 layout: post
 tags: [machine-learning, theory]
+commments: True
 published: True
 ---
 
