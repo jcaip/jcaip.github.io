@@ -120,9 +120,9 @@ provide a tractable, differential lower bound, which we can optimize during trai
 ### Reparamaterization trick
 There's one slight catch here - we can't sample directly from the random node given by the mean and covariance vector outputs of our encoder network. 
 
-The problem here is that we want to backpropogate through our network in order to compute all the partial derivatives. But backpropogation cannot flow through a random node. 
+The problem here is that we want to backpropogate through our network in order to compute all the partial derivatives, but backpropogation cannot flow through a random node. 
 
-So instead of sampling directly from our random node $$z \sim \mathcal{N}(\mu, \Sigma)$$ we instead reparamterize that node as $$ z = \mu + L\eplsilon$$, where $$\epsilon \sim \mathcal{N}(0, I)$$ and $$\Sigma = LL^{T}$$
+So instead of sampling directly from our random node $$z \sim \mathcal{N}(\mu, \Sigma)$$ we instead reparamterize that node as $$ z = \mu + L\epsilon$$, where $$\epsilon \sim \mathcal{N}(0, I)$$ and $$\Sigma = LL^{T}$$
 
 This allows the gradients to flow backwards fully. 
 
