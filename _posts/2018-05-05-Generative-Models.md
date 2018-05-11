@@ -1,6 +1,7 @@
 ---
 layout: post
 tags: [machine-learning, theory]
+commments: True
 published: True
 ---
 
@@ -48,6 +49,8 @@ Unsupervised approach to learning a lower-dimensional feature representation.
 - Encoder network to map some feature vector $$z$$.
 - Decoder maps $$z$$ back to the original input. 
 
+![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png)
+
 We can train by minimizing L2 loss between the input and the output.
 
 Encoder can be used to initialize a supevised model as a feature map. 
@@ -83,7 +86,6 @@ is also intractable, as we cannot calculate $$p_\theta(x)$$
 The solution is to add a encoder network, $$q_\phi(z \vert x)$$ which allows us to derive a lower bound.
 This encoder networks models our posterior probability - $$ p_\theta(z \vert x) $$
 
-
 ### Deriving our data likelihood
 
 We're deriving the log likelihood here.
@@ -117,5 +119,17 @@ The only problem here is $$p_\theta(z \vert x)$$ in $$D_{KL}(q_\phi(z \vert x ) 
 $$E_z \big[ \log p_\theta(x \vert z) \big] - D_{KL}(q_\phi(z \vert x ) \| p_\theta(z))$$
 
 provide a tractable, differential lower bound, which we can optimize during training via gradient descent.
+
+### Reparamaterization trick
+There's one slight catch here - we can't sample directly from the random node given by the mean and covariance vector outputs of our encoder network. 
+
+The problem here is that we want to backpropogate through our network in order to compute all the partial derivatives, but backpropogation cannot flow through a random node. 
+
+So instead of sampling directly from our random node $$z \sim \mathcal{N}(\mu, \Sigma)$$ we instead reparamterize that node as $$ z = \mu + L\epsilon$$, where $$\epsilon \sim \mathcal{N}(0, I)$$ and $$\Sigma = LL^{T}$$
+
+This allows the gradients to flow backwards fully. 
+
+![reparmaterization trick visualize](https://i.stack.imgur.com/TzX3I.png)
+
 
 To generate data, we simply simply use the decoder network, and sample $$z$$ from our prior. Different dimensions of $$z$$ capture different factors of variation.
