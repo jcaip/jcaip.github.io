@@ -48,6 +48,8 @@ Unsupervised approach to learning a lower-dimensional feature representation.
 - Encoder network to map some feature vector $$z$$.
 - Decoder maps $$z$$ back to the original input. 
 
+![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png)
+
 We can train by minimizing L2 loss between the input and the output.
 
 Encoder can be used to initialize a supevised model as a feature map. 
