@@ -110,14 +110,11 @@ I decided to write a simple variational autoencoder in pytorch. You can check ou
 To generate data, we simply simply use the decoder network, and sample $$z$$ from our prior. Different dimensions of $$z$$ capture different factors of variation.
 
 ```python
-
 def generate(self, input_noise=None):
     if input_noise is None:
 	input_noise = torch.randn(self.latent_size)
-
     input_noise = input_noise.cuda()
     return self.decoder(input_noise)
-
 ```
 
 Here with $$z=2$$, I was able to generate some pretty alright samples.
@@ -131,7 +128,8 @@ Instead of sampling from the gaussian prior randomly, I can draw a sample from l
 
 ![generated_samples_variation](/images/vae/generated_variation.png)
 
-Here you can see one dimesnion seems to correspond to a vertical line and one dimesion seems to corresponds to a circle. You can see how the examples seem to morph into one another. 
+Here you can see one dimension seems to correspond to how similar the sample is to a straight line and the other dimesion seems to corresponds to how similar the sample is to a circle. You can see how the examples seem to morph into one another. 
+
 You can expand on this to do some cool stuff, such as [generate sentences along a spectrum](https://arxiv.org/abs/1511.06349?context=cs).
 
 ### Reference
