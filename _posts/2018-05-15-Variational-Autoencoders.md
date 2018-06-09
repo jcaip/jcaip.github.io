@@ -15,17 +15,20 @@ $$z$$ is a **latent variable** from which our trainig data is generated from.
 We can't optimize this directly, so instead we derive and optimize a lower bound on the likelihood instead.
 
 ## Autoencoders
-Unsupervised approach to learning a lower-dimensional feature representation.
-- Encoder network to map some feature vector $$z$$.
-- Decoder maps $$z$$ back to the original input. 
 
+An autoencoder consists of two parts.
+- An encoder $$f(x)$$ that maps some input representation $$x$$ to a hidden, latent representiation $$z$$, 
+- A decoder $$g(h)$$ that reconstructs the hidden layer $$z$$ to get back the input $$x$$
+-
 ![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png)
 
-We can train by minimizing L2 loss between the input and the output.
+We usually add some constraints to the hidden layer - for example, by restricting the dimension of the hidden layer. An **undercomplete autoencoder** is one where $$dim(h) < dim(x)$$. 
 
-Encoder can be used to initialize a supevised model as a feature map. 
+By adding in some sort of regularization/prior, we encourage the autoencoder to learn a distributed representation of $$x$$ that has some interesting properties.
 
-We assume our training data is generated from an unobserved, latent representation $$z$$. You can read more about autoencoders [here]()
+We train by minimizing the $$L^2$$ loss between the input and output. It's important to note for an autoencoder to be efffective, we need some sort of regulazation/constraint - otherwise it's trivially simple for the autoencoder to learn the identity function. 
+
+The autoencoder is forced to consider these two terms - minimizing the regularazation cost as well as the reconstruction cost. In doing so, it learns a hidden representation of the data that has interesting properties. For example. the encoder can be used to initialize a supevised model as a feature map. 
 
 ## Variational Autoencoders
 As in regular autoencoders, we have our encoder and decoder networks, but because we are modeling probablistic generation, we generate a vector of **means** and **covariance** that represents $$z$$.
@@ -100,19 +103,21 @@ This allows the gradients to flow backwards fully.
 
 ![reparmaterization trick visualize](https://i.stack.imgur.com/TzX3I.png)
 
-## Application
+## Generation Samples
 
 I decided to write a simple variational autoencoder in pytorch. You can check out the code [here](https://github.com/jcaip/pytorch-playground/tree/master/vae). I ended up training my VAE on MNIST data and played around with generating samples.
 
 To generate data, we simply simply use the decoder network, and sample $$z$$ from our prior. Different dimensions of $$z$$ capture different factors of variation.
 
 ```python
+
 def generate(self, input_noise=None):
     if input_noise is None:
 	input_noise = torch.randn(self.latent_size)
 
     input_noise = input_noise.cuda()
     return self.decoder(input_noise)
+
 ```
 
 Here with $$z=2$$, I was able to generate some pretty alright samples.
