@@ -108,15 +108,13 @@ This allows the gradients to flow backwards fully.
 I decided to write a simple variational autoencoder in pytorch. You can check out the code [here](https://github.com/jcaip/pytorch-playground/tree/master/vae). I ended up training my VAE on MNIST data and played around with generating samples.
 
 To generate data, we simply simply use the decoder network, and sample $$z$$ from our prior. Different dimensions of $$z$$ capture different factors of variation.
-
-```
+```python
 def generate(self, input_noise=None):
     if input_noise is None:
 	input_noise = torch.randn(self.latent_size)
     input_noise = input_noise.cuda()
     return self.decoder(input_noise)
 ```
-
 Here with $$z=2$$, I was able to generate some pretty alright samples.
 ![generated_samples](/images/vae/generated.png)
 
