@@ -17,9 +17,9 @@ We can't optimize this directly, so instead we derive and optimize a lower bound
 ## Autoencoders
 
 An autoencoder consists of two parts.
-- An encoder $$f(x)$$ that maps some input representation $$x$$ to a hidden, latent representiation $$z$$, 
+- An encoder $$f(x)$$ that maps some input representation $$x$$ to a hidden, latent representiation $$z$$
 - A decoder $$g(h)$$ that reconstructs the hidden layer $$z$$ to get back the input $$x$$
--
+
 ![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png)
 
 We usually add some constraints to the hidden layer - for example, by restricting the dimension of the hidden layer. An **undercomplete autoencoder** is one where $$dim(h) < dim(x)$$. 
@@ -109,7 +109,7 @@ I decided to write a simple variational autoencoder in pytorch. You can check ou
 
 To generate data, we simply simply use the decoder network, and sample $$z$$ from our prior. Different dimensions of $$z$$ capture different factors of variation.
 
-```python
+```
 def generate(self, input_noise=None):
     if input_noise is None:
 	input_noise = torch.randn(self.latent_size)
