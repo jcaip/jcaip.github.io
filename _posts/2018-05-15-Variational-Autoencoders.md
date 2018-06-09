@@ -18,11 +18,11 @@ We can't optimize this directly, so instead we derive and optimize a lower bound
 
 An autoencoder consists of two parts.
 - An encoder $$f(x)$$ that maps some input representation $$x$$ to a hidden, latent representiation $$z$$
-- A decoder $$g(h)$$ that reconstructs the hidden layer $$z$$ to get back the input $$x$$
+- A decoder $$g(z)$$ that reconstructs the hidden layer $$z$$ to get back the input $$x$$
 
 ![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png)
 
-We usually add some constraints to the hidden layer - for example, by restricting the dimension of the hidden layer. An **undercomplete autoencoder** is one where $$dim(h) < dim(x)$$. 
+We usually add some constraints to the hidden layer - for example, by restricting the dimension of the hidden layer. An **undercomplete autoencoder** is one where $$dim(z) < dim(x)$$. 
 
 By adding in some sort of regularization/prior, we encourage the autoencoder to learn a distributed representation of $$x$$ that has some interesting properties.
 
