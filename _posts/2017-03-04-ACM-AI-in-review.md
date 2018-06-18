@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ACM, non-technical]
+tags: [non-technical]
 title: ACM AI in Review
 
 images:
