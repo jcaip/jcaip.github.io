@@ -54,8 +54,6 @@ At any rate, I think I've realized that as soon as I find a niche, I should leav
 
 But I'm really excited to go back to school, to do things that I'm interested in. 
 
-
 It really feels like I'm going to school for the first time, not going back to school. 
 
-This year has been hell heaven, and everything in between. 
-
+Good software requires legitamite effort.
