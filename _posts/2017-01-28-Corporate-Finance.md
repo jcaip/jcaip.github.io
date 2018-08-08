@@ -2,7 +2,7 @@
 layout: post
 title: Corporate Finance
 published: true
-tags: [finance]
+tags: [non-technical]
 
 images:
 

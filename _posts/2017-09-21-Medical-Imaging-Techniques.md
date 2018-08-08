@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [physics, biology]
+tags: [biology]
 images: 
   - url: /images/medimg/cctc.png
     alt: some picture

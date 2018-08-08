@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [machine-learning, feature-extraction]
+tags: [machine-learning]
 
 images: 
   url: /images/medimg/knn.png

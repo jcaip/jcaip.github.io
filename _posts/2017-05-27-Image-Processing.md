@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Image Processing
-tags: [cv, feature-extraction]
+tags: [nlp/cv]
 
 images: 
   url: /images/medimg/lowpass.png
