@@ -2,6 +2,7 @@
 layout: post
 published: True
 title: Computer Systems Architecture
+tags: [systems]
 
 images:
     - url: https://upload.wikimedia.org/wikipedia/commons/e/ea/MIPS_Architecture_%28Pipelined%29.svg

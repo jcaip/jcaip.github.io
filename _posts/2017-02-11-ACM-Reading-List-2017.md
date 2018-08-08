@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [non-technical]
+tags: [misc]
 
 excerpt: Here's a collection of several books that we found interesting and informative!
 
