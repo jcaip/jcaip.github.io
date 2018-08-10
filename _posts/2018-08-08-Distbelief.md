@@ -244,14 +244,14 @@ Dropping the push/pull frequency had a immediate effect on our learning curve.
 ![v2_train](/images/distbelief/v2/cpu_dist2_train.png)
 ![v2_test](/images/distbelief/v2/cpu_dist2_test.png)
 
-Once we got here we were very excited. Our training accuracy for out distributed 2 node approach shaved ~45 minutes off of our training time!
+Once we got here we were very excited. Our training accuracy for out distributed 2 node approach shaved ~30 minutes off of our training time!
 At this point we figured a good next step would be to compare performance for our 2 node approach to our 3 node approach, as well as compare training time on a GPU (GTX 1060) as well. 
 
 ### Final Results
 ![final_train](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/train_time.png)
 ![final_test](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/test_time.png)
 
-So it turns out GPUs are fast, but we're faster than single node CPU training though by roughly an hour and a half! 
+So it turns out GPUs are fast, but we're faster than single node CPU training though by roughly an hour! 
 What's more than that - we're faster than a 2-node distributed approach, which bodes well for the scalability of our system. This is great as initially we were very concerned about the communication overhead.
 It seems like this wasn't too big of a problem thankfully, which was slighyly unexpected as we're using TCP to send the tensors back and forth.
 
