@@ -11,7 +11,7 @@ images:
 
 Over the past couple months, I've been working with [Rohan Varma](http://rohanvarma.me/) on a PyTorch implementation of DistBelief.
 
-DistBelief is a google paper that describes how to train models in a distributed fashion. In particular, we were interested in implementing asunchronous SGD (DownpourSGD).
+DistBelief is a Google paper that describes how to train models in a distributed fashion. In particular, we were interested in implementing a distributed optimization method, DownpourSGD.
 
 This is an overview of our implementation, along with some problems we faced along our way. 
 
@@ -24,7 +24,10 @@ Distbelief describes an entire framework for parallelizing neural networks, we f
 
 We only implemented DownpourSGD, which is much simpler. 
 
+### Downpour SGD 
 In DownpourSGD, there are two core concepts - a parameter server and a training node.
+
+![paper_diagram](/images/distbelief/paper_diagram.png)
 
 The parameter server is just a copy of the model parameters, which can send/receive parameters and can also receive an accumulated gradeint, which it can then apply to it's own copy of the parameters.
 
@@ -32,6 +35,8 @@ The training node asynchronously pulls the parameters, and then does your usual 
 Once we've gotten the gradients, we apply the normally. 
 However at the same time, we also accumulate them in another tensor. Once we sum $$N_{push}$$ gradients, we send this accumulated gradient to the parameter server, and zero the accumulated gradients. 
 We also periodically fetch gradients every $$N_{fetch}$$ times. In both cases, we push/pull the gradients asynchronously. so training continues as usual when pushing/pulling data.
+
+![paper_alg](/images/distbelief/paper_alg.png)
 
 ## Starting Off 
 
@@ -43,7 +48,9 @@ This let us break the problem down into two different pieces.
 We needed a reduimentery emssage passing system, with shich we could then use to implement DistBelief.  (Which worked out well)
 Next, with this message passing system, we could implement DistBelief as a series of Actors.  (Which did **NOT** work out)
 
-### Sending/Receiving Tensors
+### Implementing our Message Passing system
+
+#### Sending/Receiving Tensors
 we came up with two different approaches. 
 
 We both had some experience with PyTorch, so natrually our first thoughts landed there. We figuered we could use PyTorch's distributed `send` and `recv` commands to build a system to pass around gradient data.
@@ -64,7 +71,7 @@ But this has a problem - there's two things that we can send to the server, eith
 
 Building in this fashion, we realized that we needed to establish some sort of message passing layer that used `send` and `recv` to exchange information. 
 
-### Actor model
+## 
 There was a gevent actor model that we took a look at. We used that to implement our Actors. 
 We started out with just two actors. `ParameterServer` and `DownpourSGDClient`. 
 
@@ -78,8 +85,9 @@ For any given model, we squash the parameters to a single parameter vector. The 
 This is the payload of our message. We also insert an extra element at the start of the vector, which describes what action we want to take with the data we send.
 
 To do this, we went through each parameter in the model, and serialize it into one long vector. We also include a message code as well the rank of the sender, which serves as some sort of id. 
+With this in mind, we can **kind** of express our system with this message passing framework. 
 
-With this in mind, we can **kind** of express our system as actors. 
+![diagram](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/diagram.jpg )
 
 One thing that does not fit cleanly into this model is the fact that we have some shared memory - we have two threads in the training node. 
 
@@ -98,10 +106,7 @@ this got us to a working prototype - loss converges, albeit poorly.
 
 We can see this by training LeNet on MNIST.
 
-![]
-![]
-
-As an example, you can see our implementation running by opening three seperate terminal windows and running `make server`, `make first` and `make second`, which will train a CNN on CIFAR10.
+![prototype](/images/distbelief/prototype/server.png)
 
 ## Extending Pytorch
 
@@ -109,13 +114,10 @@ The first thing we had to do was refactor most of the code b/c we just shitted m
 
 This allows you to use distbelief by importing 
 ```python 
-
 from distbelief.optim import DownpourSGD
 
 optimizer = DownpourSGD(net.parameters(), lr=0.001, freq=50, model=net)
-
 ```
-
 That proved actually very helpful, as we were able to pull down any arbritrary model and train on it with minimal modification. 
 
 We ended up pulling this CIFAR10 benchmarking code, and used that to compare our perfromance. 
