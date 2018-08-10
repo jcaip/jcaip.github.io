@@ -15,7 +15,7 @@ DistBelief is a Google paper that describes how to train models in a distributed
 
 This is an overview of our implementation, along with some problems we faced along our way. 
 
-Please check out the code [here](https://github.com/ucla-labx/distbelief)
+Please check out the code [here](https://github.com/ucla-labx/distbelief).
 
 ## A Brief Introduction to Distbelief
 
@@ -71,7 +71,6 @@ But this has a problem - there's two things that we can send to the server, eith
 
 Building in this fashion, we realized that we needed to establish some sort of message passing layer that used `send` and `recv` to exchange information. 
 
-## 
 There was a gevent actor model that we took a look at. We used that to implement our Actors. 
 We started out with just two actors. `ParameterServer` and `DownpourSGDClient`. 
 
@@ -85,9 +84,12 @@ For any given model, we squash the parameters to a single parameter vector. The 
 This is the payload of our message. We also insert an extra element at the start of the vector, which describes what action we want to take with the data we send.
 
 To do this, we went through each parameter in the model, and serialize it into one long vector. We also include a message code as well the rank of the sender, which serves as some sort of id. 
+
 With this in mind, we can **kind** of express our system with this message passing framework. 
 
-![diagram](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/diagram.jpg )
+<p align="center">
+  <img width="400" height="400" src="https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/diagram.jpg">
+</p>
 
 One thing that does not fit cleanly into this model is the fact that we have some shared memory - we have two threads in the training node. 
 
@@ -122,14 +124,28 @@ That proved actually very helpful, as we were able to pull down any arbritrary m
 
 We ended up pulling this CIFAR10 benchmarking code, and used that to compare our perfromance. 
 
-## Benchmakring
+## Benchmarking
 
-We compared against a GPU and got some interesting results. 
-One thing that stands out is just how fucking fast training on a GPU is - it's really actually kind of depressing.
+### v0 (Our first shot)
+We were running n_freq = 10
 
+![v0_train](/images/distbelief/v0/cpu_dist2_train.png)
+![v0_test](/images/distbelief/v0/cpu_dist2_test.png)
 
-## Improving
-There were several theories as to why we were observing this behavior.
+So obviously we had some problems with the lr here, so we bumped it back up
 
-First thing we did was profile the code - how much time is being spent where.
+### v1 (Adjusted the lr, reduced n_freq)
 
+![v1_train](/images/distbelief/v1/cpu_dist2_train.png)
+![v1_test](/images/distbelief/v1/cpu_dist2_test.png)
+
+### v2 (Ran on a seprate nodes, instead of all locally)
+![v2_train](/images/distbelief/v2/cpu_dist2_train.png)
+![v2_test](/images/distbelief/v2/cpu_dist2_test.png)
+
+### Final
+![final_train](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/train_time.png)
+![final_test](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/test_time.png)
+
+## Conclusion
+GPUS are fast, we're faster than single node though!
