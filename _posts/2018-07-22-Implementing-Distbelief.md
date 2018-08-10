@@ -24,8 +24,6 @@ Once we've gotten the gradients, we accumulate them, and then every $$N_{push}$$
 We also periodically fetch gradients every $$N_{fetch}$$ times. In both cases, we push/pull the gradients asynchronously. 
 
 
-
-
 ## Starting off
 There were two approaches that we were looking at. 
 
@@ -41,6 +39,7 @@ Pytorch's distribute implementation seemed easier, and that's where we started, 
 But this has a problem - there's two things that we can send to the server, either a GradientUpdate or a ParameterRequest.
 
 Building in this fashion, we realized that we needed to establish some sort of message passing layer that used `send` and `recv` to exchange information. 
+
 ### Sending messages
 
 We're using `dist.isend` and `dist.recv` to send and receive tensors via PyTorch.
@@ -48,11 +47,6 @@ We're using `dist.isend` and `dist.recv` to send and receive tensors via PyTorch
 For any given model, we squash the parameters to a single parameter vector. The gradients for a backward pass are also the same size as this single parameter vector. 
 
 This is the payload of our message. We also insert an extra element at the start of the vector, which describes what action we want to take with the data we send.
-
-Right now the code is hard coded to assume one server (rank 0) and one client (rank 1), so we hardcode the destination we send the message to.
-
-TODO add support for multiple clients (which means we should modify the message to include the rank of the sender).
-
 
 To do this, we went through each parameter in the model, and serialize it into one long vector. We also include a message code as well the rank of the sender, which serves as some sort of id. 
 
@@ -72,7 +66,7 @@ Here you can so a big downside of our implementation - a `ParameterRequest` is t
 
 This is a shame, but I couldn't figure out a clean way around this, so it's just something to keep in mind for now. 
 
-this got us to a working prototype - loss converges
+this got us to a working prototype - loss converges, albeit poorly
 
 As an example, you can see our implementation running by opening three seperate terminal windows and running `make server`, `make first` and `make second`, which will train a CNN on CIFAR10.
 
