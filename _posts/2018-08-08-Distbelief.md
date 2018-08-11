@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implementing DistBelief (Pt. I)
+title: Implementing DistBelief
 tags: [machine-learning, systems, optimization]
 
 images:
