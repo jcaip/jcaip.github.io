@@ -31,7 +31,7 @@ The parameter server is just a copy of the model parameters, which can send mode
 
 Downpour SGD is very similar to normal SGD, with two main exceptions. 
 
-- Before the training step, the training node asynchronously pulls the parameters from the parameter server. We do this every $$N_{fetch}$$ times.
+- Before the training step, the training node asynchronously pulls the parameters from the parameter server. We do this every $$N_{pull}$$ times.
 - After we've applied our gradient update, we also accumulate it in another tensor. Once we sum $$N_{push}$$ gradients, we send this accumulated gradient to the parameter server, and zero the accumulated gradients. 
 
 In both cases, we push/pull data asynchronously, so training continues as usual (forward pass, compute loss, backprop, apply gradient update) whie we're sending data. 
@@ -140,7 +140,7 @@ The [listener thread](https://github.com/ucla-labx/distbelief/blob/master/distbe
 - `ParameterUpdate` will set the params to the model (which is shared between these two threads) to the payload of the message passed in. 
 
 The training thread is the native PyTorch entrypoint, and is almost exactly identical, except it will ocassionally send either a `GradientUpdate` or a `ParameterRequest` to the parameter server. 
-- Once every $$N_{fetch}$$ times, we pull the parameters. We do this by asynchronously issuing a `ParameterRequest` message to the parameter server. Once the server receives this request, it will send a `ParameterUpdate` which the listener thread will then use to update the model params. While we are pulling params, we continue training as usual.
+- Once every $$N_{pull}$$ times, we pull the parameters. We do this by asynchronously issuing a `ParameterRequest` message to the parameter server. Once the server receives this request, it will send a `ParameterUpdate` which the listener thread will then use to update the model params. While we are pulling params, we continue training as usual.
 - Once every $$N_{push}$$ times, we issue a` GradientUpdate` message, sending our accumulated gradients to the server. We then zero out our accumulated grads.
 
 Here you can so a big downside of our implementation - a `ParameterRequest` is the same size as a `GradientUpdate`, but a `ParameterRequest` does not need to be that large. We waste some communication overhead by sending a large tensor we do not process.
@@ -168,12 +168,13 @@ This class really only has two methods, `__init__()` and `step()`. We started by
 
 ```python
 
-def __init__(self, params, lr=required, freq_fetch=required, freq_push=required, model=required):
+def __init__(self, params, lr=required, n_pull=required, n_push=required, model=required):
     # some default initialization and the like
 
     self.model = model
     self.accumulated_gradients = torch.zeros(ravel_model_params(model).size())
-    self.freq = freq
+    self.n_pull = n_pull
+    self.n_push = n_push
 
     # counter for how many times we have ran
     self.idx = 0
@@ -191,7 +192,7 @@ We need this in order to start our `DownpourListener`, which we do in a seprate 
 ```python
     def step(self, closure=None):
         # send parameter request every N iterations
-        if self.idx % self.freq == 0:
+        if self.idx % self.n_pull== 0:
             send_message(MessageCode.ParameterRequest, self.accumulated_gradients) # dummy val 
 
         #get the lr
@@ -201,14 +202,14 @@ We need this in order to start our `DownpourListener`, which we do in a seprate 
         self.accumulated_gradients.add_(-lr, gradients)
 
         # send gradient update every N iterations
-        if self.idx % self.freq == 0:
+        if self.idx % self.n_push== 0:
             send_message(MessageCode.GradientUpdate, self.accumulated_gradients) # send gradients to the server
             self.accumulated_gradients.zero_()
 
         # internal sgd update
         internal_sgd_update()
 ```
-Each time we take a step, we see if we have hit $$N_{fetch}$$ and if so, issue a `ParameterRequest` to the server. Since we send messages using `isend`, we continue as normal. Once the server has processed the message, it will issue a `ParameterUpdate`, which will get picked up by the `DownpourListener` and update the model params. 
+Each time we take a step, we see if we have hit $$N_{pull}$$ and if so, issue a `ParameterRequest` to the server. Since we send messages using `isend`, we continue as normal. Once the server has processed the message, it will issue a `ParameterUpdate`, which will get picked up by the `DownpourListener` and update the model params. 
 
 We also accumulated our grads until we hit $$N_{push}$$ upon which we send a `GradientUpdate` message to the server. 
 
@@ -227,7 +228,7 @@ Our testing setup consisted of 4 `AWS c4.xlarge` systems.
 
 #### Our first shot 
 For our initial run, we trained for 20 epochs with a batch size of 64 and a learning rate of 0.1 (for single node) and 0.05 (for the distributed node). 
-$$N_{fetch}$$ and $$N_{push}$$ were both set to 10.
+$$N_{pull}$$ and $$N_{push}$$ were both set to 10.
 
 ![v0_train](/images/distbelief/v1/cpu_dist2_train.png)
 ![v0_test](/images/distbelief/v1/cpu_dist2_test.png)
@@ -236,9 +237,9 @@ We were a little concerned here - it looked like our implementation was sufferin
 
 The delayed gradient problem exists because a node may be running gradient descent on a set of parameters that is "stale". In this case the gradients it produces may just add noise and not contribute to lowering the training loss. 
 
-It seemed that there was a much better chance at convergence at smaller frequencies, so we dropped $$N_{fetch}$$ and $$N_{push}$$ to 5. It was previously set to ten as we were testing by runnning all 3 processes on a single machine, and the training nodes would rob the server process of resources, causing it to not be able to process messages fast enough.
+It seemed that there was a much better chance at convergence at smaller frequencies, so we dropped $$N_{pull}$$ and $$N_{push}$$ to 5. It was previously set to ten as we were testing by runnning all 3 processes on a single machine, and the training nodes would rob the server process of resources, causing it to not be able to process messages fast enough.
 
-Dropping $$N_{fetch}$$ and $$N_{pull}$$ helps mitigate the delayed gradient problem by keeping parameters fresher, at the cost of more communication overhead.
+Dropping $$N_{pull}$$ and $$N_{push}$$ helps mitigate the delayed gradient problem by keeping parameters fresher, at the cost of more communication overhead.
 
 #### Adjusting update frequency
 
