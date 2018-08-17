@@ -27,7 +27,7 @@ In DownpourSGD, there are two core concepts - a parameter server and a training 
 
 ![paper_diagram](/images/distbelief/paper_diagram.png)
 
-The parameter server is just a copy of the model parameters, which can send model parameters when requested and can also receive an accumulated gradient, which it then apples to it's own copy of the parameters.
+The parameter server is just a copy of the model parameters, which can send model parameters when requested and can also receive an accumulated gradient, which it then applies to it's own copy of the parameters.
 
 Downpour SGD is very similar to normal SGD, with two main exceptions. 
 
@@ -128,7 +128,7 @@ Here **2** and **3** should happen concurrently.
 #### Parameter Server
 There are two messages that the parameter server handles:
 - `ParameterRequest`, which has a dummy payload - this is simply a request for parameters. When the server receives this message, it will send a `ParameterUpdate` message back to the requester.
-- `GradinetUpdate`, in which case the payload is a gradient update. In this case, we simply apply the gradient update.
+- `GradientUpdate`, in which case the payload is a gradient update. In this case, we simply apply the gradient update.
 
 The parameter server stores the model parameters in their squashed form, which makes processing these two messages [pretty simple](https://github.com/ucla-labx/distbelief/blob/master/distbelief/server.py).
 
@@ -178,7 +178,7 @@ def __init__(self, params, lr=required, freq_fetch=required, freq_push=required,
     # counter for how many times we have ran
     self.idx = 0
 
-    # start the DownpourListener in a seprate thread
+    # start the DownpourListener in a separate thread
     listener = DownpourListener(self.model)
     listener.start()
     
@@ -208,7 +208,7 @@ We need this in order to start our `DownpourListener`, which we do in a seprate 
         # internal sgd update
         internal_sgd_update()
 ```
-Each time we take a step, we see if we have hit $$N_{fetch}$$ and if so, issue a `PrameterRequest` to the server. Since we send messages using `isend`, we continue as normal. Once the server has processed the message, it will issue a `ParameterUdpate`, which will get picked up by the `DownpourListener` and update the model params. 
+Each time we take a step, we see if we have hit $$N_{fetch}$$ and if so, issue a `ParameterRequest` to the server. Since we send messages using `isend`, we continue as normal. Once the server has processed the message, it will issue a `ParameterUpdate`, which will get picked up by the `DownpourListener` and update the model params. 
 
 We also accumulated our grads until we hit $$N_{push}$$ upon which we send a `GradientUpdate` message to the server. 
 
@@ -232,10 +232,13 @@ $$N_{fetch}$$ and $$N_{push}$$ were both set to 10.
 ![v0_train](/images/distbelief/v1/cpu_dist2_train.png)
 ![v0_test](/images/distbelief/v1/cpu_dist2_test.png)
 
-We were a little concerned here - it looked like our implementation was suffering. We took this time to explor a bit more, and eventually found [this]() paper analyzing the delayed gradient problem.
+We were a little concerned here - it looked like our implementation was suffering. We took this time to explore a bit more, and eventually found [this](https://openreview.net/pdf?id=BJLSGcywG) paper analyzing the delayed gradient problem.
+
+The delayed gradient problem exists because a node may be running gradient descent on a set of parameters that is "stale". In this case the gradients it produces may just add noise and not contribute to lowering the training loss. 
 
 It seemed that there was a much better chance at convergence at smaller frequencies, so we dropped $$N_{fetch}$$ and $$N_{push}$$ to 5. It was previously set to ten as we were testing by runnning all 3 processes on a single machine, and the training nodes would rob the server process of resources, causing it to not be able to process messages fast enough.
 
+Dropping $$N_{fetch}$$ and $$N_{pull}$$ helps mitigate the delayed gradient problem by keeping parameters fresher, at the cost of more communication overhead.
 
 #### Adjusting update frequency
 
@@ -262,7 +265,8 @@ This project was a blast to work on, and I was pretty suprised with what we were
 Some future improvements that we've been considering:
 - sharding the parameter server
 - using OpenMPI as a backend instead of TCP
-- using a different strategy to push the gradients (we we're thinking of pushing the gradients once they hit a norm threshold)
+- using a different strategy to push the gradients (we were thinking of pushing the gradients once they hit a norm threshold)
 - implementing SandblasterLBFGS
+- Taylor series approximation to help mitigate the delayed gradient problem, as seen [here](https://arxiv.org/abs/1609.08326).
 
 
