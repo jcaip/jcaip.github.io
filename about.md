@@ -6,9 +6,7 @@ permalink: /about/
 
 Hi there, I'm Jesse Cai!
 
-I'm currently a junior at UCLA, where I study computer science. 
-
-This is my website, where I write about things that interest me - primarily [machine learning](https://jcaip.github.io/tags/#machine-learning), [systems](https://jcaip.github.io/tags/#systems), [optimization](https://jcaip.github.io/tags/#optimization), and [algorithms](https://jcaip.github.io/tags/#algorithms).
+I'm currently a junior at UCLA, where I study computer science. This is my website, where I write about things that interest me - primarily [machine learning](https://jcaip.github.io/tags/#machine-learning), [systems](https://jcaip.github.io/tags/#systems), [optimization](https://jcaip.github.io/tags/#optimization), and [algorithms](https://jcaip.github.io/tags/#algorithms).
 
 If you notice a typo or mistake, please leave a PR! :)
 
@@ -18,7 +16,7 @@ I took a leave of absence from UCLA last year to work as a machine learning engi
 
 You can check out some of the work I did [here](https://blend.com/predicting-submission/).
 
-Before I worked at Blend, I spent half a year working at [JPL](https://www.jpl.nasa.gov/). I'm also the former President of [ACM AI](https://uclaacmai.github.io/) at UCLA, where I taught people more about machine learning and AI.
+Before I joined Blend, I interned at [JPL](https://www.jpl.nasa.gov/). I'm also the former President of [ACM AI](https://uclaacmai.github.io/) at UCLA, where I taught people about machine learning and AI.
 
 You can check out my resume [here](/resources/Jesse_Cai_Resume.pdf) for more professional information.
 
