@@ -17,8 +17,7 @@ You're encourage to reuse code, to call into libraries, to write simple programs
 
 I think the biggest thing that I enjoy about working is simply building things. 
 
-I like to see how all the pieces interact. 
-
+I like to see how all the pieces interact, I like complicated systems. 
 
 Things I don't like about working full-time:
 
