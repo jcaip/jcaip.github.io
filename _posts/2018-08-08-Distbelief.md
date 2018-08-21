@@ -163,8 +163,8 @@ We moved everything into their respective places and broke up a single massive `
 
 #### Extending Pytorch
 
-Next, we looked as implementing DownpourSGD as a PyTorch optimizer. It turns out there is a [base](https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer) `Optimizer` class natively in PyTorch. 
-This class really only has two methods, `__init__()` and `step()`. We started by copying the native `SGD` code and then adding in DistBelief support.
+Next, we looked at implementing DownpourSGD as a PyTorch optimizer. It turns out there is a [base](https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer) `Optimizer` class natively in PyTorch. 
+This class really only has two methods, `__init__()` and `step()`. We started by copying the native `SGD` code and then added in DistBelief support.
 
 ```python
 
@@ -257,7 +257,7 @@ At this point we figured a good next step would be to compare performance for ou
 
 So it turns out GPUs are fast, but we're faster than single node CPU training though by roughly an hour! 
 What's more than that - we're faster than a 2-node distributed approach, which bodes well for the scalability of our system. This is great as initially we were very concerned about the communication overhead.
-It seems like this wasn't too big of a problem thankfully, which was slighyly unexpected as we're using TCP to send the tensors back and forth.
+It seems like this wasn't too big of a problem thankfully, which was slightly unexpected as we're using TCP to send the tensors back and forth.
 
 ## Conclusion and Future Improvements
 
@@ -269,5 +269,3 @@ Some future improvements that we've been considering:
 - using a different strategy to push the gradients (we were thinking of pushing the gradients once they hit a norm threshold)
 - implementing SandblasterLBFGS
 - Taylor series approximation to help mitigate the delayed gradient problem, as seen [here](https://arxiv.org/abs/1609.08326).
-
-
