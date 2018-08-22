@@ -15,6 +15,8 @@ DistBelief is a Google paper that describes how to train models in a distributed
 
 Please check out the code [here](https://github.com/ucla-labx/distbelief)!
 
+**Update**: Our project is now on PyPy! You can install our code by running `pip install pytorch-distbelief`.
+
 ## A brief introduction to Distbelief
 
 For some context, I'm going to briefly explain DistBelief. You can check out the original paper [here](https://static.googleusercontent.com/media/research.google.com/en//archive/large_deep_networks_nips2012.pdf).
