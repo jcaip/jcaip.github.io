@@ -13,7 +13,7 @@ If you want to get a sense of this blog I'd recommend reading these posts:
 * Using RNNs to [predict user activity](/Predicting-User-Submission)
 * How we can use [randomness](/Randomness) in algorithms
 
-I try to break things down as much as possible, but if somethings unclear (or flat out wrong) please leave a PR! :)
+I try to break things down as much as possible, but if somethings unclear (or flat out wrong) please leave a PR :)
 
 ### About me
 I'm currently a junior studying computer science at UCLA.
@@ -28,4 +28,4 @@ I'm always interested in meeting new people, so if you have any questions please
 
 I'm also looking for summer internships for the summer of 2019 - preferably something research related at the intersection of deep learning and computer science. If you think I'd be a good fit for your team please reach out! 
 
-You can reach me using one of the icons at the bottom :)
+You can reach me using one of the icons at the bottom. 
