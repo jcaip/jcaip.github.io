@@ -6,7 +6,7 @@
 name: Jesse Cai
 
 # Short bio or description (displayed in the header)
-description: UCLA CS 2019
+description: machine learning and computer science
 
 # Flags below are optional
 #
@@ -21,8 +21,8 @@ footer-links:
   instagram:
   linkedin: www.linkedin.com/in/jesse-cai-471562a3
   pinterest:
-  rss: # just type anything here for a working RSS icon
-  twitter: 
+  rss: anything
+  twitter: https://twitter.com/CaiJesse
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
