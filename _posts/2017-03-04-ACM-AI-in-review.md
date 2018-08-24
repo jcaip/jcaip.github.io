@@ -2,11 +2,6 @@
 layout: post
 tags: [misc]
 title: ACM AI in Review
-
-images:
-    - url: https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/11133877_10206506244038509_5936230620920385283_n.jpg?oh=ae0a334428e19487e97ce6c68a927ab8&oe=59A92AAA
-      title: acm ai
-      alt: acm ai
 ---
 
 For the past year, I have been the president of AI at UCLA, or ACM AI.

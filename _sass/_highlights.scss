@@ -2,7 +2,7 @@
 
 
 pre.highlight {
-  background-color: #efefef;
+  background-color: #303030;
   padding: 7px 7px 7px 10px;
   border: 1px solid #ddd;
   -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
@@ -13,7 +13,7 @@ pre.highlight {
 }
 
 code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+  font-family:'Ubuntu Mono','Courier', monospace;
 }
 
 .highlight .c { color: #586E75 } /* Comment */
@@ -84,3 +84,5 @@ code {
 .highlight .vg { color: #268BD2 } /* Name.Variable.Global */
 .highlight .vi { color: #268BD2 } /* Name.Variable.Instance */
 .highlight .il { color: #2AA198 } /* Literal.Number.Integer.Long */
+
+

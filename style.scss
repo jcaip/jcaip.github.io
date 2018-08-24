@@ -19,20 +19,30 @@ html {
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $helvetica;
+  background: $white;
+  font: 18px/1.4 "Ubuntu";
   color: $darkGray;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 600px;
+    max-height: 400px;
+    object-fit: contain;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 1040px;
   padding: 0 10px;
   width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
+  font-family: "Ubuntu";
   color: $darkerGray;
   font-weight: bold;
 
@@ -47,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 30px;
+  text-align: center;
   a {
     color: inherit;
   }
@@ -54,6 +65,9 @@ h1 {
 
 h2 {
   font-size: 24px;
+  a {
+    color: inherit;
+  }
 }
 
 h3 {
@@ -195,7 +209,7 @@ img {
   margin: 0;
   color: $darkGray;
   cursor: pointer;
-  font-family: $helveticaNeue;
+  font-family: "Ubuntu";
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
@@ -214,7 +228,7 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
+  font-family: "Ubuntu";
   font-size: 18px;
 
   @include mobile {

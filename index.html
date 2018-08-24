@@ -16,14 +16,14 @@ published: true
       </div>
 
       <small class="date">{{ post.date | date_to_string }}</small>
-
       {% if post.tags %} | 
       {% for tag in post.tags %}
         <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
       {% endfor %}
       {% endif %}
-
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      
+
     </article>
   {% endfor %}
 </div>

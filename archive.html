@@ -1,0 +1,26 @@
+---
+layout: page
+---
+<div class="tags-expo">
+    <div class="tags-expo-section">
+      <ul class="tags-expo-posts">
+	{%- for post in site.posts -%}
+	  {%- if post.next -%}
+	    {%- assign year = post.date | date: '%Y' -%}
+	    {%- assign prev_year = post.next.date | date: '%Y' -%}
+	    {%- if year != prev_year -%}
+	      <header><h2>{{ post.date | date: '%Y' }}</h2></header>
+	    {%- endif -%}
+	  {%- else -%}
+	    <header><h2>{{ post.date | date: '%Y' }}</h2></header>
+	  {%- endif -%}
+	    <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+	      <li>
+		{{ post.title }}
+		<small class="post-date">{{ post.date | date_to_string }}</small>
+	      </li>
+	    </a>
+	{%- endfor -%}
+      </ul>
+    </div>
+</div>

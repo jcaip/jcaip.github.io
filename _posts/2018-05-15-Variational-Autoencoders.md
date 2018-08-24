@@ -3,6 +3,10 @@ layout: post
 tags: [machine-learning, theory]
 commments: True
 published: True
+images:
+    - url: /images/vae/generated_10.png
+    - alt: vae
+    - title: vaemnist
 ---
 
 Next up, let's cover **variational autoencoders**, a generative model that is a probabilistic twist on traditional autoencoders. 
