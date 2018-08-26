@@ -51,19 +51,19 @@ Each instruction in MIPS is 4 bytes (32 bits), or a **WORD** of memory. They are
 
 ### MIPS Instriction Formats
 **R-Format Instructions** - Used for airthmetic/logical operands
-```
+```asm
 | op   | rs  | rt  | rd  |shift| funct|
   6       5     5     5     5     6    
 ```
 
 **I-Format Instructions** - provides an immediate/constant, also used for load/store instructions
-```
+```asm
 | op   | rs  | rt  |  constant/address|
   6       5     5          16
 ```
 
 **J-Foramt Instructions** - provides a larger constant, used for jump instructions
-```
+```asm
 | op   |         constant/address     |
   6               26
 ```
