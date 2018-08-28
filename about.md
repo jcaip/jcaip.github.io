@@ -13,15 +13,14 @@ If you want to get a sense of this blog I'd recommend reading these posts:
 * Using RNNs to [predict user activity](/Predicting-User-Submission)
 * How we can use [randomness](/Randomness) in algorithms
 
-I try to break things down as much as possible, but if somethings unclear (or flat out wrong) please leave a PR :)
+I try to break things down as much as possible, but if something is unclear (or flat out wrong) please leave a PR :)
 
 ### About me
 I'm currently a junior studying computer science at UCLA.
 
-My main interests are deep learning, algorithms and distributed/scalable systems. In my free time I like to hike, eat, or play chess.
+My main interests are deep learning, algorithms, and distributed/scalable systems. In my free time I like to hike, eat, or play chess.
 
-I took a leave of absence from UCLA last year to become a machine learning engineer on the data team at [Blend](https://blend.com), a startup focused on improving the consumer lending experience.
-
+Last year I took a leave of absence from UCLA to become a machine learning engineer on the data team at [Blend](https://blend.com), a startup focused on improving the consumer lending experience.
 Before I joined Blend, I interned at [JPL](https://www.jpl.nasa.gov/) for half a year.
 
 I'm always interested in meeting new people, so if you have any questions please feel free to email me. 
