@@ -25,6 +25,4 @@ Before I joined Blend, I interned at [JPL](https://www.jpl.nasa.gov/) for half a
 
 I'm always interested in meeting new people, so if you have any questions please feel free to email me. 
 
-I'm also looking for summer internships for the summer of 2019 - preferably something research related at the intersection of deep learning and computer science. If you think I'd be a good fit for your team please reach out! 
-
-You can reach me using one of the icons at the bottom. 
+I'm also looking for summer internships for the summer of 2019 - preferably something research related at the intersection of deep learning and computer science. If you think I'd be a good fit for your team please reach out! You can find me resume [here](/resources/Jesse_Cai_Resume.pdf) and reach me at `jcjessecai@gmail.com`.
