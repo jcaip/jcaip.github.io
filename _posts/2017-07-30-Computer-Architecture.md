@@ -30,7 +30,7 @@ Improving one aspect of a pipeline will not asymptotically increase performance 
 **Amdahl's Law** - $$T_{imp} = \frac {T_{affected} }{\text{improvment factor}} + T_{unaffected} $$
 Linear improvement through parallelization is impossible to achieve, since there are inherently parts that cannot be parallelized. 
 
-![amdhals law](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/AmdahlsLaw.svg/400px-AmdahlsLaw.svg.png)
+![amdhals law](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/AmdahlsLaw.svg/400px-AmdahlsLaw.svg.png){: .center}
 
 This can be seen in this graph - as you add more processors, the speedup factor stops improving.
 
@@ -156,7 +156,7 @@ Since memory is byte-addressable, we can omit the last 2 bits when storing an ad
 
 ## Arithmetic and the ALU
 **One Bit Full Adder** - the layout of a full adder for 1-bit operands.
-![1-bit adder](/images/comp_arch/1ba.png)
+![1-bit adder](/images/comp_arch/1ba.png){: .center}
 
 Input: ALU op, a, b, less
 Output: Zero, Result, Overflow, Carry Out
@@ -187,11 +187,11 @@ We can also use **Booth's Algorithm**, which also offers some potential speedup 
 
 ### ALU Design
 **Ripple Carry Adder** - To get a 32 bit adder, we can chain together 32 one-bit adders, connecting the output of one adder to the carry in of the one below it.
-![ripple carry adder](/images/comp_arch/rca.png)
+![ripple carry adder](/images/comp_arch/rca.png){: .center}
 Here we have a $$2N$$ gate delay where $$N$$ is the number of bits as there are 2 gates per carry out. (1 OR and 1 AND as seen from the 1-bit full adder aboce) 
 
 **Carry Lookahead Adder** - In order to reduce the gate delay, we can use a carry lookahead adder.
-![carry lookahead adder](/images/comp_arch/cla.png)
+![carry lookahead adder](/images/comp_arch/cla.png){: .center}
 
 The idea here is that instead of one giant 32-bit ALU, we use multipe smaller ALUs, In this case, we don't have to chain together the carries, we can instead compute them as a function of **propogates** and **generates**.
 

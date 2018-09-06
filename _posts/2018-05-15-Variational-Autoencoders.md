@@ -24,7 +24,7 @@ An autoencoder consists of two parts.
 - An encoder $$f(x)$$ that maps some input representation $$x$$ to a hidden, latent representiation $$z$$
 - A decoder $$g(z)$$ that reconstructs the hidden layer $$z$$ to get back the input $$x$$
 
-![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png)
+![autoencoder](https://deeplearning4j.org/img/deep_autoencoder.png){: .center}
 
 We usually add some constraints to the hidden layer - for example, by restricting the dimension of the hidden layer. An **undercomplete autoencoder** is one where $$dim(z) < dim(x)$$. 
 
@@ -105,7 +105,7 @@ So instead of sampling directly from our random node $$z \sim \mathcal{N}(\mu, \
 
 This allows the gradients to flow backwards fully. 
 
-![reparmaterization trick visualize](https://i.stack.imgur.com/TzX3I.png)
+![reparmaterization trick visualize](https://i.stack.imgur.com/TzX3I.png){: .center}
 
 ## Generation Samples
 
@@ -120,15 +120,15 @@ def generate(self, input_noise=None):
     return self.decoder(input_noise)
 ```
 Here with $$z=2$$, I was able to generate some pretty alright samples.
-![generated_samples](/images/vae/generated.png)
+![generated_samples](/images/vae/generated.png){: .center}
 
 When I bumped $$z$$ up to 10 I got much better results
-![generated_samples](/images/vae/generated_10.png)
+![generated_samples](/images/vae/generated_10.png){: .center}
 
 One cool thing we can do is to generate samples along some factor of variation. When $$z=2$$, these two dimensions should correspond to two meaningful factors of variation. 
 Instead of sampling from the gaussian prior randomly, I can draw a sample from left to right. If I do so for both dimensions, I can plot the generated sample at each point and see this.
 
-![generated_samples_variation](/images/vae/generated_variation.png)
+![generated_samples_variation](/images/vae/generated_variation.png){: .center}
 
 Here you can see one dimension seems to correspond to how similar the sample is to a straight line and the other dimesion seems to corresponds to how similar the sample is to a circle. You can see how the examples seem to morph into one another. 
 

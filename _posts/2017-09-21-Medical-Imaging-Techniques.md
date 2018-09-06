@@ -17,18 +17,18 @@ Light is created when electrons in a higher energy orbit fall to a lower energy 
 
 **Bremsstrahlung** is radiation produced when a charged particle is deflected by another charged particle
 
-![bremsstrahlung](/images/medimg/bremsstrahlung.png)
+![bremsstrahlung](/images/medimg/bremsstrahlung.png){: .center}
 
 + Bremsstrahlung output energy is determined by the deflection and therefore where the incident ray is headed
 + The max output energy is the input energy
 
-![energy](/images/medimg/energy_spectrum.png)
+![energy](/images/medimg/energy_spectrum.png){: .center}
 
 **Charecteristic X-ray Energy** - Every atomic element has it's unique fingerprint that is the energy given off from dropping an energy level.
 
 We use high voltage to accelerate electroms from a cathode to a rotating anode (for heat reasons), which produce X-rays with a small frequency.
 
-![xray](/images/medimg/xray.png)
+![xray](/images/medimg/xray.png){: .center}
 
 We use an antiscatter grid to block most of the off-axis scatter radiation.
 
@@ -84,7 +84,7 @@ The proton recovers it's prior longitudinal orientation.
 Loss of transverse magnetization, and occurs much faster than T1
 
 These relaxtions are different depending on the surrounding materials, which we can then measure.
-![mri](/images/medimg/mri.png)
+![mri](/images/medimg/mri.png){: .center}
 
 The gradient coils are used to encode spatial location by gradually shifting the magnetic field and therefore changing the Larmor frequency.
 
@@ -96,7 +96,7 @@ There are many different types of MRI techniques, including FLIAR, GRE, and DWI.
 
 **Perfusion MRI** - A contrast agent is injected that shortens the relaxation times within body tissues.
 
-![cctc](/images/medimg/cctc.png)
+![cctc](/images/medimg/cctc.png){: .center}
 Where the concetration is given by $$C(t) = -\frac{k}{TE}ln(\frac{S(t)}{S_0})$$
 
 **CBF** - tissue supply of blood 

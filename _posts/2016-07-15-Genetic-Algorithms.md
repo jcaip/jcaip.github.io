@@ -1,6 +1,5 @@
 ---
 layout: post
-title: Genetic Algorithm
 published: true
 tags: [artificial-intelligence, biology, optimization]
 images:
@@ -51,8 +50,7 @@ Basically, we use something called the roulette wheel method, where an individua
 
 $$\frac{Fitness_{individual}}{Fitness_{population}}$$
 
-This will probably be more about the code that runs, rather than the theory
-behind it all. I encourage you to check out [this site](http://www.ai-junkie.com/ga/intro/gat2.html) for more information.
+This will probably be more about the code that runs, rather than the theory behind it all. I encourage you to check out [this site](http://www.ai-junkie.com/ga/intro/gat2.html) for more information.
 
 ## The Code
 
@@ -191,10 +189,10 @@ def iterateGeneration(i):
 
 ## The Result
 It works!!! I think this is super cool for a little work. I wrote a simple mpl function to display the result:
-This was super fun! See the rest of the code [here](https://github.com/jcaip/gen_alg)
+This was super fun! See the rest of the code [here](https://github.com/jcaip/gen_alg).
 
-![gen_alg result](/images/gen_alg/example1.png "Sample solution success")
+![gen_alg result](/images/gen_alg/example1.png "Sample solution success"){: .center}
 
-![gen_alg result](/images/gen_alg/example.png "Sample solution failure")
+![gen_alg result](/images/gen_alg/example.png "Sample solution failure"){: .center}
 
-![gen_alg result](/images/gen_alg/example2.png "Sample solution success")
+![gen_alg result](/images/gen_alg/example2.png "Sample solution success"){: .center}

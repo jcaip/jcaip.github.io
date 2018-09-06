@@ -25,7 +25,7 @@ There are different types of machine learning
 **Discrimiative learning** - tries to learn a deciscion boundry by minimizing $$\textbf{w}$$ in $$R(\textbf{w}) + C\sum_{i=1}^N{L(y_i, \textbf{w}T\textbf{x}_i)}$$
 
 #### Cross-Validation
-![kfold](/images/medimg/kfoldcv.png)
+![kfold](/images/medimg/kfoldcv.png){: .center}
 
 #### Bag of Words Classification
 The idea is that each object can be represented by a bag of features, so we don't care about the relative order of the features but rather the exsistance and number of features.
@@ -37,10 +37,10 @@ Macine learning can be used for feature detection, segmentation, denoising, supe
 
 #### Overfitting
 It is possible to **overfit** the trainig set and lose to ability to generalize to the test set.
-![overfitting](/images/medimg/overfitting.png)
+![overfitting](/images/medimg/overfitting.png){: .center}
 
 #### K-means
-![kmeans](/images/medimg/kmean.png)
+![kmeans](/images/medimg/kmean.png){: .center}
 ```
 create k centroids randomly
 
@@ -53,7 +53,7 @@ run until convergence
 #### K-nearest-neighbors
 The idea is to look at the k nearest neighbors to determine the label of the current datapoint.
 
-![knn](/images/medimg/knn.png)
+![knn](/images/medimg/knn.png){: .center}
 
 #### Linear Classifiers
 $$y = f(\sum_j{w_jx_j})$$ 
@@ -62,33 +62,33 @@ However, some datat is not linearlly seperable. In this case, we can use the **k
 
 One common kernel to use is the **Radial Basis Function** kernel $$K(x_i, x_j) = exp(-\frac{\| x_i-x_j \|^2}{2\sigma^2})$$.
 
-![kplc](/images/medimg/kplc.png)
+![kplc](/images/medimg/kplc.png){: .center}
 
 #### Support Vector Machines
 Finds the max-margin hyperplane between two different classes. We use hinge loss for data that is not linearly seperable
 
 **Hinge-loss** - $$\frac{1}{n}\sum_{i=1}^{n}{max(0, 1 - y_i(w\cdot x_i - b))} + \lambda{\|w\|}^2$$
 
-![svm](/images/medimg/svm.png)
+![svm](/images/medimg/svm.png){: .center}
 
 #### Decision Trees 
-![dtree](/images/medimg/dtree.png)
+![dtree](/images/medimg/dtree.png){: .center}
 
 #### Extremely Randomized Trees
-![dtreeensemble](/images/medimg/dtreeensemble.png)
+![dtreeensemble](/images/medimg/dtreeensemble.png){: .center}
 
 Take either the majority vote or prediction average
 
 #### AdaBoost
 Train many weak classifiers and combine them to get a final classifier - $$H(x) = sign(\alpha_1h_1(x) + \alpha_2h_2(x) + \alpha_3h_3(x))$$
 
-![adaboost](/images/medimg/adaboost.png)
+![adaboost](/images/medimg/adaboost.png){: .center}
 
 #### Spectral Methods
 
-![l_spec](/images/medimg/laplacian_spectral.png)
+![l_spec](/images/medimg/laplacian_spectral.png){: .center}
 
-![spectral](/images/medimg/spectral.png)
+![spectral](/images/medimg/spectral.png){: .center}
 
 $$aff(x,y) = e^{\frac{-\|x-y\|^2_2}{\sigma^2}$$
 
@@ -107,7 +107,7 @@ One solution is to use **total least square line fitting** which takes the perpe
 This is the same thing as minimizing $$\sum_{i=1}^n{\frac{(ax_i + by_i+c)^2}{a^2 + b^2}}$$, which is the same thing of findiding the eigenvector $$A^TA$$ of the least eigenvalue.
 
 However this still leaves the model prone to fitting outliers and sensitive to noise.
-![outlier](/images/medimg/outlier.png)
+![outlier](/images/medimg/outlier.png){: .center}
 
 #### RANSAC
 ```
@@ -118,7 +118,7 @@ repeat N times:
     compute the error of the model
 choose the best model
 ```
-![RANSAC](/images/medimg/RANSAC.png)
+![RANSAC](/images/medimg/RANSAC.png){: .center}
 
 #### Hough Transform
 This is a method of voting for parameter estimation. Firstly, you need to convert the points from image space to parameter space.
@@ -133,4 +133,4 @@ For each edge point (x,y)
         H(t, r) = H(t,r)+1
 Find local maxima in H(t,r)
 ```
-![Hough Transform](/images/medimg/hough.png)
+![Hough Transform](/images/medimg/hough.png){: .center}

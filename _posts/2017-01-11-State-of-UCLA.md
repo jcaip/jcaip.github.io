@@ -161,10 +161,10 @@ I was pretty impatient so I only ended training on 10000 training examples with 
 I ended with a 68-69% test accuracy. I've included some graphs of the loss function and test error over time. Please excuse the unlabeled graphs
 
 #### Loss Function vs. Iterations
-![loss_function](/images/sou/loss_function.png)
+![loss_function](/images/sou/loss_function.png){: .center}
 
 #### Test Error vs. Epochs
-![error](/images/sou/error.png)
+![error](/images/sou/error.png){: .center}
 
 ### Takeaway
 I eneded up being very pleased with the end result. This took about a week to do, and I think if I had access to a GPU or even a more powerful computer (I'm runnning on a dual core laptop) I could get a much better test error with just a bit more tweaking. 

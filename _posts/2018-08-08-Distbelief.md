@@ -27,7 +27,7 @@ We only implemented DownpourSGD, which is much simpler.
 ### Downpour SGD 
 In DownpourSGD, there are two core concepts - a parameter server and a training node.
 
-![paper_diagram](/images/distbelief/paper_diagram.png)
+![paper_diagram](/images/distbelief/paper_diagram.png){: .center}
 
 The parameter server is just a copy of the model parameters, which can send model parameters when requested and can also receive an accumulated gradient, which it then applies to it's own copy of the parameters.
 
@@ -40,7 +40,7 @@ In both cases, we push/pull data asynchronously, so training continues as usual 
 
 The paper provides some pseudocode for the DownpourSGD client.
 
-![paper_alg](/images/distbelief/paper_alg.png)
+![paper_alg](/images/distbelief/paper_alg.png){: .center}
 
 ## Starting off 
 
@@ -153,7 +153,7 @@ This is a shame, but we couldn't figure out a clean way around this, so it's jus
 With this, we had a simple prototype. At this we were primarily concerned that we would be able to train a deep neural network, and weren't sweating about performace. 
 To test our code we trained LeNet on MNIST, and plotted the test accuracy/loss.
 
-![prototype](/images/distbelief/prototype/server.png)
+![prototype](/images/distbelief/prototype/server.png){: .center}
 
 It's an ugly graph, but training accuracy clearly rises. 
 At this point we were satisfied with our design and focused on optimizing our prototype.
@@ -232,8 +232,8 @@ Our testing setup consisted of 4 `AWS c4.xlarge` systems.
 For our initial run, we trained for 20 epochs with a batch size of 64 and a learning rate of 0.1 (for single node) and 0.05 (for the distributed node). 
 $$N_{pull}$$ and $$N_{push}$$ were both set to 10.
 
-![v0_train](/images/distbelief/v1/cpu_dist2_train.png)
-![v0_test](/images/distbelief/v1/cpu_dist2_test.png)
+![v0_train](/images/distbelief/v1/cpu_dist2_train.png){: .center}
+![v0_test](/images/distbelief/v1/cpu_dist2_test.png){: .center}
 
 We were a little concerned here - it looked like our implementation was suffering. We took this time to explore a bit more, and eventually found [this](https://openreview.net/pdf?id=BJLSGcywG) paper analyzing the delayed gradient problem.
 
@@ -247,15 +247,15 @@ Dropping $$N_{pull}$$ and $$N_{push}$$ helps mitigate the delayed gradient probl
 
 Dropping the push/pull frequency had a immediate effect on our learning curve. 
 
-![v2_train](/images/distbelief/v2/cpu_dist2_train.png)
-![v2_test](/images/distbelief/v2/cpu_dist2_test.png)
+![v2_train](/images/distbelief/v2/cpu_dist2_train.png){: .center}
+![v2_test](/images/distbelief/v2/cpu_dist2_test.png){: .center}
 
 Once we got here we were very excited. Our training accuracy for out distributed 2 node approach shaved ~30 minutes off of our training time!
 At this point we figured a good next step would be to compare performance for our 2 node approach to our 3 node approach, as well as compare training time on a GPU (GTX 1060) as well. 
 
 ### Final Results
-![final_train](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/train_time.png)
-![final_test](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/test_time.png)
+![final_train](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/train_time.png){: .center}
+![final_test](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/test_time.png){: .center}
 
 So it turns out GPUs are fast, but we're faster than single node CPU training though by roughly an hour! 
 What's more than that - we're faster than a 2-node distributed approach, which bodes well for the scalability of our system. This is great as initially we were very concerned about the communication overhead.

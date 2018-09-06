@@ -22,10 +22,10 @@ There's more documentation about this project [here]().
 First we need to create a new EC2 instance. Log in to your AWS dashboard and then create a new EC2 instance per your own specifications.
 
 When you review your Instance Launch, change the Security Group settings.
-![page](/images/cicd/aws_instance.png)
+![page](/images/cicd/aws_instance.png){: .center}
 
 Add a rule to allow traffic on port 8080 (This is the defualt port that Jenkins uses). You should also add a rule for HTTP/HTTPS traffic and any other ports you may need. You will also need to add a rule to allow HTTP connections on port 80
-![settings](/images/cicd/security_group_after.png)
+![settings](/images/cicd/security_group_after.png){: .center}
 
 After this, you'll be asked to either use an exsisting key pair or generate a new key pair, if this is your first instance. In any case, be sure to have a copy of the physical key file on hand. 
 We need to ssh into your instance. You can by clicking on the instance and then clicking "Connect" and following the commands that pop up.

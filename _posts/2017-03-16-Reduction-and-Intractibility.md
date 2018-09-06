@@ -12,7 +12,7 @@ images:
 ## Complexity Classes
 With complexity classes, we aim to determine the "difficulty" of a problem. They allow us to know what is solvable in polynomial time and what isn't. This is what the $$P = NP$$ problem deals with. $$P=NP$$ implies that for any polynomial time verification solution, there is a polynomial time solver for the problem. Most computer scientists believe that $$P \neq NP$$. Assuming $$P \neq NP$$, 
 
-![complexity_classes](/images/algs/reduction/complexity_classes.png)
+![complexity_classes](/images/algs/reduction/complexity_classes.png){: .center}
 
 
 ### P
@@ -34,7 +34,7 @@ Reductions allow us to to determine the difficulty of a problem.
 
 We say that for two problems $$Y$$ and $$X$$, $$Y \leq_p X$$ if instances of $$Y$$ can be solved by a polynomial amount of computation plus a polynomial number of calls to a "black-box" that solves $$X$$.
 
-![reduction](/images/algs/reduction/reduction_visualized.png){: .center-image}
+![reduction](/images/algs/reduction/reduction_visualized.png){: .center-image}{: .center}
 
 You can think of reduction as calling a library as part of your solution. For example. 
 

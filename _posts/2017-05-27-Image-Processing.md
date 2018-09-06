@@ -14,7 +14,7 @@ images:
 #### Image Interpolation
 Direct interpolation lead to black spots, so instead we use indirect interpolation.
 
-![types of interpolation](/images/medimg/interpolation.png)
+![types of interpolation](/images/medimg/interpolation.png){: .center}
 
 For Bilinear interpolation $$I_{x,y} = \omega_4I_{u,v} + \omega_3I_{u+1,v} + \omega_2I_{u,v+1} + \omega_1I_{u+1,v+1} $$ 
 
@@ -28,7 +28,7 @@ Can either be applied in the frequency domain via a Foruier transform or in the 
 
 We can modify the pixels in the image either point-wise, locally, or globally.
 
-![outputsize](/images/medimg/outputsize.png)
+![outputsize](/images/medimg/outputsize.png){: .center}
 
 We can handle borders by either clipping, wrapping around, propogating the edge, or reflecting across an edge.
 
@@ -37,7 +37,7 @@ $$I'(x,y) = \sum_{i=-1}^{1}\sum_{j=-1}^{1}{I(x+i, y+j) \times filter(i,j)}$$
 
 Convolutional filters are commutative, associative, and distributive.
 
-![Types of low pass filters](/images/medimg/lowpass.png)
+![Types of low pass filters](/images/medimg/lowpass.png){: .center}
 
 By subtracting the low-pass filter from the source image, we get a high-pass filter.
 
@@ -45,7 +45,7 @@ By subtracting the low-pass filter from the source image, we get a high-pass fil
 #### Using Graidents and Laplacians
 To improve edge detection, we can take the derivative/2nd derivative of the signal via a convolution using the numerical approximation of the derivative.
 
-![filters](/images/medimg/gradfilters.png)
+![filters](/images/medimg/gradfilters.png){: .center}
 
 Some filters are **seperable**, which means they can be expressed as the product of two vectors.
 Since convolutions are associative, this means we can run in $$O(M)$$ instead of $$O(M^2)$$
@@ -74,12 +74,12 @@ To deal with rotation, we can instead take a histogram of pixel values.
 
 Alternatively, we can compute the average/max of the gradients for each portion of the image, and use this to align the images.
 
-![gradient_align](/images/medimg/gradient_align.png)
+![gradient_align](/images/medimg/gradient_align.png){: .center}
 
 #### SIFT
 SIFT is a histogram of the gradients of the image across small patches.
 
-![sift](/images/medimg/sift.png)
+![sift](/images/medimg/sift.png){: .center}
 
 #### Corners and Interest Points
 Humans naturally use corners and other points of interest to aligh ourselves. These points are usually represented by a large change in color, intensity, or texture.
@@ -87,13 +87,13 @@ Humans naturally use corners and other points of interest to aligh ourselves. Th
 Can be used for image registration, stereo matching, or panorama stitching.
 
 Ideally, we should be able to use the gradient to detect corners.
-![corner](/images/medimg/corner.png)
+![corner](/images/medimg/corner.png){: .center}
 
 **Harris Corner Detector** - $$A_W = \sum_{x \exists W, y \exists W}{w(x,y) \begin{bmatrix} f_x^2 & f_xf_y \\ f_xf_y & f_y^2 \end{bmatrix}}$$
 
 where $$w(x,y)$$ is some smoothing function.
 
-![harris](/images/medimg/harris.png)
+![harris](/images/medimg/harris.png){: .center}
 
 This detection is rotation invariant, but sensitive to changes in scale, viewpoint, and contrast.
 

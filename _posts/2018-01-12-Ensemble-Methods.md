@@ -13,7 +13,7 @@ An explanation of how some popular ensemble methods work for machine learning.
 
 Let's say we have some simple classifier. This classifier will either make bias or variance related errors. 
 
-![bias_var](https://www.kdnuggets.com/wp-content/uploads/bias-and-variance.jpg)
+![bias_var](https://www.kdnuggets.com/wp-content/uploads/bias-and-variance.jpg){: .center}
 
 Ensemble methods offer us an easy way to correct for these errors.
 

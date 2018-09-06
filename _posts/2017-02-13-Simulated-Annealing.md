@@ -25,12 +25,12 @@ Simulated Annealing works as follows:
 
 $$\frac{exp(e - e')}{T} > rand(0,1)$$
 
-  In this case $$e$$ is the distance of your current path, $$e'$$ is the distance of your neighbor path, and $$T$$ is the temperature.
+ In this case $$e$$ is the distance of your current path, $$e'$$ is the distance of your neighbor path, and $$T$$ is the temperature.
 
 
 4. Now we decay the temperature by a certain rate.
 
-We simply repeat this until the temperature reaches < 1 and then we terminate. The end result we have is our "optimal" solution.
+We simply repeat this until the temperature is less than 1 and then we terminate. The end result we have is our "optimal" solution.
 
 ## Code
 You can see the full code on my github [here](https://github.com/jcaip/simulated_annealing).
@@ -73,7 +73,7 @@ def getNeighbors(path_in):
     return path
 ```
 
-Now I can just run this simulation until it terminates (Temperature < 1)
+Now I can just run this simulation until it terminates ($Temp < 1$)
 
 
 ```python
@@ -97,10 +97,10 @@ Now I can just run this simulation until it terminates (Temperature < 1)
 I ended up writing a python program that finds the shortest path along a random set of vertices. I've attached the results below.
 
 #### Example with 10 points
-![example_10](https://jcaip.github.io/images/sim_ann/sim_ann_10.png)
+![example_10](https://jcaip.github.io/images/sim_ann/sim_ann_10.png){: .center}
 
 #### Example with 50 points
-![example_50](https://jcaip.github.io/images/sim_ann/sim_ann_50.png)
+![example_50](https://jcaip.github.io/images/sim_ann/sim_ann_50.png){: .center}
 
 This was a quick and fun little project. Later on I'd like to experiment and see if one could use simulated annealing instead of gradient descent to optimize machine learning problems. I think it would be especially effective in cases where you are unable to train for long periods of time. I think it could also be helpful when the search space is especially large - when your model is very complex. 
     

@@ -44,7 +44,7 @@ This is usually remedies by tying managerial compensation to the financial eprfo
 ## Financial Statements and Cash Flow
 
 ### Balance Sheet
-![Balance Sheet](https://jcaip.github.io/images/corp_fin/balance_sheet.png)
+![Balance Sheet](https://jcaip.github.io/images/corp_fin/balance_sheet.png){: .center}
 
 The balance sheet is a representation of a company. It can be used to answer three fundamental questions about a company
 **Common-Size Balance Sheet** - divide by Total Assets to get a percentage
@@ -87,7 +87,7 @@ If net working capital is positive, this means that over the next 12 months, the
 The change in net working capital is using positive in a growing firm
 
 ### Financial Cash Flow
-![Cash Flow](https://jcaip.github.io/images/corp_fin/cash_flow.png)
+![Cash Flow](https://jcaip.github.io/images/corp_fin/cash_flow.png){: .center}
 
 In general cash flows recieved earlier are better than those recieved later.
 
@@ -156,7 +156,7 @@ $$ EFN = \frac{Assets}{Sales} \times \Delta Sales - \frac{Liabilities_{spont}}{S
 **Sustainable Growth Rate** - $$G_{sustain} = \frac{ROE \times Retention \: Ratio}{1- ROE \times Retention \: Ratio}$$
 
 
-![efn_chart](/images/corp_fin/efn_chart.png)
+![efn_chart](/images/corp_fin/efn_chart.png){: .center}
 
 ## Discount Cash Flow Evaluation
 
@@ -214,4 +214,4 @@ $$PV \: BE = \frac{EAC + Fixed \: costs (1-tax) - tax*Depreciation}{(Sales \: pr
 
 You can run repeated simulations, drawing one random choice at each time, simulating thousands of scenarios.
 
-![monte_carlo](/images/corp_fin/mc.png)
+![monte_carlo](/images/corp_fin/mc.png){: .center}

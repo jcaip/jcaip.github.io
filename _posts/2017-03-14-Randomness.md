@@ -22,7 +22,7 @@ $$ E[x+y] = E[x] + E[y] $$
 That is, the expected value of the sum is the sum of the expectations.
 
 ## Quicksort
-![quicksort](/images/algs/random/quicksort.png)
+![quicksort](/images/algs/random/quicksort.png){: .center}
 
 ### Analysis
 Let $$E[T(A)]$$ be the number of comparisons. We want to bound $$E[T(A)]$$, or the expected number of comparisons that Quicksort will call. We also define $$W(n)$$ to be the max expected value of any $$A$$ such that the size of $$A$$ is $$n$$.
@@ -81,7 +81,7 @@ $$W(n) \leq (\frac{n^2 log(x)}{2} + \frac{n^2}{4}) \times \frac{4}{n}  + n-1$$
 $$W(n) \leq 2n \log(n)$$
 
 ## Quickselect
-![quickselect](/images/algs/random/quickselect.png)
+![quickselect](/images/algs/random/quickselect.png){: .center}
 
 ### Analysis
 Let \\(T(A, k)\\) be the total number of comparisons that the algorithm makes. We want to bound \\(E[T(A,k)]\\), which is the expected number of comparisons.
@@ -117,7 +117,7 @@ One way to achieve the time constrainsts of a dictionary is to use **Seperate Ch
 
 In this case, we have an array of size $$n$$ and each array has a linked list. We use a random hash function $$h(x): \rightarrow \{1 \ldots n \} $$ to assign each element to a linked list, or **bucket**
 
-![hash_table](https://www.kullabs.com/uploads/chaining1.png)
+![hash_table](https://www.kullabs.com/uploads/chaining1.png){: .center}
 
 ### Analysis
 Let $$Bucket(x) = A[h(x)]$$. That is $$Bucket(x)$$ returns the bucket where the element $$x$$ resides. 

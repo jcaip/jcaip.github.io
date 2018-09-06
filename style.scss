@@ -24,7 +24,7 @@ body {
   color: $darkGray;
 }
 
-.center {
+.coverimage {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -32,6 +32,12 @@ body {
     max-width: 600px;
     max-height: 400px;
     object-fit: contain;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container {

@@ -30,7 +30,7 @@ We train this using MLE, maxamizing the likelihood of the training data. Use neu
 
 Will need to define the ordering of pixels - starting from the corner. Each dependency is modeled via a LSTM RNN.
 
-![pixel rnn](https://cdn-images-1.medium.com/max/800/0*rkHKg19TkG4PA4Jn.)
+![pixel rnn](https://cdn-images-1.medium.com/max/800/0*rkHKg19TkG4PA4Jn.){: .center}
 
 However, this means that our training is very slow, as each pixel depends on the previous pixels for the hidden vector. 
 

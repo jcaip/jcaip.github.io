@@ -110,10 +110,10 @@ $$ \textbf{M}^{-1} =
 A projection is basically a mapping from $$ R^n \rightarrow R^m$$ where $$ n > m$$
 
 There are many different types or projections
-![projections](\images\cg\taxonomy_projections.png)
+![projections](\images\cg\taxonomy_projections.png){: .center}
 
 #### Basic Orthographic Projection
-![projections](\images\cg\basic_orthographic.png)
+![projections](\images\cg\basic_orthographic.png){: .center}
 
 $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
@@ -121,7 +121,7 @@ $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \end{bmatrix} $$
 
 #### Perspective Projection
-![projections](\images\cg\perspective.png)
+![projections](\images\cg\perspective.png){: .center}
 
 $$ \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \end{bmatrix}  =
 \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
@@ -203,7 +203,7 @@ Textures are always images paramaterized by $$(s,t)$$
 A better approach is to go from the screen to texture to avoid calculating pixel coverage.
 $$(s,t) = T_{wt}(T_{sw}(S_x,S_y))$$
 
-![texture](/images/cg/texturemapping.png)
+![texture](/images/cg/texturemapping.png){: .center}
 
 This approach only works for vertices, so we can calculate texture coordinates by interpolation along interior points.
 
@@ -333,7 +333,7 @@ However, areas that are not directly illuminated appear black, which is not natr
 We can add a **ambient glow** term to our equation 
 $$I =  I_L k_d cos\theta + I_L k_s {cos}^n \phi + I_ak_a$$ where $$I_a$$ is the ambient light intensity and $$k_a$$, which is a reflectance coefficient.
 
-![lighting](/images/cg/lighting.png)
+![lighting](/images/cg/lighting.png){: .center}
 
 #### Types of Shading
 Illumination equations are evaluated at surface locations, so we can evaluate at once at each polygon, which is called **flat shading**.
@@ -356,9 +356,9 @@ $$B_iA_i = E_iA_i + R_i \sum_j{B_jF_{j,i}A_j}$$ where $$B_i$$ is the flux densit
 
 We can then compute form factors $$F_{i,j} for 1 \leq i, j \leq n$$ and then solve a system of linear equations.
 
-![radiosity_equation](/images/cg/radiosity.png)
+![radiosity_equation](/images/cg/radiosity.png){: .center}
 
-![radiosity](/images/cg/radiosity_ex.png)
+![radiosity](/images/cg/radiosity_ex.png){: .center}
 
 ## Ray Tracing
 The light that point $$P_A$$ emits comes from
@@ -367,7 +367,7 @@ The light that point $$P_A$$ emits comes from
 + reflection from other objects
 + refraction from other objects
 
-![rt](/images/cg/rt.png)
+![rt](/images/cg/rt.png){: .center}
 
 Diffuse objects only receive light from light sources. Ray tracking works best for specular and transparent objects. 
 
@@ -416,17 +416,17 @@ Intersect the inverse-transformed ray with the untransformed primitive.
 #### Shadow Rays
 Intersect each shadow ray with all objects, apply illumination if not intersection.
 
-![shdow_ray](/images/cg/refractedray.png)
+![shdow_ray](/images/cg/refractedray.png){: .center}
 
 #### Reflected Rays
 $$Ray_{reflected} = P + t\textbf{v}$$ where $$\textbf{v} = -2(\textbf{n} \cdot \textbf{c})\textbf{n} + \textbf{c}$$
 
-![reflected](/images/cg/reflectedray.png)
+![reflected](/images/cg/reflectedray.png){: .center}
 
 #### Refracted Rays
 Calculate this using Snell's Law.
 
-![refracted](/images/cg/refractedray.png)
+![refracted](/images/cg/refractedray.png){: .center}
 
 Can be improved upon with participating media, translucency, sub-surface scattering, aperture effects, depth of field, or photon mapping.
 
@@ -453,15 +453,15 @@ Instead, we can use a **Barlett Window**.
 Take a lot of samples, and then combine them
 
 We can do this **stochastically** 
-![stochastic](/images/cg/stochastic.png)
+![stochastic](/images/cg/stochastic.png){: .center}
 
 We can also weight each sample to give them relative importance.
-![importance](/images/cg/importance.png)
+![importance](/images/cg/importance.png){: .center}
 
 ## Color
 We see color via cones in our eye. There are three types of cones (SML) that correspond to RGB respectively.
 
-![color](/images/cg/color.png)
+![color](/images/cg/color.png){: .center}
 
 **hue** is determined by the dominant wavelength.
 
@@ -473,22 +473,22 @@ We see color via cones in our eye. There are three types of cones (SML) that cor
 
 Represent colors a vector of three weights, $$w_r, w_b, w_g$$ that are all from 0 to 1.
 
-![rgb](/images/cg/rgb_cube.png)
-![hsv](/images/cg/HSV.png)
+![rgb](/images/cg/rgb_cube.png){: .center}
+![hsv](/images/cg/HSV.png){: .center}
 
 If we intersect this cube with the $$r+g+b=1$$ plane, we get the saturated color curve.
 
 #### Color Matching
 Aren't able to produce all wavelengths of light, so we try to match the distriution as best as possible. However we cannot keep negative coefficients, so we restrict this to an affine combination of (r,g,b)
 
-![chromacity](/images/cg/CIE.png)
+![chromacity](/images/cg/CIE.png){: .center}
 
 However, we cannot create all of the color scope with RGB. We are limited to the RGB **Color gamut**.
 
-![gamut](/images/cg/color_gamut.png)
+![gamut](/images/cg/color_gamut.png){: .center}
 
 #### Additive and Subtractive Color
-![rgbcmy](/images/cg/rgbcmy.png)
+![rgbcmy](/images/cg/rgbcmy.png){: .center}
 
 CRTs and other computer displays are an additive model, while printer ink (CMY) is a subtractive model.
 
@@ -508,7 +508,7 @@ $$\begin{bmatrix}R' \\ G'\\B'\end{bmatrix} =
 **Parametric form**: $$x(t) = a cos(t)\left\vert{cos(t)^{frac{2}{n-1}}}\right\vert$$
 $$y(t) = a sin(t)\left\vert{sin(t)^{frac{2}{n-1}}}\right\vert$$
 
-![supercircle](/images/cg/supercircle.png)
+![supercircle](/images/cg/supercircle.png){: .center}
 
 #### Drawing Parametric Curves
 We can compute some points $$p_i = p(t_i) = (x(t_i), y(t_i))$$ and then draw a line between each line to approximate the curve.
@@ -518,7 +518,7 @@ We use parametric polynomials and constrain them to create desired curves by spl
 #### Bezier Curves
 Use the **De Casteljau** Algorithm to generate curves.
 
-![bezier](/images/cg/bezier.png)
+![bezier](/images/cg/bezier.png){: .center}
 
 $$A(t) = (1-t)P_0 + tP_1$$
 $$B(t) = (1-t)P_1 + tP_2$$
@@ -544,7 +544,7 @@ This is an **affine combination of points**.
 
 Cubic curves give us a good mixture of flexibility and computational simplicity. We can create more complex curves by stiching these curves together piecewise.
 
-![piecewise](/images/cg/piecewise.png)
+![piecewise](/images/cg/piecewise.png){: .center}
 
 #### Continuity of Curves
 **Parametric continuity** - $$C^k$$ means that each piecewise function is differentiable $$k$$ times. 
@@ -574,7 +574,7 @@ $$\textbf{p'}(1) = 3(\textbf{p_3} - \textbf{p_2})$$
 **Catmull-Rom Splines** interpolate the points and proved $$C^1$$ continuity.
 
 Usually used with some tension parameter $$s$$.
-![crspline](/images/cg/crspline.png)
+![crspline](/images/cg/crspline.png){: .center}
 
 **B-Splines** curves no longer interpolate control points. Is $$C^2$$ continuous with no invariance under prespective projection.
 
@@ -632,7 +632,7 @@ We can write each basis function as a function of two 1-D basis functions, so
 $$\textbf{p}(u,v) = \sum_{i=0}^{m}\sum_{j=0}^{n}{\textbf{p}_{ij}B_{i}^{m}(u)B_j^n(v)}$$
 
 Again, we can use the **de Casteljau Algorithm** to generate **Bezier Patches**.
-![beziertensor](/images/cg/beziertensor.png)
+![beziertensor](/images/cg/beziertensor.png){: .center}
 
 These surfaces are affine invariant, and uphold the convex hull, planer percision, and variation diminishining limitations seen before.
 
@@ -655,7 +655,7 @@ Recursively subdivide until smooth
 Draw individual line segments
 ```
 
-![subdivision](/images/cg/subdivision.png)
+![subdivision](/images/cg/subdivision.png){: .center}
 
 
 We need two fundamental operations:
@@ -671,7 +671,7 @@ We can see that this is a linear operation, as each point is a linear combinatio
 
 To apply this to surfaces, we can split face into four quadrilaterals and then compute the barycenter around each vertex.
 
-![subdivision_s](/images/cg/subdivision_s.png)
+![subdivision_s](/images/cg/subdivision_s.png){: .center}
 
 **extraordinary points** exists when points have more than 4 edges/faces connected to them.
 

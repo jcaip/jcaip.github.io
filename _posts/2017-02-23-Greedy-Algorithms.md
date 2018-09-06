@@ -13,11 +13,11 @@ images:
 **Greedy Algorithms** work by building the general solution one step at a time. The forego thinking about the future and take the best possible *step* each time until they have a complete solution.
 
 ### Interval Scheduling
-![Interval](/images/algs/Greedy/InterviewScheduling.png)
+![Interval](/images/algs/Greedy/InterviewScheduling.png){: .center}
 
 ### Mininium Spanning Trees
-![MST](/images/algs/Greedy/ComputingMST.png)
-![MST](/images/algs/Greedy/mst.png)
+![MST](/images/algs/Greedy/ComputingMST.png){: .center}
+![MST](/images/algs/Greedy/mst.png){: .center}
 
 ## Proof Techniques
 ### Exchange argument
