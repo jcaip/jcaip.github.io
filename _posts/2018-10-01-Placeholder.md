@@ -1,4 +1,7 @@
+---
+published: false
 
+---
 
 1. First, we tried to use openmpi to run our code - good starting point. 
 profile code
