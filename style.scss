@@ -47,6 +47,12 @@ body {
   width: 100%;
 }
 
+// for line break
+hr {
+
+  border-top: 1px solid $lightGray;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Ubuntu";
   color: $darkerGray;

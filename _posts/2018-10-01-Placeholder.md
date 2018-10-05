@@ -1,4 +1,6 @@
 
+
+1. First, we tried to use openmpi to run our code - good starting point. 
 profile code
 
 I should be able to use starcluster to spin up an OpenMPI cluster. 
