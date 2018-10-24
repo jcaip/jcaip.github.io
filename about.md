@@ -6,9 +6,20 @@ permalink: /about/
 Hi there, I'm Jesse Cai and welcome to my website/blog!
 
 In some posts, I try to explain a concept, while other posts are just quick notes or personal projects.
-Occassionally I [ramble](/tags/#non-technical) about my experiences, but the vast majority of posts here are technical.
 
-My main interests are in machine learning, generative models, algorithms, and distributed systems. 
+Occassionally I [ramble](/tags/#non-technical) about my experiences, but the vast majority of posts here are about machine learning or computer science.
+
+I find deep learning and computer science extremely interesting from two different viewpoints:
+
+One is in the context of automation on steroid:
+- How can we use machine learning to automate processes?
+- How can we simplify tasks in computer science 
+
+And the other is one of being able to understand our data:
+- How can we exploit structure in our data?
+- What relationships do our data exhibit?
+
+In particular I'm interested in generative models, representation learning, optimization and distributed systems. 
 
 If you want to get a sense of this blog I'd recommend reading these posts:
 * [Distributed gradient descent](/Distbelief) in PyTorch
