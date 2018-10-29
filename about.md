@@ -20,9 +20,9 @@ I'd recommend reading these posts if you want to get a sense of what this blog i
 I try to break things down as much as possible, but if something is unclear (or flat out wrong) please leave a PR.
 
 I'm primarily interested in the following questions:
-- How can we exploit structure in our data to make better models?
-- How can we apply machine learning to automate processes?
+- How can we exploit structure in our data to make better predictions?
 - How can we scale machine learning?
+- What processes can we automate with machine learning?
 
 Last year I took a leave of abscence to work as a machine learning engineer on the data team at [Blend](https://blend.com), a startup focused on improving the consumer lending experience.
 Before I joined Blend, I interned at [JPL](https://www.jpl.nasa.gov/) for about half a year.
