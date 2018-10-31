@@ -11,7 +11,7 @@ Welcome to my website/blog!
 
 I mostly write about machine leanrning/computer science, but aside from that there's not really a central theme here- it's a mix of notes, personal projects, explanations, and occasionally [ramblings](/tags/#non-technical) about my experiences.
 
-I'd recommend reading these posts if you want to get a sense of what this blog is about:
+I'd recommend reading these posts if you want to get a feel for the site:
 - [Distributed gradient descent](/Distbelief) in PyTorch
 - An overview of [Variational Autoencoders](/Variational-Autoencoders)
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
