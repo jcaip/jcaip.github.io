@@ -16,6 +16,9 @@ If you want to get a better sense of this blog I'd recommend reading the followi
 I try to break things down as much as possible, but if something is unclear (or flat out wrong) please leave a PR.
 
 ## About Me
+
+![photo](/resources/photo.jpg =300x)
+
 Currently I'm an undergraduate computer science student at UCLA.
 
 I'm primarily interested in the following questions:
