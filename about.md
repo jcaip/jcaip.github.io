@@ -17,9 +17,11 @@ I try to break things down as much as possible, but if something is unclear (or 
 
 ## About Me
 
-<img src="/resources/photo.jpg" width="100px">
+<div style="float: right;"><img src="/resources/photo.jpg" width="220px"></div>
 
 Currently I'm an undergraduate computer science student at UCLA.
+
+In my free time, I like exploring nature, watching basketball, or playing chess.
 
 I'm primarily interested in the following questions:
 - How can we exploit structure in our data to make better predictions?
