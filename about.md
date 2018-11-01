@@ -3,11 +3,11 @@ layout: page
 permalink: /about/
 ---
 
-Hi there, welcome to my website/blog!
+Hi there, I'm Jesse Cai and welcome to my website/blog!
 
-I mostly write about machine learning or computer science, but aside from that there's not really a central theme here- it's a mix of notes, personal projects, explanations, and occasionally [ramblings](/tags/#non-technical) about my experiences.
+This site is mostly about machine learning or computer science, but aside from that there's not really a central theme here- it's a mix of notes, personal projects, explanations, and occasionally [ramblings](/tags/#non-technical) about my experiences.
 
-I'd recommend reading these posts if you want to get a feel for the site:
+If you want to get a better sense of this blog I'd recommend reading the following posts:
 - [Distributed gradient descent](/Distbelief) in PyTorch
 - An overview of [Variational Autoencoders](/Variational-Autoencoders)
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
