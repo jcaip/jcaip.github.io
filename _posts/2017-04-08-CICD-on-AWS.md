@@ -11,6 +11,7 @@ images:
 ---
 
 ## Using Jenkins and Docker to easily deploy web applications
+<!--more-->
 
 ### Dockerized Web Application
 Dockerizing your web applications can be kind of confusing. I'm going to use a sample web application that uses Flask and React that you can find [here](https://github.com/jcaip/react_flask_dockerized).

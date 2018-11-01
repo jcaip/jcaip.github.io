@@ -9,6 +9,7 @@ Leading ACM AI has been a wonderful experience for me, and I would do it again i
 Luckily, ACM AI is now in the very capable hands of [Rohan Varma](http://rohanvarma.me/) and [Adit Deshpande](https://adeshpande3.github.io/).
 
 Leading a club is hard, and I wanted to share some of the things I learned over the past year.
+<!--more-->
 
 But first off, I wanted to thank my team of officers. ACM AI wouldn't be the club it is today without the hard work of 
 Henry Yang, Ray Zhang, Kevin Wang, Daniel Li, Alex Guziak, Mahir Esufasi, Honglin Chen, Rodrigo Valle, and Wandi Liu

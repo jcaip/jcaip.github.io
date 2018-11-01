@@ -11,6 +11,7 @@ images:
 **Machine learning** is the science of getting computers to learn to perform a task without being explicitly programmed.
 
 A Dataset can be represented by a matex $$X$$, where each column is a feature and each row is a sample. $$Y$$ is a vector of labels/outputs.
+<!--more-->
 
 Machine learning can either be used for Classification or Regression. 
 

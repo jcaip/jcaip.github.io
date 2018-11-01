@@ -7,12 +7,20 @@ published: true
   {% for post in site.posts %}
     <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      
+ 
       <div class="entry">
-        {% assign image = post.images[0] %}
-        {% include image.html image=image %}
-        {{ post.excerpt }}
+        <div class="excerpt">
+            {% assign image = post.images[0] %}
+            {% if image %}
+            <img src="{{ site.baseurl }}{{ image.url }}" alt="{{ image.alt }}" title="{{ image.title }}" class="coverimage">
+            {% endif %}
+
+             <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+            {{ post.excerpt }}
+
+        </div>
+
+        
       </div>
 
       <small class="date">{{ post.date | date_to_string }}</small>
@@ -22,7 +30,6 @@ published: true
       {% endfor %}
       {% endif %}
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-      
 
     </article>
   {% endfor %}

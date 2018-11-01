@@ -13,6 +13,7 @@ images:
 ## Measuring Performance 
 The instruction count, or **IC**, is the number of instructions that a program must execute. 
 **CPI** refers to cycles per instruction, and is usually fixed for different instructions. 
+<!--more-->
 
 To get the CPI of a program, we take the weighted average
 

@@ -18,6 +18,8 @@ $$p_\theta(x) = \int p_\theta(z) p_\theta(x \vert z) dz$$
 $$z$$ is a **latent variable** from which our trainig data is generated from.
 We can't optimize this directly, so instead we derive and optimize a lower bound on the likelihood instead.
 
+<!--more-->
+
 ## Autoencoders
 
 An autoencoder consists of two parts.

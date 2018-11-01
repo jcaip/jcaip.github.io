@@ -11,6 +11,7 @@ images:
 
 This blog post is about the anatomy of a sample docker project you can find [here](https://github.com/jcaip/react_flask_dockerized).
 Make sure you have Docker installed - if you don't follow the instructions [here](https://www.docker.com/) to install it.
+<!--more-->
 
 ## Makefile
 The Makefile is not neccessary, but it makes using this project a bit nicer. Since most people have had some experience with Makefiles, it's an easy way to bring the Docker containers up.

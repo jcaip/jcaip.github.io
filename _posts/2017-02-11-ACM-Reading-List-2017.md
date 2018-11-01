@@ -16,6 +16,7 @@ I was asked to compile a reading list for UCLA ACM, so I figuered I would share 
 It's now the middle of February 2017. If you're stuck in the 6th week doldrums of the quarter system, why not kick back and crack open a book? 
 
 Here's a collection of several books that we found interesting and informative!
+<!--more-->
 
 ## How to Win Friends and Influence People
 

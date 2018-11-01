@@ -13,6 +13,7 @@ images:
 
 #### Image Interpolation
 Direct interpolation lead to black spots, so instead we use indirect interpolation.
+<!--more-->
 
 ![types of interpolation](/images/medimg/interpolation.png){: .center}
 

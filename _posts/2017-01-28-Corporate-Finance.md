@@ -12,6 +12,7 @@ images:
 ---
 
 These are some notes that I took on corporate finance for ENGR111 at UCLA
+<!--more-->
 
 ## The Corporate Firm
 

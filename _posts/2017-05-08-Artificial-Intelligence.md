@@ -13,6 +13,7 @@ Winograd Schema are another series of problems that are used to test for underst
 The idea is to have a sentence, with two possible meanings and to let the computer pick two choices that make sense. 
 
 E.g. The city councilmen refused the demonstrators a permit because they [feared/advocated] violence. Who [feared/advocated] violence?
+<!--more-->
 
 
 ## Machine Learning

@@ -9,7 +9,8 @@ images:
 
 This is a post about [constraint satisfaction](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem).
 
-If you're interested by this blog post, you should check out my AI notes [here](/posts/Artificial-Intelligence) for more information about constraint satisfaction and other similar concepts.
+If you're interested by this blog post, you should check out my AI notes for more information about constraint satisfaction and other similar concepts.
+<!--more-->
 
 ## The Problem
 For a group of variables, $$x_1, x_2, \ldots , x_n$$, with domains $$D_1, D_2, \ldots , D_n$$, we want to find an assignment for each variable such that no constraints are violated.

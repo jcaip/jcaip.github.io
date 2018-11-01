@@ -11,6 +11,7 @@ images:
 ---
 
 This is a personal project that I wanted to start working on. The general idea is to train an RNN for sentiment analysis and then create a webapp to pull twitter data based on geolocation to see how different parts of the nation are feeling.
+<!--more-->
 
 The different parts are as follows:
 

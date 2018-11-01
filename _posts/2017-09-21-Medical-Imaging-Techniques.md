@@ -12,6 +12,7 @@ Oscillating current creates electromagnetic waves
 
 **Larmor Formula** - $$P = \frac{2}{3}\frac{m_e r_e a^2}{c}$$
 The power of an electromagnetic wave is in terms of it's radius, mass, acceleration, and the speed of light.
+<!--more-->
 
 Light is created when electrons in a higher energy orbit fall to a lower energy orbit. The electron then releases the energy as light. 
 

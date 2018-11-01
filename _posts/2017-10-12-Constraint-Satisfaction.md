@@ -6,6 +6,7 @@ tags: [algorithms, artificial-intelligence]
 Constraint satisfication is similar to search problems. You can check out a solver I wrote [here](https://jcaip.github.io/Constraint-Satisfaction-Solver/)
 
 For a group of variables, $$x_1, x_2, \ldots , x_n$$, with domains $$D_1, D_2, \ldots , D_n$$, we want to find an assignment for each variable such that no constraints are violated.
+<!--more-->
 
 From a problem, we can create a **constraint graph**, which is a visualization of the dependencies between variables. Each variables is represented by a vertex and an edge represents a constraint.
 

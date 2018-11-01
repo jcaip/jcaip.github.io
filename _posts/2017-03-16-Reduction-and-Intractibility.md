@@ -11,6 +11,7 @@ images:
 
 ## Complexity Classes
 With complexity classes, we aim to determine the "difficulty" of a problem. They allow us to know what is solvable in polynomial time and what isn't. This is what the $$P = NP$$ problem deals with. $$P=NP$$ implies that for any polynomial time verification solution, there is a polynomial time solver for the problem. Most computer scientists believe that $$P \neq NP$$. Assuming $$P \neq NP$$, 
+<!--more-->
 
 ![complexity_classes](/images/algs/reduction/complexity_classes.png){: .center}
 

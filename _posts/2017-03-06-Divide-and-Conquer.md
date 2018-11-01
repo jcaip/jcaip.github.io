@@ -14,6 +14,7 @@ There are usually three steps to a divide and conquer algorithm
 + Divide the problem into subproblems
 + Recursively solve each subproblem
 + Merge the results together
+<!--more-->
 
 ### Master Theorem
 The master theorem provides a solution for recurrence relations from divide and conquer algorithms. You can read more about the master theorem [here](https://en.wikipedia.org/wiki/Master_theorem).

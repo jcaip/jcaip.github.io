@@ -24,15 +24,6 @@ body {
   color: $darkGray;
 }
 
-.coverimage {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 600px;
-    max-height: 400px;
-    object-fit: contain;
-}
 
 .center {
     display: block;
@@ -69,7 +60,6 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 30px;
-  text-align: center;
   a {
     color: inherit;
   }
@@ -135,6 +125,28 @@ strong, b {
 
 img {
   max-width: 100%;
+}
+
+// formatting for nicer layout of posts
+.entry {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+
+    .excerpt {
+        display: table-cell;
+
+        .coverimage {
+            float: right;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 400px;
+            max-height: 400px;
+            object-fit: contain;
+        }
+    }
+
 }
 
 // Fixes images in popup boxes from Google Translate

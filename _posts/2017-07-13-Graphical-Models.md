@@ -8,7 +8,8 @@ images:
   title: markov
 ---
 
-A method of representing uncertatainty and reasoning. To do this generate a graph, and set probabilities for each node in the graph.
+Graphical models are a method of representing uncertatainty and reasoning. To do this generate a graph, and set probabilities for each node in the graph.
+<!--more-->
 
 ![graphical](/images/medimg/graphical_model.png){: .center}
 

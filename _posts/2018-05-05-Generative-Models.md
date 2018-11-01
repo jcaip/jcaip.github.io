@@ -10,6 +10,7 @@ I'm going to be doing a series of blog posts about generative models, and how on
 
 Generative models can be thought of a form of **unusupervised learning** or density estimation. 
 We are trying to model the underlying distribution from the data. 
+<!--more-->
 
 They can be used for super-resolution, colorization, and simulation.
 

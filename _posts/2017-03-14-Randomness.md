@@ -20,6 +20,7 @@ Let \\(x\\) and \\(y\\) be two random variables. Linearity of Expectations state
 $$ E[x+y] = E[x] + E[y] $$
 
 That is, the expected value of the sum is the sum of the expectations.
+<!--more-->
 
 ## Quicksort
 ![quicksort](/images/algs/random/quicksort.png){: .center}
