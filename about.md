@@ -17,7 +17,7 @@ I try to break things down as much as possible, but if something is unclear (or 
 
 ## About Me
 
-![photo](/resources/photo.jpg =300x)
+<img src="/resources/photo.jpg" width="100px">
 
 Currently I'm an undergraduate computer science student at UCLA.
 
