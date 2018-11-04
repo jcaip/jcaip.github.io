@@ -2,27 +2,50 @@
 layout: page
 ---
 
-<div class="tags-expo">
-  <div class="tags-expo-list">
-    {% for tag in site.tags %}
-    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
-    {% endfor %}
-  </div>
-  <hr/>
+<div class="archive">
+    <div class="tags-expo">
+        <div class="tags-expo-list">
+          {% for tag in site.tags %}
+          <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ tag[0] }}</a>
+          {% endfor %}
+        </div>
 
-  <div class="tags-expo-section">
-    {% for tag in site.tags %}
-    <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
-    <ul class="tags-expo-posts">
-      {% for post in tag[1] %}
-        <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
-      <li>
-        {{ post.title }}
-      <small class="post-date">{{ post.date | date_to_string }}</small>
-      </li>
-      </a>
-      {% endfor %}
-    </ul>
-    {% endfor %}
-  </div>
+        <div class="tags-expo-section">
+          {% for tag in site.tags %}
+          <h3 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h3>
+          <ul class="tags-expo-posts">
+            {% for post in tag[1] %}
+              <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+            <li>
+              {{ post.title }}
+            <small class="post-date">{{ post.date | date_to_string }}</small>
+            </li>
+            </a>
+            {% endfor %}
+          </ul>
+          {% endfor %}
+        </div>
+
+        <div class="archive-expo-section">
+          <ul class="tags-expo-posts">
+            {%- for post in site.posts -%}
+              {%- if post.next -%}
+                {%- assign year = post.date | date: '%Y' -%}
+                {%- assign prev_year = post.next.date | date: '%Y' -%}
+                {%- if year != prev_year -%}
+                  <header><h3>{{ post.date | date: '%Y' }}</h3></header>
+                {%- endif -%}
+              {%- else -%}
+                <header><h3>{{ post.date | date: '%Y' }}</h3></header>
+              {%- endif -%}
+                <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+                  <li>
+                    {{ post.title }}
+                    <small class="post-date">{{ post.date | date_to_string }}</small>
+                  </li>
+                </a>
+            {%- endfor -%}
+          </ul>
+        </div>
+    </div>
 </div>
