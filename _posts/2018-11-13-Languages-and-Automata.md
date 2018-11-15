@@ -3,7 +3,7 @@ title: Languages and Automata
 tags: theory
 
 ---
-Some notes for CS181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free languages.
+Some notes for CS 181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free languages.
 
 <!--more-->
 ## Context-Free Grammars
@@ -62,7 +62,7 @@ Key things to note here: try to break down the CFG into smaller, simpler parts a
 
 ### Ambiguity
 
-A grammar is abiguous if some string has multiple distinct parse trees. A common source of abiguity is empty strings, or $\epsilon$.
+A grammar is ambiguous if some string has multiple distinct parse trees. A common source of ambiguity is empty strings, or $\epsilon$.
 
 For example, the CFG $$ S \rightarrow R \mid T \\ R \rightarrow aRb \mid \epsilon \\ T \rightarrow aT \mid \epsilon $$ is ambiguous, as the string $\epsilon$ can be parsed either using $T$ or $R$.
 
@@ -129,7 +129,7 @@ $$
 
 More specifically, for $p, q \in Q$ $L_{p,q} = \\{ w : w \text{ can take the PDA from } p \text{ w/ empty stack to } q \text{ w/ empty stack }\\}$. Thus $L_{PDA} = L_{q_{start} q_{final}}$
 
-With this in mind, we can say that language $L$ is context-free if it has a conteset-free grammar of a PDA. It's also easy to see that every regular language has a context-free grammar. 
+With this in mind, we can say that language $L$ is context-free if it has a context-free grammar of a PDA. It's also easy to see that every regular language has a context-free grammar. 
 
 ## Pumping Lemma for Context-Free Languages
 
