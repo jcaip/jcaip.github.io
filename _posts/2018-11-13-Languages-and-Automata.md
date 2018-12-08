@@ -5,6 +5,8 @@ tags: theory
 ---
 Some notes for CS 181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free languages.
 
+Added in notes on Turing Machines, 
+
 <!--more-->
 ## Context-Free Grammars
 
@@ -151,7 +153,7 @@ $$\forall p . \exists s \in L \text{ s.t. } \vert{s}\vert \geq p . \forall u v x
 
 TODO: This is a bit involved, so skipping this for now. 
 
-## Closure Properties
+### Closure Properties
 
 * CFLs are closed under union.
 * CFLs are closed under concatenation.
@@ -159,3 +161,62 @@ TODO: This is a bit involved, so skipping this for now.
 * CFLS are **not** closed under complement.
 * CFLs are closed under Kleene star.
 * CFLs are closed under reversal.
+
+
+## Turing Machines
+
+Conceptually a turing machine acts on an infintely long tape, on which the input is written. While the tape has no right hand side, it has a distinct left most element. The turing machine, at each step, can read from the tape, but also write to the tape, and then move the head left or right. 
+
+A turing machine $M$ is represented by the tuple $(Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$ where
+* $Q$ is a set of states
+* $\Sigma$ is the alphabet
+* $\Gamma$ is the tape alphabet
+* $\delta$ is the transition function $\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \\{ L, R \\}$
+* $q_0$ is the start state
+* $q_{accept}$ is the accept state
+* $q_{reject}$ is the reject state
+
+When $M$ reaches either $q_{accept}$ or $q_{reject}$ respectively, it halts and either accepts/rejects the string. It is possible that $M$ never enters either string, which we consider rejection by default.
+
+### Examples
+
+1. Create a turing machine that recognizes $L = \\{ w#w \\}$
+
+Leave a dot at the first character. 
+
+Scan to the right until your find a #, and dot that.
+
+Read left until you reach a dotted character  (back at start now)
+
+remember this value (finite b/c \Gamma is finite) (let's call it x)
+
+then undot and read right. dot this character
+
+then read right until you reach another dotted character.
+if this character is different from x, reject otherwise
+undot that character and then go right and dot that character if it exists. if it is empty, then accept if the other dot is at #, otherwise reject.
+
+
+2. 
+
+
+**Church-Turing thesis** - The Turing machine is a universal model of computation. Any real world computation can be simulated by a Turing machine. 
+
+If L is recognized by some computational model/device then that language is Turing recognizable.
+
+### A couple example reductions
+
+1. Bidirectionally infinite tape:
+
+Show that if a languages is recognizable by a Turing machine with a bidirection tape it is Turing recognizable.
+
+Take the left hand side of the tape and interleave it with the right hand size such that each element of the tape is now a 2-tuple.
+
+
+2. Multiple Tapes:
+
+If L is recognized by a Turing machine with $k$ tapes and $k$ head, then L is Turing recognizable. 
+
+
+To simulate one-step of the $k$-tape Turing machine, scan the tape, memorizing the $k$ circled symbols, and then scan again, undating the circled symbols and shifting the actual circles.
+
