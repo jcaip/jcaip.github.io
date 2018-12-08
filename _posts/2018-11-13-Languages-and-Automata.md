@@ -83,7 +83,7 @@ For example, the CFG $$ S \rightarrow R \mid T \\ R \rightarrow aRb \mid \epsilo
     A non-ambiguous grammar is given by &nbsp; $$P \rightarrow ab \mid aPb \mid abP \mid aPbP $$. **Note:** This is the language of all properly nested parenthesis. We make it non-ambiguous by anchoring on open parenthesis.
 
 
-#### Designing unambiguous grammars
+### Designing unambiguous grammars
 
 1. Design an unambiguous grammar for $L = \\{w : w \text{ has at least as many } a \text{ as } b \\}$. We can use the unambiguous language designed in 3, but just consider the other case where the parenthesis may be switched.
     $$ S \rightarrow S^{'}\mid S^{''} \mid \epsilon \\  S^{'} \rightarrow P S^{''} \mid P \\ S^{''} \rightarrow Q S^{'} \mid Q \\ P \rightarrow ab \mid aPb \mid abP \mid aPbP \\ Q \rightarrow ba \mid bQa \mid baQ \mid bQaQ $$
@@ -133,7 +133,7 @@ More specifically, for $p, q \in Q$ $L_{p,q} = \\{ w : w \text{ can take the PDA
 
 With this in mind, we can say that language $L$ is context-free if it has a context-free grammar of a PDA. It's also easy to see that every regular language has a context-free grammar. 
 
-## Pumping Lemma for Context-Free Languages
+### Pumping Lemma for Context-Free Languages
 
 Context-free languages have a pumping lemma, similar to regular languages.
 
@@ -143,7 +143,7 @@ To prove that a language is **not** context free, we will use the contrapositive
 
 $$\forall p . \exists s \in L \text{ s.t. } \vert{s}\vert \geq p . \forall u v x y z \text{ s.t. } s = uvxyz, \vert{vxy}\vert \leq p, \vert{v}\vert + \vert{y}\vert \neq 0 . \exists i . uv^ixy^iz \notin L  \implies  L \text{ is not a CFL} $$
 
-### Examples
+#### Examples
 
 1. $L = \\{ a^nb^nc^n : n \geq 0\\}$
 
@@ -162,12 +162,11 @@ TODO: This is a bit involved, so skipping this for now.
 * CFLs are closed under Kleene star.
 * CFLs are closed under reversal.
 
-
 ## Turing Machines
 
-Conceptually a turing machine acts on an infintely long tape, on which the input is written. While the tape has no right hand side, it has a distinct left most element. The turing machine, at each step, can read from the tape, but also write to the tape, and then move the head left or right. 
+Conceptually a Turing machine acts on an infintely long tape, on which the input is written. While the tape has no right hand side, it has a distinct left hand side. The Turing machine, at each step, can read from the tape, but also write to the tape, and then move the head left or right. 
 
-A turing machine $M$ is represented by the tuple $(Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$ where
+A Turing machine $M$ is represented by the tuple $(Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$ where
 * $Q$ is a set of states
 * $\Sigma$ is the alphabet
 * $\Gamma$ is the tape alphabet
@@ -176,47 +175,122 @@ A turing machine $M$ is represented by the tuple $(Q, \Sigma, \Gamma, \delta, q_
 * $q_{accept}$ is the accept state
 * $q_{reject}$ is the reject state
 
-When $M$ reaches either $q_{accept}$ or $q_{reject}$ respectively, it halts and either accepts/rejects the string. It is possible that $M$ never enters either string, which we consider rejection by default.
+When $M$ reaches either $q_{accept}$ or $q_{reject}$ respectively, it halts and either accepts/rejects the string. It is possible that $M$ never enters either state, which we consider rejection by default.
 
-### Examples
+#### Sample problems and solutions for Turing machines.
 
-1. Create a turing machine that recognizes $L = \\{ w#w \\}$
+1. Create a Turing machine that recognizes $L = \\{ w \text{#} w \\} $
 
-Leave a dot at the first character. 
+```
+1) Leave a dot at the first character. 
 
-Scan to the right until your find a #, and dot that.
+2) Scan to the right until your find a #, and dot that.
 
-Read left until you reach a dotted character  (back at start now)
+3) Read left until you reach a dotted character  (back at start now)
 
-remember this value (finite b/c \Gamma is finite) (let's call it x)
+4) remember this value (finite b/c \Gamma is finite) (let's call it x)
 
-then undot and read right. dot this character
+5) then undot and read right. dot this character
 
-then read right until you reach another dotted character.
-if this character is different from x, reject otherwise
+6) then read right until you reach another dotted character.
+
+7) if this character is different from x, reject otherwise
 undot that character and then go right and dot that character if it exists. if it is empty, then accept if the other dot is at #, otherwise reject.
 
+```
 
-2. 
+2. Create a Turing machine that recognizes $L = \\{ 0^{2^n} : n \geq 0 \\} $
 
+```
+Go through the input and dot every other 0 in the string. If we run into the end of the string before this is possible, then reject the string. 
+Repeat this until all 0s are dotted, at which point accept the string. 
+```
+
+3. Create a Turing machine that recognizes $L = \\{ w_1 \text{#} w_2 \ldots \text{#} w_n : w_i \neq w_j \forall i, j, i \neq j\\}$
+
+```
+Leave a dot at the first character
+
+Scan to the right for the next # and dot that. repeat this until there are no more #
+
+Compare the dotted characters, if they are equal then reject otherwise move the dot to the next # 
+
+Put the R/W head immediately after the last dotted string, then go to 1
+```
+
+### Completeness of Turing machines
 
 **Church-Turing thesis** - The Turing machine is a universal model of computation. Any real world computation can be simulated by a Turing machine. 
 
-If L is recognized by some computational model/device then that language is Turing recognizable.
+More specifically, if $L$ is recognized by some computational model/device then that language is Turing recognizable.
+This is not proven, it's merely just a conjecture.
 
-### A couple example reductions
+#### A couple example reductions
 
-1. Bidirectionally infinite tape:
-
-Show that if a languages is recognizable by a Turing machine with a bidirection tape it is Turing recognizable.
+1. $L$ is recognizable by a Turing machine with a bidirectional tape it is Turing recognizable.
 
 Take the left hand side of the tape and interleave it with the right hand size such that each element of the tape is now a 2-tuple.
 
-
-2. Multiple Tapes:
-
-If L is recognized by a Turing machine with $k$ tapes and $k$ head, then L is Turing recognizable. 
-
+2. $L$ is recognized by a Turing machine with $k$ tapes and $k$ head, then L is Turing recognizable. 
 
 To simulate one-step of the $k$-tape Turing machine, scan the tape, memorizing the $k$ circled symbols, and then scan again, undating the circled symbols and shifting the actual circles.
 
+3. $L$ is recognized by a nondeterministic Turing machine $\iff$ $L$ is Turing-recognizable.
+
+Try out all legal sequences of moves in lexicographical order and accept if some sequence accepts. 
+
+Create 3 tapes, the input tape, sequence tape and work tape. 
+
+Initialize the empty  sequence tape, 
+ Increment the sequence 
+Initialize the work tape to the input string
+Apply sequence to work tape, one step at a time. If you reach $Q_{accept}$ then accept. 
+Return to step 2.
+
+4. $L$ is recognized by a $k$-stack automata $\iff$ $L$ is Turing recognizable. 
+
+Use k-tape Turing machine, gives a nondeterministic Turing machine. Use Turing machine as concatenation of two stacks. 
+
+left move - pop stack 1 and push stack 2, vice versa for right move. 
+
+## Decidability
+
+A Turing machine $M$ decides a language $L$ if:
+* $M$ recognizes $L$.
+* $M$ halts on every input. 
+
+A language $L$ is decidable $L$ and $\bar{L}$ are Turing recognizable. Then given Turing machine $M$ that recognizes $L$ and $M'$ that recognizes $\bar{L}$, we construct a decider for $L$ by running $M$ and $M'$ simultaneously on the input and returns whatever answers first. 
+
+
+#### Decidability of DFAs
+We can also consider an encoding of DFAs to a binary string. This allows us to interpret strings as DFAs and vice-versa.
+Let's consider a couple of interesting languages. 
+
+**NOTE:** This is pretty important so make sure you have it down. 
+1.  $ \\{ \langle D \rangle : \text{D is a DFA s.t. } L(D) \neq \emptyset \\} $
+```
+reject if encoding is invalid
+write all vertices out on a seprate tape
+mark each vertex if there is an edge
+repeat until there are no unmarked edges. 
+for every marked vertex, mark all neighbors of V
+Accept if all vertices of E are marked, reject otherwise.
+```
+
+2.  Show that $L = \\{ \langle D, w \rangle : \text{ D is a DFA that accepts w} \\}$ is decidable. 
+
+To determine whether input $D, w$ is the language,
+Firstly, we construct a DFA that only recognizes $w$, denoted by $W$. Note that since this language is finite, it must be regular. 
+Since regular languages are closed under intersection, we can check whether $D' = D \cup W$ is empty, by checking if $L(D') \eq \emptyset$.
+
+3. Show that $L = \\{ \langle D, D' \rangle : L(D') = L(D'') \\}$ is decidable.
+
+Note that $(L(D') \setminus L(D'')) \cup (L(D'') \setminus L(D'))$ is a regular language under closure properties, so it can be represented by a DFA $D$
+
+Now we can just check if $L(D)$ is empty, using our language emptiness checker. 
+
+4. Show that $L = \\{ \langle D \rangle : \text{D accepts a string of even length} \\}$
+
+5. Show that $L = \\{ \langle R, S \rangle :  L(R) \subset L(S) \\}$ is decidable where $R, S$ are regular expressions. 
+
+#### Decidability of CFGs
