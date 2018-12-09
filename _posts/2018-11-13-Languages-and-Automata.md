@@ -1,7 +1,7 @@
 ---
+layout: post
 title: Languages and Automata
-tags: theory
-
+tags: [theory]
 ---
 Some notes for CS 181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free languages.
 
@@ -182,7 +182,7 @@ When $M$ reaches either $q_{accept}$ or $q_{reject}$ respectively, it halts and 
 1. Create a Turing machine that recognizes $L = \\{ w \text{#} w \\} $
 
 ```
-1) Leave a dot at the first character. 
+Leave a dot at the first character. 
 
 2) Scan to the right until your find a #, and dot that.
 
@@ -203,6 +203,7 @@ undot that character and then go right and dot that character if it exists. if i
 
 ```
 Go through the input and dot every other 0 in the string. If we run into the end of the string before this is possible, then reject the string. 
+
 Repeat this until all 0s are dotted, at which point accept the string. 
 ```
 
@@ -293,4 +294,20 @@ Now we can just check if $L(D)$ is empty, using our language emptiness checker.
 
 5. Show that $L = \\{ \langle R, S \rangle :  L(R) \subset L(S) \\}$ is decidable where $R, S$ are regular expressions. 
 
+6. Show that $L = \\{ \langle  D \rangle : \text{ D is a DFA that accepts w and it's reverse} \\} $ is decidable.
+
+7. Show that $L = \\{ \langle D \rangle :  \vert L(D) \vert = \inf \\} $ is decidable.
+
 #### Decidability of CFGs
+
+**Theorem**: Given CFG $G$, if $L(G) = \emptyset$ then some string $w \in L(G)$ has a parse tree of depth $d \leq \vert V \vert$.
+
+**Proof**: Let $P$ be the smallest parse tree for $G$.
+
+If depth $P > \vert V \vert$ then some path must repeat a variable $v$ by PHP. Let $A$ be the parse tree for the first occurence of $v$ and $A'$ be the parse tree for the second occurence.
+
+Then I could generate a smaller parse tree by replacing $A$ with $A'$. This is a contradiction since $P$ is the smallest parse tree for $G$. Therefore depth $P \leq \vert V \vert$.
+
+1. Show that $L = \\{ \langle G \rangle : L(G) = \emptyset \\}$ is decidable.
+
+To do this we will try out all candidate parse trees of depth $\leq \vert V \vert$. 
