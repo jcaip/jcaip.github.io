@@ -298,6 +298,8 @@ Now we can just check if $L(D)$ is empty, using our language emptiness checker.
 
 7. Show that $L = \\{ \langle D \rangle :  \vert L(D) \vert = \inf \\} $ is decidable.
 
+if the DFA accepts a string greater than $k$, it will accept an infinite number by the pumping lemma. 
+
 #### Decidability of CFGs
 
 **Theorem**: Given CFG $G$, if $L(G) = \emptyset$ then some string $w \in L(G)$ has a parse tree of depth $d \leq \vert V \vert$.
@@ -311,3 +313,44 @@ Then I could generate a smaller parse tree by replacing $A$ with $A'$. This is a
 1. Show that $L = \\{ \langle G \rangle : L(G) = \emptyset \\}$ is decidable.
 
 To do this we will try out all candidate parse trees of depth $\leq \vert V \vert$. 
+
+2. Show that $L = \\{ \langle G, w \rangle :  \text{G is a CFG that generates w} \\}$ is decidable. 
+
+Notice that the language $L_w = \\{ w \\}$ is regular, as it is finite, so $L(G) \cup L_w$ is a CFG. We know from aboce that this CFG is decidable, so therefore, so is $L$.
+
+3. Show that $L = \\{ \langle p \rangle : \text{ p is a PDA that accepts infinitely many strings} \\}$ 
+
+$p$ accepts infinitely many strings if it accepts any string that is greater than $k$, or the pumping length. We can construct the regular language, $L_k = \\{ w : \vert w \vert > k \\}$. Then, we just simply have to convert $p$ into a grammar, and then check $L(p) \cup L_k$ is empty, which is decidable. 
+
+4. Show that $L = \\{ \langle p \rangle : \text{ p has no unreachable states }\\}$
+
+For all states, make that state into an accept state, and check if the CFG for the new PDA is empty or not.
+
+
+### Undecidability
+
+Cantor's argument for the existance of an unrecognizable language - set of all languages is uncountable, but the set of all Turing machines is countable (since every Turing machine can be written as a binary string, and the set of all binary strings is countable). Therefore there must be some languages that are not recognized by a Turing machine. 
+
+Consider the language $L_{unrec} = \\{ w : w \notin L(M_w) \\}$, which is the set of all strings, such that the string is **not** in the language of the Turing machine representation of the string. 
+
+This language is not recognizable. 
+
+Halting problem - consider the language $HALT = \\{ \langle M, w \rangle : \text{ M is a turing machien that halts on w } \\}$
+
+We know that $L_{unrec} = \\{ w : W \notin L(M_w) \\}$ is unrecognizable and therefore undecidable. However, suppose $HALT$ was decidable. 
+Then for input $x$ we can see that $\langle M_x, x \rangle \notin HALT \implies x \in L_{unrec}$, while $ \langle M_x,s \rangle \in HALT \implies x \notin L_{unrec}$. This means that if $HALT$ is decidable, so would $L_{unrec}$, which is a contradiction. Therefore $HALT$ is undecidable. 
+
+Note that although $HALT$ is undecidable, it is recognizable. $\bar{HALT}$ is therefore not recognizable. 
+
+**Rice's Theorem**: Any nontrivial property about the language recognized by a Turing machine is undecidable.
+
+A property is said to be nontrivial if some Turing machine has it and some Turing machine doesn't have it. 
+
+For example, consider $L= \\{ \langle M \rangle : \text{ M is a Turing machine that halts on } \epsilon \\}$
+
+Clearly there is a Turing machine that halts on $\epsilon$ and a Turing machine that doesn't halt on $\epsilon$ (runs forever). Therefore by Rice's theorem, $L$ is undecidable.
+
+
+ 
+
+
