@@ -3,9 +3,8 @@ layout: post
 title: Languages and Automata
 tags: [theory]
 ---
-Some notes for CS 181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free languages.
 
-Added in notes on Turing Machines, 
+Some notes for CS 181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free language. I also just added in notes for Turing machines. 
 
 <!--more-->
 ## Context-Free Grammars
@@ -234,7 +233,7 @@ Take the left hand side of the tape and interleave it with the right hand size s
 
 2. $L$ is recognized by a Turing machine with $k$ tapes and $k$ head, then L is Turing recognizable. 
 
-To simulate one-step of the $k$-tape Turing machine, scan the tape, memorizing the $k$ circled symbols, and then scan again, undating the circled symbols and shifting the actual circles.
+To simulate one-step of the $k$-tape Turing machine, scan the tape, memorizing the $k$ circled symbols, and then scan again, updating the circled symbols and shifting the actual circles.
 
 3. $L$ is recognized by a nondeterministic Turing machine $\iff$ $L$ is Turing-recognizable.
 
@@ -298,7 +297,7 @@ Now we can just check if $L(D)$ is empty, using our language emptiness checker.
 
 7. Show that $L = \\{ \langle D \rangle :  \vert L(D) \vert = \inf \\} $ is decidable.
 
-if the DFA accepts a string greater than $k$, it will accept an infinite number by the pumping lemma. 
+If the DFA accepts a string greater than $k$, it will accept an infinite number by the pumping lemma. 
 
 #### Decidability of CFGs
 
@@ -306,7 +305,7 @@ if the DFA accepts a string greater than $k$, it will accept an infinite number 
 
 **Proof**: Let $P$ be the smallest parse tree for $G$.
 
-If depth $P > \vert V \vert$ then some path must repeat a variable $v$ by PHP. Let $A$ be the parse tree for the first occurence of $v$ and $A'$ be the parse tree for the second occurence.
+If depth $P > \vert V \vert$ then some path must repeat a variable $v$ by PHP. Let $A$ be the parse tree for the first occurrence of $v$ and $A'$ be the parse tree for the second occurrence.
 
 Then I could generate a smaller parse tree by replacing $A$ with $A'$. This is a contradiction since $P$ is the smallest parse tree for $G$. Therefore depth $P \leq \vert V \vert$.
 
@@ -316,7 +315,7 @@ To do this we will try out all candidate parse trees of depth $\leq \vert V \ver
 
 2. Show that $L = \\{ \langle G, w \rangle :  \text{G is a CFG that generates w} \\}$ is decidable. 
 
-Notice that the language $L_w = \\{ w \\}$ is regular, as it is finite, so $L(G) \cup L_w$ is a CFG. We know from aboce that this CFG is decidable, so therefore, so is $L$.
+Notice that the language $L_w = \\{ w \\}$ is regular, as it is finite, so $L(G) \cup L_w$ is a CFG. We know from above that this CFG is decidable, so therefore, so is $L$.
 
 3. Show that $L = \\{ \langle p \rangle : \text{ p is a PDA that accepts infinitely many strings} \\}$ 
 
@@ -329,7 +328,7 @@ For all states, make that state into an accept state, and check if the CFG for t
 
 ### Undecidability
 
-Cantor's argument for the existance of an unrecognizable language - set of all languages is uncountable, but the set of all Turing machines is countable (since every Turing machine can be written as a binary string, and the set of all binary strings is countable). Therefore there must be some languages that are not recognized by a Turing machine. 
+Cantor's argument for the existence of an unrecognizable language - set of all languages is uncountable, but the set of all Turing machines is countable (since every Turing machine can be written as a binary string, and the set of all binary strings is countable). Therefore there must be some languages that are not recognized by a Turing machine. 
 
 Consider the language $L_{unrec} = \\{ w : w \notin L(M_w) \\}$, which is the set of all strings, such that the string is **not** in the language of the Turing machine representation of the string. 
 
