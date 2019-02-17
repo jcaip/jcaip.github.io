@@ -37,7 +37,7 @@ Downpour SGD is very similar to normal SGD, with two main exceptions.
 - Before the training step, the training node asynchronously pulls the parameters from the parameter server. We do this every $$N_{pull}$$ times.
 - After we've applied our gradient update, we also accumulate it in another tensor. Once we sum $$N_{push}$$ gradients, we send this accumulated gradient to the parameter server, and zero the accumulated gradients. 
 
-In both cases, we push/pull data asynchronously, so training continues as usual (forward pass, compute loss, backprop, apply gradient update) whie we're sending data. 
+In both cases, we push/pull data asynchronously, so training continues as usual (forward pass, compute loss, backprop, apply gradient update) while we're sending data. 
 
 The paper provides some pseudocode for the DownpourSGD client.
 
@@ -45,7 +45,7 @@ The paper provides some pseudocode for the DownpourSGD client.
 
 ## Starting off 
 
-We did some cursoury research, and found a couple of great articles and tutorials. 
+We did some cursory research, and found a couple of great articles and tutorials. 
 - [Akka implementation](http://alexminnaar.com/implementing-the-distbelief-deep-neural-network-training-framework-with-akka.html) of DistBelief
 - PyTorch distributed computing [tutorial](https://pytorch.org/tutorials/intermediate/dist_tuto.html)
 - gevent actor model [tutorial](http://sdiehl.github.io/gevent-tutorial/#actors)
@@ -186,11 +186,11 @@ def __init__(self, params, lr=required, n_pull=required, n_push=required, model=
     listener = DownpourListener(self.model)
     listener.start()
     
-    # invoke superclass consutrctor
+    # invoke superclass constructor
     super(DownpourSGD, self).__init__(params, defaults)
 ```
 We extend `__init__()` by letting it take in a model definition as an argument, as well as the list of parameters.
-We need this in order to start our `DownpourListener`, which we do in a seprate thread in our optimizer constructor. 
+We need this in order to start our `DownpourListener`, which we do in a separate thread in our optimizer constructor. 
 
 ```python
     def step(self, closure=None):
@@ -222,7 +222,7 @@ from distbelief.optim import DownpourSGD
 
 optimizer = DownpourSGD(net.parameters(), lr=0.001, freq=50, model=net)
 ```
-That actually was very helpful, as we were able to pull down any arbritrary model and train it with minimal modification. 
+That actually was very helpful, as we were able to pull down any arbitrary model and train it with minimal modification. 
 We ended up pulling an [AlexNet model definition](https://github.com/bearpaw/pytorch-classification/blob/master/models/cifar/alexnet.py) and some [CIFAR10 benchmarking code](https://github.com/bearpaw/pytorch-classification) to benchmark our code.
 
 ### Iterating on our prototype
@@ -240,7 +240,7 @@ We were a little concerned here - it looked like our implementation was sufferin
 
 The delayed gradient problem exists because a node may be running gradient descent on a set of parameters that is "stale". In this case the gradients it produces may just add noise and not contribute to lowering the training loss. 
 
-It seemed that there was a much better chance at convergence at smaller frequencies, so we dropped $$N_{pull}$$ and $$N_{push}$$ to 5. It was previously set to ten as we were testing by runnning all 3 processes on a single machine, and the training nodes would rob the server process of resources, causing it to not be able to process messages fast enough.
+It seemed that there was a much better chance at convergence at smaller frequencies, so we dropped $$N_{pull}$$ and $$N_{push}$$ to 5. It was previously set to ten as we were testing by running all 3 processes on a single machine, and the training nodes would rob the server process of resources, causing it to not be able to process messages fast enough.
 
 Dropping $$N_{pull}$$ and $$N_{push}$$ helps mitigate the delayed gradient problem by keeping parameters fresher, at the cost of more communication overhead.
 
