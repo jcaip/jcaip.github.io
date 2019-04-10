@@ -28,12 +28,15 @@ This is an equivalence relation, as it is
 Of course, we have to start from somewhere - in this case, we'll start with the natural numbers, $\mathbb{N}$.
 Unfortunately this part is much less visual, but it gets better later on.
 
-The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies these 5 axioms, called the **Peanno Axioms**. 
+
+The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 **Peanno Axioms**. 
 1. $\mathbb{N}$ is a set and $0 \in \mathbb{N}$
 2. $S : \mathbb{N} \to \mathbb{N}$ is a function with $Dom(S) = \mathbb{N}$
 3. $\forall n \in \mathbb{N}: S(n) \neq 0$ 
 4. $\forall n, m \in \mathbb{N}: S(n) = S(m) \implies n = m $ 
 5. $\forall A \subset \mathbb{N}: 0 \in A \land S(A) \subset A \implies A = \mathbb{N}$ 
+
+One such construction we'll look at under [ZFC set theory]() is as follows:
 
 We'll call $0 := \emptyset, 1 := S(0), 2 := S(S(0))$, and so on. This gives us the natural numbers, $\mathbb{N}$.
 
@@ -50,16 +53,14 @@ We can also define multiplication in the naturals in the same fashion.
 
 Note if we denote $1 = S(0)$ we can also get $\forall m \in \mathbb{N}: S(m) = m+1$.
 
-These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. 
+These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. A full proof of these can be seen in the notes.
 
-Note that addition is injective, so there is at most 1 solution to the equation. 
+One property to take note of is that addition is injective (one-to-one), so there is at most 1 solution to the equation $ y = a + b$ given $y, b$.
 
 #### Defining a well-ordering
 We can also define the $\leq$ relation as follows:
 
 $$\forall m, n \in \mathbb{N}: m \leq n \iff \exists r \in \mathbb{N} : n = m + r$$
-
-This relation is reflexive, transitive and antisymmetric and is a well-ordering of $\mathbb{N}$.
 
 This gives us the basics for a subtraction operation, by denoting $r$ the difference of $n-m$
 
@@ -67,9 +68,8 @@ $$\forall m, n \in \mathbb{N}: (\exists r \in \mathbb{N}: m+r = n ) \implies r =
 
 But here we run into a problem, as this operation is only defined if $m \leq n$. To get around this, we'll expand $\mathbb{N}$ to $\mathbb{Z}$.
 
-The main takeaway here is that we have $\mathbb{N}$, from 0 to infinity, and we have several operators (addition, inequality, and multiplication) defined for these numbers.
-
-We'd really like a subtraction operation, and there seems to be a clear definition for one, but it's undefined for certain pairs, so we'd like to expand the naturals to the integers.
+The main takeaway here is that we have $\mathbb{N}$, defined from 0 to infinity, and we have several operators (addition, inequality, and multiplication) defined for these numbers.
+We'd really like a subtraction operation, to solve any equation $y = a + b$ given $y, b$ and there seems to be a clear definition for one, but it's not defined for $y \leq b$, so we'd like to expand the naturals to the integers, such that this subtraction relation is defined $\forall y, b \in \mathbb{Z}$.
 
 # The Integers $\mathbb{Z}$
 
