@@ -12,22 +12,13 @@ We're going to by constructing the natural numbers, and from there we'll constru
 <!--more-->
 
 ## Stuff you should know
-Sets, relations, first-order logic, functions, inductive proofs, notion of supremum/infimun.
-TODO: update this section
-
-This is an equivalence relation, as it is 
-
-+ transitive
-+ symmetric
-+ reflexive. 
+Sets, relations, first-order logic, supremum/infimun, equivalence relations and classes.
 
 **Note:** All the axes you see should have arrows, but I couldn't figure out how to do it in matplotlib. 
 
 # The Naturals: $\mathbb{N}$
 
-Of course, we have to start from somewhere - in this case, we'll start with the natural numbers, $\mathbb{N}$.
 Unfortunately this part is much less visual, but it gets better later on.
-
 
 The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 **Peanno Axioms**. 
 1. $\mathbb{N}$ is a set and $0 \in \mathbb{N}$
@@ -36,9 +27,19 @@ The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 
 4. $\forall n, m \in \mathbb{N}: S(n) = S(m) \implies n = m $ 
 5. $\forall A \subset \mathbb{N}: 0 \in A \land S(A) \subset A \implies A = \mathbb{N}$ 
 
-One such construction we'll look at under [ZFC set theory]() is as follows:
+Our construction under [ZFC set theory]() is as follows:
 
-We'll call $0 := \emptyset, 1 := S(0), 2 := S(S(0))$, and so on. This gives us the natural numbers, $\mathbb{N}$.
+We'll let $0 = \emptyset$ and $\forall n: S(n) = n \cup \\{n\\}$
+
+$$0 = \emptyset$$
+
+$$1 = S(0) = \{ \emptyset \}$$
+
+$$2 = S(S(0)) = S(1) = \{ \emptyset, \{ \emptyset\} \} $$
+
+$$3 = S(S(S(0))) = S(2)=  \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset\} \} \}$$
+
+This gives us the natural numbers, $\mathbb{N}$.
 
 ### Arithmetic on the naturals
 With this, we can define some of the operations we are familiar with, starting with addition.
@@ -46,14 +47,32 @@ With this, we can define some of the operations we are familiar with, starting w
 1. $\forall m \in \mathbb{N} : m+0 = m $
 2. $\forall m, n \in \mathbb{N} : m + S(n) = S(m+n)$
 
-We can also define multiplication in the naturals in the same fashion.
+Let's add two numbers to get a better sense of our construction.
+
+$$2 + 1 = 3$$
+
+Using the fact that $1 = S(0)$ we get
+
+$$ 2 + S(0) = 3$$
+
+Applying our definition of addition (2) yields
+
+$$ S(2+0) = 3$$
+
+Now we apply case (1) to get $2 + 0 = 2$ so 
+
+$$ S(2) = 3$$
+
+And by definition $3 = S(2)$
+
+Note if we denote $1 = S(0)$ we can also get $\forall m \in \mathbb{N}: S(m) = m+1$.
+
+We can also define multiplication in the naturals similarly.
 
 1. $\forall m \in \mathbb{N} : 0 \cdot m = 0 $
 2. $\forall m, n \in \mathbb{N} :  S(n) \cdot m  = n \cdot m + n$
 
-Note if we denote $1 = S(0)$ we can also get $\forall m \in \mathbb{N}: S(m) = m+1$.
-
-These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. A full proof of these can be seen in the notes.
+These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. A full proof can be seen [here]().
 
 One property to take note of is that addition is injective (one-to-one), so there is at most 1 solution to the equation $ y = a + b$ given $y, b$.
 
@@ -69,7 +88,7 @@ $$\forall m, n \in \mathbb{N}: (\exists r \in \mathbb{N}: m+r = n ) \implies r =
 But here we run into a problem, as this operation is only defined if $m \leq n$. To get around this, we'll expand $\mathbb{N}$ to $\mathbb{Z}$.
 
 The main takeaway here is that we have $\mathbb{N}$, defined from 0 to infinity, and we have several operators (addition, inequality, and multiplication) defined for these numbers.
-We'd really like a subtraction operation, to solve any equation $y = a + b$ given $y, b$ and there seems to be a clear definition for one, but it's not defined for $y \leq b$, so we'd like to expand the naturals to the integers, such that this subtraction relation is defined $\forall y, b \in \mathbb{Z}$.
+We'd really like a subtraction operation, to solve any equation $y = a + b$ given $y, b$ and there seems to be a clear definition for one, but it's not defined for $y \leq b$, so we'd like to expand the naturals.
 
 # The Integers $\mathbb{Z}$
 
@@ -87,10 +106,7 @@ We can visualize this by plotting all pairs $(p, q) \in \mathbb{N} \times \mathb
 
 Here each equivalence class (integer) corresponds to a different color. You can see that each class corresponds to a line with a different y-intercept. In fact the y-intercept of the line is the integer value of that line. 
 
-Below we see how to draw an axis that defines the $\mathbb{Z}$ number line for the interval $[-5, 5]$.
-
 ![integer axis](/images/R/Zaxis.png){: .center}
-
 
 ### Arithmetic on the integers
 We can define the negation operator as well as addition, subtraction, and multiplication as follows
@@ -147,9 +163,9 @@ Now let's consider arithmetic over $\mathbb{Q}$ by defining the operation of add
 3. $[(p_1,q_1)] \cdot [(p_2, q_2)] = [(p_1 \cdot p_2 , q_1 \cdot q_2)]$
 4. $[(p_1,q_1)] \div [(p_2, q_2)] = [(p_1 \cdot q_2 , q_1 \cdot p_2)]$
 
-Again we'll plot the vectors to see that they are the right equivalence class.
+Let's try and visualize $5 \div 2$ in $\mathbb{Q}$.
 
-![rational axis](/images/R/Qaxis.png){: .center}
+![arithemtic on q](/images/R/Qarithmetic.png){: .center}
 
 # The Reals $\mathbb{R}$
 Unfortunately we can't use the same approach to construct $\mathbb{R}$. While the cardinality of the $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ are all equal, $\mathbb{R}$ is far more dense.
