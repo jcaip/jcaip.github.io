@@ -47,25 +47,20 @@ With this, we can define some of the operations we are familiar with, starting w
 1. $\forall m \in \mathbb{N} : m+0 = m $
 2. $\forall m, n \in \mathbb{N} : m + S(n) = S(m+n)$
 
+Futhermore we denote $1 = S(0)$ so that $\forall m \in \mathbb{N}: S(m) = m+1$.
+
 Let's add two numbers to get a better sense of our construction.
 
 $$2 + 1 = 3$$
 
-Using the fact that $1 = S(0)$ we get
 
-$$ 2 + S(0) = 3$$
+Using the fact that $1 = S(0)$ we get $2+1 = 2 + S(0) = 3$
 
-Applying our definition of addition (2) yields
+Applying our definition of addition (2) yields $2+1 =  S(2+0) = 3$
 
-$$ S(2+0) = 3$$
+Now we apply case (1) to get $2 + 0 = 2$ so $2+1 =  S(2) = 3$
 
-Now we apply case (1) to get $2 + 0 = 2$ so 
-
-$$ S(2) = 3$$
-
-And by definition $3 = S(2)$
-
-Note if we denote $1 = S(0)$ we can also get $\forall m \in \mathbb{N}: S(m) = m+1$.
+And this meets our natural expectation that $2+1=3$.
 
 We can also define multiplication in the naturals similarly.
 
@@ -146,12 +141,11 @@ We can use the same trick to visualize the equivalence classes,
 ![z cross z](/images/R/ZxZ.png){: .center}
 
 The equivalence classes are a bit harder to see here, but again they correspond to lines, just now with different slopes instead of intercepts.
+Unfortunately I couldn't quite figure out how to get the colors to match up perfectly, some some of the classes are miscolored.
 
 ![rational axis](/images/R/Qaxis.png){: .center}
 
-We can imagine a curved axis that if flattened would give the $\mathbb{Q}$ number line. 
 Notice that when $\theta= \frac{\pi}{2}$ the slope of the line is $+\infty$ and at $\theta = -\frac{\pi}{2}$ the slope of the line is $-\infty$.
-
 Furthermore the vertical line corresponding to the y-axis is not defined, as this corresponds to division by 0.
 
 ### Arithmetic on the rationals
@@ -163,7 +157,7 @@ Now let's consider arithmetic over $\mathbb{Q}$ by defining the operation of add
 3. $[(p_1,q_1)] \cdot [(p_2, q_2)] = [(p_1 \cdot p_2 , q_1 \cdot q_2)]$
 4. $[(p_1,q_1)] \div [(p_2, q_2)] = [(p_1 \cdot q_2 , q_1 \cdot p_2)]$
 
-Let's try and visualize $5 \div 2$ in $\mathbb{Q}$.
+Let's try and see that $1 \div 2 = -2 \div -4$ in $\mathbb{Q}$.
 
 ![arithemtic on q](/images/R/Qarithmetic.png){: .center}
 
