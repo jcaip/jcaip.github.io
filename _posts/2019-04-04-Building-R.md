@@ -9,6 +9,7 @@ images:
 
 I'm going to go over how to construct $\mathbb{R}$, or the real numbers. 
 We're going to by constructing the natural numbers, and from there we'll construct the integers, then the rationals and then the reals. 
+Our goal here is too add two real numbers together, but building everything we need to do so along the way.
 <!--more-->
 
 ## Stuff you should know
@@ -53,7 +54,6 @@ Let's add two numbers to get a better sense of our construction.
 
 $$2 + 1 = 3$$
 
-
 Using the fact that $1 = S(0)$ we get $2+1 = 2 + S(0) = 3$
 
 Applying our definition of addition (2) yields $2+1 =  S(2+0) = 3$
@@ -67,7 +67,7 @@ We can also define multiplication in the naturals similarly.
 1. $\forall m \in \mathbb{N} : 0 \cdot m = 0 $
 2. $\forall m, n \in \mathbb{N} :  S(n) \cdot m  = n \cdot m + n$
 
-These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. A full proof can be seen [here]().
+These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc.
 
 One property to take note of is that addition is injective (one-to-one), so there is at most 1 solution to the equation $ y = a + b$ given $y, b$.
 
@@ -159,30 +159,52 @@ Now let's consider arithmetic over $\mathbb{Q}$ by defining the operation of add
 
 Let's try and see that $1 \div 2 = -2 \div -4$ in $\mathbb{Q}$.
 
+So again, we have to pick pairs to represent $1, 2, -2, -4$.
+
+We'll pick the pairs $(1, 1), (2, 1), (-2, 1), (-4, 1)$ respectively.
+
+Then $1 \div 2 $ should be given by $(1 \cdot 2, 1 \cdot 1) = (2, 1) $, and $-2 \div -4$ will be given by $(1 \cdot -4, -2 \cdot 1) = (-4, -2)$.
+
 ![arithemtic on q](/images/R/Qarithmetic.png){: .center}
+
+We can see that the vectors $(2, 1)$ and $(-4, -2)$ have the same slope, and therefore the same equivalence class. This is the equivalence class for $\frac{1}{2}$. 
 
 # The Reals $\mathbb{R}$
 Unfortunately we can't use the same approach to construct $\mathbb{R}$. While the cardinality of the $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ are all equal, $\mathbb{R}$ is far more dense.
 
 Instead we'll consider a way to partition the $\mathbb{Q}$ number line called a Dedekinde cut.
 
-More precisely, a Dedekinde cut if it satisfys these 4 conditions: 
+More precisely, a subset $r$ of $\mathbb{Q}$ is a cut if it satisfys these conditions: 
 
-1. $r \neq \emptyset$
-2. $r \neq \mathbb{Q}$
-3. closed downward
-4. contains no greatest element
+1. $r \neq \emptyset \land r \neq \mathbb{Q}$
+3. $\forall x \in r \forall y \in \mathbb{Q} x \leq y \implies x \in r$
+4. $r$ has no maximum $\neg \exists x \in \mathbb{Q} \forall y \in r : y \leq x  $
+$\forall x \in \mathbb{Q} \setminus A \exists y \in \mathbb{Q}: x < y \land y \not \in A$
 
-Then $\mathbb{R}$ is the set of all cuts of $\mathbb{Q}$.
+$\mathbb{R}$ is then defined as the set of all cuts of $\mathbb{Q}$. A real number can be thought of as the set of all rational numbers less than itself.
+
+$$\mathbb{R} = \{ r \subset \mathbb{Q}: r \text{ is a cut }\}$$
+
+Let's look at the cut that represents the rational number $1$ in the reals.
+
+![r1](/images/R/R1.png){: .center}
+
+And also the irrational number $\sqrt 2$.
+
+![r2](/images/R/Rroot2.png){: .center}
 
 ### Arithmetic on the reals
 
+We can define a well-ordering $\leq$ on the reals such that $\forall x,y \in \mathbb{R}: x \leq y  \iff x \subset y$. 
 
-And we're done, from $\mathbb{N} \to \mathbb{R}$.
+And this is supported visually, as $1 \leq \sqrt2$ since the set is smaller.
 
+Addition in the reals is defined as 
 
-## Conclusion
+$$ A + B  = \{a + b: a \in A \land b \in B \}$$
 
-The construction of the reals from Dedekinde cuts is well-known.
-The construction I showed as well as most of the arithmetic properties were learned from MATH131, while the visualizations were created by me. You can find the code for them [here]().
+So adding together $ 1 + \sqrt 2$ looks something like this:
 
+![raadd](/images/R/Raddition.png){: .center}
+
+And we're finished! We've built from the basics of set theory by defining progressively more complicated number systems, working our way from $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$, and we can add real numbers together.
