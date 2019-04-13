@@ -7,12 +7,16 @@ images:
     - url: https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Number-systems.svg/1024px-Number-systems.svg.png
 ---
 
+This is still a WIP for the time being.
+
 I'm going to go over how to construct $\mathbb{R}$, or the real numbers. 
 We're going to by constructing the natural numbers, and from there we'll construct the integers, then the rationals and then the reals. 
 Our goal here is too add two real numbers together, but building everything we need to do so along the way.
 <!--more-->
 
 ## Stuff you should know
+TODO: write a short bit here
+
 Sets, relations, first-order logic, supremum/infimun, equivalence relations and classes.
 
 **Note:** All the axes you see should have arrows, but I couldn't figure out how to do it in matplotlib. 
