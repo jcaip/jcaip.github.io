@@ -1,5 +1,5 @@
 ---
-published: True
+published: False
 layout: post
 title: Building $\mathbb{R}$ visually
 tags: [theory, mathematics]
@@ -11,19 +11,20 @@ This is still a WIP for the time being.
 
 I'm going to go over how to construct $\mathbb{R}$, or the real numbers. 
 We're going to by constructing the natural numbers, and from there we'll construct the integers, then the rationals and then the reals. 
-Our goal here is too add two real numbers together, but building everything we need to do so along the way.
+Our goal here is to add two real numbers together, but by building everything we need to do so along the way.
 <!--more-->
 
 ## Stuff you should know
-TODO: write a short bit here
 
-Sets, relations, first-order logic, supremum/infimun, equivalence relations and classes.
+This section is meant as a brief introduction to some of the machinery we'll use, so feel free to skip it. 
+
+TODO: write about sets, relations, first-order logic, equivalence relations and classes.
 
 **Note:** All the axes you see should have arrows, but I couldn't figure out how to do it in matplotlib. 
 
 # The Naturals: $\mathbb{N}$
 
-Unfortunately this part is much less visual, but it gets better later on.
+Unfortunately this part is much less visual, so there's no pretty pictures.
 
 The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 **Peanno Axioms**. 
 1. $\mathbb{N}$ is a set and $0 \in \mathbb{N}$
@@ -32,9 +33,9 @@ The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 
 4. $\forall n, m \in \mathbb{N}: S(n) = S(m) \implies n = m $ 
 5. $\forall A \subset \mathbb{N}: 0 \in A \land S(A) \subset A \implies A = \mathbb{N}$ 
 
-Our construction under [ZFC set theory]() is as follows:
+We can construct the naturals under [ZFC set theory]() by setting $0 = \emptyset$ (the empty set) and $S(n) = n \cup \\{n\\}$.
 
-We'll let $0 = \emptyset$ and $\forall n: S(n) = n \cup \\{n\\}$
+The first four natural numbers are then defined as follows:
 
 $$0 = \emptyset$$
 
@@ -44,7 +45,10 @@ $$2 = S(S(0)) = S(1) = \{ \emptyset, \{ \emptyset\} \} $$
 
 $$3 = S(S(S(0))) = S(2)=  \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset\} \} \}$$
 
-This gives us the natural numbers, $\mathbb{N}$.
+The smallest set $\mathbb{N}$ containing $0$ and closed under $S(n)$ gives us the natural numbers. This is the same set that satisfies the Peanno Axioms. (TODO: PROOF)
+
+Many people learn about the naturals without the element $0$, starting at $1$. This is equivalent up to a bijection, but including 0 in the naturals makes future constructions easier.
+
 
 ### Arithmetic on the naturals
 With this, we can define some of the operations we are familiar with, starting with addition.
@@ -52,7 +56,7 @@ With this, we can define some of the operations we are familiar with, starting w
 1. $\forall m \in \mathbb{N} : m+0 = m $
 2. $\forall m, n \in \mathbb{N} : m + S(n) = S(m+n)$
 
-Futhermore we denote $1 = S(0)$ so that $\forall m \in \mathbb{N}: S(m) = m+1$.
+In addition we define $1 = S(0)$ so that $\forall m \in \mathbb{N}: S(m) = m+1$.
 
 Let's add two numbers to get a better sense of our construction.
 
@@ -71,14 +75,16 @@ We can also define multiplication in the naturals similarly.
 1. $\forall m \in \mathbb{N} : 0 \cdot m = 0 $
 2. $\forall m, n \in \mathbb{N} :  S(n) \cdot m  = n \cdot m + n$
 
-These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc.
+These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. (TODO: PROOF)
 
 One property to take note of is that addition is injective (one-to-one), so there is at most 1 solution to the equation $ y = a + b$ given $y, b$.
 
-#### Defining a well-ordering
-We can also define the $\leq$ relation as follows:
+### Defining a well-ordering
+We can also impose an ordering by defining the $\leq$ relation as follows:
 
 $$\forall m, n \in \mathbb{N}: m \leq n \iff \exists r \in \mathbb{N} : n = m + r$$
+
+TODO: expain why this is useful
 
 This gives us the basics for a subtraction operation, by denoting $r$ the difference of $n-m$
 
@@ -86,8 +92,11 @@ $$\forall m, n \in \mathbb{N}: (\exists r \in \mathbb{N}: m+r = n ) \implies r =
 
 But here we run into a problem, as this operation is only defined if $m \leq n$. To get around this, we'll expand $\mathbb{N}$ to $\mathbb{Z}$.
 
-The main takeaway here is that we have $\mathbb{N}$, defined from 0 to infinity, and we have several operators (addition, inequality, and multiplication) defined for these numbers.
-We'd really like a subtraction operation, to solve any equation $y = a + b$ given $y, b$ and there seems to be a clear definition for one, but it's not defined for $y \leq b$, so we'd like to expand the naturals.
+The main takeaway here is that we have $\mathbb{N}$ along with addition and multiplication operators defined over $\mathbb{N}$.
+
+We also have a subtraction operation that enables us to solve the equation $y = a + b$ given $y, b$, but it fails for $y \leq b$. 
+
+This gives us some algebraic motivation for constructing the integers, so that $\forall y, a,b \in \mathbb{Z}: y = a + b$ has a solution give $y, b$. 
 
 # The Integers $\mathbb{Z}$
 
@@ -97,7 +106,7 @@ We'll define an equivalence relation $R$ over all pairs of pairs, $(\mathbb{N} \
 
 $$\forall (p_1, q_1), (p_2, q_2) \in \mathbb{N} \times \mathbb{N}: (p_1, q_1)\  R \  (p_2, q_2) \iff p_1 + q_2 = p_2 + q_1$$
 
-Then the set of all equivalence classes gives us a way to partition $\mathbb{N} \times \mathbb{N}$ and is in fact the integers, $\mathbb{Z} = \\{ [(p, q)]:  \forall p, q \in \mathbb{N} \\}$
+The set of all equivalence classes gives us a way to partition $\mathbb{N} \times \mathbb{N}$ and is in fact the integers, $\mathbb{Z} = \\{ [(p, q)]:  \forall p, q \in \mathbb{N} \\}$
 
 We can visualize this by plotting all pairs $(p, q) \in \mathbb{N} \times \mathbb{N}$ and coloring them a different color based on their equivalence class.
 
@@ -107,9 +116,15 @@ Here each equivalence class (integer) corresponds to a different color. You can 
 
 ![integer axis](/images/R/Zaxis.png){: .center}
 
-### Arithmetic on the integers
-We can define the negation operator as well as addition, subtraction, and multiplication as follows
+### The naturals in $\mathbb{Z}$
 
+With this in mind, let's think about the integer representation of the natural numbers.
+
+TODO: write this
+
+### Arithmetic on the integers
+
+Let's define the unary negation operator, as well as addition, subtraction, and multiplication as follows.
 1. $-[(p,q)] = [(q, p)]$
 2. $[(p_1,q_1)] + [(p_2, q_2)] = [(p_1 + p_2 , q_1 + q_2)]$
 3. $[(p_1,q_1)] - [(p_2, q_2)] = [(p_1 + q_2 , q_1 + p_2)]$
@@ -124,15 +139,19 @@ So we pick some pairs to represent $1, -2, 2, -3$ respectively.
 
 But visually, each pair defines a vector from the origin to the coordinates given by the pair. So to recap, vectors define a pair of coordinates in $\mathbb{N}$ which corresponds to a particular equivalence class of $\mathbb{N} \times \mathbb{N}$ or a specific integer in $\mathbb{Z}$. 
 
-If we add these two vectors, we get a new vector whose equivalence class is the same as the integer result ($-1$). 
+If we add these two vectors, we get a new vector whose equivalence class is the same as the integer result ($-1$). Note addition over $\mathbb{Z}$ is defined simply as vector addition.
 
 ![addition](/images/R/addition.png){: .center}
 
 So adding the vector representations of integers yields a vector representation of the sum. This vector representation holds for all of the operations we defined previously.
 
-So now we've solved the problem described at the start of this since $\forall m, n \in \mathbb{Z}. \exists r \in \mathbb{Z} : r = m -n $. Take care to note that we've only used properties that we've previously defined (addition and multiplication on $\mathbb{N}$).
+So now we've solved the problem described at the start of this since $\forall m, n \in \mathbb{Z}. \exists r \in \mathbb{Z} : r = m -n $.
 
-But there's still another problem, as we'd like to be able to undo this multiplication operation. To do that we will use the same technique as before to expand $\mathbb{Z}$ to  $\mathbb{Q}$.
+We've been careful about using properties that we've previously defined (addition and multiplication on $\mathbb{N}$ only).
+
+But there's still another problem, because the same problem holds for equation of the form $ y = a \cdot b $.
+
+We'll solve this by using the same technique as before to expand $\mathbb{Z}$ to  $\mathbb{Q}$.
 
 # The Rationals $\mathbb{Q}$
 
@@ -150,10 +169,15 @@ Unfortunately I couldn't quite figure out how to get the colors to match up perf
 ![rational axis](/images/R/Qaxis.png){: .center}
 
 Notice that when $\theta= \frac{\pi}{2}$ the slope of the line is $+\infty$ and at $\theta = -\frac{\pi}{2}$ the slope of the line is $-\infty$.
-Furthermore the vertical line corresponding to the y-axis is not defined, as this corresponds to division by 0.
+Furthermore the vertical line corresponding to the y-axis is not defined, as this corresponds to division by 0. 
+
+The line of slope $m$ represents the equivalence class that is the rational number $m$.
+
+### The integers in $\mathbb{Q}$
+
+TODO: write this
 
 ### Arithmetic on the rationals
-
 Now let's consider arithmetic over $\mathbb{Q}$ by defining the operation of addition, subtraction multiplication and division as follows:
 
 1. $[(p_1,q_1)] + [(p_2, q_2)] = [(p_1 \cdot q_2 + p_2 \cdot q_1, q_1 \cdot q_2)]$
@@ -161,17 +185,15 @@ Now let's consider arithmetic over $\mathbb{Q}$ by defining the operation of add
 3. $[(p_1,q_1)] \cdot [(p_2, q_2)] = [(p_1 \cdot p_2 , q_1 \cdot q_2)]$
 4. $[(p_1,q_1)] \div [(p_2, q_2)] = [(p_1 \cdot q_2 , q_1 \cdot p_2)]$
 
-Let's try and see that $1 \div 2 = -2 \div -4$ in $\mathbb{Q}$.
+Again let's try to visualize a simple equation ($1 \div 2 = -2 \div -4$) in $\mathbb{Q}$ to get a better sense of our operations. 
 
-So again, we have to pick pairs to represent $1, 2, -2, -4$.
+We'll pick the pairs $(1, 1), (2, 1), (-2, 1), (-4, 1)$ to represent $1, 2, -2, -4$.respectively.
 
-We'll pick the pairs $(1, 1), (2, 1), (-2, 1), (-4, 1)$ respectively.
-
-Then $1 \div 2 $ should be given by $(1 \cdot 2, 1 \cdot 1) = (2, 1) $, and $-2 \div -4$ will be given by $(1 \cdot -4, -2 \cdot 1) = (-4, -2)$.
+Then $1 \div 2 $ by definition is $(1 \cdot 2, 1 \cdot 1) = (2, 1) $, and $-2 \div -4$ is $(1 \cdot -4, -2 \cdot 1) = (-4, -2)$.
 
 ![arithemtic on q](/images/R/Qarithmetic.png){: .center}
 
-We can see that the vectors $(2, 1)$ and $(-4, -2)$ have the same slope, and therefore the same equivalence class. This is the equivalence class for $\frac{1}{2}$. 
+We can see that the vectors $(2, 1)$ and $(-4, -2)$ have the same slope, and therefore the same equivalence class - the equivalence class for $\frac{1}{2}$, which is the expected answer. 
 
 # The Reals $\mathbb{R}$
 Unfortunately we can't use the same approach to construct $\mathbb{R}$. While the cardinality of the $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ are all equal, $\mathbb{R}$ is far more dense.
@@ -185,11 +207,11 @@ More precisely, a subset $r$ of $\mathbb{Q}$ is a cut if it satisfys these condi
 4. $r$ has no maximum $\neg \exists x \in \mathbb{Q} \forall y \in r : y \leq x  $
 $\forall x \in \mathbb{Q} \setminus A \exists y \in \mathbb{Q}: x < y \land y \not \in A$
 
-$\mathbb{R}$ is then defined as the set of all cuts of $\mathbb{Q}$. A real number can be thought of as the set of all rational numbers less than itself.
+$\mathbb{R}$ is then defined as the set of all cuts of $\mathbb{Q}$.
 
 $$\mathbb{R} = \{ r \subset \mathbb{Q}: r \text{ is a cut }\}$$
 
-Let's look at the cut that represents the rational number $1$ in the reals.
+Let's look at the cut that represents the rational number $1$ in the reals. Again please note the axes should extend to $\pm \infty$.
 
 ![r1](/images/R/R1.png){: .center}
 
@@ -197,7 +219,13 @@ And also the irrational number $\sqrt 2$.
 
 ![r2](/images/R/Rroot2.png){: .center}
 
+### The rationals in $\mathbb{R}$
+
+TODO: write this
+
 ### Arithmetic on the reals
+
+TODO: add a bit more here
 
 We can define a well-ordering $\leq$ on the reals such that $\forall x,y \in \mathbb{R}: x \leq y  \iff x \subset y$. 
 
@@ -211,4 +239,9 @@ So adding together $ 1 + \sqrt 2$ looks something like this:
 
 ![raadd](/images/R/Raddition.png){: .center}
 
-And we're finished! We've built from the basics of set theory by defining progressively more complicated number systems, working our way from $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$, and we can add real numbers together.
+And now we're done!
+
+We've built from the basics of set theory by defining progressively more complicated number systems, working our way from $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$, and now we can add real numbers together.
+
+
+## References
