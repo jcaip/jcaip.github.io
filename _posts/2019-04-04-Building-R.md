@@ -16,15 +16,25 @@ Our goal here is to add two real numbers together, but by building everything we
 
 ## Stuff you should know
 
-This section is meant as a brief introduction to some of the machinery we'll use, so feel free to skip it. 
+This section is meant as a brief review of some of the tools we'll use in our construction. Feel free to skip it if you're already comfortable with the subject.
 
-TODO: write about sets, relations, first-order logic, equivalence relations and classes.
+I'm going to assume that the reader is familiar with first order logic.
 
-**Note:** All the axes you see should have arrows, but I couldn't figure out how to do it in matplotlib. 
+A set is basically some collection. 
+
+Cartesian product
+
+a relation is a subset of the cartesian product
+
+equivalence relations is transitive reflexive and symmetric
+
+equivalence classes can be represented by any element in the class.
+
+**Note:** All the axes you see should have arrows, but I couldn't figure out how to do it properly in matplotlib, so just imagine them.
 
 # The Naturals: $\mathbb{N}$
 
-Unfortunately this part is much less visual, so there's no pretty pictures.
+Unfortunately this part is much less visual, but it gets better later on.
 
 The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 **Peanno Axioms**. 
 1. $\mathbb{N}$ is a set and $0 \in \mathbb{N}$
@@ -45,7 +55,7 @@ $$2 = S(S(0)) = S(1) = \{ \emptyset, \{ \emptyset\} \} $$
 
 $$3 = S(S(S(0))) = S(2)=  \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset\} \} \}$$
 
-The smallest set $\mathbb{N}$ containing $0$ and closed under $S(n)$ gives us the natural numbers. This is the same set that satisfies the Peanno Axioms. (TODO: PROOF)
+The smallest set $\mathbb{N}$ containing $0$ and closed under $S(n)$ gives us the natural numbers. This is the same set that satisfies the Peanno Axioms.
 
 Many people learn about the naturals without the element $0$, starting at $1$. This is equivalent up to a bijection, but including 0 in the naturals makes future constructions easier.
 
@@ -75,16 +85,12 @@ We can also define multiplication in the naturals similarly.
 1. $\forall m \in \mathbb{N} : 0 \cdot m = 0 $
 2. $\forall m, n \in \mathbb{N} :  S(n) \cdot m  = n \cdot m + n$
 
-These operations uphold the properties that we expect of them - they are distributive, commutative, associative, etc. (TODO: PROOF)
-
-One property to take note of is that addition is injective (one-to-one), so there is at most 1 solution to the equation $ y = a + b$ given $y, b$.
+Aside from operating as expected on naturals, these operations also uphold the properties that we expect of them - they are distributive, commutative, associative, etc.
 
 ### Defining a well-ordering
 We can also impose an ordering by defining the $\leq$ relation as follows:
 
 $$\forall m, n \in \mathbb{N}: m \leq n \iff \exists r \in \mathbb{N} : n = m + r$$
-
-TODO: expain why this is useful
 
 This gives us the basics for a subtraction operation, by denoting $r$ the difference of $n-m$
 
@@ -203,15 +209,14 @@ Instead we'll consider a way to partition the $\mathbb{Q}$ number line called a 
 More precisely, a subset $r$ of $\mathbb{Q}$ is a cut if it satisfys these conditions: 
 
 1. $r \neq \emptyset \land r \neq \mathbb{Q}$
-3. $\forall x \in r \forall y \in \mathbb{Q} x \leq y \implies x \in r$
-4. $r$ has no maximum $\neg \exists x \in \mathbb{Q} \forall y \in r : y \leq x  $
-$\forall x \in \mathbb{Q} \setminus A \exists y \in \mathbb{Q}: x < y \land y \not \in A$
+3. $\forall x \in r .\forall y \in \mathbb{Q}: x \leq y \implies x \in r$
+4. $\forall x \in \mathbb{Q} \setminus A. \exists y \in \mathbb{Q}: x < y \land y \not \in A$
 
 $\mathbb{R}$ is then defined as the set of all cuts of $\mathbb{Q}$.
 
 $$\mathbb{R} = \{ r \subset \mathbb{Q}: r \text{ is a cut }\}$$
 
-Let's look at the cut that represents the rational number $1$ in the reals. Again please note the axes should extend to $\pm \infty$.
+With this in mind let's look at the cut that represents the rational number $1$ in the reals. Again please note the axes should extend to $\pm \infty$.
 
 ![r1](/images/R/R1.png){: .center}
 
@@ -224,14 +229,11 @@ And also the irrational number $\sqrt 2$.
 TODO: write this
 
 ### Arithmetic on the reals
-
-TODO: add a bit more here
-
 We can define a well-ordering $\leq$ on the reals such that $\forall x,y \in \mathbb{R}: x \leq y  \iff x \subset y$. 
 
-And this is supported visually, as $1 \leq \sqrt2$ since the set is smaller.
+Visually, we can see that the cut representing $1$ is indeed a subset of $\sqrt 2$, as $1 \leq \sqrt2$  
 
-Addition in the reals is defined as 
+We can define addition simply as
 
 $$ A + B  = \{a + b: a \in A \land b \in B \}$$
 
