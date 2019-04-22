@@ -3,7 +3,7 @@ layout: page
 permalink: /about/
 ---
 
-This is my personal blog about anything that interests me - mostly deep learning, mathematics, and computer science.
+This is my personal blog about anything that interests me - mostly machine learning, computer science, and mathematics.
 
 If you want to get a better sense of this blog I'd recommend reading the following posts:
 - [Distributed gradient descent](/Distbelief) in PyTorch
@@ -13,5 +13,4 @@ If you want to get a better sense of this blog I'd recommend reading the followi
 - How to construct the [rational numbers](/Building-Q)
 
 I'm currently finishing my CS degree at UCLA, after working at [Blend](https://blend.com).
-
-If you spot any mistakes please leave a PR!
+If you want to get in contact with me, feel free to email me at jcjessecai @ gmail.com
