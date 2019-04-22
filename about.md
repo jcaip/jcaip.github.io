@@ -13,4 +13,6 @@ If you want to get a better sense of this blog I'd recommend reading the followi
 - How to construct the [rational numbers](/Building-Q)
 
 I'm currently finishing my CS degree at UCLA, after working at [Blend](https://blend.com).
+
 If you want to get in contact with me, feel free to email me at jcjessecai @ gmail.com
+
