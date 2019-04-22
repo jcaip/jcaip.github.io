@@ -102,7 +102,7 @@ The main takeaway here is that we have $\mathbb{N}$ along with addition and mult
 
 We also have a subtraction operation that enables us to solve the equation $y = a + b$ given $y, b$, but it fails for $y \leq b$. 
 
-This gives us some algebraic motivation for constructing the integers, so that $\forall y, a,b \in \mathbb{Z}: y = a + b$ has a solution give $y, b$. 
+This gives us some algebraic motivation for constructing the integers, so that $\forall y, a,b \in \mathbb{Z}: y = a + b$ has a solution given $y, b$. 
 
 # The Integers $\mathbb{Z}$
 
@@ -139,19 +139,19 @@ To get a better sense of arithmetic in $\mathbb{Z}$, let's try to visualize how 
 Going back to our construction, each integer is an equivalence class so it is a subset of $\mathbb{N} \times \mathbb{N}$.
 
 We can pick some element from this subset to represent the entire equivalence class. 
-So we pick some pairs (vectors) to represent $1, -2, 2, 3$ respectively, since they will have the same equivalence class. 
+So we pick some pairs $(0, 1), (2, 0), (0, 3), (1,3)$ to represent $1, -2, 3, 2$ respectively, since they will have the same equivalence class. 
 
-If we add these two vectors, we get a new vector whose equivalence class is the same as the integer result ($-1$). Note this is because addition over $\mathbb{Z}$ is defined as vector addition, so adding the vector representations of integers yields a vector representation of the sum.
+If we add together $1 + -2 = (0, 1) + (2, 0)$, we get a new vector, $(2, 1)$,  whose equivalence class is the same as the integer result ($-1$). Since addition over $\mathbb{Z}$ is defined as vector addition, adding the vector representations of integers yields a vector representation of the sum.
 
-We can see also that the pair returned by the subtraction operator is in the same equivalence class, as they are the same color.
+We can see also that the pair returned by the subtracting $3-2 = (0, 3) - (1,3) =(0+3, 1+3) = (3,4)$ is in the same equivalence class, and therefore is the same color.
 
 So now we've solved the problem described at the start of this as $\forall m, n \in \mathbb{Z}. \exists r \in \mathbb{Z} : r = m -n $ and now have a well-defined subtraction.
 
-We've been careful about using properties that we've previously defined (addition and multiplication on $\mathbb{N}$ only).
+Note that we've been careful about only using properties that we've previously defined (addition and multiplication on $\mathbb{N}$ only).
 
 But there's still another problem, because a similar problem exists for equations of the form $ y = a \cdot b $.
 
-We'll solve this by using the same technique as before to expand $\mathbb{Z}$ to  $\mathbb{Q}$.
+We'll solve this by using a similar technique as before to expand $\mathbb{Z}$ to  $\mathbb{Q}$.
 
 # The Rationals $\mathbb{Q}$
 
