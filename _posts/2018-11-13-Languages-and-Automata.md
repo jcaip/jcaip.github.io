@@ -1,12 +1,15 @@
 ---
+published: True
 layout: post
 title: Languages and Automata
 tags: [theory]
+
 ---
 
 Some notes for CS 181. This is about context-free grammars, pushdown automata, the pumping lemma for context-free grammars, and closure properties of context-free language. I also just added in notes for Turing machines. 
 
 <!--more-->
+
 ## Context-Free Grammars
 
 A context-free grammar is represented by a tuple $( V, \Sigma, R, S)$ where
