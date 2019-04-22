@@ -11,6 +11,6 @@ If you want to get a better sense of this blog I'd recommend reading the followi
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 - How we can use [randomness](/Randomness) when designing algorithms
 
-I'm currently finishing my CS degree at UCLA, after taking a year off to work at [Blend](https://blend.com).
+I'm currently finishing my CS degree at UCLA, after working at [Blend](https://blend.com).
 
 If you spot any mistakes please leave a PR!
