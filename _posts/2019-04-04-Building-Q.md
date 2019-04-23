@@ -29,15 +29,18 @@ The **equivalence class** of $a$, denoted $[a] = \\{ b \in A :a \sim b \\}$.
 Note that the equivalence class of any object inside that class is the same- $\forall  x \in [a]: [x] = [a]$.
 
 # The Naturals: $\mathbb{N}$
-
-Let's get started with the natural numbers. Unfortunately this part is much less visual, but it gets better later on.
+Let's get started with the natural numbers. Unfortunately this part isn't very visual, but it gets better later on.
 
 The naturals are defined by a 3-tuple $(\mathbb{N}, 0, S)$ that satisfies the 5 **Peanno Axioms**. 
 1. $\mathbb{N}$ is a set and $0 \in \mathbb{N}$
 2. $S : \mathbb{N} \to \mathbb{N}$ is a function with $Dom(S) = \mathbb{N}$
-3. $\forall n \in \mathbb{N}: S(n) \neq 0$ 
+3. $\forall n \in \mathbb{N}: S(n) \neq 0$
 4. $\forall n, m \in \mathbb{N}: S(n) = S(m) \implies n = m $ 
 5. $\forall A \subset \mathbb{N}: 0 \in A \land S(A) \subset A \implies A = \mathbb{N}$ 
+
+Axioms 1 and 2 just define the objects in the tuple, while Axioms 3 and 4 ensure that the naturals are not too small. 
+
+Axiom 5 (also known as the induction principle) on the other hand ensures that the naturals are not too large, along with a multitude of other useful facts. It's also the basis behind proof by induction.
 
 If $N = $the smallest set containing $0$ and closed under $S(n) = n \cup \\{ n \\}$ then one such tuple can be $(N, \emptyset, S)$.
 
@@ -50,7 +53,6 @@ $$1 = S(0) = \{ \emptyset \}$$
 $$2 = S(S(0)) = S(1) = \{ \emptyset, \{ \emptyset\} \} $$
 
 $$3 = S(S(S(0))) = S(2)=  \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset\} \} \}$$
-
 
 Many people learn about the naturals without the element $0$, starting at $1$, but this makes no meaningful difference. We'll start with $0$, as that makes our future work easier.
 
@@ -94,13 +96,13 @@ $$\forall m, n \in \mathbb{N}: m \leq n \iff \exists r \in \mathbb{N} : n = m + 
 
 This gives us the basics for a subtraction operation, by denoting $r$ the difference of $n-m$
 
-$$\forall m, n \in \mathbb{N}: (\exists r \in \mathbb{N}: m+r = n ) \implies r = m-n$$
+$$\forall m, n \in \mathbb{N}: (\exists r \in \mathbb{N}: m+r = n ) \implies r = n-m$$
 
-But here we run into a problem, as this operation is only defined if $m \leq n$. To get around this, we'll expand $\mathbb{N}$ to $\mathbb{Z}$.
+But here we run into a problem, as this operation is only defined if $n < m$. To get around this, we'll expand $\mathbb{N}$ to $\mathbb{Z}$.
 
 The main takeaway here is that we have $\mathbb{N}$ along with addition and multiplication operators defined over $\mathbb{N}$.
 
-We also have a subtraction operation that enables us to solve the equation $y = a + b$ given $y, b$, but it fails for $y \leq b$. 
+We also have a somewhat intuitive subtraction operation that enables us to solve the equation $y = a + b$ given $y, b$, but it fails for $y \leq b$. 
 
 This gives us some algebraic motivation for constructing the integers, so that $\forall y, a,b \in \mathbb{Z}: y = a + b$ has a solution given $y, b$. 
 
@@ -114,15 +116,19 @@ $$\forall (p_1, q_1), (p_2, q_2) \in \mathbb{N} \times \mathbb{N}: (p_1, q_1)\  
 
 The set of all equivalence classes gives us a way to partition $\mathbb{N} \times \mathbb{N}$ and is in fact the integers, $\mathbb{Z} = \\{ [(p, q)]:  \forall p, q \in \mathbb{N} \\}$
 
-We can visualize this by plotting all pairs $(p, q) \in \mathbb{N} \times \mathbb{N}$ and coloring them a different color based on their equivalence class.
+We can visualize this by plotting all pairs $(p, q) \in \mathbb{N} \times \mathbb{N}$, and coloring them differently based on their equivalence class. 
 
 **Note:** All the axes you see should have arrows, but I couldn't figure out how to do it properly in matplotlib.
 
 ![all pairs](/images/R/NxN.png){: .center}
 
-Here each equivalence class (integer) corresponds to a different color. You can see that each class corresponds to a line $y = x +b $ with a different $b$. 
+Here each pair is colored based on each equivalence class - we can then visualize an equivalence class (integer) as the set of all points that share the same color.
 
 ![integer axis](/images/R/Zaxis.png){: .center}
+
+You can see that each class corresponds to a line $y = x +b $ with a different $b$. 
+
+The naturals are embedded in the integers as the set $\mathbb{N} = \\{ [n, 0]: \forall n \in \mathbb{N} \\}$
 
 ### Arithmetic on the integers
 
@@ -144,6 +150,8 @@ So we pick some pairs $(0, 1), (2, 0), (0, 3), (1,3)$ to represent $1, -2, 3, 2$
 If we add together $1 + -2 = (0, 1) + (2, 0)$, we get a new vector, $(2, 1)$,  whose equivalence class is the same as the integer result ($-1$). Since addition over $\mathbb{Z}$ is defined as vector addition, adding the vector representations of integers yields a vector representation of the sum.
 
 We can see also that the pair returned by the subtracting $3-2 = (0, 3) - (1,3) =(0+3, 1+3) = (3,4)$ is in the same equivalence class, and therefore is the same color.
+
+One thing to note here is that addition and subtraction works as expected regardless of the pair we choose to represent the equivalence class.
 
 So now we've solved the problem described at the start of this as $\forall m, n \in \mathbb{Z}. \exists r \in \mathbb{Z} : r = m -n $ and now have a well-defined subtraction.
 
@@ -202,5 +210,4 @@ I used matplotlib to make these visualizations, the code can be found [here](htt
 If you spot any mistakes/inaccuracies please let me know or better yet make a PR.
  
  - https://en.wikipedia.org/wiki/Set-theoretic_definition_of_natural_numbers
-
 
