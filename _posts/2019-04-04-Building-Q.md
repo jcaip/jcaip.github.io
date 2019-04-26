@@ -136,7 +136,7 @@ Let's define the unary negation operator, as well as addition, subtraction, and 
 1. $-[(p,q)] = [(q, p)]$
 2. $[(p_1,q_1)] + [(p_2, q_2)] = [(p_1 + p_2 , q_1 + q_2)]$
 3. $[(p_1,q_1)] - [(p_2, q_2)] = [(p_1 + q_2 , q_1 + p_2)]$
-4. $[(p_1,q_1)] \cdot [(p_2, q_2)] = [(p_1 \cdot p_2 + q_1 \cdot q_2, p_q \cdot q_2 + p_2 \cdot q_1)]$
+4. $[(p_1,q_1)] \cdot [(p_2, q_2)] = [(p_1 \cdot p_2 + q_1 \cdot q_2, p_1 \cdot q_2 + p_2 \cdot q_1)]$
 
 To get a better sense of arithmetic in $\mathbb{Z}$, let's try to visualize how $1+ -2 = -1 = 2 - 3$.
 
