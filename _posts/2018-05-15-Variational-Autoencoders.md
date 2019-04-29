@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [machine-learning, theory]
+tags: [machine-learning, theory, probabilistic-models]
 commments: True
 published: True
 images:

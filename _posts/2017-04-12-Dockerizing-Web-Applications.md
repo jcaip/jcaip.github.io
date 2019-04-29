@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [Misc]
+tags: [misc]
 
 images:
 

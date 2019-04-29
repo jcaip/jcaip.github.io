@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [bayesian-networks, machine-learning, probability]
+tags: [probabilistic-models, machine-learning]
 
 images: 
   url: /images/medimg/markov.png
