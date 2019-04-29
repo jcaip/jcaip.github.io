@@ -1,28 +1,29 @@
 ---
 published: false
-
 ---
 
+These are just random thoughts I keep so that I can reference them later. 
+
+# DistBelief Part 2
 1. First, we tried to use openmpi to run our code - good starting point. 
 profile code
 
 I should be able to use starcluster to spin up an OpenMPI cluster. 
 
 I just need to change the model to use model averaging instead of this param-request approach. 
-
 also need to figure out their bipartite graph shit
 
 can't use a gradient norm update.
 
-ill conditioning
+something about ill conditioning
 
-# Links
+# Wasserstein Distance
+
 https://www.youtube.com/watch?v=aEOuu75z694
 
-# Notes about optimal transport
+## Notes about optimal transport
 
 kl divergence measures overlap, but if they don't overlap at all we gain no more information. 
-
 
 EMD/ Wassertien distance 
 
@@ -30,7 +31,7 @@ can we reformat this as a continuous problem?
 
 divergence grows linearly with how far the distribution is from each other. 
 
-## Monge-Kantorovich Problem 
+### Monge-Kantorovich Problem 
 
 finding distance between mu and nu
 
@@ -38,8 +39,7 @@ X could be a mainfold/euclidean space
 
 Wasserstein barycenters provides good platonic form of MNIST data.
 
-
-# The Reals $\mathbb{R}$
+# Building The Reals $\mathbb{R}$
 
 Unfortunately we can't use the same approach to construct $\mathbb{R}$. While the cardinality of the $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ are all equal, $\mathbb{R}$ is far more dense.
 
@@ -75,4 +75,11 @@ $$ A + B  = \{a + b: a \in A \land b \in B \}$$
 So adding together $ 1 + \sqrt 2$ looks something like this:
 
 ![raadd](/images/R/Raddition.png){: .center}
+
+# Research Log: Implementing QuickThoughts
+
+Basically converted all the code to python3 for quick thoughts, but now I need to get the eval scripts set up.
+
+and then I fucked up by chown -R jcaip / .. RIP, probably need to reinstall my system now
+
 
