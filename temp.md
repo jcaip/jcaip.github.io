@@ -3,17 +3,19 @@ layout: page
 permalink: /temp/
 ---
 
-# DistBelief Part 2
-1. First, we tried to use openmpi to run our code - good starting point. 
+Stuff I wanna remember
 
-- still need to profile code
+# DistBelief Part 2
+
+1. First, we tried to use openmpi to run our code - good starting point. 
+2. still need to profile code
 
 I should be able to use starcluster to spin up an OpenMPI cluster. 
 
 I just need to change the model to use model averaging instead of this param-request approach. 
 also need to figure out their bipartite graph shit
 
-can't use a gradient norm update.
+- shouldn't use a gradient norm update.
 
 something about ill conditioning
 
