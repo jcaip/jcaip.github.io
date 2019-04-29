@@ -81,11 +81,3 @@ So adding together $ 1 + \sqrt 2$ looks something like this:
 
 ![raadd](/images/R/Raddition.png){: .center}
 
----
-# Research Log: Implementing QuickThoughts
-
-Basically converted all the code to python3 for quick thoughts, but now I need to get the eval scripts set up.
-
-and then I fucked up by chown -R jcaip / .. RIP, probably need to reinstall my system now
-
-
