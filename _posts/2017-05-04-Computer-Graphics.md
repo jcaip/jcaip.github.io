@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Computer Graphics
-tags: [cv]
+tags: [misc]
 
 images:
     - url: /images/cg/camera_model.png

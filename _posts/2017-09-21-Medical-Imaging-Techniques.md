@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [biology]
+tags: [misc]
 images: 
   - url: /images/medimg/cctc.png
     alt: some picture

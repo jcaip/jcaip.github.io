@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CICD on AWS
-tags: [infra/web-dev]
+tags: [misc]
 
 images:
 

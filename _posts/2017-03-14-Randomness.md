@@ -1,7 +1,7 @@
 ---
 layout: post
 published: True
-tags: [algorithms, probability]
+tags: [algorithms, theory]
 
 images:
 

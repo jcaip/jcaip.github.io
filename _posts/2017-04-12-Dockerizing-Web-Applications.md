@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [infra/web-dev]
+tags: [Misc]
 
 images:
 
