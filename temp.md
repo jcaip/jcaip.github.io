@@ -5,6 +5,7 @@ permalink: /temp/
 
 Stuff I wanna remember
 
+---
 # DistBelief Part 2
 
 1. First, we tried to use openmpi to run our code - good starting point. 
@@ -19,6 +20,7 @@ also need to figure out their bipartite graph shit
 
 something about ill conditioning
 
+---
 # Wasserstein Distance
 
 https://www.youtube.com/watch?v=aEOuu75z694
@@ -41,6 +43,7 @@ X could be a mainfold/euclidean space
 
 Wasserstein barycenters provides good platonic form of MNIST data.
 
+---
 # Building The Reals $\mathbb{R}$
 
 Unfortunately we can't use the same approach to construct $\mathbb{R}$. While the cardinality of the $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ are all equal, $\mathbb{R}$ is far more dense.
@@ -78,6 +81,7 @@ So adding together $ 1 + \sqrt 2$ looks something like this:
 
 ![raadd](/images/R/Raddition.png){: .center}
 
+---
 # Research Log: Implementing QuickThoughts
 
 Basically converted all the code to python3 for quick thoughts, but now I need to get the eval scripts set up.
