@@ -28,7 +28,8 @@ We only implemented DownpourSGD, which is much simpler.
 ### Downpour SGD 
 In DownpourSGD, there are two core concepts - a parameter server and a training node.
 
-![paper_diagram](/images/distbelief/paper_diagram.png){: .center}
+![paper_diagram](/images/distbelief/paper_diagram.png){: .center} <!-- .element height="50%" width="50%" -->
+
 
 The parameter server is just a copy of the model parameters, which can send model parameters when requested and can also receive an accumulated gradient, which it then applies to it's own copy of the parameters.
 

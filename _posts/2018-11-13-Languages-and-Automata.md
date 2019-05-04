@@ -87,7 +87,9 @@ For example, the CFG $$ S \rightarrow R \mid T \\ R \rightarrow aRb \mid \epsilo
 
 ### Designing unambiguous grammars
 
-1. Design an unambiguous grammar for $L = \\{w : w \text{ has at least as many } a \text{ as } b \\}$. We can use the unambiguous language designed in 3, but just consider the other case where the parenthesis may be switched.
+1. Design an unambiguous grammar for $L = \\{w : w \text{ has at least as many } a \text{ as } b \\}$.
+
+We can use the unambiguous language designed in 3, but just consider the other case where the parenthesis may be switched.
     $$ S \rightarrow S^{'}\mid S^{''} \mid \epsilon \\  S^{'} \rightarrow P S^{''} \mid P \\ S^{''} \rightarrow Q S^{'} \mid Q \\ P \rightarrow ab \mid aPb \mid abP \mid aPbP \\ Q \rightarrow ba \mid bQa \mid baQ \mid bQaQ $$
 
 
@@ -125,11 +127,9 @@ Finally we modify all the $\delta$ transitions so that each transition is either
 
 If $L$ is recognized by a PDA given by $(Q, \Sigma, \Gamma, \delta, q_0, F)$ then $L$ is a CFG with the following rules: 
 
-$$
-    \forall_{q \in Q} . V_{q,q} \rightarrow \epsilon \\
-    \forall_{p, q, r \in Q} . V_{p, q} \rightarrow V_{p, r} V_{r, q} \\
-    \forall_{p, q, r \in Q} \forall_{\sigma, \tau \in \Sigma_\epsilon } \forall_{\gamma \in \Gamma} \mid \delta(p, \sigma, \epsilon) \ni (r, \gamma), \delta(s, \tau, \gamma) \ni (q, \epsilon) . V_{p, q} \rightarrow \sigma V_{r, s} \tau
-$$
+- $\forall_{q \in Q} . V_{q,q} \rightarrow \epsilon $
+- $\forall_{p, q, r \in Q} . V_{p, q} \rightarrow V_{p, r} V_{r, q} $
+- $\forall_{p, q, r \in Q} \forall_{\sigma, \tau \in \Sigma_\epsilon } \forall_{\gamma \in \Gamma} \mid \delta(p, \sigma, \epsilon) \ni (r, \gamma), \delta(s, \tau, \gamma) \ni (q, \epsilon) . V_{p, q} \rightarrow \sigma V_{r, s} \tau$
 
 More specifically, for $p, q \in Q$ $L_{p,q} = \\{ w : w \text{ can take the PDA from } p \text{ w/ empty stack to } q \text{ w/ empty stack }\\}$. Thus $L_{PDA} = L_{q_{start} q_{final}}$
 
