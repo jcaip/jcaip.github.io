@@ -81,3 +81,16 @@ So adding together $ 1 + \sqrt 2$ looks something like this:
 
 ![raadd](/images/R/Raddition.png){: .center}
 
+### Parsing Notes CS269 05/06/19
+
+Language structure - Words take different arguments
+
+Intransitive/transitive/ditransitive verbs that take in additional object
+
+- Language is recursive, so model with a DFA/ graph, with complex constituents.
+
+- syntatically, you can replace one noun phrase with another.
+
+complex constituents - Group of words that behave as a single unit.
+- phrases usually have a **head** and some **dependents**
+    - dependents can be arguments (mandatory) or adjuncts (optional)

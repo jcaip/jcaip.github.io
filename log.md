@@ -121,8 +121,14 @@ looks like ~4minutes for 1000 batches -> approximtely 68 million / 400 * 4 minut
 
 Ran into a problem with zero  lenght vectors, so i just added in a try catch/.
 
+And then I got some weird 
+```
+bus error (core dumped)
+```
 Maybe want a way to resume training?
 
 Basically my desktop is a little too jank to run right now, so I'm moving to cloud solutions - but that means I need to set up my laptop appropriately.
 
-Ugh I hate this, wish I had a good setup already. Probably just going to wait for GCP
+Ugh I hate this, wish I had a good setup already. Probably just going to wait for GCP.
+
+In the meantime rerunning the code with hopes that it won't error out - if it does again I'm going to work on stateful training. So far the fathest I've gotten is 20k batches, a little more than 1/10 of the entire dataset.
