@@ -59,4 +59,9 @@ maybe I should buy some more ram? looks like this whole thing uses just about 32
 
 But overall a bunch of good progress today.
 
+CUDA working now too!
+
+Really nwo i just need to focus on - some basic evaluation (nearest neighbors?)
+and then speeding it up as much as possible
+
 
