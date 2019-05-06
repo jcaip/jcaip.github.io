@@ -118,3 +118,11 @@ RuntimeError: CUDA out of memory. Tried to allocate 11.50 MiB (GPU 0; 5.93 GiB t
 ```
 
 looks like ~4minutes for 1000 batches -> approximtely 68 million / 400 * 4 minuts ~= 11 hours, which is what is descibed in the paper.
+
+Ran into a problem with zero  lenght vectors, so i just added in a try catch/.
+
+Maybe want a way to resume training?
+
+Basically my desktop is a little too jank to run right now, so I'm moving to cloud solutions - but that means I need to set up my laptop appropriately.
+
+Ugh I hate this, wish I had a good setup already. Probably just going to wait for GCP
