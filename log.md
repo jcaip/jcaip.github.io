@@ -64,4 +64,10 @@ CUDA working now too!
 Really nwo i just need to focus on - some basic evaluation (nearest neighbors?)
 and then speeding it up as much as possible
 
+Came up with a realitvely shitty evaluation idea, but it was fast to implement. 
+
+Basically i came up with 4 sentences with varying degree of simularity (sujbjectively), and then I'm just going to inspect the scores matrix manually. 
+
+Also added in checkpointing, so now this is running forreal for at least a night.... wonder what's going to happen
+
 
