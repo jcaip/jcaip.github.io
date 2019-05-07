@@ -94,3 +94,27 @@ Intransitive/transitive/ditransitive verbs that take in additional object
 complex constituents - Group of words that behave as a single unit.
 - phrases usually have a **head** and some **dependents**
     - dependents can be arguments (mandatory) or adjuncts (optional)
+
+structure tree is dependent on the words - "eat sushi with tuna" vs. "eat sushi with chopsticks"
+
+Dependency parsing - mostly projective in English, but can be free form in other languages.
+
+- Graph Algorithms
+    - consider all word pairs, assign a scores
+    - score of a tree = sum of score of edges
+- Transition-based Approachs
+    - similar to a parser for code (shift-reduce parser)
+    - parser has a stack (starting with root) and buffer (originally the sentence)
+    - use a set of actions to parse sentences
+    - allow a subset of actions - for example: Arc-Eager Dependency Parser
+
+ approaches use DNN to capture features
+ train a classifier to make an action at any time - kind of like RL?
+
+ dependencies can be represented as a tree by definition.
+
+ A dependency graph is projective if there isn't a path from target to dependent.
+
+ Covington's D-rules
+- this is linear in time O(n), because it's just one pass through
+measured loss is basically Hamming loss.
