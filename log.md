@@ -132,3 +132,23 @@ Basically my desktop is a little too jank to run right now, so I'm moving to clo
 Ugh I hate this, wish I had a good setup already. Probably just going to wait for GCP.
 
 In the meantime rerunning the code with hopes that it won't error out - if it does again I'm going to work on stateful training. So far the fathest I've gotten is 20k batches, a little more than 1/10 of the entire dataset.
+
+I need to fix the rnn pack_padded_sequence, pad_packed_sequence bullshit. 
+
+But in the meantime the script has . now hit just about 55k batches, which is great.
+
+I guess applications for this are:
+  semantic search? 
+
+### 05-05-2019
+----
+
+A lot more progress today, I'm up and running on GCP. 
+
+In short:
+  - correctly implemented getting the last inputs
+  - changed the collate_fn to a safe_one to handle zero length sequences
+  - also wrote a preprocessing scrip to strip zero length seq out
+  - can now pause/resume training as you please
+
+So now I just need these runs to resolve, which will take some time. Then work on evaluating the resulting vectors.
