@@ -1,7 +1,6 @@
 ---
 layout: page
 permalink: /log/
-title: Reserach Log
 ---
 
 Log of my research experience, just for kicks. 
@@ -140,7 +139,7 @@ But in the meantime the script has . now hit just about 55k batches, which is gr
 I guess applications for this are:
   semantic search? 
 
-### 05-05-2019
+### 05-07-2019
 ----
 
 A lot more progress today, I'm up and running on GCP. 
@@ -152,3 +151,19 @@ In short:
   - can now pause/resume training as you please
 
 So now I just need these runs to resolve, which will take some time. Then work on evaluating the resulting vectors.
+
+### 05-08-19
+---
+
+Switched to V100 GPU on GCP - need to make sure I'm not outliving my credits.
+
+It looks like both of my training runs dies at ~70k iterations? So this may be a reproducable issue - I added in resume training so I may be able to test this. 
+
+I had difficulty trying to ssh into the GCP instance - I had to restart it, and the run seemed to have hung.
+
+I also got ahead of myself with rewriting the code.  :( Refactor is completely broken.
+
+In the meantime here's a meantime curve:
+
+![training curve](images/log/train_1.svg)
+
