@@ -7,9 +7,7 @@ Hi there! Welcome to my personal blog/website.
 
 I'm an undergraduate researcher currently finishing my CS degree at UCLA.
 
-My primary research interests are representation learning, transfer learning, and generative models.
-
-In the past I've worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
+My primary research interests are representation/transfer learning and probabilistic models.
 
 If you're new here I'd recommend reading the following posts:
 - [Distributed gradient descent](/Distbelief) in PyTorch
@@ -17,6 +15,7 @@ If you're new here I'd recommend reading the following posts:
 - How to construct the [rational numbers](/Building-Q)
 - An overview of [Variational Autoencoders](/Variational-Autoencoders)
 
+In the past I've worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
 In my free time I like to lift, hike, and explore nature. 
 
 If you want to get in contact with me, feel free to email me at jcjessecai @ gmail.com
