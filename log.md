@@ -113,7 +113,8 @@ Traceback (most recent call last):
     param.data = fn(param.data)
   File "/home/jcaip/.conda/envs/ml/lib/python3.7/site-packages/torch/nn/modules/module.py", line 260, in <lambda>
     return self._apply(lambda t: t.cuda(device))
-RuntimeError: CUDA out of memory. Tried to allocate 11.50 MiB (GPU 0; 5.93 GiB total capacity; 0 bytes already allocated; 5.36 GiB free; 0 bytes cached)
+RuntimeError: CUDA out of memory. Tried to allocate 11.50 MiB (GPU 0; 5.93 GiB total capacity;
+                                                               0 bytes already allocated; 5.36 GiB free; 0 bytes cached)
 ```
 
 looks like ~4minutes for 1000 batches -> approximtely 68 million / 400 * 4 minuts ~= 11 hours, which is what is descibed in the paper.
