@@ -228,3 +228,16 @@ In the meantime, the evaluation script needs to be cleaned up- which i did, and 
 I was concating tensors in the wrong dimension, so I fixed that as well. :+1:
 
 Evaluation script finally working: end result? **60%** Accuracy on MR dataset :( so still need to try and figure out where stuff is going wrong, but overall a pretty productive day.
+
+### 05-09-19
+---
+So ran with 50k, heres a new loss curve, now no rolling average
+
+![training3](images/log/train_3.svg)
+
+And heres the MR classification results:
+```
+
+```
+
+Need to try bumping the hidden dimension (1000 -> 2400) and also Glove instead of word2vec vectors, but I think that's enough for right now
