@@ -1,6 +1,3 @@
-
-
-
 pre.highlight {
   background-color: #f0f0f0;
   padding: 7px 7px 7px 10px;
@@ -9,7 +6,8 @@ pre.highlight {
   -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
   box-shadow: 3px 3px rgba(0,0,0,0.1);
   margin: 20px 0 20px 0;
-  overflow: scroll;
+  max-width: 100%;
+  overflow: auto;
 }
 
 code {

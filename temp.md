@@ -118,3 +118,25 @@ Dependency parsing - mostly projective in English, but can be free form in other
  Covington's D-rules
 - this is linear in time O(n), because it's just one pass through
 measured loss is basically Hamming loss.
+
+Phrase-structure / dependency parse trees
+
+Chomsky Normal Form - only alllows either two non-terminals or one-terminal.
+
+Parsing CNF grammars - CKY algorithm, parses as a matrix, every cell stores constituents found between i and j.
+
+O(n^3 * G)
+
+Finding the most probable parse tree - probabilty of a tree is the probability of its children:
+
+$$P(T) = \prod_{\tau \in T} P(\tau) $$
+
+Likelihood
+Inference (Decoding)
+Learning (Estimation)
+
+Grammar induction - learn the rules that make the sentence most probable.
+Generate more specific grammar rules using head word information. 
+
+Dynamic oracle - use left most split, O(n^2) greedy algorithm.
+

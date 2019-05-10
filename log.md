@@ -113,8 +113,7 @@ Traceback (most recent call last):
     param.data = fn(param.data)
   File "/home/jcaip/.conda/envs/ml/lib/python3.7/site-packages/torch/nn/modules/module.py", line 260, in <lambda>
     return self._apply(lambda t: t.cuda(device))
-RuntimeError: CUDA out of memory. Tried to allocate 11.50 MiB (GPU 0; 5.93 GiB total capacity;
-                                                               0 bytes already allocated; 5.36 GiB free; 0 bytes cached)
+RuntimeError: CUDA out of memory. Tried to allocate 11.50 MiB (....)
 ```
 
 looks like ~4minutes for 1000 batches -> approximtely 68 million / 400 * 4 minuts ~= 11 hours, which is what is descibed in the paper.
@@ -162,9 +161,66 @@ It looks like both of my training runs dies at ~70k iterations? So this may be a
 
 I had difficulty trying to ssh into the GCP instance - I had to restart it, and the run seemed to have hung.
 
-I also got ahead of myself with rewriting the code.  :( Refactor is completely broken.
+So it looks like that'll be the primary thing I'll be trying to fix today.
 
-In the meantime here's a meantime curve:
+I also got ahead of myself with rewriting the code. :( Refactor is completely broken.
+I need a smaller dataset to test my scripts with
+
+In the meantime here's a curve:
 
 ![training curve](images/log/train_1.svg)
 
+
+Looks like it died at 70k because I was writing to file too much and there was an error there.
+
+```
+RuntimeError: unable to write to file </torch_30135_3865702978>
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.7/multiprocessing/queues.py", line 236, in _feed
+    obj = _ForkingPickler.dumps(obj)
+  File "/opt/anaconda3/lib/python3.7/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+  File "/opt/anaconda3/lib/python3.7/site-packages/torch/multiprocessing/reductions.py", line 315, in reduce_storage
+    fd, size = storage._share_fd_()
+```
+
+On the bright side resume training is currently confirmed working :+1:. Should have a result soon.
+
+Actually I keep on getting this problem -> so i thnk it's a problem with the data probably. 
+
+Changed the data loader to just use 1 worker and it seems fine. 
+
+I really need to split the dataset up into multiple files and handle it that way.
+
+also visdom may not be the best logging solution -> can't start and stop over time.
+
+### 05-09-19
+---
+noticed that the norm threshold should be 5.0, so reran with that
+Alright this is the last run:
+
+![training_curve](images/log/train_2.svg)
+
+So this training is not perfect, I really just need to focus on
+- fixing the refactor and getting a release finished
+- evaluate the resulting sentence vectors
+
+Pausing GCP in the meantime - I might need more credits.
+
+I think I'm good with the refactor actually - let's work on evaluation metrics?
+
+Refactor is going well actually, now working on evaluation metrics - MR specifically. 
+
+I ripped the code from here: https://github.com/ryankiros/skip-thoughts in order to do the classification. 
+
+I need to handle this 0-sequence thing better, but I'm not sure how? 
+
+Once i get this evaluation script running better I should convert to tensorboard and run with these metrics, but just taking it one day at a time. 
+
+ugh this evaluation thing is such a PITA, I think i got a baseline working just now. 
+
+Still it's an absolute pain to essentially port over code...
+
+alright now its good tho, running a new run with 50k vocab size, and will test on that
+
+In the meantime, the evaluation script needs to be cleaned up.
