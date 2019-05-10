@@ -223,4 +223,8 @@ Still it's an absolute pain to essentially port over code...
 
 alright now its good tho, running a new run with 50k vocab size, and will test on that
 
-In the meantime, the evaluation script needs to be cleaned up.
+In the meantime, the evaluation script needs to be cleaned up- which i did, and fixed whatever previous bug was there ( it wasn't 0 sequences )
+
+I was concating tensors in the wrong dimension, so I fixed that as well. :+1:
+
+Evaluation script finally working: end result? **60%** Accuracy on MR dataset :( so still need to try and figure out where stuff is going wrong, but overall a pretty productive day.
