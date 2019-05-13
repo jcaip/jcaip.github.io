@@ -237,7 +237,26 @@ So ran with 50k, heres a new loss curve, now no rolling average
 
 And heres the MR classification results:
 ```
-
+INFO     Found best C=  1 with accuracy: 61.18% in 192.30 seconds | Test Accuracy: 63.26%
+INFO     Found best C=  1 with accuracy: 61.42% in 193.70 seconds | Test Accuracy: 62.98%
+INFO     Found best C=  2 with accuracy: 61.70% in 193.55 seconds | Test Accuracy: 60.41%
+INFO     Found best C=  1 with accuracy: 61.90% in 193.55 seconds | Test Accuracy: 59.47%
+INFO     Found best C=  4 with accuracy: 61.53% in 193.62 seconds | Test Accuracy: 59.85%
+INFO     Found best C=256 with accuracy: 61.14% in 191.16 seconds | Test Accuracy: 60.69%
+INFO     Found best C=  1 with accuracy: 61.70% in 190.15 seconds | Test Accuracy: 63.70%
+INFO     Found best C=128 with accuracy: 60.97% in 189.51 seconds | Test Accuracy: 62.57%
+INFO     Found best C=  1 with accuracy: 60.85% in 187.81 seconds | Test Accuracy: 63.04%
+INFO     Found best C=  1 with accuracy: 61.93% in 186.22 seconds | Test Accuracy: 60.51%
+INFO     Finished Evaluation of MR | Accuracy: 0.6164857018767 | Total Time: 1919.0481956005096
 ```
 
 Need to try bumping the hidden dimension (1000 -> 2400) and also Glove instead of word2vec vectors, but I think that's enough for right now
+
+
+### 05-13-19
+---
+So reviewing for the midterm, had a couple of ideas to improve this paper. 
+Transformer encoder
+scaling the softmax targets. (closer should be more related, further apart still related but less.) 
+
+I should set up tensorboardX stuff too, I need more information to make a better decision. 
