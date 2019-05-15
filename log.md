@@ -6,7 +6,7 @@ permalink: /log/
 Log of my research experience, just for kicks. 
 This is 95% complaints and 5% unintelligible.
 
-### 04-28-2019: 
+### 04-28-19: 
 ---
 Basically converted all the code to python3 for quick thoughts, but now I need to get the eval scripts set up.
 
@@ -14,7 +14,7 @@ Why are people using python2 in 2019?...
 
 Got training working + training on GPU - saw a 40x speedup (thank god).
 
-### 04-29-2019:
+### 04-29-19:
 ---
 And then I fucked up by running 
 ```
@@ -28,7 +28,7 @@ Honestly, I should probably just get this running with 2.7..... that's a bit of 
 
 I just did it :(
 
-### 05-05-2019:
+### 05-05-19:
 ---
 So some good progress today, finally got the dataset part working, and build a simple BOW max encoder. 
 
@@ -139,7 +139,7 @@ But in the meantime the script has . now hit just about 55k batches, which is gr
 I guess applications for this are:
   semantic search? 
 
-### 05-07-2019
+### 05-07-19:
 ----
 
 A lot more progress today, I'm up and running on GCP. 
@@ -152,7 +152,7 @@ In short:
 
 So now I just need these runs to resolve, which will take some time. Then work on evaluating the resulting vectors.
 
-### 05-08-19
+### 05-08-19:
 ---
 
 Switched to V100 GPU on GCP - need to make sure I'm not outliving my credits.
@@ -194,7 +194,7 @@ I really need to split the dataset up into multiple files and handle it that way
 
 also visdom may not be the best logging solution -> can't start and stop over time.
 
-### 05-09-19
+### 05-09-19:
 ---
 noticed that the norm threshold should be 5.0, so reran with that
 Alright this is the last run:
@@ -229,7 +229,7 @@ I was concating tensors in the wrong dimension, so I fixed that as well. :+1:
 
 Evaluation script finally working: end result? **60%** Accuracy on MR dataset :( so still need to try and figure out where stuff is going wrong, but overall a pretty productive day.
 
-### 05-09-19
+### 05-09-19:
 ---
 So ran with 50k, heres a new loss curve, now no rolling average
 
@@ -253,10 +253,44 @@ INFO     Finished Evaluation of MR | Accuracy: 0.6164857018767 | Total Time: 191
 Need to try bumping the hidden dimension (1000 -> 2400) and also Glove instead of word2vec vectors, but I think that's enough for right now
 
 
-### 05-13-19
+### 05-13-19:
 ---
 So reviewing for the midterm, had a couple of ideas to improve this paper. 
 Transformer encoder
 scaling the softmax targets. (closer should be more related, further apart still related but less.) 
+- this actually seems like a halfway decent idea now that I think about it.
 
 I should set up tensorboardX stuff too, I need more information to make a better decision. 
+
+Maybe I should also do the vocab expansion thing mentioned?
+
+Alright GCP is ass, apparently there's no available resources at the time. 
+
+So now I'm running a run with glove vectors and 2400 dim on my computer. 
+
+### 05-14-19:
+
+So unfortunately bumping up the hidden dim and changing the word vectors used makes this thing run a lot longer...
+
+But on the bright side, changing it took almost no time at all.
+
+One thing I would like to perhaps figure out a little bit better is to handle 0-length sequence better, without having to preprocess the text file a bunch of times. 
+
+But ATM I'm just going to wait for this run to finish, and perhaps bring up GCP in the meantime, and make some workflow improvements.
+
+Also worth noting for posterity's sake that i observe about 10% of batches have a 0-length sequence. This is suprisingly consistent, but i guess law of large numbers.
+
+I feel like the biggest reason i left blend was because I didn't wanna fuck with AWS shit.... but that's pretty much what I"m doing right now.
+Also maybe try elmo word vectors? but first focus on replicating the results. spinning up a new GCP instance now.
+Okay, actuall GCP is so stupid. If I create a new conda env with GCP conda, it's a 2.7 env, even thought the conda python is 3.x 
+
+Finally got off my ass and doing a proper run, replicating everything from the paper except using pretrained word embeddings (glove) and a 4 mil vocab instead of 20000. 
+
+rewrote the eval script a little bit, not sure it made it better but I tihnk at least I understand it better now.
+
+So i think my thing died on visdom again :(
+  I should probably look to switching over to tensorboardX
+
+### 05-15-19:
+---
+Rerunning new run, should have results soon.
