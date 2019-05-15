@@ -140,3 +140,26 @@ Generate more specific grammar rules using head word information.
 
 Dynamic oracle - use left most split, O(n^2) greedy algorithm.
 
+### Machine Translation
+
+Originally rule based, but now probabilistic. 
+
+$$\argmax_y P( y \mid x ) = argmax_y P(x \mid y) P(y)$$
+
+P(y) can be thought of as language model, or how to model good english.
+
+Parallel data - i.e. Rosetta Stone
+
+Document level alignment as well - Wikipedia. Also need to consider alignment, not just words. 
+
+Neural Machine Translation - use Encoder-Decoder RNN framework. Decoder is a language model, added in self-attention.
+
+Decoding: Cannot enumerate all sequences.  O(V^k)
+- can use greedy decoding
+    - but this makes recovering from a mistake almost impossible. 
+- or use a sampling strategy at each step
+- use beam search
+    - define beam size, make optimal choice for all step in the beam. 
+    - O(k * B * V)
+
+Commpositional vector grammars, can capture syntactic/semantic ambiguity

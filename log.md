@@ -294,3 +294,5 @@ So i think my thing died on visdom again :(
 ### 05-15-19:
 ---
 Rerunning new run, should have results soon.
+
+![training3](images/log/train4.svg)
