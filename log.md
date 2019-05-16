@@ -310,7 +310,7 @@ i think my data preprocessing script has actually been broken this whole time ..
 Maybe I should write some simple tests for the data code?
 
 ### 05-15-19:
-...
+---
 
 Soooo, the last run finished. It turns out i was fucking up the data, treating characters as words
 ![sota](images/log/train_first_good.svg)
