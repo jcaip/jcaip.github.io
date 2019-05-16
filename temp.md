@@ -163,3 +163,5 @@ Decoding: Cannot enumerate all sequences.  O(V^k)
     - O(k * B * V)
 
 Commpositional vector grammars, can capture syntactic/semantic ambiguity
+
+You can score trees with a standard RNN.

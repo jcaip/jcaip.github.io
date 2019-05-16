@@ -247,7 +247,7 @@ INFO     Found best C=  1 with accuracy: 61.70% in 190.15 seconds | Test Accurac
 INFO     Found best C=128 with accuracy: 60.97% in 189.51 seconds | Test Accuracy: 62.57%
 INFO     Found best C=  1 with accuracy: 60.85% in 187.81 seconds | Test Accuracy: 63.04%
 INFO     Found best C=  1 with accuracy: 61.93% in 186.22 seconds | Test Accuracy: 60.51%
-INFO     Finished Evaluation of MR | Accuracy: 0.6164857018767 | Total Time: 1919.0481956005096
+INFO     Finished Evaluation of MR | Accuracy: 61.65% | Total Time: 1919.0s
 ```
 
 Need to try bumping the hidden dimension (1000 -> 2400) and also Glove instead of word2vec vectors, but I think that's enough for right now
@@ -293,6 +293,32 @@ So i think my thing died on visdom again :(
 
 ### 05-15-19:
 ---
-Rerunning new run, should have results soon.
+Rerunning new run, should have results soon, looks like it took expected amount of time (~6.5 hours)
 
 ![training3](images/log/train4.svg)
+
+Loss curve def looks better than the one before, so I hope that the MR eval results are good...
+
+```
+2019-05-15 23:40:19 INFO     Finished Evaluation of MR | Accuracy: 61.54% | Total Time: 686.8
+```
+
+It's the exact same.... f u c k. Maybe I need to add in dropout?
+
+i think my data preprocessing script has actually been broken this whole time ... so going to add in a sanity check somewhere. 
+
+Maybe I should write some simple tests for the data code?
+
+### 05-15-19:
+...
+
+Soooo, the last run finished. It turns out i was fucking up the data, treating characters as words
+![sota](images/log/train_first_good.svg)
+
+and the eval results:
+```
+2019-05-16 08:36:53 INFO     Finished Evaluation of MR | Accuracy: 76.19% | Total Time: 693.6
+```
+
+This is SOTA :) :) :) 
+
