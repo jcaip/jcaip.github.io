@@ -322,3 +322,30 @@ and the eval results:
 
 This is SOTA :) :) :) 
 
+### 05-18-19:
+---
+
+Dealing with some more GCP problems, but effectively I got vector dot product search working.
+
+```
+Query sentence: i was really confused, I couldn't understand what was going on
+2019-05-18 05:56:01 INFO     Score: 22.78 | Sentence: the events of the film are just so weird that i honestly never knew what the hell was coming next .
+2019-05-18 05:56:01 INFO     Score: 22.15 | Sentence: i found myself more appreciative of what the director was trying to do than of what he had actually done .
+2019-05-18 05:56:01 INFO     Score: 21.82 | Sentence: i realized that no matter how fantastic reign of fire looked , its story was making no sense at all .
+2019-05-18 05:56:01 INFO     Score: 21.61 | Sentence: i wish i could say " thank god it's friday " , but the truth of the matter is i was glad when it was over .
+2019-05-18 05:56:01 INFO     Score: 21.47 | Sentence: deep down , i realized the harsh reality of my situation : i would leave the theater with a lower i . q . than when i had entered .
+```
+
+This is great, I just need to put some finishing touches on this project.
+
+Looks like this is going to work out after all. I just need to do the following things to wrap up
+
+- add evaluation for all binary classification tasks
+- add tests for some of the data functions
+- train with smoothed softmax distribution
+- train with transformer encoder network
+- train on UMBC dataset?
+- write more documentation
+- look into CURL stuff?
+
+But yeah this is good, good job jesse.
