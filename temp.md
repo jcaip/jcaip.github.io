@@ -165,3 +165,67 @@ Decoding: Cannot enumerate all sequences.  O(V^k)
 Commpositional vector grammars, can capture syntactic/semantic ambiguity
 
 You can score trees with a standard RNN.
+
+## Information Extraction and Coreference Resolution.
+
+Use NLP to extract a knowledge base you can query against. 
+
+One particular relation - coreference resolution. 
+
+Task 1: identify all mentions
+    - pronouns (via POS tag)
+    - named entities (NER)
+    - noun phrases (use parse tree to get phrases)
+
+
+mentions - use seq2seq
+or train a binary classifier based on the noun phrase. 
+
+- similar to antecedent/anaphor resolution
+
+This problem is also very apparent in the case of Winograd Schema, where there's no good solution. 
+
+Coreference evaluation - MUC, CEAF, LEA, B-CUBBED, BLANC
+
+B-CUBED - For each mention, compute a precision and recall, then take an average
+
+Learn a pairwise similarity measure. (build a binary classfier)
+    - this is similar to quickthoughts
+how can i use this classifier to build a cluster
+
+You can pick many different featuresss
+
+Build cluster via greedy best-left-link clustering. 
+Decoupling may lose information, 
+
+All-links clustering
+- Do some combinatorial optimization problem, but this makes inference too hard.  (NP Hard)
+
+Integer learning program, consider it as a structured perceptron. 
+
+Make prediction of forest , then take loss wrt the true latent forest (by comparing score)
+
+## Information Extraction continued
+
+Semantic Role Labeling - Who did what to whom?
+
+PropBank, predicates and arguments. 
+
+POS tagging, and then train a classifier. 
+
+Identify frames via BOW encoder. 
+
+Define a semantic rule based on a theme or something.
+
+Granularity is an issue
+
+1. Fewer, more generalized semantic roles. 
+2. Define roles specific to a group of predicates.
+
+#### Role labeling
+
+best matching between spans and roles, conduct constrained inference. 
+
+semantic parsing - 
+
+Logic - lambda operation over a sentence. 

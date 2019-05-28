@@ -329,23 +329,65 @@ Dealing with some more GCP problems, but effectively I got vector dot product se
 
 ```
 Query sentence: i was really confused, I couldn't understand what was going on
-2019-05-18 05:56:01 INFO     Score: 22.78 | Sentence: the events of the film are just so weird that i honestly never knew what the hell was coming next .
-2019-05-18 05:56:01 INFO     Score: 22.15 | Sentence: i found myself more appreciative of what the director was trying to do than of what he had actually done .
-2019-05-18 05:56:01 INFO     Score: 21.82 | Sentence: i realized that no matter how fantastic reign of fire looked , its story was making no sense at all .
-2019-05-18 05:56:01 INFO     Score: 21.61 | Sentence: i wish i could say " thank god it's friday " , but the truth of the matter is i was glad when it was over .
-2019-05-18 05:56:01 INFO     Score: 21.47 | Sentence: deep down , i realized the harsh reality of my situation : i would leave the theater with a lower i . q . than when i had entered .
+Score: 22.78 | Sentence: the events of the film are just so weird that i honestly never knew what the hell was coming next .
+Score: 22.15 | Sentence: i found myself more appreciative of what the director was trying to do than of what he had actually done .
+Score: 21.82 | Sentence: i realized that no matter how fantastic reign of fire looked , its story was making no sense at all .
+Score: 21.61 | Sentence: i wish i could say " thank god it's friday " , but the truth of the matter is i was glad when it was over .
+Score: 21.47 | Sentence: deep down , i realized the harsh reality of my situation : i would leave the theater with a lower i . q . than when i had entered .
 ```
 
 This is great, I just need to put some finishing touches on this project.
 
 Looks like this is going to work out after all. I just need to do the following things to wrap up
 
-- add evaluation for all binary classification tasks
-- add tests for some of the data functions
-- train with smoothed softmax distribution
-- train with transformer encoder network
+- add evaluation for all binary classification tasks (TODO)
+- add tests for some of the data functions (TODO)
+- train with smoothed softmax distribution (DIDN'T WORK)
+- train with transformer encoder network (IDK)
 - train on UMBC dataset?
-- write more documentation
+- write more documentation 
 - look into CURL stuff?
+  - this is more for insights 
 
 But yeah this is good, good job jesse.
+
+### 05-19-19:
+
+GCP is now up and running. I'm looking at the CURL paper, and trying to make sense of it. 
+
+In the meantime, I wrote a small test for smoothed softmax, based on the assumption that 
+P(x2 R x0) = p(x2 R x1) P(x1 R x0) so the target distribution is better modeled as an exponential distribution. 
+
+^^ This kind of comes from CURL
+
+My hope is that this gives better gradients and thus better training and a better representation. 
+
+Anywyas, the run in running right now, so fingers crossed.
+
+It didn't work, it was like 75% accuarcy, so about the same 
+
+
+### 05-20-19:
+
+Okay looking at this CURL paper, I think false negative samples are the biggest problem here. The paper in particular mentions if too many postive samples are marked as negative this may lead to a problem. 
+So the way I was thinking to solve that would be to do this weird sampling thing, that is to draw 20 sentences from 20 different places in the corpus, but I think it might not help a lot. 
+Because the closest sentences are the most likely to be "wrong negative samples" so that's not good.
+
+I would essentially have to do blocks of 4-5 sentences at a time. 
+
+I think what would be better would be to chunk the sentences into paragraphs, and do the block paragraph training mentioned in the paper. 
+... But that's a pretty big time commitment and I'm not sure if that's really feasible or not. 
+
+I think first I'll try to do a shorter block size and then sample from the rest of the text for negative samples. 
+
+
+### 05-21-19:
+
+So I thought of a good test to run. 
+If you consider the set of all sentences that human write, that's really a subset of all valid syntactic sentences. 
+
+So let's first run a test with shuffled dataset. Doing this with my home computer because GCP sucks.
+
+And then get the negative samples just from creating random stuff?
+
+

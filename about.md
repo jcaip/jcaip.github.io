@@ -16,5 +16,5 @@ If you're new here I'd recommend reading the following posts:
 
 I'm an undergrad ML/NLP researcher at UCLA primarily interested in representation learning and deep probabilistic models. 
 
-Previously I'be worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
+Previously I've worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
 In my free time I like to lift, hike, and explore nature. 
