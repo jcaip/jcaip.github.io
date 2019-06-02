@@ -391,3 +391,26 @@ So let's first run a test with shuffled dataset. Doing this with my home compute
 And then get the negative samples just from creating random stuff?
 
 
+### 6/2/something
+
+so I kinda fell off updating this, and honestly code quality in the repo has sunk quite  abit, but i was able to hack some stuff together
+
+In particurlar: truied using transformer, it worked, but was bad, likely because of hyperparams, but whatever
+
+
+More interestingly, I implemented the block algorithm described in CURL. 
+
+I realized you can do this very simply by just taking all the encodings and take an average, and then compute the softmax kl loss. 
+
+And that was promising because it went to 75% accuracy test MR in just 1 hour, which beats what QT describes.
+
+Need to learn the math for that proof, but all things considered, this should be good. Trying to bring up GCP again to run this faster, cuz i keep on getting OOM isssues, but it looks like GCP is still pretty much unusuable. 
+
+
+So in the meantime added a try catch and hoping for the best ...
+
+This is probably the first positibe result in like 2+ weeks woo hoo.
+
+
+
+

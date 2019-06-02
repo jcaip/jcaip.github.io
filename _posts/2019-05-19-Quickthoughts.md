@@ -5,27 +5,21 @@ tags: [machine-learning, nlp]
 title: "Learning Better Sentence Representations"
 ---
 
-Over the past couple years, representation learning has really taken off in NLP. 
+Over the past couple of years, there's been huge progress in representation learning. 
 
-Doc2Vec, Word2Vec, GloVe, etc. 
+In particular learned word vectors like Word2Vec and GloVe are now the industry standard in various NLP tasks. 
 
-Talk a bit about learning good sentence representations. 
 
-## What is Contrastive Learning?
+Representation learning can be seen as a form of dimensionality reduction. 
 
-Representation learning can be thought of a form of density estimation or dimensionality reduction. 
+The main goal of representation learning is to find a vector $z \in \mathbb{R}^d$  that encodes all the variance of the real world data. 
 
-The main goal of representation learning is to find a vector $z \in \mathbb{R}^d$ such that for two related sentences, $s_1$ and $s_2$, 
+One very common way to learn representations is to use an autoencoder
 
-One very common way to learn representations is to use an autoencoder, in a normal autoregressive manner.
-
-Then one can take the intermediate hidden layer as the representation. 
-
-The model is inclined to be able to reproduce the candidate sentence. 
+Then one can take the intermediate hidden layer as the representation. The model finds a lower dimensional representation that encodes all the variance of the higher dimensions.
 
 The was the approach taken by Skip-Thoughts. 
 
-Contrastive learning is the idea of considering similar and disimilar example points
 
 ## QuickThoughts
 
@@ -87,29 +81,24 @@ $$J(X; \theta) =  \sum_{s \in X} \sum_{s_{ctxt} \in S_{ctx }} \left[ \log  e^{\P
 
 Our loss is in fact taking a KL Divergence between target distribution and softmax of dot-product scores. 
 
-### QuickThoughts: Implementation details
+## QuickThoughts: Implementation details
 
 CURL provides a theoretical framework of some of the bounds here. 
 
 CURL also tells us about negative samples. 
 
-## Building a better sentence representation 
+### Smoothing the softmax
 
-One thing that stood out to me was the theoretical analysis done by Aurora et al about what they call contrastive unsupervised representation learning. 
 
-### Block sampling method
+### more powerful encoders and embeddings
 
-Going back to the roots with regards to word vectors, one similar approach that was shown to be functionally similar was to simply generate a giant cooccurence matrix, and then factor that matrix to get good representations.
+Attention based models, such as the Transformer have taken off, in large part due to their ability to handle longer term relationships better than recurrent models. 
 
-So let's go back to our target distribution. Here instead of simply denoting the next sentence, 
+We sought to implement a more efficient implementation of QuickThoguths by replacing the GRU encoder with a Transformer/Attention based model. 
 
-Our intution: similar sentences share have similar words. So we'll use the word cooccurence counts as a measure of the relatedness of two sentences.
+Furthermore, we also tried using pretrained contextual word embeddings a la Elmo in order to get a better feel for our results.
 
-To do this we tokenized the bookcorpus dataset into paragraphs, and considered every sentence within a paragraph to be related, and all other paragraphs to be unrelated. 
-
-This essentially gives us a variable length block size. 
-
-### Dealing with poor negative sampling
+### Better Theoretical constraints: Block Sampling
 
 In the case of word vectors, we can just pick two random words and use this as a negative sample. 
 
@@ -126,11 +115,3 @@ There were a couple of ways that I tried to get around this.
 I considered some softmax smoothing of the target distribution, or to simply draw the batch from 10 different points inside the corpus. 
 
 But really, every problem I faced was tied to the assumptions that we made regarding our target distribution, so we had to change that. 
-
-## Using more powerful encoders and embeddings
-
-GRUs and LSTMs are dead, pay attention to the future. Attention based models, such as the Transformer have taken off, in large part due to their abbility to handle longer term relationships better than recurrent models. 
-
-We sought to implement a more efficient (though this is hardly necessary) implementation of QuickThoguths by replacing the GRU encoder with a Transformer/Attention based model. 
-
-Furthermore, we also tried using pretrained contextual word embeddings a la Elmo in order to get a better feel for our results.

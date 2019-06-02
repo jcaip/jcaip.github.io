@@ -229,3 +229,5 @@ best matching between spans and roles, conduct constrained inference.
 semantic parsing - 
 
 Logic - lambda operation over a sentence. 
+
+# Fairness and Bias in NLP
