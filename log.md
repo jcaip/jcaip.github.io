@@ -412,5 +412,17 @@ So in the meantime added a try catch and hoping for the best ...
 This is probably the first positibe result in like 2+ weeks woo hoo.
 
 
+### 06/03/19
+Just realized that difference in training time is likely because of pre-trained word vectors -:(  so not that interesting actually.
+
+Adn it turns out the block alg i implemented is wrong (again!!)
+
+I need to do a convolution really ... so i did do that?
+
+:( i wish i was better at this lmao
+
+
+I think I finally implemented the block algorithm correctly. 
+
 
 

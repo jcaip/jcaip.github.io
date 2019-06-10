@@ -3,14 +3,15 @@ layout: page
 permalink: /about/
 ---
 
-Hi there! Welcome to my personal blog/website.
+Hi there!
+
+Welcome to my personal blog/website, where I mostyl write about machine learning, mathematics, and computer science.
 
 If you're new here I'd recommend reading the following posts:
+- An analysis of [sentence representations](/QuickThoughts)
 - [Distributed gradient descent](/Distbelief) in PyTorch
-- Using RNNs to [predict user activity](/Predicting-User-Submission)
 - How to construct the [rational numbers](/Building-Q)
-- An overview of [Variational Autoencoders](/Variational-Autoencoders)
-
+- Using RNNs to [predict user activity](/Predicting-User-Submission)
 
 ### About me
 
