@@ -5,32 +5,32 @@ tags: [machine-learning, nlp]
 title: "Learning Better Sentence Representations"
 ---
 
-Over the past couple years, unsupervised representation learning has had huge success in NLP. In particular word embeddings such as word2vec and GloVe have proven to be able to capture both semantic and syntatic information about words better than previous approaches, and have enabled us to train large neural end-to-end networks that achieve the best performance on a myriad of NLP tasks.
+Over the past couple years, unsupervised representation learning has had huge success in NLP. In particular word embeddings such as word2vec and GloVe have proven to be able to capture both semantic and syntactic information about words better than previous approaches, and have enabled us to train large neural end-to-end networks that achieve the best performance on a myriad of NLP tasks.
 
 This post is about contrastive unsupervised representation learning for sentences. 
 <!--more-->
 
 ### Why learn embeddings?
 
-In unsupervised representation learning, we try to find a function that encodes an example in our datset, $x \in \mathbb{R}^{n}$ to a  lower dimensional vector in $\mathbb{R}^d$. Ideally this smaller vectors captures all of the information we need for some arbritary downstream task. 
+In unsupervised representation learning, we try to find a function that encodes an example in our dataset, $x \in \mathbb{R}^{n}$ to a  lower dimensional vector in $\mathbb{R}^d$. Ideally this smaller vectors captures all of the information we need for some arbitrary downstream task. 
 
 But why should we care about learning "good" representations?
 
-One very direct and easy use for these embeddings is semantic search by finiding the nearest neighbors of a document in embedding space.
+One very direct and easy use for these embeddings is semantic search by finding the nearest neighbors of a document in embedding space.
 
 Here you can see nearest neighbor search over a corpus of 1M Wikipedia sentences of both QuickThoughts [[^2]]  and SkipThoughts[[^3]], two different embedding approaches.
 
 ![results](/images/qt/nn.png){: .center .element height="50%" width="50%" }
 
 This type of semantic search is being used more often in industry - recently Microsoft released [SPTAG](https://github.com/microsoft/SPTAG), a library for fast approximate nearest neighbor search.
-Good embeddings are essential to the performance of these approachej.
+Good embeddings are essential to the performance of these approaches.
 
 Furthermore we can use embeddings to categorize/cluster our data.
 
-Given a small set of representative samples, we can train a simple linear/logistic classifier atop of our embeddings and observe competititve performance on a multitude of binary classification tasks. 
+Given a small set of representative samples, we can train a simple linear/logistic classifier atop of our embeddings and observe competitive performance on a multitude of binary classification tasks. 
 
 For example, at Blend I needed to be able to identify "frozen" comments, comments that directly mentioned app stability issues, in order to improve our application quality. 
-With good sentence embeddings, I was able take a set of $n$ "frozen" comments, and a set of random commments, and create a simple mean classifier that performed better than our existing keyword solution.
+With good sentence embeddings, I was able take a set of $n$ "frozen" comments, and a set of random comments, and create a simple mean classifier that performed better than our existing keyword solution.
 
 Furthermore, we can generalize our approach to learn embeddings to different fields. For example, Asgari and Mofrad [[^5]] trained embeddings for biological sequences (RNA, proteins, etc.).
 One could also train embeddings for images to implement something similar to Google's reverse image search.
@@ -39,13 +39,13 @@ One could also train embeddings for images to implement something similar to Goo
 
 One common way to learn representations is to train an [autoencoder](https://www.deeplearningbook.org/contents/autoencoders.html), as done in Skip-Thoughts[[^3]],  which used an autoencoder with LSTM-RNN encoders and decoders. The idea is to then throw away the decoder and use just the encoder for embeddings.
 
-Quickthoughts[[^2]], by Leensworn and Lee, seeks to simplfy the training process by replacing the generative decoder with a discriminative model.
+Quickthoughts[[^2]], by Leensworn and Lee, seeks to simplify the training process by replacing the generative decoder with a discriminative model.
 
 ![model](/images/qt/model.png){: .center .element height="75%" width="75%" }
 
 # QuickThoughts
 
-Instead of trying to reconstruct our original sentence from our embedding (a), we see to identify a "related" embedding $s_cand$ given a set of candidate sentences $S_{cand}$, and a sentence $s$ (b).
+Instead of trying to reconstruct our original sentence from our embedding (a), we see to identify a "related" embedding $s_{cand}$ given a set of candidate sentences $S_{cand}$, and a sentence $s$ (b).
 
 This is the central idea of **contrastive learning** - we seek to be able to identify a similar and dissimilar example given a example. The second half of this post deals extensively with contrastive learning.
 
@@ -62,7 +62,7 @@ However, instead of identifying just the next sentence, we seek to identify all 
 
 Our training corpus consists of the BookCorpus [[^4]] dataset, a collection of free books. In total it is roughly 68 million sentences long.
 
-Our training objective is then to maxamize the probability of identifying each context sentence for each sentence in the training data
+Our training objective is then to maximize the probability of identifying each context sentence for each sentence in the training data
 
 $$\prod_{s \in D} \prod_{s_{ctx} \in S_{ctx}} P_\theta(s_{ctx} \mid s, S_{cand})$$
 
@@ -76,7 +76,7 @@ We'll use a minibatch of our data as set of candidate sentences, and for the sak
 
 $$\prod_{s_i \in D}  P_\theta(s_{i+1} \mid s_i, D)$$
 
-Let $D$ be one minibatch of sentences,  where each sentence $s_i$ is represented by a sequence of word indicies, zero-padded to the max sequence length of the minibatch.
+Let $D$ be one minibatch of sentences,  where each sentence $s_i$ is represented by a sequence of word indices, zero-padded to the max sequence length of the minibatch.
 
 $$
 D = \begin{bmatrix} 
@@ -133,7 +133,7 @@ f(s_n)^Tg_(s_1) & &  & 0\\
 \end{bmatrix} \in \mathbb{R}^{n \times n}
 $$
 
-Now if we softmax over each row we can convert our scores to a normalized probability distribution, where $prob_{ij} = \frac{e^{f(s_i)^T g(s_j)}}{\sum_{k=0}^n e^{ f(s_i)^Tg(s_k) }} = P(s_j \mid s_i, D) $  = the probability that $s_j$ is the $s_{i+1}$ given the minibatch of sentences $D$ and context sentece $s_i$
+Now if we softmax over each row we can convert our scores to a normalized probability distribution, where $prob_{ij} = \frac{e^{f(s_i)^T g(s_j)}}{\sum_{k=0}^n e^{ f(s_i)^Tg(s_k) }} = P(s_j \mid s_i, D) $  = the probability that $s_j$ is the $s_{i+1}$ given the minibatch of sentences $D$ and context sentence $s_i$
 
 $$
 prob = \begin{bmatrix} 
@@ -195,12 +195,12 @@ I used a context size of 3, batch size of 400, and learning rate of 0.0005. Pret
 
 ![info](/images/qt/training_stats.png){: .center .element height="100%" width="75%" }
 
-Above you can see the training loss and accuracy of a mix of binary classificication tasks over time.
+Above you can see the training loss and accuracy of a mix of binary classification tasks over time.
 I was able to successfully reproduce the results from the original paper, achieving comparable performance on downstream classification tasks.
 
 # Why do these embeddings perform so well?
 
-While our approach intuitively makes sense, and emperically performs well, it's not completely clear how learning to identify the next sentence leads to an embedding that performs well on some classification task.
+While our approach intuitively makes sense, and empirically performs well, it's not completely clear how learning to identify the next sentence leads to an embedding that performs well on some classification task.
 
 More generally why does learning to identify related points by minimizing some unsupervised loss lead to a representation that does well on classification tasks down the line?
 
@@ -358,7 +358,7 @@ I was able to get a baseline model up and trained, but it's performance was much
 
 #### Combined loss function
 
-Another interesting idea would be to also have a reconstruction loss as well as the KL divergence loss. Such an optimization objective might lead to representations that capture both syntatic and semantic information.
+Another interesting idea would be to also have a reconstruction loss as well as the KL divergence loss. Such an optimization objective might lead to representations that capture both syntactic and semantic information.
 
 Thanks for reading! Feel free to contact me if you have any questions/spot any mistakes.
 
