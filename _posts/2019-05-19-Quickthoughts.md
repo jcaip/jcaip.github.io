@@ -5,7 +5,7 @@ tags: [machine-learning, nlp]
 title: "Learning Better Sentence Representations"
 ---
 
-Over the past couple years, unsupervised representation learning has had huge success in NLP. In particular word embeddings such as word2vec and GloVe [[^1]] have proven to be able to capture both semantic and syntatic information about words better than previous approaches, and have enabled us to train large neural end-to-end networks that achieve the best performance on a myriad of NLP tasks.
+Over the past couple years, unsupervised representation learning has had huge success in NLP. In particular word embeddings such as word2vec and GloVe have proven to be able to capture both semantic and syntatic information about words better than previous approaches, and have enabled us to train large neural end-to-end networks that achieve the best performance on a myriad of NLP tasks.
 
 This post is about contrastive unsupervised representation learning for sentences. 
 <!--more-->
