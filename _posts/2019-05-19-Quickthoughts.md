@@ -193,7 +193,7 @@ The full code I wrote for training QuickThoughts from scratch can be found [here
 I primarily trained on a NVIDIA V100 GPU on GCP. Training took approximately 6 hours for a single GRU encoder with a hidden size of 1000.
 I used a context size of 3, batch size of 400, and learning rate of 0.0005. Pretrained GloVe word vectors were used for word embeddings.
 
-![info](/images/qt/training_stats.png){: .center }
+![info](/images/qt/training_stats.png){: .center .element height="100%" width="75%" }
 
 Above you can see the training loss and accuracy of a mix of binary classificication tasks over time.
 I was able to successfully reproduce the results from the original paper, achieving comparable performance on downstream classification tasks.
