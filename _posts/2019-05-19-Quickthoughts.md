@@ -216,11 +216,11 @@ Then we can think of semantically similar samples as two samples $x, x^+$ from $
 
 $$L_{un}(f)=\mathop{\mathbb{E}}\limits_{c^+,c^-\sim\rho}\ \mathop{\mathbb{E}}\limits_{x,x^+\sim D_{c^+}}\ \mathop{\mathbb{E}}\limits_{x^-\sim D_{c^-}}\left[\log\left(1+e^{f(x)^Tf(x^-)-f(x)^Tf(x^+)}\right)\right]$$
 
-Our supervised loss function between two classes $c_1, c_2$ is the ordinary logistic regression loss between the datapoints from each class. The average loss over an arbritary choice of classes is our supervised loss is a emasure of the quality of our representation
+Our supervised loss function between two classes $c_1, c_2$ is the ordinary logistic regression loss between the datapoints generated from each class distribution. The average loss over an arbritary choice of classes is our supervised loss and a measure of the quality of our representation
 
 $$L_{sup}(f)=\mathop{\mathbb{E}}\limits_{c_1,c_2\sim\rho}\ \left[L_{sup}(f, (c_1,c_2))|c_1\neq c_2\right]$$
 
-So what is the relationship between $L_{sup}$ and $L_{un}$?
+So what is the relationship between $L_{sup}$ and $L_{un}$? Arora er al. were able to show the following:
 
 **Lemma**: The average classification loss on downstream binary tasks is upper bounded by the unsupervised loss. $L_{sup}(f) \leq \alpha L_{un}(f), \forall f \in \mathbb{F}$
 
