@@ -5,10 +5,10 @@ permalink: /about/
 
 Hi there!
 
-Welcome to my personal blog/website, where I mostyl write about machine learning, mathematics, and computer science.
+Welcome to my personal blog/website, where I mostly write about machine learning, mathematics, and computer science.
 
 If you're new here I'd recommend reading the following posts:
-- An analysis of [sentence representations](/QuickThoughts)
+- Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
 - [Distributed gradient descent](/Distbelief) in PyTorch
 - How to construct the [rational numbers](/Building-Q)
 - Using RNNs to [predict user activity](/Predicting-User-Submission)

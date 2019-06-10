@@ -41,7 +41,7 @@ One common way to learn representations is to train an [autoencoder](https://www
 
 Quickthoughts[[^2]], by Leensworn and Lee, seeks to simplfy the training process by replacing the generative decoder with a discriminative model.
 
-![model](/images/qt/model.png){: .center}
+![model](/images/qt/model.png){: .center .element height="75%" width="75%" }
 
 # QuickThoughts
 
