@@ -19,3 +19,5 @@ I'm an undergrad ML/NLP researcher at UCLA primarily interested in representatio
 
 Previously I've worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
 In my free time I like to lift, hike, and explore nature. 
+
+Feel free to email me at jcjessecai @ gmail.com if you want to get in touch.
