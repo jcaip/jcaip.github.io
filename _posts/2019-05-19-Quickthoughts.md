@@ -266,9 +266,9 @@ Unfortuanetly this is not the case, as $l_{un}^{altered\_targets}$ comes out to 
 
 $$L^{altered\_targets}_{un} = D_{KL} \left([\frac{1}{b} \ldots \frac{1}{b}, 0 \ldots 0] \mid \mid  softmax \left( \left[ x_1^+ \ldots x_b^+, x_1^- \ldots x_b^- \right] \right) \right)$$
 
-$$ = \sum_{x \in X} P(x) \left[ \log P(x) - \log Q(x) \right] =  \sum_{i=0}^b \frac{1}{b}\left(f(x)^Tg(x_i^+) - \log \sum_{j =0}^n e^{f(x)^T g(x_j)} \right)$$
+$$ = \sum_{x \in X} P(x) \left[ \log P(x) - \log Q(x) \right] =   - \sum_{i=0}^b \frac{1}{b}\left(f(x)^Tg(x_i^+) - \log \sum_{j =0}^n e^{f(x)^T g(x_j)} \right)$$
 
-$$ = f(x)^T \frac{\sum_ig(x_i^+)}{b} - \log \sum_{j =0}^n e^{f(x)^T g(x_j)} $$
+$$ = -f(x)^T \frac{\sum_ig(x_i^+)}{b} + \log \sum_{j =0}^n e^{f(x)^T g(x_j)} $$
 
 These look very similar, but they have a different normalization constant.
 
