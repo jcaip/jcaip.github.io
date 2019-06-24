@@ -276,7 +276,7 @@ Conceptually the block method computes the probability of the mean positive samp
 
 Irregardless I was curious wether altering the context size would have an impact on downstream performance.
 
-### Comparing Emperical Results
+### Comparing Empirical Results
 
 To test this, I trained 4 QuickThoughts models, with a context size of 1, 2, 3, and 4 respectively. The accuracy on several different downstream classification tasks are shown below.
 
@@ -343,7 +343,7 @@ There'e also the possibility that I need to train for longer in order to see mea
 
 # Conclusion and Future Improvements
 
-Contrastive unsupervised representation learning allows us to take advantage of related pairs of data in order to learn embedddings.
+Contrastive unsupervised representation learning allows us to take advantage of related pairs of data in order to learn embeddings.
 
 While not fully theoretically understood, emperically we know that these embeddings perform well on a myriad of classification tasks. 
 
