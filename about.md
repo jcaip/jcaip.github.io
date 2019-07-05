@@ -15,6 +15,7 @@ If you're new here I'd recommend reading the following posts:
 
 I'm an ML/NLP researcher at UCLA primarily interested in representation learning and deep probabilistic models. 
 
+Prior to this I've worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
+
 I'm also currently looking for full-time roles starting 2020, so if you think I'd be a good fit for your team please reach out!
 
-Previously I've worked at [Blend](https://blend.com) and [JPL](https://www.jpl.nasa.gov/).
