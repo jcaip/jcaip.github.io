@@ -49,6 +49,8 @@ I need to check performance of this on MNLI and STS, which will be a good measur
 
 Compare against [Sentence Siamese BERT](https://arxiv.org/pdf/1908.10084.pdf).
 
+Also try intelligent masking for this. Note that if this works, this is important, because this is an entirely unsupervised approach - no labels at all, we mine the related samples.
+
 ## Hierarchical fine-tuning
 
 The idea here is come from some experiments that my research partner Di ran. 
