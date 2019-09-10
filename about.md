@@ -3,11 +3,14 @@ layout: page
 permalink: /about/
 ---
 
-Hi there! I'm Jesse Cai, and this is my personal blog.
+Hi there! I'm Jesse Cai, and this is my blog, where I write about my research in natural language processing and other interesting ideas in mathematics, computer science, and machine learning.
+Most of the posts I write here are technical in nature, although sometimes I do write more general personal posts.
 
-I write about interesting concepts in machine learning, computer science, and mathematics, as well about my research in natural language processing. 
+Currently, my main research interest is how to leverage unsupervised but structured data to learn better sentence embeddings.
+I'm also interested in transfer learning, domain-adaptation approaches, and probabilistic models. 
 
-I try to explain things simply, with theoretical justification  as well as empirical results, but often times I am unclear or flat out wrong. Please leave a PR if you notice something!
+My goal here is to explain things simply, but comprehensively. Usually I try to give a mix of theoretical justification, implementation details, and empirical results, but some posts tend to skew one way or the other. 
+However, I am often times unclear or flat out wrong, so please leave a PR if you notice anything amiss.
 
 If you're new here I'd recommend reading the following posts:
 - Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
@@ -19,11 +22,7 @@ If you're new here I'd recommend reading the following posts:
 
 I'm a ML/NLP researcher at UCLA, where I'm part of [UCLA-NLP](http://web.cs.ucla.edu/~kwchang/).
 
-Currently, my main research interest is how to learn better sentence embeddings. 
-
-I'm also interested in transfer learning, domain-adaptation approaches, and probabilistic models. 
-
-Prior to this I took a gap year to join the data team at [Blend](https://blend.com), where I used deep learning to identify app quality issues from NPS comments. 
+Prior to this I took a gap year to join the data team at [Blend](https://blend.com), where I used deep learning to identify app quality issues from NPS comments. Before that I interned at [JPL](https://www.jpl.nasa.gov/).
 
 I'm also currently looking for full-time roles starting 2020, so if you think I'd be a good fit for your team please reach out!
 

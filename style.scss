@@ -20,10 +20,9 @@ html {
 
 body {
   background: $white;
-  font: 18px/1.4 "Ubuntu";
+  font: 15px/1.4 "Ubuntu";
   color: $darkGray;
 }
-
 
 .center {
     display: block;
@@ -40,7 +39,6 @@ body {
 
 // for line break
 hr {
-
   border-color: $lightGray;
 }
 
@@ -188,10 +186,6 @@ img {
 //
 // .masthead
 //
-
-.wrapper-masthead {
-  margin-bottom: 50px;
-}
 
 .masthead {
   padding: 20px 0;

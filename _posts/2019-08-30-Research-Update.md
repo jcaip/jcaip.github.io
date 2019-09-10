@@ -2,11 +2,16 @@
 published: False
 ---
 
-I'm just trying to organize my thoughts.
+Anyways I think I want to start blogging more just in general, so I want to start writing monthly research updates:
+
+I've been doing research for the past 6 months, and it's been quite the mixed bag. 
+I cannot lie, I'd like to say that I've made some meaningful progress, but I haven't gotten any interesting results yet. On the other hand, I have learned quite a bit and have tried some interesting ideas. 
 
 Basically I've been working on BERT and different ways to fine-tune it/ use it for sentence representations. 
 
-Here's a short list/summary of the different things I've tried:
+<!--more-->
+
+Here's a short list of the different things I've tried:
 - Contrastive fine-tuning
 - using contextual word vectors as input to quick-thoughts
 - Hierarchical fine-tuning (only seeing a subset of labels
@@ -27,9 +32,11 @@ To do that we can use a clever trick - If we one hot encode our labels, $y$, int
 
 Why does this work? Consider $T_{i, j}$. If these two samples are from the same class, then, the one hot labels dotted together (as a result of the matrix multiplication) will be 1, however, if these labels are different then the one hot labels dotted together will be 0. 
 
-This does not work at all though, although I'm not quite sure why, I have a couple of ideas. 
+However, this contastive fine tuning doesn't seem to improve downstream classification performance. Although I'm not 100% sure, I have a couple of ideas:
 
 1. First off, there's an optimization problem here. Since both encodings come from the same encoder, when we backpropagate, the gradients for the model can be quite large, which leads to poor performance. 
+
+2. I think in general it's best to be as explicit as possible, so using a softmax loss is probably the best choice here. 
 
 2. Secondly, a contrastive loss here may not be the best idea vs. something  more explicit, like a softmax classifier loss. Another problem with the contrastive loss is that it forces 
 
@@ -43,13 +50,17 @@ In retrospect this may or may not be a problem, since it pretty much only happen
 
 So given that contrastive fine-tuning of raw BERT was not performing well, I wanted to try a BERT-QT model. 
 
-That is, take BERT embeddings as the input into a QT model trained using contrastive loss. 
+That is, take BERT embeddings as the input into a model trained using contrastive loss. This is very similar as before, but instead of using this contrastive loss for fine-tuning, we're training BERT for a long period of time in order to get good sentence representations. 
+
+You'll note that average/CLS BERT embeddings on STS tasks seems to perform poorly. In fact they perform worse than average GloVe word vectors.
 
 I need to check performance of this on MNLI and STS, which will be a good measure, as well as SentEval, which is already set up.
 
 Compare against [Sentence Siamese BERT](https://arxiv.org/pdf/1908.10084.pdf).
 
 Also try intelligent masking for this. Note that if this works, this is important, because this is an entirely unsupervised approach - no labels at all, we mine the related samples.
+
+I also tried to get better performance by doing some masking of the scores matrix
 
 ## Hierarchical fine-tuning
 
@@ -58,12 +69,12 @@ On 20 news groups he noted a increase in training accuracy/test accuracy when tr
 
 But the one thing that peeved me about this is that the label encoding is that they share virtually no information with each other. 
 
-That is the top level category `misc` is encoded to 4 in the first scheme but is encoded to 6 in the second scheme (this is arbitray).
+That is the top level category `misc` is encoded to 4 in the first scheme but is encoded to 6 in the second scheme (these numbers are arbitariy, they're just here to show the problem).
 So this doesn't really make sense so I thought it would be more natural to use a hierarchical encoding scheme. 
 
 That it we should encode a category `computers.graphics` as the vector $[1, 1]$  and `computers.asdf.mac` as $[1, 2]$ instead so that there's some notion of similarity between the labels. 
 
-This was mildly successful, but I saw no gain over. 
+This was mildly successful, but I saw no gain over flat softmax unfortunately. 
 
 # When and why does BERT fail?
 
