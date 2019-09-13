@@ -1,5 +1,5 @@
 ---
-published: True
+published: False
 layout: post
 tags: [machine-learning, nlp, research]
 title: Cooccurrence Matrices
@@ -24,4 +24,5 @@ This approach is kind of similar to GloVe/LSA
 |------------------------------|-------|-------|-------|-------|-------|-------|------|
 |Next sentence prediction      | 0.369 | 0.347 | 0.352 | 0.384 | 0.382 | 0.755 | 0.657|
 |Co-occurrence counts (Temp=10)| 0.394 | 0.301 | 0.437 | 0.524 | 0.508 | 0.728 | 0.607| 
+
 
