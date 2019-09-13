@@ -169,6 +169,10 @@ I took the baseline metrics from [Sentence BERT](https://arxiv.org/pdf/1908.1008
 | ContraBERT | 0.521 | 0.651 | 0.608 | 0.644 | 0.639 | 
 | Sentence BERT(from [[^8]])| 0.745| 0.770| 0.731| 0.818| 0.768|
 
+Here's a training curve for fluid Bert-QT:
+
+![sts](/images/research/08-30/fluid-bert-qt-sts.png)
+
 All of the combinations of contrastive learning and BERT do seem to outperform both QT and BERT seprately, with ContraBERT performing the best.
 So while we're able to make significant progress compared to BERT and QT baseline models, it's still not SOTA or comparable to the results found [here](https://arxiv.org/pdf/1908.10084.pdf).
 
