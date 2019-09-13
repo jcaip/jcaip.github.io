@@ -7,12 +7,11 @@ title: BERT fine-tuning and Contrastive Learning
 
 So this summer I **officially** started doing research with UCLA-NLP. 
 
-Anyways I want to start writing more in general (I only have written two posts so far this year!), so I figure I'd write about my research, which has mainly been on transfer/representation learning for NLP. 
+Anyways I want to start writing more in general (I only have written two posts so far this year!), so I figure why not write about my research, which has mainly been on transfer/representation learning for NLP. 
 
 <!--more-->
 
-My research this summer has been mainly focused on sentence embeddings. That is finding a function that maps a sentence $S = [1, 10, 15, \ldots 5, 6 ]$ to a vector $v \in \mathbb{R}^d$. 
-
+My research this summer has been mainly focused on sentence embeddings. That is finding a function that maps a sentence (for our purpose a sequence of tokens) $S = [1, 10, 15, \ldots 5, 6 ]$ to a vector $v \in \mathbb{R}^d$. 
 
 Sentence embeddings are a key part of many NLP pipelines. Finding good representations is essential for machine learning - without good representations, we can't fit models properly to our data. For some empirical justification that representations matter, we can look at computer vision. For some applications converting the color space from RGB to LAB increases the accuracy of deep neural networks [[^1]], even though it's the exact same data. 
 
@@ -183,9 +182,9 @@ There's a couple of ways I think one could improve performance here:
 
 This is kind of just a braindump of ideas. There were just a couple of interesting tidbits I wanted to write down (Computing the same-category targets matrix for example). 
 
-I think most of these ideas aren't necessarily bad, but not very interesting - they're just the simple extension of existing work, taking pieces here and there. However, I do think it was extremely helpful to essentially try a bunch of random stuff and hope it works. 
+I think most of these ideas aren't necessarily bad, but not very interesting - they're just the simple extension of existing work, taking pieces here and there. However, I do think it was extremely helpful to essentially try a bunch of random stuff and hope it works. I think I have a new appreciation for just how hard research is.
 
-Right now I'm working on a research idea involving cooccurrence matrices and contrastive learning that has it's roots in the work I've done here. It's looking a lot more promising/interesting than the stuff above. 
+Right now I'm working on a research idea involving cooccurrence matrices and contrastive learning that has it's roots in the work I've done here. It's looking a lot more promising/interesting than the stuff above, so fingers crossed.
 
 If you have any questions, comments, or corrections please reach out. 
 
