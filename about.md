@@ -4,12 +4,12 @@ permalink: /about/
 ---
 
 Hi there! I'm Jesse Cai, and this is my blog, where I write about my research in natural language processing and other interesting ideas in mathematics, computer science, and machine learning.
-Most of the posts I write here are technical in nature, although sometimes I do write more general personal posts.
+Most of what I write here is technical, but sometimes I talk about my experiences in industry/academia.
 
 Currently, my main research interest is how to leverage unlabeled but structured data to learn better sentence embeddings.
 I'm also interested in transfer learning, domain-adaptation approaches, and probabilistic models. 
 
-My goal here is to explain things simply, but comprehensively. Usually I try to give a mix of theoretical justification, implementation details, and empirical results, but some posts tend to skew one way or the other.
+My goal here is to explain things simply, but comprehensively. Usually I try to give a mix of math, code, and results, but some posts tend to skew one way or the other.
 However, I am often times unclear or flat out wrong, so please leave a PR if you notice anything amiss.
 
 If you're new here I'd recommend reading the following posts:
@@ -26,4 +26,4 @@ Prior to this I took a year off to join the data team at [Blend](https://blend.c
 
 I'm also currently looking for full-time roles starting 2020, so if you think I'd be a good fit for your team please reach out! (email is best)
 
-In my free time I like lifting, exploring nature, and making bad decision with good friends.
+In my free time I like lifting, exploring nature, and making bad decisions with good friends.
