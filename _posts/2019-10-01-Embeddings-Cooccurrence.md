@@ -2,7 +2,7 @@
 published: False
 layout: post
 tags: [machine-learning, nlp, research]
-title: Learning Embeddings from Cooccurrence Matrices
+title: Learning Embeddings from Cooccurence Matrices
 ---
 
 I've written a lot in the past about contrastive learning, in particular about QuickThoughts by Logeswaran and Lee. 
@@ -17,13 +17,45 @@ $$\prod_{s_i \in D}  P_\theta(s_{i+1} \mid s_i, D)$$
 
 
 This leads to good sentence as well as word embeddings.
+As a brief recap, this loss function is calculated by taking a row-wise KL between two matrices, the scores matrix and a targets matrix, 
+
+$$
+scores = \begin{bmatrix} 
+f(s_1) \\
+\vdots \\
+f(s_n) \\
+\end{bmatrix}
+\begin{bmatrix} 
+g(s_1) \dots g(s_n) \\
+\end{bmatrix} =
+\begin{bmatrix}
+f(s_1)^Tg_(s_1)  & \ldots & f(s_1)^Tg(s_n)\\
+\vdots  & \ddots & \\
+f(s_n)^Tg_(s_1)  & & f(s_n)^Tg(s_n) \\
+\end{bmatrix} \in \mathbb{R}^{n \times n}
+$$
+
+$$
+target = \begin{bmatrix} 
+0  & 1 &  \dots & 0 \\
+0  & \ddots & \ddots &  0 \\
+\vdots  & & & 1  \\
+0  &  &  &  0 \\
+\end{bmatrix} \in \mathbb{R}^{n \times n}
+$$
+
+The scores matrix gets normalzied to become a probability distribution.
+
+The general thought behind this can be summed up as follows: Sentences next to each other tend to be related to each other. 
 
 But this next sentence prediction that is used is really just a heurestic, so I thought I would take a look at other heurestics and see if I could find one that would work better. 
 
-I started by trying to use the document-document word cooccurence matrix, since intuitively sentences that share similar words are more likely to be similar to each other in meaning. 
+I started by trying to use the document-document word cooccurence matrix, the intuition being that sentences that share similar words are more likely to be similar to each other in meaning.  In partocular, instead of taking the KL divergence between the scores and targets matrix described above, I take the KLL divergence between 
+
 
 ## Document-Document cooccurence matrix
-This is a pairwise document $V \in \mathbb{Z}^{b \times b}$ where $b$ is the batch size and $V_{i,j} = $ the number words shared between $x_i$ and $x_j$.
+
+This is a matrix $V \in \mathbb{Z}^{b \times b}$ where $b$ is the batch size and $V_{i,j} = $ the number words shared between $s_i$ and $s_j$.
 
 There's a pretty quick and easy way to get the targets matrix in this case, by taking a binarized BOW encoding and dotting it with itself. 
 
@@ -33,7 +65,39 @@ This maps each sentence to a vector $s \in \mathbb{R}^{\lvert V \rvert}$ where $
 
 Doing this for each sentence in the minibatch yields a $M \in \mathbb{R}^{b \times \lvert V \rvert}$ where $b$ is the batch size. 
 
-This can be done with 
+It's probably helpful to see an example. Consider the sentences
+
+1. I like dogs.
+2. The dogs barked.
+3. Dogs like bones.
+
+
+
+$$ 
+
+Vocabulary = [\text{I}, \text{like}, \text{dogs}, \text{The}, \text{barked}, \text{bones}]
+
+$$
+
+and after taking the BOW encoding we have the matrix 
+
+$$
+BOW = \begin{bmatrix}
+    1 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 1 & 0 \\
+    0 & 1 & 1 & 0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+and taking the subsequent transpose and inner product we can get our targets matrix.
+
+$$
+targets = BOW(BOW^T) = \begin{bmatrix}
+    3 & 1 & 2 \\
+    1 & 3 & 1 \\
+    2 & 1 & 3 \\
+\end{bmatrix}
+$$
 
 ```python
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -47,8 +111,7 @@ def generate_cooccurence_counts(data, vectorizer):
 
 This also kind of gives us some intuition as to why this should give us a good document embeddings. 
 
-We're essentially finding some dense representation of the BOW vector of the term. 
-
+We're kind of finding a dense representation of the BOW vector of the term, but not quite. If we were really trying to find a dense representation we could take the L2 loss instead of the row-wise softmax. 
 
 This approach is similar to GloVe,  but with a couple of key difference (as far as I can tell)
 
@@ -58,9 +121,9 @@ That is, with GloVE I'm trying to find a dense representation explicitly that ca
 
 Obviously the whole KL-Div of the two softmax distributions is not the same as the L2 loss, but you get the general idea. 
 
-Just using this for the targets matrix actually doesn't leave to great performance
+Just using this for the targets matrix actually doesn't leave to great performance. 
 
-isn't quite as good because it's not as peaky, which I think makes the model kind of just output the same vector for all kinds of different things.
+I think it's because the distribution becomes quite smooth, which I think makes the model kind of just output the same vector for all kinds of different things.
 
 To do this I did some softmax temperature scaling so make the distribution more peaky.
 
@@ -79,8 +142,9 @@ def generate_cooccurence_counts(data, vectorizer):
     return targets
 ```
 
-One problem that I was running into here again when training was the smoothness of the target distribution.
+What this essentially does is take into acount the term frequency over the inverse document frequency of each term. 
 
+One problem that I was running into here again when training was the smoothness of the target distribution.
 
 To counteract this, I stopped minimizing the KL-divergence between the scaled TF-IDF matrix and scores matrix, and instead used the TF-IDF matrix as a heurestic to mine samples. 
 
@@ -91,6 +155,8 @@ targets = F.one_hot(indicies, num_classes=args.batch_size).float()
 ```
 
 This creates a one-hot vector where the index is 1 where the max TF-IDF score is. 
+
+
 
 To evaluate performance I trained a couple of QT models, all with a bidirectional GRU encoder and tried to see the results.
 

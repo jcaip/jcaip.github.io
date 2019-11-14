@@ -5,10 +5,9 @@ permalink: /about/
 
 Hi there!
 
-I'm Jesse Cai, and this is my blog, where I write about my research in natural language processing and other interesting ideas in mathematics, computer science, and machine learning.
-Most of what I write here is technical, but sometimes I talk about my experiences in industry/academia.
+I'm Jesse Cai, and this is my blog about NLP, machine learning, and other random things I find interesting. 
 
-If you're new here I'd recommend reading the following posts:
+If you want to get a feel for what I write about I'd recommend reading the following posts:
 - Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
 - [Distributed gradient descent](/Distbelief) in PyTorch
 - Constructing the [rational numbers](/Building-Q) visually
@@ -18,7 +17,7 @@ I'm currently a ML/NLP researcher at UCLA, where I'm part of [UCLA-NLP](http://w
 
 My main research interest is how to leverage unlabeled but structured data to learn better sentence embeddings.
 
-In layman's terms, I'm interested in finding a way to take a sentence and change it into a bunch of numbers ( a vector in $\mathbb{R}^n$), but in a way so that if you plotted sentences with similar meanings, they would be close to each other. In two dimensions it'd look something like this: 
+In layman's terms, I'm interested in finding a way to take a sentence and change it into a bunch of numbers ( a vector in $\mathbb{R}^n$), but in a way so that if you plotted sentences with similar meanings, they would be close to each other. 
 
 <img src="/images/ex.png" alt="example" width="400" class="center"/>
 
@@ -30,10 +29,9 @@ In actuality, changing the representation changes the hill rather than the ball,
 
 We want representations generalize well, so that they roll down *any* hill. To do this we need to train over a lot of data, but we're in luck - humans have created a huge amount of natural language data. This data is not labeled, but most of it is structured - into sentences, paragraphs, and books. I hope to exploit this structure as weak supervision in order to learn representations.
 
-I'm also interested in transfer learning, domain-adaptation approaches, and probabilistic models. 
+My other research interests include transfer learning, probabilistic models, and how to automate manual processes with machine learning. 
 
 Prior to this I took a year off to join the data team at [Blend](https://blend.com), where I used deep learning to identify app quality issues from NPS comments. Before that I interned at [JPL](https://www.jpl.nasa.gov/).
-
 
 In my free time I like lifting, exploring nature, and making bad decisions with good friends.
 
