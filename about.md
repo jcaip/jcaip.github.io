@@ -33,7 +33,7 @@ My other research interests include transfer learning, probabilistic models, and
 
 Prior to this I took a year off to join the data team at [Blend](https://blend.com), where I used deep learning to identify app quality issues from NPS comments. Before that I interned at [JPL](https://www.jpl.nasa.gov/).
 
-In my free time I like lifting, exploring nature, and making bad decisions with good friends.
+In my free time I like lifting, exploring nature, and eating tasty things.
 
 If you want to chat about anything feel free to reach out. 
 
