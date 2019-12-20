@@ -1,22 +1,25 @@
 ---
-published: False
+published: True
 layout: post
 tags: [machine-learning, nlp, research]
 title: Learning Embeddings from Cooccurence Matrices
 ---
 
-I've written a lot in the past about contrastive learning, in particular about QuickThoughts by Logeswaran and Lee. 
-
-I've been playing with a different way to mine semantically similar examples for contrastive learning. 
+I wanted to share a different way to learn sentence representations. 
 
 <!--more-->
 
-In the QT paper they find semantically similar and dissimilar examples by looking at the location of the sentences in the minibatch. 
+To learn sentence representations, we learn a function to convert a sentence to a vector. 
+
+This is useful because then you can use the vectors to do semantic search and stuff. 
+
+One way to learn this is to try and predict the next sentence.
 
 $$\prod_{s_i \in D}  P_\theta(s_{i+1} \mid s_i, D)$$
 
+In Quickthoughts, they find semantically similar and dissimilar examples by looking at the location of the sentences in the minibatch. 
 
-This leads to good sentence as well as word embeddings.
+
 As a brief recap, this loss function is calculated by taking a row-wise KL between two matrices, the scores matrix and a targets matrix, 
 
 $$
@@ -44,13 +47,13 @@ target = \begin{bmatrix}
 \end{bmatrix} \in \mathbb{R}^{n \times n}
 $$
 
-The scores matrix gets normalzied to become a probability distribution.
+The scores matrix gets normalized to become a probability distribution.
 
 The general thought behind this can be summed up as follows: Sentences next to each other tend to be related to each other. 
 
 But this next sentence prediction that is used is really just a heurestic, so I thought I would take a look at other heurestics and see if I could find one that would work better. 
 
-I started by trying to use the document-document word cooccurence matrix, the intuition being that sentences that share similar words are more likely to be similar to each other in meaning.  In partocular, instead of taking the KL divergence between the scores and targets matrix described above, I take the KLL divergence between 
+I started by trying to use the document-document word cooccurence matrix, the intuition being that sentences that share similar words are more likely to be similar to each other in meaning.
 
 
 ## Document-Document cooccurence matrix
