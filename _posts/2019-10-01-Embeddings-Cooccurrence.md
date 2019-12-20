@@ -13,14 +13,20 @@ To learn sentence representations, we learn a function to convert a sentence to 
 
 This is useful because then you can use the vectors to do semantic search and stuff. 
 
-One way to learn this is to try and predict the next sentence.
+## Next Sentence Prediction
+
+In Quickthoughts, they try to do this by trying to predict the next sentence. 
+QT assumes sentences that are next to each other tend to be related to each other. 
+
+This boils down to maximizing, where $D$ is our ordered corpus.
 
 $$\prod_{s_i \in D}  P_\theta(s_{i+1} \mid s_i, D)$$
 
-In Quickthoughts, they find semantically similar and dissimilar examples by looking at the location of the sentences in the minibatch. 
+We can model this probability distribution with two encoder networks, in this case, two BiLSTM networks $f, g$. 
 
+It's computationally too expensive to consider this for all pairs so instead we can just compute it along a minibatch
 
-As a brief recap, this loss function is calculated by taking a row-wise KL between two matrices, the scores matrix and a targets matrix, 
+For a given minibatch, the loss is simply the KL-divergence between the scores and targets matrix.
 
 $$
 scores = \begin{bmatrix} 
@@ -45,9 +51,28 @@ target = \begin{bmatrix}
 \vdots  & & & 1  \\
 0  &  &  &  0 \\
 \end{bmatrix} \in \mathbb{R}^{n \times n}
+
 $$
 
-The scores matrix gets normalized to become a probability distribution.
+
+The scores matrix gets normalized to become a probability distribution, so the loss becomes simply the KL divergence between these two distribtuions.
+
+$$
+loss = KL 
+\left(
+\begin{bmatrix}
+f(s_1)^Tg_(s_1)  & \ldots & f(s_1)^Tg(s_n)\\
+\vdots  & \ddots & \\
+f(s_n)^Tg_(s_1)  & & f(s_n)^Tg(s_n) \\
+\end{bmatrix}
+, \begin{bmatrix} 
+0  & 1 &  \dots & 0 \\
+0  & \ddots & \ddots &  0 \\
+\vdots  & & & 1  \\
+0  &  &  &  0 \\
+\end{bmatrix} 
+\right)
+$$
 
 The general thought behind this can be summed up as follows: Sentences next to each other tend to be related to each other. 
 
@@ -56,30 +81,25 @@ But this next sentence prediction that is used is really just a heurestic, so I 
 I started by trying to use the document-document word cooccurence matrix, the intuition being that sentences that share similar words are more likely to be similar to each other in meaning.
 
 
-## Document-Document cooccurence matrix
+## Document-Document Cooccurence Matrix
 
 This is a matrix $V \in \mathbb{Z}^{b \times b}$ where $b$ is the batch size and $V_{i,j} = $ the number words shared between $s_i$ and $s_j$.
 
 There's a pretty quick and easy way to get the targets matrix in this case, by taking a binarized BOW encoding and dotting it with itself. 
 
-We can get the targets matrix by taking the BOW encoding of every sentence. 
+The BOW encoding maps each sentence to a vector $s \in \mathbb{R}^{\lvert V \rvert}$ where $V$ is the vocabulary. This is a binary vector where $v_j = 1$  is in the sentence, and 0 otherwise. 
 
-This maps each sentence to a vector $s \in \mathbb{R}^{\lvert V \rvert}$ where $V$ is the vocabulary. This is a binary vector where $v_j = 1$  is in the sentence, and 0 otherwise. 
-
-Doing this for each sentence in the minibatch yields a $M \in \mathbb{R}^{b \times \lvert V \rvert}$ where $b$ is the batch size. 
-
-It's probably helpful to see an example. Consider the sentences
+For example, consider the sentences
 
 1. I like dogs.
 2. The dogs barked.
 3. Dogs like bones.
 
 
+The vocabulary is then 
 
 $$ 
-
 Vocabulary = [\text{I}, \text{like}, \text{dogs}, \text{The}, \text{barked}, \text{bones}]
-
 $$
 
 and after taking the BOW encoding we have the matrix 
@@ -92,7 +112,10 @@ BOW = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-and taking the subsequent transpose and inner product we can get our targets matrix.
+We can get the targets matrix by taking the BOW encoding of every sentence and taking the subsequent transpose and inner product we can get our targets matrix.
+
+Doing this for each sentence in the minibatch yields a $M \in \mathbb{R}^{b \times \lvert V \rvert}$ where $b$ is the batch size. 
+
 
 $$
 targets = BOW(BOW^T) = \begin{bmatrix}
@@ -100,6 +123,30 @@ targets = BOW(BOW^T) = \begin{bmatrix}
     1 & 3 & 1 \\
     2 & 1 & 3 \\
 \end{bmatrix}
+$$
+
+We can use softmax to turn this into a probability distribution. 
+
+As an aside I also tried just using the L2 loss between the two unnormalized matrices. 
+
+
+The new loss for each minibatch is then 
+
+$$
+loss = KL 
+\left(
+\begin{bmatrix}
+f(s_1)^Tg_(s_1)  & \ldots & f(s_1)^Tg(s_n)\\
+\vdots  & \ddots & \\
+f(s_n)^Tg_(s_1)  & & f(s_n)^Tg(s_n) \\
+\end{bmatrix}
+,  \begin{bmatrix}
+    3 & 1 & 2 \\
+    1 & 3 & 1 \\
+    2 & 1 & 3 \\
+\end{bmatrix}
+
+\right)
 $$
 
 ```python
@@ -147,6 +194,9 @@ def generate_cooccurence_counts(data, vectorizer):
 
 What this essentially does is take into acount the term frequency over the inverse document frequency of each term. 
 
+
+#### Binarized TFIDF Matrices 
+
 One problem that I was running into here again when training was the smoothness of the target distribution.
 
 To counteract this, I stopped minimizing the KL-divergence between the scaled TF-IDF matrix and scores matrix, and instead used the TF-IDF matrix as a heurestic to mine samples. 
@@ -159,11 +209,11 @@ targets = F.one_hot(indicies, num_classes=args.batch_size).float()
 
 This creates a one-hot vector where the index is 1 where the max TF-IDF score is. 
 
+## Results
 
+To evaluate performance I trained a couple of  models, all with a bidirectional GRU encoder and tried to see the results.
 
-To evaluate performance I trained a couple of QT models, all with a bidirectional GRU encoder and tried to see the results.
-
-### SentEval STS Spearman
+#### SentEval STS Spearman
 
 |                              | STS12 | STS13 | STS14 | STS15 | STS16 | SICKr | STSb | 
 |------------------------------|-------|-------|-------|-------|-------|-------|------|
@@ -172,7 +222,7 @@ To evaluate performance I trained a couple of QT models, all with a bidirectiona
 |TFIDF matrix (Temp=10)        | 0.395 | 0.307 | 0.396 | 0.461 | 0.405 | 0.730 | 0.674| 
 |binarized TFIDF               | 0.464 | 0.451 | 0.496 | 0.547 | 0.550 | N/A   | N/A  | 
 
-### SentEval Binary Classification Accuracy  
+#### SentEval Binary Classification Accuracy  
 
 |                              | MR    | CR    | MPQA  | SUBJ  | 
 |------------------------------|-------|-------|-------|-------|
@@ -181,8 +231,3 @@ To evaluate performance I trained a couple of QT models, all with a bidirectiona
 |TFIDF matrix (Temp=10)        | 63.16 | 71.47 | 77.62 | 82.73 | 
 |binarized TFIDF matrix        | 62.67 | 71.84 | 76.84 | 81.66 | 
 
-The binarized TFIDF performs much better on the STS evaluation. 
-
-
-I've talked about this quite a bit before but I was trying to use this to essentially fine-tune BERT and try and get a better document representation. 
-This didn't work at all, probably something to revisit. 
