@@ -7,11 +7,10 @@ title: BERT fine-tuning and Contrastive Learning
 
 So this summer I **officially** started doing research with UCLA-NLP. 
 
-Anyways I want to start writing more in general (I only have written two posts so far this year!), so I figure why not write about my research, which has mainly been on transfer/representation learning for NLP. 
+My research this summer has been mainly focused on sentence embeddings. That is finding a function that maps a sentence (for our purpose a sequence of tokens) $S = [1, 10, 15, \ldots 5, 6 ]$ to a vector $v \in \mathbb{R}^d$. 
 
 <!--more-->
 
-My research this summer has been mainly focused on sentence embeddings. That is finding a function that maps a sentence (for our purpose a sequence of tokens) $S = [1, 10, 15, \ldots 5, 6 ]$ to a vector $v \in \mathbb{R}^d$. 
 
 Sentence embeddings are a key part of many NLP pipelines. Finding good representations is essential for machine learning - without good representations, we can't fit models properly to our data. For some empirical justification that representations matter, we can look at computer vision. For some applications converting the color space from RGB to LAB increases the accuracy of deep neural networks [[^1]], even though it's the exact same data. 
 
