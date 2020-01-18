@@ -105,7 +105,7 @@ Of course, we also need to then calculate a targets matrix to compute a KL diver
 
 Ideally our targets matrix $T \in \mathbb{R}^{n \times n}$, where $n$ is the batch size ,  would be such that $$T_{i, j } = 1 $$ if $y_i == y_j$ and $0$ otherwise. Then we can take a row-wise softmax and KL divergence between the targets and encoding matrix to get our loss. (See the **Implementation Details** section [here](/Quickthoughts) for a more thorough explanation.)
 
-There's a pretty clever way to do this - Note that if we one hot encode our label, $y \in {0 \ldots n_cat}$, into $Y$, a one hot vector, we can see if two samples are in the same class by dotting the two one hot vectors together. 
+There's a pretty clever way to do this - Note that if we one hot encode our label, $y \in {0 \ldots n_{cat}}$, into $Y$, a one hot vector, we can see if two samples are in the same class by dotting the two one hot vectors together. 
 
 If the two vectors are the same, the dot product will be 1, however, if these labels are different then the one hot labels dotted together will be 0.
 

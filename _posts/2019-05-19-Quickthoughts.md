@@ -280,52 +280,12 @@ Irregardless I was curious wether altering the context size would have an impact
 
 To test this, I trained 4 QuickThoughts models, with a context size of 1, 2, 3, and 4 respectively. The accuracy on several different downstream classification tasks are shown below.
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border:none;border-color:#aaa;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;}
-.tg .tg-bq5v{font-size:28px;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-a8eg{font-size:28px;text-align:left;vertical-align:top}
-</style>
-<center>
-    <table class="tg">
-    <tr>
-        <th class="tg-bq5v"></th>
-        <th class="tg-bq5v">MR</th>
-        <th class="tg-bq5v">SUBJ</th>
-        <th class="tg-bq5v">CR</th>
-        <th class="tg-bq5v">MPQA</th>
-    </tr>
-    <tr>
-        <td class="tg-bq5v">k=1</td>
-        <td class="tg-bq5v">76.71</td>
-        <td class="tg-bq5v">91.74</td>
-        <td class="tg-bq5v"><span style="font-weight:bold">83.95</span></td>
-        <td class="tg-a8eg"><span style="font-weight:bold">88.61</span></td>
-    </tr>
-    <tr>
-        <td class="tg-bq5v">k=2</td>
-        <td class="tg-bq5v"><span style="font-weight:bold">77.11</span></td>
-        <td class="tg-bq5v">91.72</td>
-        <td class="tg-bq5v">83.84</td>
-        <td class="tg-bq5v">88.50</td>
-    </tr>
-    <tr>
-        <td class="tg-bq5v">k=3</td>
-        <td class="tg-bq5v">76.54</td>
-        <td class="tg-bq5v"><span style="font-weight:bold">92.18</span></td>
-        <td class="tg-bq5v">83.34</td>
-        <td class="tg-bq5v">88.45</td>
-    </tr>
-    <tr>
-        <td class="tg-bq5v">k=4</td>
-        <td class="tg-bq5v">76.46</td>
-        <td class="tg-bq5v">92.16</td>
-        <td class="tg-bq5v">82.76</td>
-        <td class="tg-bq5v">87.83</td>
-    </tr>
-    </table> 
-</center>
+|     | MR    | SUBJ  | CR    | MPQA  |
+|-----|-------|-------|-------|-------|
+| k=1 | 76.71 | 91.74 | **83.95** | **88.61** |
+| k=2 | **77.11** | 91.72 | 83.84 | 88.50 |
+| k=3 | 76.54 | **92.18** | 83.34 | 88.45 |
+| k=4 | 76.46 | 92.16 | 82.76 | 87.83 |
 
 The results here are pretty inconclusive. While MR and SUBJ accuracy both increase with a larger context size, CR and MPQA accuracy decrease.
 
