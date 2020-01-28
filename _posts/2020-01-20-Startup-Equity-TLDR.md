@@ -61,7 +61,7 @@ STARTUP finances this investment by issuing another 1M shares, which HardBank bu
 Now your 1% has been diluted to 0.5% but the valuation of the company has went from 1M to 10M so your options have increased in paper value from 10000 to 50000. You are happy. 
 
 Say later on in a year your company struggles a bit because blockchain is no longer hype and is acquired for 7M - You pull out your calculator and compute $0.005 \times 7M = 35000$.
-This means you're getting 35000 dollars right?
+So this means you're getting 35000 dollars right?
 
 No, the thing is you're not getting nearly that much. 
 
@@ -81,22 +81,21 @@ This is a bit of a contrived example, but hopefully it shows why down rounds are
 
 This can only happen if your company continues to grow bigger and bigger. If STARTUP is acquired for 100M instead of 7M then you do walk away with 500k pre-tax. 
 
-In the case of ASDF you're not factoring in the following things:
+When you assume you're getting 35k you're not taking into account the following:
 - money needed to exercise your options
-- perferred stock payout scheme
+- preferred stock payout scheme
 - short term capital gains tax
 
-I should say this is far from a comprehensive review of all the weird financial shit, but hopefully you can see some of the money that is lost when valuing stock options. 
-
-You can read more in depth here:
+I should say this is far from a comprehensive review of all the different , but hopefully you can see some of the hidden costs of stock options.
+I've linked a bunch of more comprehensive explanations below:
 - ASDF
 - ASDF
 - ASDF
 
 ## AngelList Data 
-OKay so what % of a company is good? The only place that puts cold hard numbers to this is Nivi's blog (who founded angellist. )
+So what is a good startup offer? 
 
-I also found this analysis from 2014 which is pretty good. 
+I found this analysis from 2014 which is pretty good. 
 
 But I wanted to see for myself, so I wanted to do a similar analysis. Unfortunately AngelList has since deprecated their API so instead I manually scrolled through ~370 job postings and copied over the company name, job title, company size, and salary and equity ranges. 
 
