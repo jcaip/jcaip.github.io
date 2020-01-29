@@ -43,3 +43,8 @@ data shapley can be computed efficiently for KNN.
 
 use dnn for feature then use knn
 
+1/28/2020
+SBM (n, p, W)
+n - number of vertices
+p - probability 
+
