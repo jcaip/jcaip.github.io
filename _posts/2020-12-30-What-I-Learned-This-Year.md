@@ -13,11 +13,9 @@ Some other guy proposed a different model of behavior - essential we build a heu
 
 New AI (deep learning) is more similar to this approach than old AI (expert systems). 
 
-Lo wrote a paper trying to use machine learning to predict when/if a person will panic sell. 
+Lo wrote a paper trying to use machine learning to predict when/if a person will panic sell, and he want's to use this to create personalized finance. 
 
-Want's to use this to create personalized finance. 
-
-I'm a little wall street shit at heart, so I was thinking -
+I'm a little money grubbing shit at heart, so I was thinking -
 
 Instead of predicting which stocks will go up, why not try to predict when people will panic. 
 
