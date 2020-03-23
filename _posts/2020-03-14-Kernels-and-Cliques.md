@@ -5,32 +5,84 @@ tags: [machine-learning, nlp, research]
 title: Kernels, Cliques, and Agglomerative Clustering
 ---
 
-This is about some interesting approach.
+
+
+
+Over the past couple of years, there's been a lot of work on learning better sentence representations. NLP has seen a revolution with the rise of BERT, transformers, and deep language models. 
+
+These approaches have effectively ushured in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
+
+However, while there's been a bunch of work about **learning** representations, there hasn't been as much work on **using** these representations. 
+
+In this post I describe a couple of algorithms that combine these dense transformer based encoders with exisiting work on community detection. 
 
 <!--more-->
 
-I've been working on a way to identify topics/trends in the news, but at a pretty granular level. 
+To be clear, by representations, I mean turning a sentence into a vector, but in a "meaningful" way. So that the semantic meaning of the sentence is directly tied to the vector. 
 
-Basically, given a large corpus of short, single-sentence documents (think chats, news headlines, ) how can we find "clusters" or topics in them?
+People use them as feature extractors, or add in a linear + softmax layer and then fine-tune the deep language model (BERT). 
 
-The way to do it now is BERT and then something like k-means, but this doesn't always work that well. It also precludes 
+Or people run k-means on the algorithms, which can work quite well. 
 
-## Kernels and Similarity Scores
+This is great, but I think you can do more with these deep neural representaitons.
 
-BERT has bad similarity scores, so we can use SentenceBERT - which is basically BERT but with better geometry. 
 
-We define our kernel as just $x^Tx$ and this seems to work well, if we use SentenceBERT. We could also use BERT literally as our kernel by feeding in the two sentences, and seeing the NSP result, but this is way too slow. 
+Basically, given a large text corpus of sentences/documents I seek to find topics/trends. 
 
-## Finding topics a naive approach:
+## Encoders, Feature Maps and Kernels 
 
-Compute similarity matrix, for all pairs in the dataset - this takes quadratic time. 
+Let's say we have a sentence encoder - a model $f$ that takes in a natural language sentence and turns it into a vector in $\mathbb{R}^n$. 
 
-then do some thresholding on the edge weights to get a graph and feed this into a run of the mill clique percolation algorithm
+We can actually think of this model $f$ as a feature map, which defines a kernel
 
-- Thresholding globally does not seem to work that well, 
-- Thresholding per node does seem to work well.  ()
+We can consider the mean BERT Embedding as our function $f$ and our kernel $k(x, x') = \langle f(x), f(x') \rangle$. 
+
+Actually though, this is not that great of a kernel, if you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better. 
+
+You can see this on STS results, and this is kind of expected - while BERT's training objective is MLM, there's no explicit need to make $f(x)^Tf(x)$ meaningful so long as you can predict a word in a sentence. 
+
+BERT basically only cares about being able to predict the masked token given the context - so it can act like a hashmap, essentially mapping different contexts to a different direction in the vectorspace. 
+
+But it can do this randomly - this is the key: It can map the context for dog and the context for cat in two random directions, and so long as it can tell them apart that's good. There's no need for it to map the context for dog and cat to be close. 
+
+But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions. And this is why BERT is a "bad kernel". 
+
+To get around this, we can use SentenceBERT, a BERT model fine tuned on NLI dataset. This basically gives us a good single-sentence representations . There's a lot of possible options here but for the sake of argument let's just say we have a very good function $f$ that gives a good feature map and kernel. 
+
+So given our very good encoder, and a large corpus of short, single-sentence documents (think chats, news headlines, ) how can we find "clusters" or topics in them?
+
+The way to do it now is BERT and then something like k-means, but this doesn't always work that well. First off, you have to pick a $k$. 
+
+## Finding topics a naive approach: Kernels and Cliques
+
+So given this kernel, we can compute the pairwise similarity for every single example - this takes quadratic time. 
+
+This pairwise similarity matrix actually also describes a weighted adjacency matrix. If we can parse the graph and find some structure then we might be able to identify topics this way. 
+
+But it's way too hard to work on this full weighted graph, so to make things easier, we do some thresholding to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges that exist are those between two sentences (datapoints) that are similar. 
+
+Let's think about what a maximal clique is in this graph- it's a set of datapoints (sentences) that are all similar to each other -> it's a topic in a high-level sense. This is exactly what we want.
+
+In another sense, we can take this graph and feed it to a clique percolation algorithm for community detection. This basically finds all maximal cliques in the graph and then "percolates" them upword until they are as large as possible. 
+
+Two cliques are percolated (merged) if they share all but 1 elements. 
+
+#### So how to threshold?
+
+I observe that the 
+
+- Thresholding globally does not seem to work that well - taking a 98% threshold
+- Thresholding per node does seem to work well.  (take top k)
+
+I mainly think this is due to the fact that a high similarity score does not imply relatedness but vice versa is true. So using ranking instead of a global comparison is beneficial. 
+
+So there ends up being nodes that are related to all of the other datapoints for some reason ???
+
+#### Results
 
 what we get out = very good clusters (emperically)
+
+## But is it web-scale?
 
 Okay but assume we have a large corpus - will this still work?
 
@@ -40,7 +92,15 @@ No because you won't be able to compute this big graph
 
 But now computing a pairwise similarity score is $O(n^2)$ and not very scalable at all. 
 
-So how do we get around this?
+also clique is exponential time, clique percolation is also exponential time. 
+
+
+As an aside, this is why people gave up on kernel methods back in the day - SVMs used to be hot, now their not, and the main reason is because for most kernel methods you do need to compute this pairwise similarity matrix - so it works great for small-medium datasets, but once people started getting into big data (teenage sex) it didn't work so well. 
+
+
+So in order to get a reasonably scalable algoritm we need to adress these two issues
+
+#### Computing the graph
 
 I'll make the claim for most real world data - the similarity matrix is actually quite sparse. 
 
@@ -52,17 +112,26 @@ I also have used a jank heurestic called sorting the embedding - this means noth
 
 So instead of computing all pairs of points, you just go along the diagonal
 
-This is good because it turns O(n^2) to O(n) 
+This is good because it turns O(n^2) to O(n), 
+
+#### Clique percolation
 
 But what about the clique percolation algorithm?
 
+If we use the topk ranking then 
+
 - O(d/3) but then d/3 becomes fixed so this is also linear time
 
+## Experimental scalability results + clusters
+
+### Other considerations
 Yay we did it - but now we may have the problem where:
 
 same topic, but at different times - should this be considered the same topic? 
 
 for some people yes but for some people no. 
+
+## Putting it all together
 
 So you run a heirarchical clustering algorithm on the clusters given by the clique community detection.
 
