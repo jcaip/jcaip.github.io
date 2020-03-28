@@ -5,43 +5,39 @@ published: True
 layout: post
 ---
 
-There was a time where I thought I knew how startup equity works. 
-I now realize I was wrong and in fact have never known how any of this shit works. 
+This posts consists of essentially two parts
+- A very short and general explanation on early employee stock options.
+- A small analysis of startup software engineering job offers in the San Francisco Bay Area. 
 
 <!--more-->
 
-This posts consists of essentially two parts
-- A very short and general explanation of stock options and some ways you will get fucked. 
-- A small analysis of startup software engineering job offers in the San Francisco Bay Area. 
+# Early Employee Stock Options
 
-## Options, Vesting, Exiting and Taxes
+## Options, Vesting
 
 There are two main types of stock options: ISOs and RSUs. 
 
-If you get RSUs it means your startup is a "startup" in that it's still private, but it's probably fucking massive. (Think Uber, AirBNB, etc.)
-So I'm not going to talk about them that much, since this is really focused on actual startups. 
+If you get RSUs it means your startup is late stage (think Uber, Airbnb). 
 
-An option allows you to buy a share of stock at your **strike price**, which is usually much lower than the actual share price. When you exercise the option you pay the strike price and get a share of stock back.
+An option allows you to buy a share of stock at your **strike price**, which is usually much lower than the actual share price. 
+Companies do not give you all your options at once, they **vest** over a period of time. The most common scheme is vesting over 4 years with a one year cliff. 
 
-Companies do not give you all your options at once, they **vest** over a period of time. The most common scheme I've seen is vesting over 4 years monthly with a one year cliff. 
+This means that you get 0 options until you hit one-year from your starting date, upon which you get $\frac{1}{4}$ of your promised options. After that you get some options every month until the four years are up and you've received all your options. 
 
-This means that you get 0 options until you hit one-year from your starting date, upon which you get $\frac{1}{4}$ of your promised options. After that you get another bit of options every month until the four years are up and you've received all your options. 
+Startups always frame offers as "$n$ shares vested four years". One of the first things you should figure out is exactly how many shares outstanding there are, so you can figure out what % of the company they are offering. 
 
-For some reason startups always frame offers as "$n$ shares vested four years". One of the first things you should figure out is exactly how many shares outstanding there are, so you can figure out what % of the company they are offering. 
-
+## Exiting and Taxes
 One thing to keep in mind: Startup shares are worth zero until they're worth something. 
 
 A share, like any stock is only worth what other people are willing to pay for it. There are some markets for early startup stock but by and large, these are a very illiquid asset - you usually only can cash out if the startup is acquired or IPOs.
 
-If you ever leave the company, your options usually expire after 90 days. This means that you'll need to either buy them by then or lose them. 
+If you ever leave the company, your options usually expire after 90 days. This means that you'll need to either buy them by then or relinquish them. 
 
 If you exercise your options and then sell them again within the year, you'll be charged short term capital gains tax on your return, which is currently 37%.
 
 Otherwise if it's longer than a year before you exercise and sell you'll be charged long term capital gains tax.  This is much lower - the highest bracket (it's progressive like income tax) is 20%.
 
-The American tax code is so complicated that there's something else called the AMT. Basically you need to pay at least x% in taxes, so if you negotiated very well and made a bunch of money when you sell your stock then you may be taxed under the AMT rather than by the normal tax brackets. 
-
-But again this **usually** only  matters if you make a lot of money, and if that's the case you should really just get a CPA. 
+The American tax code is so complicated that there's something else called the AMT. Basically you need to pay at least x% in taxes, so if you make a bunch of money when you sell your stock then you may be taxed under the AMT rather than by the normal tax brackets. 
 
 ## Dilution and Preferred vs. Common Stock
 
@@ -53,7 +49,8 @@ When companies issue new stock for financing, they can issue either common stock
 
 Essentially they get the option to either have their investment equity or their investment back (or some multiple). 
 
-#### Real World Example
+
+### Real World Example
 Let's consider a concrete example: 
 
 Say STARTUP offers you 10000 shares out of a total of 1M shares. For simplicity we'll say the strike price is 1 dollar and is equal to the current share price, making the current valuation of STARTUP 1M. 
@@ -62,7 +59,11 @@ This means you have 1% of STARTUP or a nominal 10000 dollars.
 
 Let's say STARTUP releases a new blockchain based iced tea and this peaks the interest of HardBank, a VC firm.
 
-STARTUP finances this investment by issuing another 1M shares, which HardBank buys at 5 dollars a share.
+STARTUP finances this investment (Series A) by issuing another 1M shares, which HardBank buys at 5 dollars a share.
+
+This puts the company valuation at (5 a share * 2M shares) = 10M. 
+
+### Scenario A 
 
 Say later on in a year your company struggles a bit because blockchain is no longer hype and is acquired for 7M - You pull out your calculator and compute $0.01 \times 7M = 70000$.
 So this means you're getting 70000 dollars right?
@@ -83,22 +84,16 @@ So you get 0.005 * 2M or 20000. But you need to exercise your options to for a d
 
 And you have to pay short term capital gains tax on that so you walk away with ~6k. 
 
-This is a bit of a contrived example, but hopefully it shows why down rounds are so bad. The only time when you get the full acquisition value * equity percentage is if all the VC's choose to get their shares instead of their investment (or investment * multiple) back. 
+This is a bit of a contrived example, but hopefully it shows why down rounds are so bad. The only time when you get the full acquisition value * equity percentage is if all the perferred investors (VCs) choose to get their shares instead of their investment (or investment * multiple) back. 
 
 This can only happen if your company continues to grow bigger and bigger. If STARTUP is acquired for 100M instead of 7M then you do walk away with 500k pre-tax. 
 
-When you assume you're getting 35k you're not taking into account the following:
-- dilution
-- money needed to exercise your options
-- preferred stock payout scheme
-- short term capital gains tax
+### Scenario B
+But suppose STARTUP does really well and get's acquired for 100M. 
 
-I should say this is far from a comprehensive review of all the different , but hopefully you can see some of the hidden costs of stock options.
-I've linked a bunch of more comprehensive explanations below:
+Then in this case, the perferred 
 
-## AngelList Data 
-So what is a good startup offer? 
-
+# AngelList Data Analysis
 I found this analysis from 2014 which is pretty good. 
 
 But I wanted to see for myself, so I wanted to do a similar analysis. Unfortunately AngelList has since deprecated their API so instead I manually scrolled through ~370 job postings and copied over the company name, job title, company size, and salary and equity ranges. 
