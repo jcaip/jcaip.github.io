@@ -15,23 +15,9 @@ If you want to get a feel for what I write about I'd recommend reading the follo
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
 
-## About Me
+I went to UCLA (Go Bruins!) where I used to do NLP research on representation learning.
 
-I do research as part of [UCLA-NLP](http://web.cs.ucla.edu/~kwchang/) here at UCLA.
-
-I'm interested in representation and transfer learning in NLP, new approaches to inference on sentence/word vectors, and automating tedious tasks with machine learning. 
-
-My main research interest has been how to leverage unlabeled but structured data to learn better sentence embeddings.
-
-<img src="/images/ex.png" alt="example" width="300" class="center"/>
-
-In layman's terms, I tried to find a way to take a sentence and change it into a bunch of numbers ( a vector in $\mathbb{R}^n$), but in a way so that if you plotted sentences with similar meanings, they would be close to each other. 
-
-Machine learning is fundamentally a combination of **representation** and **optimization**, so having representations that make our optimization problems easier is important. 
-
-I have a mix of industry and academia experience. 
-
-I took some time off school in 2017-18 to join the data team at [Blend](https://blend.com), where I used deep learning to identify app quality issues from NPS comments. Before that I used to intern at [JPL](https://www.jpl.nasa.gov/).
+I'm currently a ML Engineer at [Cultivate](https://trycultivate.com/). 
 
 In my free time I like lifting, exploring nature, and eating tasty things.
 
