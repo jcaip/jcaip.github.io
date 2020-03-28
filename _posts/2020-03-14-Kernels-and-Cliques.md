@@ -5,8 +5,6 @@ tags: [machine-learning, nlp, research]
 title: Kernels and Cliques 
 ---
 
-
-
 Over the past couple of years, there's been a lot of work on representation learning in NLP. We've seen a revolution with the rise of BERT, transformers, and deep language models. 
 
 These approaches have ushured in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
