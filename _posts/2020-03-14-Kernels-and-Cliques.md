@@ -2,40 +2,43 @@
 published: True
 layout: post
 tags: [machine-learning, nlp, research]
-title: Kernels, Cliques, and Agglomerative Clustering
+title: Kernels and Cliques 
 ---
 
 
 
+Over the past couple of years, there's been a lot of work on representation learning in NLP. We've seen a revolution with the rise of BERT, transformers, and deep language models. 
 
-Over the past couple of years, there's been a lot of work on learning better sentence representations. NLP has seen a revolution with the rise of BERT, transformers, and deep language models. 
-
-These approaches have effectively ushured in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
+These approaches have ushured in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
 
 However, while there's been a bunch of work about **learning** representations, there hasn't been as much work on **using** these representations. 
 
-In this post I describe a couple of algorithms that combine these dense transformer based encoders with exisiting work on community detection. 
+In this post I describe a couple of algorithms that combine these dense transformer based encoders with existing work on community detection. 
 
 <!--more-->
 
-To be clear, by representations, I mean turning a sentence into a vector, but in a "meaningful" way. So that the semantic meaning of the sentence is directly tied to the vector. 
+
+By representations, I mean a sentence into a vector, but in a "meaningful" way. So that the semantic meaning of the sentence is directly tied to the direction of the vector. 
 
 People use them as feature extractors, or add in a linear + softmax layer and then fine-tune the deep language model (BERT). 
 
-Or people run k-means on the algorithms, which can work quite well. 
+Or people run k-means on the embeddings, which can work quite well. 
 
-This is great, but I think you can do more with these deep neural representaitons.
 
+## Why representations matter and how they differ
+
+In particular, I think that different representations are suited for different tasks. Some tasks may expose some representations as inadequate, while other tasks may not distinguish between different representations. 
 
 Basically, given a large text corpus of sentences/documents I seek to find topics/trends. 
+
 
 ## Encoders, Feature Maps and Kernels 
 
 Let's say we have a sentence encoder - a model $f$ that takes in a natural language sentence and turns it into a vector in $\mathbb{R}^n$. 
 
-We can actually think of this model $f$ as a feature map, which defines a kernel
+We can actually think of this model $f$ as a feature map, which in turn defines a kernel. 
 
-We can consider the mean BERT Embedding as our function $f$ and our kernel $k(x, x') = \langle f(x), f(x') \rangle$. 
+We can consider $f$ as finding the mean BERT embedding and our kernel $k(x, x') = \langle f(x), f(x') \rangle$. 
 
 Actually though, this is not that great of a kernel, if you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better. 
 
@@ -47,11 +50,13 @@ But it can do this randomly - this is the key: It can map the context for dog an
 
 But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions. And this is why BERT is a "bad kernel". 
 
-To get around this, we can use SentenceBERT, a BERT model fine tuned on NLI dataset. This basically gives us a good single-sentence representations . There's a lot of possible options here but for the sake of argument let's just say we have a very good function $f$ that gives a good feature map and kernel. 
+To get around this, we can use SentenceBERT, a BERT model fine tuned on NLI dataset. This basically gives us a good single-sentence representations.
+
+There's a lot of possible options here but for the sake of argument let's just say we have a very good function $f$ that gives a good feature map and kernel. 
 
 So given our very good encoder, and a large corpus of short, single-sentence documents (think chats, news headlines, ) how can we find "clusters" or topics in them?
 
-The way to do it now is BERT and then something like k-means, but this doesn't always work that well. First off, you have to pick a $k$. 
+The way to do it now is BERT and then something like k-means, but this doesn't always work that well. 
 
 ## Finding topics a naive approach: Kernels and Cliques
 
@@ -63,7 +68,7 @@ But it's way too hard to work on this full weighted graph, so to make things eas
 
 Let's think about what a maximal clique is in this graph- it's a set of datapoints (sentences) that are all similar to each other -> it's a topic in a high-level sense. This is exactly what we want.
 
-In another sense, we can take this graph and feed it to a clique percolation algorithm for community detection. This basically finds all maximal cliques in the graph and then "percolates" them upword until they are as large as possible. 
+In another sense, we can take this graph and feed it to a clique percolation algorithm for community detection. This basically finds all maximal cliques in the graph and then "percolates" them upward until they are as large as possible. 
 
 Two cliques are percolated (merged) if they share all but 1 elements. 
 
@@ -82,6 +87,8 @@ So there ends up being nodes that are related to all of the other datapoints for
 
 what we get out = very good clusters (emperically)
 
+We can see this on the Jepoardy dataset
+
 ## But is it web-scale?
 
 Okay but assume we have a large corpus - will this still work?
@@ -94,9 +101,7 @@ But now computing a pairwise similarity score is $O(n^2)$ and not very scalable 
 
 also clique is exponential time, clique percolation is also exponential time. 
 
-
 As an aside, this is why people gave up on kernel methods back in the day - SVMs used to be hot, now their not, and the main reason is because for most kernel methods you do need to compute this pairwise similarity matrix - so it works great for small-medium datasets, but once people started getting into big data (teenage sex) it didn't work so well. 
-
 
 So in order to get a reasonably scalable algoritm we need to adress these two issues
 
@@ -139,8 +144,6 @@ Basically what you do can be thought of like this
 
 1. Compute pairwise similarity score fat diagonal
 2. Run clique percolation algorithm to get clusters/seed
-3. Run algomerative clustering to merge in similar clusters (if you want to).
-
 
 Why is this better than k-means on feature mappings: 
 - No picking k! (Actually this is not true, there are still hyperparameters to tune)
