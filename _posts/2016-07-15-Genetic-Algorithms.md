@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-tags: [artificial-intelligence, optimization]
+tags: [optimization]
 images:
 
     - url: /images/gen_alg/example.png

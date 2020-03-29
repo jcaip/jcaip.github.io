@@ -1,5 +1,5 @@
 ---
-tags: [optimization, artificial-intelligence]
+tags: [optimization]
 images:
 
     - url: http://mathworld.wolfram.com/images/eps-gif/VertexColoring_750.gif 

@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [probabilistic-models, artificial-intelligence]
+tags: [probabilistic-models]
 ---
 We handled uncertainty before via **belief states**. However, when interperting partial sensor information, belief states create a huge number of states. This leads to the **qualification** problem. 
 

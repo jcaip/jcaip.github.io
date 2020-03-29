@@ -2,7 +2,7 @@
 layout: post
 title: Artificial Intelligence 
 
-tags: [artificial-intelligence]
+tags: [misc]
 ---
 
 #### Turing Test

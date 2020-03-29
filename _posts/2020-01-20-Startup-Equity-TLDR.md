@@ -1,56 +1,55 @@
 ---
-title: Startup Equity Primer + SF Software Engineer Offer Data
-tags: [misc, non-technical]
+title: Startup Equity Primer
+tags: [startups]
 published: True
 layout: post
 ---
 
-This posts consists of essentially two parts
-- A very short and general explanation on early employee stock options.
-- A small analysis of startup software engineering job offers in the San Francisco Bay Area. 
-
+A short explanation of some common concepts and an example.
 <!--more-->
 
-# Early Employee Stock Options
-
-## Options, Vesting
+## Options and Vesting
 
 There are two main types of stock options: ISOs and RSUs. 
 
-If you get RSUs it means your startup is late stage (think Uber, Airbnb). 
+Usually if you get RSUs it means your startup is late stage (think Uber, Airbnb), most early-stage employees receive ISOs. 
 
-An option allows you to buy a share of stock at your **strike price**, which is usually much lower than the actual share price. 
+These options allow you to buy a share of stock at your **strike price**, which is usually much lower than the actual share price. It's basically a contract allowing you to purchase stock at a reduced price. 
+
 Companies do not give you all your options at once, they **vest** over a period of time. The most common scheme is vesting over 4 years with a one year cliff. 
 
-This means that you get 0 options until you hit one-year from your starting date, upon which you get $\frac{1}{4}$ of your promised options. After that you get some options every month until the four years are up and you've received all your options. 
+This means that you get 0 options until you hit one-year from your starting date, upon which you get $\frac{12}{48}$ of your promised options. After that you get $\frac{1}{48}$ of your options every month until you've received all your options. 
 
-Startups always frame offers as "$n$ shares vested four years". One of the first things you should figure out is exactly how many shares outstanding there are, so you can figure out what % of the company they are offering. 
+The equity in offers is always structured as "$n$ shares", versus % of the company. So one of the first things you when evaluating an offer is try to figure out what % they are granting you. 
+
+The general idea of startup options is that you can buy at your strike price and sell that stock at the market price (buy low sell high) to make money. 
+
+## Dilution and Preferred vs. Common Stock 
+
+Companies raise money by issuing stock, which VCs then buy.  Dilution occurs when new stock is issued as part of financing, which increase the overall total number of shares and reduces your relative %. 
+
+However, ideally each following round also raises the valuation, so the stock price should go up too and your net benefit should be positive. 
+
+From what I can tell you can expect 10-15% dilution from each round to the next. 
+
+Companies can issue either common stock (what you get) or preferred stock (what investors get). 
+
+In the event of an exit preferred stockholders get the option to either have their investment equity or their investment back (or some multiple), before the common stockholders. 
 
 ## Exiting and Taxes
-One thing to keep in mind: Startup shares are worth zero until they're worth something. 
+One thing to keep in mind: Startup shares are pretty illiquid. 
 
-A share, like any stock is only worth what other people are willing to pay for it. There are some markets for early startup stock but by and large, these are a very illiquid asset - you usually only can cash out if the startup is acquired or IPOs.
+A share, like any stock is only worth what other people are willing to pay for it. There are some markets for early startup stock but by and large, these are a very illiquid asset - you usually can only cash out if the startup is acquired or IPOs.
 
-If you ever leave the company, your options usually expire after 90 days. This means that you'll need to either buy them by then or relinquish them. 
+If you ever leave the company, your options usually expire after 90 days. This means that you'll need to either buy them (convert them into shares) by then or give them up. 
 
-If you exercise your options and then sell them again within the year, you'll be charged short term capital gains tax on your return, which is currently 37%.
+If you buy your options and then sell them within one year, you'll be charged short term capital gains tax on your return, which is currently 37%.
 
-Otherwise if it's longer than a year before you exercise and sell you'll be charged long term capital gains tax.  This is much lower - the highest bracket (it's progressive like income tax) is 20%.
+Otherwise if it's longer than a year before when you buy and sell you'll be charged long term capital gains tax.  This is much lower - the highest bracket (it's progressive like income tax) is 20%.
 
-The American tax code is so complicated that there's something else called the AMT. Basically you need to pay at least x% in taxes, so if you make a bunch of money when you sell your stock then you may be taxed under the AMT rather than by the normal tax brackets. 
+The American tax code is so complicated that there's something else called the Alternative Minimum Tax. Basically you need to pay at least x% in taxes, so if you make a bunch of money when you sell your stock then you may be taxed under the AMT rather than by the normal tax brackets. 
 
-## Dilution and Preferred vs. Common Stock
-
-Dilution occurs when new stock is issued as part of financing. Basically since there's more stock, the relative value of your options decreases. Companies usually issue new stock when they get new funding. 
-
-But in theory, companies grow more valuable over time, so when they raise capital the stock price should go up too, so you benefit as well. 
-
-When companies issue new stock for financing, they can issue either common stock (what you get) or preferred stock (what investors get). Preferred stock allows the investor to recuperate their investment or a multiple of it upon an exit event. 
-
-Essentially they get the option to either have their investment equity or their investment back (or some multiple). 
-
-
-### Real World Example
+## Real World Example
 Let's consider a concrete example: 
 
 Say STARTUP offers you 10000 shares out of a total of 1M shares. For simplicity we'll say the strike price is 1 dollar and is equal to the current share price, making the current valuation of STARTUP 1M. 
@@ -63,7 +62,7 @@ STARTUP finances this investment (Series A) by issuing another 1M shares, which 
 
 This puts the company valuation at (5 a share * 2M shares) = 10M. 
 
-### Scenario A 
+#### Scenario A 
 
 Say later on in a year your company struggles a bit because blockchain is no longer hype and is acquired for 7M - You pull out your calculator and compute $0.01 \times 7M = 70000$.
 So this means you're getting 70000 dollars right?
@@ -88,53 +87,8 @@ This is a bit of a contrived example, but hopefully it shows why down rounds are
 
 This can only happen if your company continues to grow bigger and bigger. If STARTUP is acquired for 100M instead of 7M then you do walk away with 500k pre-tax. 
 
-### Scenario B
+#### Scenario B
 But suppose STARTUP does really well and get's acquired for 100M. 
 
 Then in this case, the perferred 
 
-# AngelList Data Analysis
-I found this analysis from 2014 which is pretty good. 
-
-But I wanted to see for myself, so I wanted to do a similar analysis. Unfortunately AngelList has since deprecated their API so instead I manually scrolled through ~370 job postings and copied over the company name, job title, company size, and salary and equity ranges. 
-
-This was very painful and took me like 3 hours. 
-
-#### Salary and Equity for Different Roles
-![salary_by_title](/images/startup/salary_by_title.png)
-
-![equity_by_title](/images/startup/equity_by_title.png)
-
-Basically EM's get paid bank, but this kind of makes sense - the only startups that are trying to hire engineering managers should be quite large. 
-Data Engineers and Devops Engineers see to have the highest salary but this may just be some noise. I was a bit generous with applying the devops engineer label - I catagorized stuff like platform engineer into devops engineer which may have introduced some bias. 
-
-I also broke down these numbers for senior roles. This kind of explains why the average data engineering salary is so high - most data engineering roles are senior roles. 
-
-On average, it looks like Senior roles offer 20k + salary. It's hard to spot a trend amongst senior roles in equity data. 
-
-#### Salary and Equity for Different Roles (Segmented by Senior)
-![senior_salary_by_title](/images/startup/senior_salary_by_title.png)
-
-![senior_equity_by_title](/images/startup/senior_equity_by_title.png)
-
-![senior](/images/startup/senior.png)
-
-#### Salary and Equity for Different Sizes
-
-Finally I looked on the effect size has on salary/equity
-
-![salary_by_size](/images/startup/salary_by_size.png) ![equity_by_size](/images/startup/equity_by_size.png)
-
-No surprise here - the smaller the company, the less money the offer on average and the more equity they offer on average. There's a huge dropoff in equity when you join even a moderately larger company.
-
-
-#### Salary vs. Equity
-Lastly I tried to see if there was a correlation between salary offered and equity offered. Equity and salary are usually presented as two sides of the coin - you give up salary to get equity and vice versa. 
-
-But from the data it's very difficult to reach that conclusion. 
-
-![correlation](/images/startup/salary_vs_equity.png)
-
-The full data can be found [here]() and you can see the code / notebook I used to analyze the data [here](). 
-
-The notebook has a couple of tables that are probably more informative than these graphs. 

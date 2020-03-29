@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [algorithms, artificial-intelligence]
+tags: [algorithms]
 
 ---
 Constraint satisfication is similar to search problems. You can check out a solver I wrote [here](https://jcaip.github.io/Constraint-Satisfaction-Solver/)
