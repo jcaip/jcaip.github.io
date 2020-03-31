@@ -5,6 +5,8 @@ published: True
 layout: post
 ---
 
+This is a short explanation of early employee stock options. 
+
 <!--more-->
 
 ## Options and Vesting
