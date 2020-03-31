@@ -7,6 +7,7 @@ layout: post
 
 This is a short explanation of early employee stock options. 
 
+
 <!--more-->
 
 ## Options and Vesting
@@ -99,4 +100,4 @@ You still need to exercise your options for a dollar so you're looking at a (20-
 
 It's interesting to note that in Scenario B the company sold for 6x than in Company A, yet your recieve 19x the net profit in Scenario B, largely due to the existing financing/cap structure. Long term vs short term capital gains tax could make this difference more pronounced. 
 
-Hope you found this helpful. If it helps you can find a analysis of SF SWE offer data [here](/).
+Hope you found this helpful. If it helps you can find a analysis of SF SWE offer data [here](/Who-gets-paid-what-in-VC-wonderland).

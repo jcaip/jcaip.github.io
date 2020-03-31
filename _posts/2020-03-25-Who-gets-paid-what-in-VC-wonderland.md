@@ -7,11 +7,13 @@ title: SF Software Engineer Startup Offer Data
 
 A look at who gets paid what in San Francisco. 
 
+This is a follow up to an earlier post on [startup equity](/Startup-Equity-TLDR)
+
 <!--more-->
 
 I was researching job offers for startups in San Francisco, and wanted to get some real data. 
 
-I found this analysis from 2014 which is pretty good, but is a bit old. 
+I found [this analysis](https://www.codingvc.com/analyzing-angellist-job-postings-part-2-salary-and-equity-benchmarks) from 2014 which is pretty good, but is a bit old. 
 
 Unfortunately AngelList has since deprecated their API so instead I manually scrolled through ~370 job postings and copied over the company name, job title, company size, and salary and equity ranges. I restricted companies to those strictly in SF. 
 
