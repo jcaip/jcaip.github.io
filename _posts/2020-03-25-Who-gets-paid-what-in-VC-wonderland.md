@@ -2,7 +2,7 @@
 published: True
 layout: post
 tags: [startups]
-title: SF Software Engineer Startup Offer Data
+title: SF Software Engineer Startup Job Data
 ---
 
 A look at who gets paid what in San Francisco. 
@@ -16,6 +16,8 @@ I was researching job offers for startups in San Francisco, and wanted to get so
 I found [this analysis](https://www.codingvc.com/analyzing-angellist-job-postings-part-2-salary-and-equity-benchmarks) from 2014 which is pretty good, but is a bit old. 
 
 Unfortunately AngelList has since deprecated their API so instead I manually scrolled through ~370 job postings and copied over the company name, job title, company size, and salary and equity ranges. I restricted companies to those strictly in SF. 
+
+Quick note - this is just raw job posting data, and may not be reflective on actual offers. 
 
 ### Salary and Equity for Different Roles
 
@@ -81,6 +83,6 @@ It's quite hard to see a precise inverse correlation between the two.
 So it looks like if you want a lot of equity you need to be one of the first few hires for startups. 
 Salary increases and equity decreases with size, and being a senior engineer adds about 20k on average. 
 
-Given the ratio of senior engineers to new engineers, it definitely seems like there are more job expected. 
+There seems to be more job postings for senior engineers than I would have expected, but senior talent is something that's hard to find.
 
 Hope you find this helpful. 

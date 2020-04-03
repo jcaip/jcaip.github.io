@@ -14,10 +14,10 @@ If your new here I'd recommend reading the following posts:
 - Constructing the [rational numbers](/Building-Q) visually
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
-I'm currently a ML Engineer at [Cultivate](https://trycultivate.com/). 
+I currently work as a machine learning engineer at [Cultivate](https://trycultivate.com/). 
 
-I graduated from UCLA where I used to do NLP research on representation learning.
+I graduated from UCLA where I used to do NLP research on representation learning with Kai-Wei Chang.
 
 In my free time I like lifting, exploring nature, and eating tasty things.
 
-If you want to chat about anything feel free to reach out or email me. 
+Please feel free to reach out or email me if you want to chat about anything.
