@@ -98,6 +98,6 @@ So after consulting taking the 20M, there's still 20M left for the common shareh
 
 You still need to exercise your options for a dollar so you're looking at a (20-1)(10000) = 190000 net profit. 
 
-It's interesting to note that in Scenario B the company sold for 6x than in Company A, yet your recieve 19x the net profit in Scenario B, largely due to the existing financing/cap structure. Long term vs short term capital gains tax could make this difference more pronounced. 
+It's interesting to note that in Scenario B the company sold for 6x than in Company A, yet you recieve 19x the profit in Scenario B, largely due to the existing financing/cap structure. Long term vs short term capital gains tax could make this difference more pronounced. 
 
 Hope you found this helpful. If it helps you can find a analysis of SF SWE offer data [here](/Who-gets-paid-what-in-VC-wonderland).
