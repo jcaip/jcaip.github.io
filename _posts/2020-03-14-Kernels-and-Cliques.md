@@ -20,13 +20,9 @@ In this post I describe a couple of ideas that combine transformer based encoder
 
 <!--more-->
 
-### Some Background
-
-Let's say we have an encoder $f$ that maps a sentence into a vector, but in a "meaningful" way. So that the semantic meaning of the sentence is directly tied to the direction of the vector. 
-
 Then for some text classification task, we add a linear and softmax layer on top of the encoder and train end-to-end to fine-tune the model. 
 
-This is a very straightforward and effective way to for supervised learning, but how can we use them for unsupervised learning?
+This is a very straightforward and effective way to use representations for supervised learning, but how about for unsupervised learning? 
 
 One idea is to run k-means on the encoded vectors.
 
@@ -38,9 +34,11 @@ We can think of $f$ as a feature map, which defines a kernel
 
 $$k(x, x') = \langle f(x), f(x') \rangle$$ 
 
+
+
 So what's a good choice for $f$?
 
-A straightforward approach seems to be taking the mean BERT embedding as $f$. 
+Taking the mean BERT embedding as $f$ seems like a traightforward approach.
 
 But this is actually a pretty bad kernel. If you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better on STS tasks.
 
