@@ -3,105 +3,114 @@ published: False
 layout: post
 tags: [machine-learning, nlp, research]
 title: Kernels and Cliques 
+
+images:
+    - url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Illustration_of_overlapping_communities.svg/1920px-Illustration_of_overlapping_communities.svg.png
+    - alt: Clique
+    - title: Clique
 ---
 
 Over the past couple of years, there's been a lot of work on representation learning in NLP. We've seen a revolution with the rise of BERT, transformers, and deep language models. 
 
-These approaches have ushured in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
+These approaches have ushered in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
 
 However, while there's been a bunch of work about **learning** representations, there hasn't been as much work on **using** these representations. 
 
-In this post I describe a couple of algorithms that combine these dense transformer based encoders with existing work on community detection. 
+In this post I describe a couple of ideas that combine transformer based encoders with existing work on community detection. 
 
 <!--more-->
 
+Then for some text classification task, we add a linear and softmax layer on top of the encoder and train end-to-end to fine-tune the model. 
 
-By representations, I mean a sentence into a vector, but in a "meaningful" way. So that the semantic meaning of the sentence is directly tied to the direction of the vector. 
+This is a very straightforward and effective way to use representations for supervised learning, but how about for unsupervised learning? 
 
-People use them as feature extractors, or add in a linear + softmax layer and then fine-tune the deep language model (BERT). 
-
-Or people run k-means on the embeddings, which can work quite well. 
-
-
-## Why representations matter and how they differ
-
-In particular, I think that different representations are suited for different tasks. Some tasks may expose some representations as inadequate, while other tasks may not distinguish between different representations. 
-
-Basically, given a large text corpus of sentences/documents I seek to find topics/trends. 
-
+One idea is to run k-means on the encoded vectors.
 
 ## Encoders, Feature Maps and Kernels 
 
-Let's say we have a sentence encoder - a model $f$ that takes in a natural language sentence and turns it into a vector in $\mathbb{R}^n$. 
+Let's say we have a sentence encoder $f$ that takes in a natural language sentence and turns it into a vector in $\mathbb{R}^d$. 
 
-We can actually think of this model $f$ as a feature map, which in turn defines a kernel. 
+We can think of $f$ as a feature map, which defines a kernel
 
-We can consider $f$ as finding the mean BERT embedding and our kernel $k(x, x') = \langle f(x), f(x') \rangle$. 
+$$k(x, x') = \langle f(x), f(x') \rangle$$ 
 
-Actually though, this is not that great of a kernel, if you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better. 
 
-You can see this on STS results, and this is kind of expected - while BERT's training objective is MLM, there's no explicit need to make $f(x)^Tf(x)$ meaningful so long as you can predict a word in a sentence. 
+
+So what's a good choice for $f$?
+
+Taking the mean BERT embedding as $f$ seems like a traightforward approach.
+
+But this is actually a pretty bad kernel. If you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better on STS tasks.
+
+**Check out this table from SentenceBERT[[^1]].**
+![comparison on STS tasks](/images/research/sentence_bert_table.png){: .center}
+
+I think that since BERT's training objective is masked language modeling, there's no explicit need to make $f(x)^Tf(x)$ meaningful.
 
 BERT basically only cares about being able to predict the masked token given the context - so it can act like a hashmap, essentially mapping different contexts to a different direction in the vectorspace. 
 
-But it can do this randomly - this is the key: It can map the context for dog and the context for cat in two random directions, and so long as it can tell them apart that's good. There's no need for it to map the context for dog and cat to be close. 
+However this means BERT can then map the context for dog and the context for cat in two random directions, and so long as it can tell them apart. There's no need for it to map the context for dog and cat to be close. 
 
 But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions. And this is why BERT is a "bad kernel". 
 
-To get around this, we can use SentenceBERT, a BERT model fine tuned on NLI dataset. This basically gives us a good single-sentence representations.
+To get around this, we can use SentenceBERT, which is BERT but tuned to be a good general purpose sentence encoder.  
 
-There's a lot of possible options here but for the sake of argument let's just say we have a very good function $f$ that gives a good feature map and kernel. 
-
-So given our very good encoder, and a large corpus of short, single-sentence documents (think chats, news headlines, ) how can we find "clusters" or topics in them?
-
-The way to do it now is BERT and then something like k-means, but this doesn't always work that well. 
 
 ## Finding topics a naive approach: Kernels and Cliques
 
-So given this kernel, we can compute the pairwise similarity for every single example - this takes quadratic time. 
+So given we have our encoder, SentenceBERT, and a large corpus of short, single-sentence documents (think chats, news headlines, etc. ) how can we find "clusters" or topics in them?
 
-This pairwise similarity matrix actually also describes a weighted adjacency matrix. If we can parse the graph and find some structure then we might be able to identify topics this way. 
+We can do something like k-means on the embedding and see what we get. 
 
-But it's way too hard to work on this full weighted graph, so to make things easier, we do some thresholding to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges that exist are those between two sentences (datapoints) that are similar. 
+Given our kernel $k(x, x')$, we can compute the pairwise similarity matrix by encoding $X$ and dotting it with itself. 
 
-Let's think about what a maximal clique is in this graph- it's a set of datapoints (sentences) that are all similar to each other -> it's a topic in a high-level sense. This is exactly what we want.
+$$f(X)^Tf(X) = S \in \mathbb{R}^{n \times n}$$
 
-In another sense, we can take this graph and feed it to a clique percolation algorithm for community detection. This basically finds all maximal cliques in the graph and then "percolates" them upward until they are as large as possible. 
+This pairwise similarity matrix can also be viewed as a adjacency matrix of a fully connected weighted graph. If we can parse this graph and find some structure then we might be able to identify topics this way. 
 
-Two cliques are percolated (merged) if they share all but 1 elements. 
+However, it's way too hard to work on this fully connected weighted graph, so we first do some thresholding to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges between semantically similar pairs exists. 
 
-#### So how to threshold?
-
-I observe that the 
+Emperically, I saw that 
 
 - Thresholding globally does not seem to work that well - taking a 98% threshold
 - Thresholding per node does seem to work well.  (take top k)
 
 I mainly think this is due to the fact that a high similarity score does not imply relatedness but vice versa is true. So using ranking instead of a global comparison is beneficial. 
 
-So there ends up being nodes that are related to all of the other datapoints for some reason ???
+You can see this in the distribution of edge densities. 
+
+Let's think about what a maximal clique is in this thresholded graph - it's a set of sentences that are all similar to each other -> it's a topic in a high-level sense, which is exactly what we want.
+
+We can use a clique-percolation community detection technique that finds all maximal cliques in the graph and then "percolates" them upward until they are as large as possible. 
+Two cliques are percolated (merged) if they share all but 1 elements. 
+
+Or more generally, we can take this graph and feed it to any number of community detection algorithm. 
 
 #### Results
 
-what we get out = very good clusters (emperically)
+We test our approach on a couple of datasets - a Jepoardy dataset and the 20 newsgroups dataset. 
 
-We can see this on the Jepoardy dataset
+|                                 | Percision | Adjusted Rand Score |
+|---------------------------------|-----------|---------------------|
+| Clique Percolation BERT         | 69.36     |                     |
+| Clique Percolation SentenceBERT | 69.36     |                     |
+| k-means (k=$\vert{y}\vert$      |           |                     |
 
-## But is it web-scale?
 
-Okay but assume we have a large corpus - will this still work?
 
-No because you won't be able to compute this big graph
+#### Sample Clusters
 
 ### Scalability
 
-But now computing a pairwise similarity score is $O(n^2)$ and not very scalable at all. 
+Okay but assume we have a large corpus - will this still work?
 
-also clique is exponential time, clique percolation is also exponential time. 
+Nope, since computing a pairwise similarity score is $O(n^2)$ and is not feasible for large datasets.. 
 
-As an aside, this is why people gave up on kernel methods back in the day - SVMs used to be hot, now their not, and the main reason is because for most kernel methods you do need to compute this pairwise similarity matrix - so it works great for small-medium datasets, but once people started getting into big data (teenage sex) it didn't work so well. 
+Also clique detection / percolation is exponential time. 
 
-So in order to get a reasonably scalable algoritm we need to adress these two issues
+As an aside, this is part of the reason why people gave up on kernel methods back in the day - SVMs used to be hot, now their not, and one reason is because for most kernel methods you do need to compute a pairwise similarity matrix - so it works great for small-medium datasets, but once people started getting into big data these approaches are hard to scale. 
+
+So in order to get a reasonably scalable algoritim we need to address these two issues.
 
 #### Computing the graph
 
@@ -115,17 +124,26 @@ I also have used a jank heurestic called sorting the embedding - this means noth
 
 So instead of computing all pairs of points, you just go along the diagonal
 
-This is good because it turns O(n^2) to O(n), 
+This is good because it turns $O(n^2)$ to $O(n)$, 
 
 #### Clique percolation
 
 But what about the clique percolation algorithm?
 
-If we use the topk ranking then 
+If we use the top-k ranking then 
 
 - O(d/3) but then d/3 becomes fixed so this is also linear time
 
 ## Experimental scalability results + clusters
+
+| $\vert{X}\vert$ | Time (s)    | # Clustered Documents |
+|-----------------|-------------|-----------------------|
+| 5000            | 38.22       | 1845                  |
+| 10000           | 73.44       | 3736                  |
+| 50000           | 378.25      | 17986                 |
+| 100000          | 750.79      | 35187                 |
+
+![scalability](/images/research/scalability.png)
 
 ### Other considerations
 Yay we did it - but now we may have the problem where:
@@ -150,5 +168,12 @@ Why is this better than k-means on feature mappings:
 - qualitatively, the topics are much cleaner. 
 - You can subsitute your own kernel method when comparing similarity scores ( include domain logic )
 
-I haven't done a literature review on any of this stuff, so if people have thoughts/comments/ideas/complaints about credit please don't be shy :) 
-
+# References
+[^1]: Sentence BERT: https://arxiv.org/pdf/1908.10084.pdf
+[^2]: BERT: https://arxiv.org/abs/1810.04805
+[^3]: ULM-Fit: https://arxiv.org/abs/1801.06146
+[^4]: QuickThoughts: https://arxiv.org/pdf/1902.00267.pdf
+[^5]: Word2Vec: https://arxiv.org/pdf/1902.00267.pdf
+[^6]: Scikit-learn: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+[^7]: Sampling Matters in Deep Metric Learning: https://arxiv.org/pdf/1706.07567.pdf
+[^9]: CURL: http://www.offconvex.org/2019/03/19/CURL/

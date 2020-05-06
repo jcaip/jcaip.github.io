@@ -5,19 +5,40 @@ permalink: /about/
 
 Hi there!
 
-I'm Jesse Cai, and this is my blog about stuff that interests me - mostly ml/nlp/startups.
+I'm Jesse Cai, and this is my blog about random stuff - mostly ml/nlp/startups.
 
-If your new here I'd recommend reading the following posts:
+I'm a machine learning engineer at [Cultivate](https://cultivate.com/), where I use ML to make managers more self-aware.\
+I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).\
+In my free time I like to lift, hike and eat ramen. 
 
+Some of the more interesting things I've written about:
+<!--- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)-->
 - Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
 - [Distributed gradient descent](/Distbelief) in PyTorch
-- Constructing the [rational numbers](/Building-Q) visually
+- Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
-I currently work as a machine learning engineer at [Cultivate](https://trycultivate.com/). 
+Please feel free to email me if you want to chat or have any questions. \
+Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
 
-I graduated from UCLA where I used to do NLP research on representation learning with Kai-Wei Chang.
+- **Is it ever rational to be irrational?**
 
-In my free time I like lifting, exploring nature, and eating tasty things.
+Suppose two players, $A$ and $B$ are playing a game that goes as follows: 
+- Players $A$ and $B$ alternate turns and $A$ starts with 10 points and $B$ with 15.
+- Each turn the player loses a point.
+- Each turn the player can also bet X points for a 25% chance of winning $2X$ points and a 75% chance of losing the bet. So $E[X] = 0.75 X$.
+- The game ends when one player loses by running out of points.
 
-Please feel free to reach out or email me if you want to chat about anything.
+Obviously the "rational" strategy is not to bet - but then player $A$ is guaranteed to lose since $B$ can outlast them. So $A$ must make an irrational bet for a chance of winning. I wonder what the optimal strategy is for $A$ and how to model this mathematically.
+
+- **Is relational knowledge distillation viable?**
+
+See [here](https://arxiv.org/abs/1904.05068). Basically instead of doing distillation as a KL between $P(y \mid x, \theta_{teacher})$ and $P(y \mid x, \theta_{student})$ you can take a KL between the distribution of distances in a minibatch. I unsuccessfully tried to do this to distill BERT, so really interested in any new work / thoughts on this approach. 
+
+- **What makes subjects easier to learn in a certain way?** 
+
+I've always felt I was a pretty visual learner - if I could see a graph or plot I would understand the concept much better. In addition some people are more "project" based, where they need to really experience things in order to understand them. What makes someone more of a visual learner or a project-based learner than any other person? 
+
+- **What makes a manager *good* ?**
+
+Happy to hear generals or specifics here. 
