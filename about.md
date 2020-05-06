@@ -12,7 +12,7 @@ I graduated from UCLA, where I researched representation learning for NLP with P
 In my free time I like to lift, hike and eat ramen. 
 
 Some of the more interesting things I've written about:
-- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)
+<!--- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)-->
 - Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
 - [Distributed gradient descent](/Distbelief) in PyTorch
 - Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
