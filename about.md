@@ -29,11 +29,11 @@ Suppose two players, $A$ and $B$ are playing a game that goes as follows:
 - Each turn the player can also bet X points for a 25% chance of winning $2X$ points and a 75% chance of losing the bet. So $E[X] = 0.75 X$.
 - The game ends when one player loses by running out of points.
 
-Obviously the rational strategy is not to bet - but then player $A$ is guaranteed to lose since $B$ can outlast them. So $A$ must make an irrational bet for a chance of winning. I wonder what the optimal strategy is for $A$ and how to model this mathematically.
+Obviously the "rational" strategy is not to bet - but then player $A$ is guaranteed to lose since $B$ can outlast them. So $A$ must make an irrational bet for a chance of winning. I wonder what the optimal strategy is for $A$ and how to model this mathematically.
 
 - **Is relational knowledge distillation viable?**
 
-See [here](https://arxiv.org/abs/1904.05068). Basically instead of doing distillation as a KL between $P(y \mid x, \theta_{teacher})$ and $P(y \mid x, \theta_{student})$ you can take a KL between the distribution of distances in a minibatch. I unsuccessfuly tried to do this to distill BERT, so really interested in any new work / thoughts on this approach. 
+See [here](https://arxiv.org/abs/1904.05068). Basically instead of doing distillation as a KL between $P(y \mid x, \theta_{teacher})$ and $P(y \mid x, \theta_{student})$ you can take a KL between the distribution of distances in a minibatch. I unsuccessfully tried to do this to distill BERT, so really interested in any new work / thoughts on this approach. 
 
 - **What makes subjects easier to learn in a certain way?** 
 
