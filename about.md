@@ -7,8 +7,8 @@ Hi there!
 
 I'm Jesse Cai, and this is my blog about random stuff - mostly ml/nlp/startups.
 
-I'm a machine learning engineer at [Cultivate](https://cultivate.com/), where I use ML to make managers more self-aware.\
-I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).\
+I'm a machine learning engineer at [Cultivate](https://cultivate.com/), where I use ML to make managers more self-aware.  
+I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).  
 In my free time I like to lift, hike and eat ramen. 
 
 Some of the more interesting things I've written about:
@@ -18,7 +18,7 @@ Some of the more interesting things I've written about:
 - Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
-Please feel free to email me if you want to chat or have any questions. \
+Please feel free to email me if you want to chat or have any questions.   
 Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
 
 - **Is it ever rational to be irrational?**
