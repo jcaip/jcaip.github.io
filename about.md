@@ -35,10 +35,6 @@ Obviously the "rational" strategy is not to bet - but then player $A$ is guarant
 
 See [here](https://arxiv.org/abs/1904.05068). Basically instead of doing distillation as a KL between $P(y \mid x, \theta_{teacher})$ and $P(y \mid x, \theta_{student})$ you can take a KL between the distribution of distances in a minibatch. I unsuccessfully tried to do this to distill BERT, so really interested in any new work / thoughts on this approach. 
 
-- **What makes subjects easier to learn in a certain way?** 
-
-I've always felt I was a pretty visual learner - if I could see a graph or plot I would understand the concept much better. In addition some people are more "project" based, where they need to really experience things in order to understand them. What makes someone more of a visual learner or a project-based learner than any other person? 
-
 - **What makes a manager *good* ?**
 
 Happy to hear generals or specifics here. 
