@@ -8,7 +8,9 @@ Hi there!
 I'm Jesse Cai, and this is my blog about random stuff - mostly ml/nlp/startups.
 
 I'm a machine learning engineer at [Cultivate](https://cultivate.com/), where I use ML to make managers more self-aware.  
-I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).  
+Most of my work deals with low-resource NLP and conversational modeling. 
+
+I recently graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).  
 In my free time I like to lift, hike and eat ramen. 
 
 Some of the more interesting things I've written about:
