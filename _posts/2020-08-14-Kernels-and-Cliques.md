@@ -1,5 +1,5 @@
 ---
-published: False
+published: True
 layout: post
 tags: [machine-learning, nlp, research]
 title: Kernels and Cliques 
@@ -9,6 +9,9 @@ images:
     - alt: Clique
     - title: Clique
 ---
+
+**This is a post about some research I was doing about a year ago but never got around to finishing.**
+
 
 Over the past couple of years, there's been a lot of work on representation learning in NLP. We've seen a revolution with the rise of BERT, transformers, and deep language models. 
 
@@ -20,11 +23,13 @@ In this post I describe a couple of ideas that combine transformer based encoder
 
 <!--more-->
 
-Then for some text classification task, we add a linear and softmax layer on top of the encoder and train end-to-end to fine-tune the model. 
+## Introduction
 
-This is a very straightforward and effective way to use representations for supervised learning, but how about for unsupervised learning? 
+The most common application of sentence encodings is to train text classifiers. 
 
-One idea is to run k-means on the encoded vectors.
+Usually this involves taking a pretrained representation and attaching a linear/softmax layer and then fine-tuning (train) for a couple of epochs. 
+
+You don't need a very large test set to get good results. 
 
 ## Encoders, Feature Maps and Kernels 
 
@@ -34,13 +39,11 @@ We can think of $f$ as a feature map, which defines a kernel
 
 $$k(x, x') = \langle f(x), f(x') \rangle$$ 
 
-
-
 So what's a good choice for $f$?
 
-Taking the mean BERT embedding as $f$ seems like a traightforward approach.
+Taking the mean BERT embedding as $f$ seems like a straightforward approach - but this is actually a pretty bad kernel!
 
-But this is actually a pretty bad kernel. If you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better on STS tasks.
+If you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better on STS tasks.
 
 **Check out this table from SentenceBERT[[^1]].**
 ![comparison on STS tasks](/images/research/sentence_bert_table.png){: .center}
@@ -53,8 +56,7 @@ However this means BERT can then map the context for dog and the context for cat
 
 But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions. And this is why BERT is a "bad kernel". 
 
-To get around this, we can use SentenceBERT, which is BERT but tuned to be a good general purpose sentence encoder.  
-
+To get around this, we can use SentenceBERT, which is BERT but tuned to be a good general purpose sentence encoder.
 
 ## Finding topics a naive approach: Kernels and Cliques
 
