@@ -1,5 +1,5 @@
 ---
-published: False
+published: True
 layout: post
 tags: [machine-learning, nlp, research]
 title: Kernels and Cliques 
@@ -10,21 +10,26 @@ images:
     - title: Clique
 ---
 
-Over the past couple of years, there's been a lot of work on representation learning in NLP. We've seen a revolution with the rise of BERT, transformers, and deep language models. 
-
-These approaches have ushered in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
-
-However, while there's been a bunch of work about **learning** representations, there hasn't been as much work on **using** these representations. 
-
 In this post I describe a couple of ideas that combine transformer based encoders with existing work on community detection. 
+
+This was some research I was working on at UCLA with Taboola, but could never get working. 
+
+Although the results aren't there I thought the ideas were still interesting and worth explaining. Hopefully this helps someone down the line figure out how to do it properly :)
 
 <!--more-->
 
-Then for some text classification task, we add a linear and softmax layer on top of the encoder and train end-to-end to fine-tune the model. 
+## Intro:
 
-This is a very straightforward and effective way to use representations for supervised learning, but how about for unsupervised learning? 
+Our goal is to try and identify topics/trend in a corpus. I think the "classical" deep learning way (what an oxymornonic sentence) to do this would probably to use something like the mean word2vec embedding and then do k-means. 
 
-One idea is to run k-means on the encoded vectors.
+With advancements in deep encoders, nowadays it's more likely that instead of using word2vec you're using something like BERT or Sentence-BERT. 
+
+However, the second part of this approach (k-means) hasn't really ever changed. 
+
+The approach that I am proposing is basically:
+1. Use some deep neural encoder to encode your corpus
+2. Compute the pairwise similarity matrix, and then threshold it
+3. Run some off-the-shelf community detection algorithms on the resulting graph
 
 ## Encoders, Feature Maps and Kernels 
 
@@ -38,7 +43,7 @@ $$k(x, x') = \langle f(x), f(x') \rangle$$
 
 So what's a good choice for $f$?
 
-Taking the mean BERT embedding as $f$ seems like a traightforward approach.
+Taking the mean BERT embedding as $f$ seems like a straightforward approach.
 
 But this is actually a pretty bad kernel. If you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better on STS tasks.
 
@@ -53,7 +58,7 @@ However this means BERT can then map the context for dog and the context for cat
 
 But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions. And this is why BERT is a "bad kernel". 
 
-To get around this, we can use SentenceBERT, which is BERT but tuned to be a good general purpose sentence encoder.  
+To get around this, we can use SentenceBERT, which is BERT but fine-tuned to be a good general purpose sentence encoder.  
 
 
 ## Finding topics a naive approach: Kernels and Cliques
@@ -68,7 +73,9 @@ $$f(X)^Tf(X) = S \in \mathbb{R}^{n \times n}$$
 
 This pairwise similarity matrix can also be viewed as a adjacency matrix of a fully connected weighted graph. If we can parse this graph and find some structure then we might be able to identify topics this way. 
 
-However, it's way too hard to work on this fully connected weighted graph, so we first do some thresholding to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges between semantically similar pairs exists. 
+![graph](https://2.bp.blogspot.com/-KS2IS_wQ99k/Ux5EYJg2SZI/AAAAAAAACL8/xn2mJDQto8o/s1600/Adjacency+Matrix+Representation+of+Weighted+Graph.JPG){: .center}
+
+However, it's way too hard to work on this fully connected weighted graph, so we threshold it to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges between semantically similar pairs exists. 
 
 Emperically, I saw that 
 

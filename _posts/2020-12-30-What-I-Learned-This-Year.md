@@ -48,3 +48,10 @@ SBM (n, p, W)
 n - number of vertices
 p - probability 
 
+Bootstrapping Text classifiers
+- Using semantic similarity first to sort and then find the threshold. 
+- Can distill sequence model.
+
+Splitting expectation on different categories, this can also be used to compare model performance. 
+
+

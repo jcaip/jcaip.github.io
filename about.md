@@ -7,7 +7,8 @@ Hi there!
 
 I'm Jesse Cai, and this is my blog about random stuff - mostly ml/nlp/startups.
 
-I'm a machine learning engineer at [Cultivate](https://cultivate.com/), where I use ML to make managers more self-aware.  
+I currently work at [Cultivate](https://cultivate.com/).
+
 I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).  
 In my free time I like to lift, hike and eat ramen. 
 
@@ -26,7 +27,7 @@ Or alternatively, if you have answers to any of the following questions definite
 Suppose two players, $A$ and $B$ are playing a game that goes as follows: 
 - Players $A$ and $B$ alternate turns and $A$ starts with 10 points and $B$ with 15.
 - Each turn the player loses a point.
-- Each turn the player can also bet X points for a 25% chance of winning $2X$ points and a 75% chance of losing the bet. So $E[X] = 0.75 X$.
+- Each turn the player can also bet X points for a 25% chance of winning $2X$ points and a 75% chance of losing the bet. So $E[X] = 0.5 X$.
 - The game ends when one player loses by running out of points.
 
 Obviously the "rational" strategy is not to bet - but then player $A$ is guaranteed to lose since $B$ can outlast them. So $A$ must make an irrational bet for a chance of winning. I wonder what the optimal strategy is for $A$ and how to model this mathematically.
