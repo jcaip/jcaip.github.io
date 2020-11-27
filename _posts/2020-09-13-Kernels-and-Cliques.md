@@ -1,5 +1,5 @@
 ---
-published: True
+published: False
 layout: post
 tags: [machine-learning, nlp, research]
 title: Kernels and Cliques 
@@ -10,75 +10,101 @@ images:
     - title: Clique
 ---
 
-In this post I describe a couple of ideas that combine transformer based encoders with existing work on community detection. 
-
-This was some research I was working on at UCLA with Taboola, but could never get working. 
-
-Although the results aren't there I thought the ideas were still interesting and worth explaining. Hopefully this helps someone down the line figure out how to do it properly :)
+This post is about some old research I was working on at UCLA-NLP with Taboola about a year ago. 
 
 <!--more-->
 
-## Intro:
+## Intro: Encoders, Feature Maps and Kernels 
 
-Our goal is to try and identify topics/trend in a corpus. I think the "classical" deep learning way (what an oxymornonic sentence) to do this would probably to use something like the mean word2vec embedding and then do k-means. 
+I've written a lot about sentence encoders in the past, but the general idea is that we have a neural network $f$ that takes in a natural language sentence and turns it into a vector in $\mathbb{R}^d$.
 
-With advancements in deep encoders, nowadays it's more likely that instead of using word2vec you're using something like BERT or Sentence-BERT. 
+A good encoder should map sentences with similar semantic meanings to similar directions in the vectorspace. For example: If we had a encoder that mapped to $\mathbb{R}^2$, we would expect something like this:
 
-However, the second part of this approach (k-means) hasn't really ever changed. 
-
-The approach that I am proposing is basically:
-1. Use some deep neural encoder to encode your corpus
-2. Compute the pairwise similarity matrix, and then threshold it
-3. Run some off-the-shelf community detection algorithms on the resulting graph
-
-## Encoders, Feature Maps and Kernels 
-
-Let's say we have a sentence encoder $f$ that takes in a natural language sentence and turns it into a vector in $\mathbb{R}^d$. 
-
-We can think of $f$ as a feature map, which defines a kernel
+We can also think of $f$ as a feature map, which in turn defines a kernel
 
 $$k(x, x') = \langle f(x), f(x') \rangle$$ 
 
+Most of the time, these embeddings are just used for some downstream text classification task, but they are an incredibly versatile tool. 
+
+For example: You can easily implement semantic search by encoding everything and then dotting with a encoded query vector to get similarity scores.
+
+In particular I want to talk about a couple of techniques I've used to:
+1. Find relationships within a corpus. 
+2. Bootstrapping text classifiers
 
 
-So what's a good choice for $f$?
 
-Taking the mean BERT embedding as $f$ seems like a straightforward approach.
+#### So what's a good choice for $f$?
 
-But this is actually a pretty bad kernel. If you compare $f$ with something like the mean word2vec vector, you'll find that the latter performs much better on STS tasks.
-
-**Check out this table from SentenceBERT[[^1]].**
-![comparison on STS tasks](/images/research/sentence_bert_table.png){: .center}
+Taking the mean BERT embedding as $f$ seems like a straightforward approach - **but this is actually a pretty bad kernel**.
 
 I think that since BERT's training objective is masked language modeling, there's no explicit need to make $f(x)^Tf(x)$ meaningful.
 
-BERT basically only cares about being able to predict the masked token given the context - so it can act like a hashmap, essentially mapping different contexts to a different direction in the vectorspace. 
+BERT only cares about being able to predict the masked token given the context - so it can act like a hashmap, essentially mapping different contexts to a different direction in the vector space. 
 
-However this means BERT can then map the context for dog and the context for cat in two random directions, and so long as it can tell them apart. There's no need for it to map the context for dog and cat to be close. 
+However this means BERT can then map the context for dog and the context for cat in two random dimensions, so long as it can tell them apart. There's no need for it to map the context for dog and cat to be close. 
 
-But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions. And this is why BERT is a "bad kernel". 
+But if you take the dot product of any two random directions, you'll probably end up with 0, especially in higher directions - making BERT a bad kernel. 
 
-To get around this, we can use SentenceBERT, which is BERT but fine-tuned to be a good general purpose sentence encoder.  
+Luckily there's a very easy way around this - we can use SentenceBERT, which is BERT but fine-tuned to be a good general purpose sentence encoder. Check out this table from SentenceBERT[[^1]].
+![comparison on STS tasks](/images/research/sentence_bert_table.png){: .center}
 
 
-## Finding topics a naive approach: Kernels and Cliques
-
-So given we have our encoder, SentenceBERT, and a large corpus of short, single-sentence documents (think chats, news headlines, etc. ) how can we find "clusters" or topics in them?
-
-We can do something like k-means on the embedding and see what we get. 
+# Finding relationships in a corpus
 
 Given our kernel $k(x, x')$, we can compute the pairwise similarity matrix by encoding $X$ and dotting it with itself. 
 
 $$f(X)^Tf(X) = S \in \mathbb{R}^{n \times n}$$
 
+
+This matrix can actually tell you a lot about your dataset. For example, I sorted the 20 newsgroups dataset by label and then visualized the pairwise similarity matrix.
+
+![Pairwise similarity matrix](/images/research/sim_matrix.png){: .center}
+
+You can clearly see block structure along the diagonal! In fact, if I mark the limits of each category the block structure becomes even more evident
+
+![Masked similarity matrix](/images/research/masked_matrix.png){: .center}
+
+This leads to something that I'll touch a bit more on in my bootstrapping text classifiers post - but you can actually use this to get a pretty good sense of intra-class and inter-class variance.
+
+For example, in the above example, 
+
+```
+['alt.atheism',
+ 'comp.graphics',
+ 'comp.os.ms-windows.misc',
+ 'comp.sys.ibm.pc.hardware',
+ 'comp.sys.mac.hardware',
+ 'comp.windows.x',
+ 'misc.forsale',
+ 'rec.autos',
+ 'rec.motorcycles',
+ 'rec.sport.baseball',
+ 'rec.sport.hockey',
+ 'sci.crypt',
+ 'sci.electronics',
+ 'sci.med',
+ 'sci.space',
+ 'soc.religion.christian',
+ 'talk.politics.guns',
+ 'talk.politics.mideast',
+ 'talk.politics.misc',
+ 'talk.religion.misc']
+```
+
+You can see a large `comp` section, which is related to `sci.crypt/sci.electronics. `
+
+You can also see `alt.atheism` has a high correlation with `soc.religion.christian`, which you would expect. 
+
 This pairwise similarity matrix can also be viewed as a adjacency matrix of a fully connected weighted graph. If we can parse this graph and find some structure then we might be able to identify topics this way. 
 
-![graph](https://2.bp.blogspot.com/-KS2IS_wQ99k/Ux5EYJg2SZI/AAAAAAAACL8/xn2mJDQto8o/s1600/Adjacency+Matrix+Representation+of+Weighted+Graph.JPG){: .center}
+However, in practice working with a similarity matrix, like this is kind of infeasible, so instead we threshold it to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges between semantically similar pairs exists. 
 
-However, it's way too hard to work on this fully connected weighted graph, so we threshold it to turn this fully connected weighted graph to a sparse unweighted graph, such that the only edges between semantically similar pairs exists. 
+Let's think about what a maximal clique is in this thresholded graph - it's a set of sentences that are all similar to each other -> it's a topic in a high-level sense, which is exactly what we want.
 
-Emperically, I saw that 
+# Dealing with scale: Pt.I
 
+There are two different rules that I tried:
 - Thresholding globally does not seem to work that well - taking a 98% threshold
 - Thresholding per node does seem to work well.  (take top k)
 
@@ -86,36 +112,21 @@ I mainly think this is due to the fact that a high similarity score does not imp
 
 You can see this in the distribution of edge densities. 
 
-Let's think about what a maximal clique is in this thresholded graph - it's a set of sentences that are all similar to each other -> it's a topic in a high-level sense, which is exactly what we want.
 
-We can use a clique-percolation community detection technique that finds all maximal cliques in the graph and then "percolates" them upward until they are as large as possible. 
-Two cliques are percolated (merged) if they share all but 1 elements. 
+We can use a clique-percolation community detection technique that finds all maximal cliques in the graph and then "percolates" them upward until they are as large as possible. Two cliques are percolated (merged) if they share all but 1 elements. 
 
 Or more generally, we can take this graph and feed it to any number of community detection algorithm. 
 
-#### Results
 
-We test our approach on a couple of datasets - a Jepoardy dataset and the 20 newsgroups dataset. 
+### Sample Clusters
 
-|                                 | Percision | Adjusted Rand Score |
-|---------------------------------|-----------|---------------------|
-| Clique Percolation BERT         | 69.36     |                     |
-| Clique Percolation SentenceBERT | 69.36     |                     |
-| k-means (k=$\vert{y}\vert$      |           |                     |
-
-
-
-#### Sample Clusters
-
-### Scalability
+# Dealing with scale: Pt.II
 
 Okay but assume we have a large corpus - will this still work?
 
 Nope, since computing a pairwise similarity score is $O(n^2)$ and is not feasible for large datasets.. 
 
 Also clique detection / percolation is exponential time. 
-
-As an aside, this is part of the reason why people gave up on kernel methods back in the day - SVMs used to be hot, now their not, and one reason is because for most kernel methods you do need to compute a pairwise similarity matrix - so it works great for small-medium datasets, but once people started getting into big data these approaches are hard to scale. 
 
 So in order to get a reasonably scalable algoritim we need to address these two issues.
 
@@ -153,27 +164,6 @@ If we use the top-k ranking then
 ![scalability](/images/research/scalability.png)
 
 ### Other considerations
-Yay we did it - but now we may have the problem where:
-
-same topic, but at different times - should this be considered the same topic? 
-
-for some people yes but for some people no. 
-
-## Putting it all together
-
-So you run a heirarchical clustering algorithm on the clusters given by the clique community detection.
-
-Basically what you do can be thought of like this
-
-1. Compute pairwise similarity score fat diagonal
-2. Run clique percolation algorithm to get clusters/seed
-
-Why is this better than k-means on feature mappings: 
-- No picking k! (Actually this is not true, there are still hyperparameters to tune)
-- much more stable - 
-- some control over min cluster size!
-- qualitatively, the topics are much cleaner. 
-- You can subsitute your own kernel method when comparing similarity scores ( include domain logic )
 
 # References
 [^1]: Sentence BERT: https://arxiv.org/pdf/1908.10084.pdf
