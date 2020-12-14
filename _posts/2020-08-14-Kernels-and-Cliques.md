@@ -1,5 +1,5 @@
 ---
-published: True
+published: False
 layout: post
 tags: [machine-learning, nlp, research]
 title: Kernels and Cliques 
@@ -10,26 +10,13 @@ images:
     - title: Clique
 ---
 
-**This is a post about some research I was doing about a year ago but never got around to finishing.**
+This is a post about some research I never got around to finishing. 
 
-
-Over the past couple of years, there's been a lot of work on representation learning in NLP. We've seen a revolution with the rise of BERT, transformers, and deep language models. 
-
-These approaches have ushered in a new age of transfer learning for NLP, much like it did for computer vision a couple of years prior. 
-
-However, while there's been a bunch of work about **learning** representations, there hasn't been as much work on **using** these representations. 
-
-In this post I describe a couple of ideas that combine transformer based encoders with existing work on community detection. 
+The basic idea here is to combine transformer based sentence embeddinsg with existing community detection techniques. 
 
 <!--more-->
 
 ## Introduction
-
-The most common application of sentence encodings is to train text classifiers. 
-
-Usually this involves taking a pretrained representation and attaching a linear/softmax layer and then fine-tuning (train) for a couple of epochs. 
-
-You don't need a very large test set to get good results. 
 
 ## Encoders, Feature Maps and Kernels 
 
@@ -88,17 +75,8 @@ Two cliques are percolated (merged) if they share all but 1 elements.
 
 Or more generally, we can take this graph and feed it to any number of community detection algorithm. 
 
+
 #### Results
-
-We test our approach on a couple of datasets - a Jepoardy dataset and the 20 newsgroups dataset. 
-
-|                                 | Percision | Adjusted Rand Score |
-|---------------------------------|-----------|---------------------|
-| Clique Percolation BERT         | 69.36     |                     |
-| Clique Percolation SentenceBERT | 69.36     |                     |
-| k-means (k=$\vert{y}\vert$      |           |                     |
-
-
 
 #### Sample Clusters
 
@@ -169,6 +147,51 @@ Why is this better than k-means on feature mappings:
 - some control over min cluster size!
 - qualitatively, the topics are much cleaner. 
 - You can subsitute your own kernel method when comparing similarity scores ( include domain logic )
+-
+#### 1/13/2020
+I just watched this lecture by Andrew W. Lo titled [Artificial Stupidity](https://www.youtube.com/watch?v=zqw1nmJ7XZM&t=3957s)
+
+Basically the idea is that we need AI to understand human behavior, 
+
+Economists assume human behavior is purely rationaly (expected utility maximization) but this isn't true. 
+Some other guy proposed a different model of behavior - essential we build a heurestic and procedurally refine it (Simons)
+
+New AI (deep learning) is more similar to this approach than old AI (expert systems). 
+
+Lo wrote a paper trying to use machine learning to predict when/if a person will panic sell, and he want's to use this to create personalized finance. 
+
+I'm a little money grubbing shit at heart, so I was thinking -
+
+Instead of predicting which stocks will go up, why not try to predict when people will panic. 
+
+Because if you predict a panic successfully, you can buy the dip. 
+
+
+#### 1/23/2020
+Equitable Valuation of Data:
+
+Shapley Value
+- nullness
+- symmetry
+- linearity
+
+Better than leave one out because doesn't depend of relative similarity of examples. 
+
+MC approximation - sample random permutation of training samples. 
+
+Then train - at each gradient update you can get marginal improvement PERF(a, b, c) - perf(a, b) by subtracting previousl performance.
+
+applications:
+small mumber of samples - can be used to clean a dataset
+
+data shapley can be computed efficiently for KNN. 
+
+use dnn for feature then use knn
+
+#### 1/28/2020
+SBM (n, p, W)
+n - number of vertices
+p - probability 
 
 # References
 [^1]: Sentence BERT: https://arxiv.org/pdf/1908.10084.pdf
