@@ -5,12 +5,9 @@ permalink: /about/
 
 Hi there!
 
-I'm Jesse Cai, and this is my blog about random stuff - mostly ml/nlp/startups.
+I'm Jesse Cai, and welcome to my blog. 
 
-I'm a machine learning engineer at [Cultivate](https://cultivate.com/).  
-I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/).  
-
-In my free time I like to lift, hike and eat ramen. 
+There's not really a central theme here, I just write about stuff that I find interesting. Most of the posts  here are about machine learning / nlp. 
 
 Some of the more interesting things I've written about:
 <!--- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)-->
@@ -19,7 +16,19 @@ Some of the more interesting things I've written about:
 - Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
-Please feel free to email me if you want to chat or have any questions.
+<hr>  
+
+A little about me:
+
+I'm a machine learning engineer at [Cultivate](https://cultivate.com/).  
+
+Before I joined Cultivate I spent some time working at [Blend](https://blend.com/) and [JPL](https://www.jpl.nasa.gov/)
+
+I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). 
+
+In my free time I like to lift, hike and eat. 
+
+Please feel free to email me if you want to chat or have any questions! 
 
 <hr>  
 
