@@ -19,7 +19,10 @@ Some of the more interesting things I've written about:
 - Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
-Please feel free to email me if you want to chat or have any questions.   
+Please feel free to email me if you want to chat or have any questions.
+
+<hr>  
+
 Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
 
 - **Is it ever rational to be irrational?**
