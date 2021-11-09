@@ -18,7 +18,7 @@ Some of the more interesting things I've written about:
 
 <hr>  
 
-A little about me:
+#### About me:
 
 I'm a machine learning engineer at [Cultivate](https://cultivate.com/).  
 
@@ -29,9 +29,6 @@ I graduated from UCLA, where I researched representation learning for NLP with P
 In my free time I like to lift, hike and eat. 
 
 Please feel free to email me if you want to chat or have any questions! 
-
-<hr>  
-
 Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
 
 - **Is it ever rational to be irrational?**
