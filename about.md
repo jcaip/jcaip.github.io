@@ -20,9 +20,9 @@ Some of the more interesting things I've written about:
 
 #### About me:
 
-I'm a machine learning engineer at [Cultivate](https://cultivate.com/).  
+I work at [Cultivate](https://cultivate.com/), a startup leveraging AI to managers better. 
 
-Before I joined Cultivate I spent some time working at [Blend](https://blend.com/) and [JPL](https://www.jpl.nasa.gov/)
+Before I joined Cultivate I spent some time working at [Blend](https://blend.com/) and [JPL](https://www.jpl.nasa.gov/).
 
 I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). 
 
