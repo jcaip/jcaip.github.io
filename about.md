@@ -7,7 +7,8 @@ Hi there!
 
 I'm Jesse Cai, and welcome to my blog. 
 
-There's not really a central theme here, I just write about stuff that I find interesting. Most of the posts  here are about machine learning / nlp. 
+There's not really a central theme here, I just write about stuff that I find interesting.  
+Most of the posts  here are about machine learning / nlp. 
 
 Some of the more interesting things I've written about:
 <!--- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)-->
@@ -20,14 +21,11 @@ Some of the more interesting things I've written about:
 
 #### About me:
 
-I currently work as a Senior Research Engineer at [Cultivate](https://cultivate.com/), a startup leveraging AI to managers better. 
-
-Before I joined Cultivate I spent some time working at [Blend](https://blend.com/) and [JPL](https://www.jpl.nasa.gov/).
-
+I currently work as a Senior Research Engineer at [Cultivate](https://cultivate.com/), a startup leveraging AI to managers better.  
+Before I joined Cultivate I spent some time working at [Blend](https://blend.com/) and [JPL](https://www.jpl.nasa.gov/).  
 I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). 
 
-Please feel free to email me if you want to chat or have any questions! 
-
+Please feel free to email me if you want to chat or have any questions!  
 Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
 
 - **Is it ever rational to be irrational?**
