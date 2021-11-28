@@ -16,19 +16,18 @@ Some of the more interesting things I've written about:
 - Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
-<hr>  
+<hr>
 
 #### About me:
 
-I work at [Cultivate](https://cultivate.com/), a startup leveraging AI to managers better. 
+I currently work as a Senior Research Engineer at [Cultivate](https://cultivate.com/), a startup leveraging AI to managers better. 
 
 Before I joined Cultivate I spent some time working at [Blend](https://blend.com/) and [JPL](https://www.jpl.nasa.gov/).
 
 I graduated from UCLA, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). 
 
-In my free time I like to lift, hike and eat. 
-
 Please feel free to email me if you want to chat or have any questions! 
+
 Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
 
 - **Is it ever rational to be irrational?**
