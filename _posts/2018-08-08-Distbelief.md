@@ -21,7 +21,7 @@ Please check out the code [here](https://github.com/ucla-labx/distbelief)!
 ## A brief introduction to Distbelief
 
 For some context, I'm going to briefly explain DistBelief. You can check out the original paper [here](https://static.googleusercontent.com/media/research.google.com/en//archive/large_deep_networks_nips2012.pdf).
-Distbelief describes an entire framework for parallelizing neural networks, but we focused on the primary concept of the paper - two distributed opitimization methods, DownpourSGD and SandblasterLBFGS.
+Distbelief describes an entire framework for parallelizing neural networks, but we focused on the primary concept of the paper - two distributed optimization methods, DownpourSGD and SandblasterLBFGS.
 
 We only implemented DownpourSGD, which is much simpler. 
 
@@ -31,7 +31,7 @@ In DownpourSGD, there are two core concepts - a parameter server and a training 
 ![paper_diagram](/images/distbelief/paper_diagram.png){: .center} <!-- .element height="50%" width="50%" -->
 
 
-The parameter server is just a copy of the model parameters, which can send model parameters when requested and can also receive an accumulated gradient, which it then applies to it's own copy of the parameters.
+The parameter server is just a copy of the model parameters, which can send model parameters when requested and can also receive an accumulated gradient, which it then applies to its own copy of the parameters.
 
 Downpour SGD is very similar to normal SGD, with two main exceptions. 
 
@@ -53,9 +53,9 @@ We did some cursory research, and found a couple of great articles and tutorials
 
 Originally our plan was to use the gevent actor model to implement DistBelief. However, we quickly realized that the way we had envisioned it, we would need the training node to both pull gradients and also run the training step at the same time, while accessing some shared memory. 
 
-This is a big problem, because everything inside an actor is supposed to happen sequentially- which meant we couldn't do asynchronous operations within an actor. What's worse - if we sepereated these two steps into two different actors  we would have to spend large amounts of data back and forth, increasing our communication overhead.
+This is a big problem, because everything inside an actor is supposed to happen sequentially &ndash; which meant we couldn't do asynchronous operations within an actor. What's worse &ndash; if we separated these two steps into two different actors, we would have to send large amounts of data back and forth, increasing our communication overhead.
 
-We figured an easier system would be to relax our system, so instead of implementing DistBelief purely with actors, we build a more generic message passing system. 
+We figured an easier system would be to relax our system, so, instead of implementing DistBelief purely with actors, we build a more generic message passing system. 
 Our implementation breaks one of the cardinal rules of the actor model, which is to [**never share state**](https://manuel.bernhardt.io/2016/08/02/akka-anti-patterns-shared-mutable-state/) between actors.
 
 Our idea was to first build a simple message passing system, and then implement a series of message listeners, with which we could implement DistBelief. 
@@ -66,8 +66,8 @@ We both had some experience with PyTorch, so figured we could use PyTorch's dist
 
 Using this also provided some key advantages:
 - Faster messaging interface, with support for Gloo and OpenMPI, not just TCP. 
-- Easily switch between messaging backends would be much much simpler.
-- Avoid costly serialization. This isn't entirely true, as I'm sure the message is serialized - but we were avoiding doing it in Python. 
+- Switching between messaging backends would be much much simpler.
+- Avoid costly serialization. This isn't entirely true, as I'm sure the message is serialized &ndash; but we were avoiding doing it in Python. 
 - Better integration with PyTorch. We wanted something that was simple to use, so we figured implementing it as a PyTorch optimizer would be the easiest. 
 
 However, we realized that we needed to not only send tensor data, but also some metadata with our message.
@@ -112,16 +112,16 @@ class MessageListener(Thread):
                          self.m_parameter[2:])
 ```
 
-By extending `receive`, we could implememt both our parameter server and our DownpourSGD client.
+By extending `receive`, we could implement both our parameter server and our DownpourSGD client.
 
 ### Defining our messages and handlers
 
 With this in mind, we sketched out the different messages that the corresponding handlers would send/process. 
 
 We settled on three message types and this structure:
-- `ParameterRequest`- A request for parameters
-- `GradientUpdate` -  A gradient update to apply
-- `ParameterUpdate` - A copy of the latest parameters
+- `ParameterRequest` &ndash; A request for parameters
+- `GradientUpdate` &ndash;  A gradient update to apply
+- `ParameterUpdate` &ndash; A copy of the latest parameters
 
 <p align="center">
   <img width="400" height="400" src="https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/diagram.jpg">
@@ -131,7 +131,7 @@ Here **2** and **3** should happen concurrently.
 
 #### Parameter Server
 There are two messages that the parameter server handles:
-- `ParameterRequest`, which has a dummy payload - this is simply a request for parameters. When the server receives this message, it will send a `ParameterUpdate` message back to the requester.
+- `ParameterRequest`, which has a dummy payload &ndash; this is simply a request for parameters. When the server receives this message, it will send a `ParameterUpdate` message back to the requester.
 - `GradientUpdate`, in which case the payload is a gradient update. In this case, we simply apply the gradient update.
 
 The parameter server stores the model parameters in their squashed form, which makes processing these two messages [pretty simple](https://github.com/ucla-labx/distbelief/blob/master/distbelief/server.py).
@@ -143,16 +143,16 @@ Our training node consists of two threads, the training thread and the listener 
 The [listener thread](https://github.com/ucla-labx/distbelief/blob/master/distbelief/optim/downpour_sgd.py#L9)  extends `MessageListener`, like the parameter server, however it only takes a single message `ParameterUpdate`.
 - `ParameterUpdate` will set the params to the model (which is shared between these two threads) to the payload of the message passed in. 
 
-The training thread is the native PyTorch entrypoint, and is almost exactly identical, except it will ocassionally send either a `GradientUpdate` or a `ParameterRequest` to the parameter server. 
+The training thread is the native PyTorch entrypoint, and is almost exactly identical, except it will occasionally send either a `GradientUpdate` or a `ParameterRequest` to the parameter server. 
 - Once every $$N_{pull}$$ times, we pull the parameters. We do this by asynchronously issuing a `ParameterRequest` message to the parameter server. Once the server receives this request, it will send a `ParameterUpdate` which the listener thread will then use to update the model params. While we are pulling params, we continue training as usual.
 - Once every $$N_{push}$$ times, we issue a` GradientUpdate` message, sending our accumulated gradients to the server. We then zero out our accumulated grads.
 
-Here you can so a big downside of our implementation - a `ParameterRequest` is the same size as a `GradientUpdate`, but a `ParameterRequest` does not need to be that large. We waste some communication overhead by sending a large tensor we do not process.
+Here you can see a big downside of our implementation: a `ParameterRequest` is the same size as a `GradientUpdate`, but a `ParameterRequest` does not need to be that large. We waste some communication overhead by sending a large tensor we do not process.
 This is a shame, but we couldn't figure out a clean way around this, so it's just something to keep in mind for now.
 
 ### Prototype Results
 
-With this, we had a simple prototype. At this we were primarily concerned that we would be able to train a deep neural network, and weren't sweating about performace. 
+With this, we had a simple prototype. At this we were primarily concerned that we would be able to train a deep neural network, and weren't sweating about performance. 
 To test our code we trained LeNet on MNIST, and plotted the test accuracy/loss.
 
 ![prototype](/images/distbelief/prototype/server.png){: .center}
@@ -239,7 +239,7 @@ $$N_{pull}$$ and $$N_{push}$$ were both set to 10.
 
 We were a little concerned here - it looked like our implementation was suffering. We took this time to explore a bit more, and eventually found [this](https://openreview.net/pdf?id=BJLSGcywG) paper analyzing the delayed gradient problem.
 
-The delayed gradient problem exists because a node may be running gradient descent on a set of parameters that is "stale". In this case the gradients it produces may just add noise and not contribute to lowering the training loss. 
+The delayed gradient problem exists because a node may be running gradient descent on a set of parameters that is "stale". In this case, the gradients it produces may just add noise and not contribute to lowering the training loss. 
 
 It seemed that there was a much better chance at convergence at smaller frequencies, so we dropped $$N_{pull}$$ and $$N_{push}$$ to 5. It was previously set to ten as we were testing by running all 3 processes on a single machine, and the training nodes would rob the server process of resources, causing it to not be able to process messages fast enough.
 
@@ -260,7 +260,7 @@ At this point we figured a good next step would be to compare performance for ou
 ![final_test](https://raw.githubusercontent.com/ucla-labx/distbelief/master/docs/test_time.png){: .center}
 
 So it turns out GPUs are fast, but we're faster than single node CPU training though by roughly an hour! 
-What's more than that - we're faster than a 2-node distributed approach, which bodes well for the scalability of our system. This is great as initially we were very concerned about the communication overhead.
+What's more than that &ndash; we're faster than a 2-node distributed approach, which bodes well for the scalability of our system. This is great, as initially we were very concerned about the communication overhead.
 It seems like this wasn't too big of a problem thankfully, which was slightly unexpected as we're using TCP to send the tensors back and forth.
 
 ## Conclusion and Future Improvements
