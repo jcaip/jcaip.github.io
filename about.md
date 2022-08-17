@@ -18,10 +18,10 @@ Some of the more interesting things I've written about:
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
 
-Currently I work for [Meta](www.meta.com) as a machine learning engineer. 
+Currently I work for [Meta](www.meta.com) on [pytorch](www.pytorch.com).
+Before this I worked for a couple of startups ([Blend](www.blend.com), [Perceptyx](www.perceptyx.com)).
 
 I graduated from UCLA in 2020, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). Go Bruins!
-
 
 Please feel free to email me if you want to chat or have any questions!  
 Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
