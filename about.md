@@ -8,7 +8,7 @@ Hi there!
 I'm Jesse Cai, and welcome to my blog. 
 
 There's not really a central theme here, I just write about stuff that I find interesting.  
-Most of the posts  here are about machine learning / nlp. 
+Most of the posts here are about machine learning / nlp. 
 
 Some of the more interesting things I've written about:
 <!--- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)-->
@@ -18,8 +18,9 @@ Some of the more interesting things I've written about:
 - Using RNNs to [predict user activity](/Predicting-User-Submission)
 
 
-Currently I work for [Meta](http://www.meta.com) on [pytorch](http://www.pytorch.com).  
-Before this I worked for a couple of startups ([Blend](http://www.blend.com), [Perceptyx](http://www.perceptyx.com)).
+Currently I work on architecture optimization techinques (quantization, pruning) for [pytorch](http://www.pytorch.org).
+
+Before this I've worked for a couple of different companies ([Blend](https://www.blend.com), [Perceptyx](https://www.perceptyx.com), [JPL](https://www.jpl.nasa.gov/)).
 
 I graduated from UCLA in 2020, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). Go Bruins!
 
