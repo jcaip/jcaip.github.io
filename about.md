@@ -50,4 +50,4 @@ I also spent some time as a machine learning engineer at Blend, a mortgage finte
 
 <!-- To add a photo: <img src="/images/photo.jpg" style="float:right; margin:0 0 1em 1.5em; border-radius:8px; width:160px;"> -->
 
-[GitHub](https://github.com/jcaip) · [LinkedIn](#) · [Google Scholar](#) · jcjessecai@gmail.com
+[GitHub](https://github.com/jcaip) · [LinkedIn](https://www.linkedin.com/in/jesse-cai-471562a3) · [Google Scholar](https://scholar.google.com/citations?user=HnbaVZ8AAAAJ) · jcjessecai@gmail.com
