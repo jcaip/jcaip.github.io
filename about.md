@@ -3,46 +3,28 @@ layout: page
 permalink: /about/
 ---
 
-Hi there!
+Hi there! I'm Jesse Cai, an ML engineer focused on making deep learning models faster and more efficient.
 
-I'm Jesse Cai, and welcome to my blog. 
+---
 
-There's not really a central theme here, I just write about stuff that I find interesting.  
-Most of the posts here are about machine learning / nlp. 
+Most recently, I worked on PyTorch model performance at Meta Superintelligence Labs. Most of my work was on accelerating training and inference with sparsity and quantization — you can read more about that [here](/When-Quantization-Isnt-Enough/) and [here](/TorchAO/).
 
-Some of the more interesting things I've written about:
-<!--- Combining sentence embeddings and clique percolation to [cluster text](/Kernels-and-Cliques)-->
+Before that, I spent two years at a Series A startup called Cultivate, which was eventually acquired by Perceptyx. Most of my work there was making BERT do cool things with very little labeled data — the kind of stuff you'd reach for prompt engineering for today. I wrote a five-part series about it [here](/Cultivate-1/).
+
+Prior to that, I was a research intern for Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/) at the UCLA NLP lab while finishing my B.S. in Computer Science. I worked on sentence embeddings and spent a lot of time trying to replicate [QuickThoughts](/Quickthoughts).
+
+I also spent some time as a machine learning engineer at Blend, a mortgage fintech, where I [used RNNs to predict user behavior](/Predicting-User-Submission/).
+
+---
+
+## Selected Writing
+
+- A five-part series on building a [privacy-focused NLP system](/Cultivate-1/) with neural embeddings
+- [When quantization isn't enough](/When-Quantization-Isnt-Enough/) — combining 2:4 sparsity with INT4 for better compression
 - Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
 - [Distributed gradient descent](/Distbelief) in PyTorch
 - Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
-- Using RNNs to [predict user activity](/Predicting-User-Submission)
 
+---
 
-Currently I work on architecture optimization techinques (quantization, pruning) for [pytorch](http://www.pytorch.org).
-
-Before this I've worked for a couple of different companies ([Blend](https://www.blend.com), [Perceptyx](https://www.perceptyx.com), [JPL](https://www.jpl.nasa.gov/)).
-
-I graduated from UCLA in 2020, where I researched representation learning for NLP with Professor [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/). Go Bruins!
-
-Please feel free to email me if you want to chat or have any questions!  
-Or alternatively, if you have answers to any of the following questions definitely shoot me a line. 
-
-<hr>
-
-- **Is it ever rational to be irrational?**
-
-Suppose two players, $A$ and $B$ are playing a game that goes as follows: 
-- Players $A$ and $B$ alternate turns and $A$ starts with 10 points and $B$ with 15.
-- Each turn the player loses a point.
-- Each turn the player can also bet X points for a 25% chance of winning $2X$ points and a 75% chance of losing the bet. So $E[X] = 0.75 X$.
-- The game ends when one player loses by running out of points.
-
-Obviously the "rational" strategy is not to bet - but then player $A$ is guaranteed to lose since $B$ can outlast them. So $A$ must make an irrational bet for a chance of winning. I wonder what the optimal strategy is for $A$ and how to model this mathematically.
-
-- **Is relational knowledge distillation viable?**
-
-See [here](https://arxiv.org/abs/1904.05068). Basically instead of doing distillation as a KL between $P(y \mid x, \theta_{teacher})$ and $P(y \mid x, \theta_{student})$ you can take a KL between the distribution of distances in a minibatch. I unsuccessfully tried to do this to distill BERT, so really interested in any new work / thoughts on this approach. 
-
-- **What makes a manager *good* ?**
-
-Happy to hear generals or specifics here. 
+[GitHub](https://github.com/jcaip) · [LinkedIn](#) · [Google Scholar](#) · jcjessecai@gmail.com
