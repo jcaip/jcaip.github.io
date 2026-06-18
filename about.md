@@ -17,14 +17,37 @@ I also spent some time as a machine learning engineer at Blend, a mortgage finte
 
 ---
 
-## Selected Writing
+## Now
 
-- A five-part series on building a [privacy-focused NLP system](/Cultivate-1/) with neural embeddings
-- [When quantization isn't enough](/When-Quantization-Isnt-Enough/) — combining 2:4 sparsity with INT4 for better compression
-- Experimental and theoretical analysis of [sentence representations](/Quickthoughts)
-- [Distributed gradient descent](/Distbelief) in PyTorch
-- Constructing the [rational numbers](/Building-Q) ($\mathbb{Q}$) visually
+*[What I'm currently reading, working on, or thinking about — updated occasionally.]*
 
 ---
+
+## Publications & Talks
+
+**Papers**
+- [To 2:4 Sparsity and Beyond: Neuron-level Activation Function to Accelerate LLM Pre-Training](https://arxiv.org/abs/2602.06183)
+- [Accelerating Transformer Inference and Training with 2:4 Activation Sparsity](https://arxiv.org/abs/2503.16672)
+- [TorchAO: PyTorch-Native Training-to-Serving Model Optimization](https://arxiv.org/abs/2507.16099) — ICML 2025 CODEML Workshop
+
+**Blog Posts**
+- [When Quantization Isn't Enough: Why 2:4 Sparsity Matters](https://pytorch.org/blog/when-quantization-isnt-enough-why-24-sparsity-matters/)
+- [Accelerating Neural Network Training with Semi-Structured (2:4) Sparsity](https://pytorch.org/blog/accelerating-neural-network-training/)
+- [Speeding up ViTs using Block Sparsity](https://pytorch.org/blog/speeding-up-vits/)
+- [(beta) Accelerating BERT with semi-structured (2:4) sparsity](https://docs.pytorch.org/tutorials/advanced/semi_structured_sparse.html)
+
+**Talks**
+- [Lecture 11: Sparsity](https://www.youtube.com/watch?v=mGDnOLcfE8g)
+- [Lightning Talk: Sparsifying Vision Transformers with Minimal Accuracy Loss](https://www.youtube.com/watch?v=mqoIfs5hTxA)
+
+---
+
+## Projects
+
+- [TorchAO](https://github.com/pytorch/ao) — PyTorch-native quantization and sparsity library, covering FP8, INT4, INT8, and 2:4 sparsity from training to serving.
+
+---
+
+<!-- To add a photo: <img src="/images/photo.jpg" style="float:right; margin:0 0 1em 1.5em; border-radius:8px; width:160px;"> -->
 
 [GitHub](https://github.com/jcaip) · [LinkedIn](#) · [Google Scholar](#) · jcjessecai@gmail.com
