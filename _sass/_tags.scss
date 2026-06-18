@@ -42,60 +42,52 @@ $post-date-color: #9a9a9a;
           }
         }
       }
-      .tags-expo-section {
-        float: left;
-        width: 50%;
+      .tags-expo-section,
+      .archive-expo-section {
         ul {
           list-style-type: circle;
           list-style-position: inside;
           padding: 0;
           li {
+            display: flex;
+            align-items: baseline;
+            overflow: hidden;
             padding: 0;
             &:hover {
               list-style-type: disc;
-              padding: 0 .5rem;
             }
           }
         }
         a {
           text-decoration: none;
         }
+        .post-title-text {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
         .post-date {
           display: inline-block;
+          flex-shrink: 0;
           font-size: 80%;
           color: $post-date-color;
-          margin: 0;
+          margin: 0 0 0 0.5em;
           padding: 0;
+          white-space: nowrap;
         }
         font-family: $font-sans;
+      }
+
+      .tags-expo-section {
+        float: left;
+        width: 50%;
       }
 
       .archive-expo-section {
         float: right;
         width: 50%;
-        ul {
-          list-style-type: circle;
-          list-style-position: inside;
-          padding: 0;
-          li {
-            padding: 0;
-            &:hover {
-              list-style-type: disc;
-              padding: 0 .5rem;
-            }
-          }
-        }
-        a {
-          text-decoration: none;
-        }
-        .post-date {
-          display: inline-block;
-          font-size: 80%;
-          color: $post-date-color;
-          margin: 0;
-          padding: 0;
-        }
-        font-family: $font-sans;
       }
     }
 }
